@@ -11,6 +11,7 @@ import SlideMasonry from "../content/SlideMasonry.jsx";
 import SlideImageText from "../content/SlideImageText.jsx";
 import SlideStep from "../content/SlideStep.jsx";
 import SlideAudio from "../content/SlideAudio.jsx";
+import { PopupProvider } from "../../contexts/PopupContext.jsx";
 
 export default function PreviewSlideMagicNotebook() {
     const API_URL = import.meta.env.VITE_API_URL;
@@ -40,45 +41,47 @@ export default function PreviewSlideMagicNotebook() {
         <>
             <Navbar color={data.slidable.color_menu}/>
 
-            { data.slidable.type === "SlideHeader" &&
-                <SlideHeader data={data} />
-            }
+            <PopupProvider>
+                { data.slidable.type === "SlideHeader" &&
+                    <SlideHeader data={data} />
+                }
 
-            { data.slidable.type === "SlideMediaFull" &&
-                <SlideMediaFull data={data} />
-            }
+                { data.slidable.type === "SlideMediaFull" &&
+                    <SlideMediaFull data={data} />
+                }
 
-            { data.slidable.type === "SlideCitation" &&
-                <SlideCitation data={data} />
-            }
+                { data.slidable.type === "SlideCitation" &&
+                    <SlideCitation data={data} />
+                }
 
-            { data.slidable.type === "SlideCentralText" &&
-                <SlideCentralText data={data} />
-            }
+                { data.slidable.type === "SlideCentralText" &&
+                    <SlideCentralText data={data} />
+                }
 
-            { data.slidable.type === "SlideColumn" &&
-                <SlideColumn data={data} />
-            }
+                { data.slidable.type === "SlideColumn" &&
+                    <SlideColumn data={data} />
+                }
 
-            { data.slidable.type === "SlideSlider" &&
-                <SlideSlider data={data} />
-            }
+                { data.slidable.type === "SlideSlider" &&
+                    <SlideSlider data={data} />
+                }
 
-            { data.slidable.type === "SlideMasonry" &&
-                <SlideMasonry data={data} />
-            }
-            
-            { data.slidable.type === "SlideImageText" &&
-                <SlideImageText data={data} />
-            }
+                { data.slidable.type === "SlideMasonry" &&
+                    <SlideMasonry data={data} />
+                }
+                
+                { data.slidable.type === "SlideImageText" &&
+                    <SlideImageText data={data} />
+                }
 
-            { data.slidable.type === "SlideStep" &&
-                <SlideStep data={data} />
-            }
+                { data.slidable.type === "SlideStep" &&
+                    <SlideStep data={data} />
+                }
 
-            { data.slidable.type === "SlideAudio" &&
-                <SlideAudio data={data} />
-            }
+                { data.slidable.type === "SlideAudio" &&
+                    <SlideAudio data={data} />
+                }
+            </PopupProvider>
         </>
     );
 };

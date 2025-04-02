@@ -3,6 +3,8 @@ import { AnimatePresence, motion } from "framer-motion";
 
 export default function SlideHeader({ data, showSubtitle, index }) {
     const API_URL = import.meta.env.VITE_API_URL;
+    // const API_URL = "https://vq0qm5bppvt.preview.infomaniak.website";
+
     const imageUrl = `${API_URL}/storage/${data?.slidable?.background?.background}`;
     const color = data?.slidable?.color_text;
     const locale = 'fr';

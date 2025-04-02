@@ -39,16 +39,36 @@ export default function SlideMasonry({data}) {
                                 <div className="columns-3 lg:columns-4">
                                     {documents?.map((document, index) => {
                                         if (document?.url && locale) {
-                                            return (
-                                                <div key={index} className="mb-4 break-inside-avoid cursor-pointer" onClick={() => { setIsOpenPopup(true); setDataPopup(document); }}>
-                                                    {document.url.endsWith('.pdf') ? (
-                                                        <PlayerPDF key={document.id} file={document?.url} className="max-h-[60vh]" />
-                                                    ) : (
-                                                        <img src={document.url} alt={document?.name[locale]} className="w-full" />
-                                                        // TODO : Changer l'url document.optimized_url.url (Mettre la taille du thumbnail)
-                                                    )}                                                  
-                                                </div>
-                                            );
+
+                                            // optimized url
+                                            if (document.type !== "audio" && document.type !== "video" ) {
+                                                return (
+                                                    <div key={index} className="mb-4 break-inside-avoid cursor-pointer" onClick={() => { setIsOpenPopup(true); setDataPopup(document); }}>
+                                                        <img src={document.optimized_url.url} alt={document?.name[locale]} className="w-full" />
+                                                    </div>
+                                                )
+                                            }
+
+                                            // cover ou carré
+                                            if (document.type === "audio") {
+                                                return document?.cover ? (
+                                                    <div key={index} className="mb-4 break-inside-avoid cursor-pointer" onClick={() => { setIsOpenPopup(true); setDataPopup(document); }}>
+                                                        <img src={document.cover} alt={document?.name[locale]} className="w-full" />
+                                                    </div>
+                                                ) : (
+                                                    <div className="h-[200px] w-full bg-red-100">
+                                                    </div>
+                                                )
+                                            }
+
+                                            // cover ou carré
+                                            if (document.type === "video") {
+                                                return (
+                                                    <div key={index} className="mb-4 break-inside-avoid cursor-pointer" onClick={() => { setIsOpenPopup(true); setDataPopup(document); }}>
+                                                        <img src={document.cover} alt={document?.name[locale]} className="w-full" />
+                                                    </div>
+                                                )
+                                            }
                                         }
                                         return null;
                                     })}
