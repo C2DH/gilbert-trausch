@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
 import { formatRichText } from "../../lib/utils";
-import PlayerPDF from './PlayerPDF';
 import PopupResource from "./PopupResource";
 import {AnimatePresence, motion } from "framer-motion";
+import audioLogo from '../../assets/images/audio.svg'
+import videoLogo from '../../assets/images/video.svg'
 
 export default function SlideMasonry({data}) {
 
@@ -40,32 +41,24 @@ export default function SlideMasonry({data}) {
                                     {documents?.map((document, index) => {
                                         if (document?.url && locale) {
 
-                                            // optimized url
+                                            // All types except Video and Audio
                                             if (document.type !== "audio" && document.type !== "video" ) {
                                                 return (
                                                     <div key={index} className="mb-4 break-inside-avoid cursor-pointer" onClick={() => { setIsOpenPopup(true); setDataPopup(document); }}>
-                                                        <img src={document.optimized_url.url} alt={document?.name[locale]} className="w-full" />
+                                                        <img src={document?.optimized_url?.url} alt={document?.name[locale]} className="w-full" />
                                                     </div>
                                                 )
                                             }
 
-                                            // cover ou carré
-                                            if (document.type === "audio") {
+                                            // Audio / Video
+                                            if (document.type === "audio" || document.type === "video") {
                                                 return document?.cover ? (
                                                     <div key={index} className="mb-4 break-inside-avoid cursor-pointer" onClick={() => { setIsOpenPopup(true); setDataPopup(document); }}>
                                                         <img src={document.cover} alt={document?.name[locale]} className="w-full" />
                                                     </div>
                                                 ) : (
-                                                    <div className="h-[200px] w-full bg-red-100">
-                                                    </div>
-                                                )
-                                            }
-
-                                            // cover ou carré
-                                            if (document.type === "video") {
-                                                return (
-                                                    <div key={index} className="mb-4 break-inside-avoid cursor-pointer" onClick={() => { setIsOpenPopup(true); setDataPopup(document); }}>
-                                                        <img src={document.cover} alt={document?.name[locale]} className="w-full" />
+                                                    <div className="mb-4 break-inside-avoid cursor-pointer bg-[#DBDBD0] flex justify-center items-center h-[200px]" onClick={() => { setIsOpenPopup(true); setDataPopup(document); }}>
+                                                        <img src={ document.type === "audio" ? audioLogo : videoLogo } alt={ document.name[locale]} className="h-[100px]"/>
                                                     </div>
                                                 )
                                             }

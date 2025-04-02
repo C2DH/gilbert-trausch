@@ -7,6 +7,8 @@ import { useContext, useRef, useState } from "react";
 import PlayerPDF from './PlayerPDF';
 import PlayerAudio from '../content/PlayerAudio';
 import { PopupContext } from "../../contexts/PopupContext";
+import audioLogo from '../../assets/images/audio.svg'
+
 
 export default function Slider({ items }) {
 
@@ -32,25 +34,29 @@ export default function Slider({ items }) {
                 onRealIndexChange={(e) => setIndex(e.activeIndex)}
             >
                 {items?.map(item => {
+                    console.log('item', item)
                     const isImage = !item.url.endsWith('.pdf') && !item.url.endsWith('.mp3') && !item.url.endsWith('.m4a') && !item.url.endsWith('.wav');
                     const isAudio = item.url.endsWith('.mp3') || item.url.endsWith('.m4a') || item.url.endsWith('.wav');
                     const isPDF = item.url.endsWith('.pdf');
 
                     return (
                         <SwiperSlide key={item.id} className="">
-                            {isImage && (
-                                <img src={item.url} alt={item.name[locale]} className="w-auto h-[calc(100vh-500px)] lg:h-[calc(100vh-180px)]" />
+                            {(isImage || isPDF) && (
+                                <img src={item.optimized_url.url} alt={item.name[locale]} className="w-auto h-[calc(100vh-500px)] lg:h-[calc(100vh-180px)]" />
                             )}
 
                             {isAudio && (
                                 <div className="block-audio h-full flex flex-col justify-center">
-                                    <img src={item.cover} alt="cover" className="max-h-[60vh] rounded-[10px] mb-[20px] object-cover" />
+                                    {item.cover ? (
+                                        <img src={item.cover} alt="cover" className="max-h-[60vh] rounded-[10px] mb-[20px] object-cover" />
+                                    ) : (
+                                        <div className="bg-[#DBDBD0] w-full h-[60vh] flex justify-center items-center relative mb-5 rounded-[10px]">
+                                            <img src={ audioLogo } alt="Logo audio" className="h-[140px]"/>
+                                        </div>
+
+                                    )}
                                     <PlayerAudio url={item.url} />
                                 </div>
-                            )}
-
-                            {isPDF && (
-                                <PlayerPDF file={item.url} className="max-h-full max-w-full object-contain" />
                             )}
                         </SwiperSlide>
                     );
