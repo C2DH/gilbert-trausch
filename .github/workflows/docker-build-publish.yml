@@ -1,0 +1,36 @@
+name: Build and publish Docker image
+on:
+  # Trigger the workflow on push or pull request,
+  # for the develop branch and all new tags
+  push:
+    branches:
+      - main
+      - feature/deploy
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Prepare environment variables
+        run: |
+          echo "BUILD_DATE=$(date +'%Y-%m-%d %H:%M:%S')" >> $GITHUB_ENV
+          echo "GIT_LAST_COMMIT_DATE=$(git log -1 --format=%cd --date=format:%Y%m%d)" >> $GITHUB_ENV
+          echo "GIT_BRANCH=$(echo ${GITHUB_REF} | sed 's/refs\/heads\///')" >> $GITHUB_ENV
+          echo "GIT_COMMIT_SHA=$(git rev-parse --short ${GITHUB_SHA})" >> $GITHUB_ENV
+
+      - name: Build and publish Docker image
+        uses: elgohr/Publish-Docker-Github-Action@v5
+        env:
+          BUILD_DATE: ${{ env.BUILD_DATE }}
+          GIT_TAG: 'latest'
+          GIT_BRANCH: ${{ env.GIT_BRANCH }}
+          GIT_COMMIT_SHA: ${{ env.GIT_COMMIT_SHA }}
+          GIT_LAST_COMMIT_DATE: ${{ env.GIT_LAST_COMMIT_DATE }}
+        with:
+          name: c2dhunilu/gilbert-trausch
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+          buildoptions: '--compress --force-rm'
+          buildargs: |
+            GIT_TAG,GIT_BRANCH,GIT_COMMIT_SHA,BUILD_DATE,GIT_LAST_COMMIT_DATE
+          tags: 'latest'
