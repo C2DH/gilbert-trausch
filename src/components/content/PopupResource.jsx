@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import background from '../../assets/images/bg-1.png';
+import background from '../../assets/images/backgrounds/bg-1.webp';
 import { formatRichText, formatTypeName, formatDate, formatDateYear } from '../../lib/utils';
 import { motion } from "framer-motion";
 import classNames from 'classnames';
