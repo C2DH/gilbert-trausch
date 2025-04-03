@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import bgMenu from '../../assets/images/bg-menu.png';
+import bgMenu from '../../assets/images/backgrounds/bg-menu.webp';
 import logoUni from '../../assets/images/logo-uni.svg';
 import logoGouv from '../../assets/images/logo-gouv.svg';
 import { AnimatePresence, motion } from "framer-motion";

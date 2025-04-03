@@ -13,7 +13,6 @@ import PlayerPDF from './PlayerPDF';
 export default function PopupResource({ setIsOpenPopup, data }) {
 
     const locale = 'fr';
-    console.log('data popup', data)
     const [isImageVisible, setIsImageVisible] = useState(false);
 
     useEffect(() => {
@@ -23,10 +22,14 @@ export default function PopupResource({ setIsOpenPopup, data }) {
     return (
         <div style={{ background: `url(${background}) center / cover no-repeat` }} className='popup_resource h-screen w-full'>
         
+			<div className='lg:hidden py-[10px] border-b border-black'>
+				<span className='block text-[18px] text-center cursor-pointer hover:text-[#4100FC] duration-500 uppercase font-normal' onClick={() => setIsOpenPopup(false) }>Fermer</span>
+			</div>
+
             <div className="grid grid-cols-12 h-full">
-                <div className="col-span-12 lg:col-span-9 border-r border-black pt-[60px] lg:py-[60px] h-full relative">
-                    <div className='grid grid-cols-12 lg:grid-cols-9 h-full px-[30px]'>
-                        <div className='col-span-10 col-start-2 lg:col-span-9 flex justify-center items-center px-[30px] overflow-hidden'>
+                <div className="col-span-12 lg:col-span-9 border-r border-black pt-[20px] lg:pt-[60px] lg:py-[60px] h-[300px] lg:h-full relative overflow-hidden">
+                    <div className='grid grid-cols-12 lg:grid-cols-9 h-full px-[20px]'>
+                        <div className='col-span-12 lg:col-span-9 lg:flex justify-center items-center overflow-hidden h-[220px] xl:h-[calc(100vh-120px)]'>
 
                             { data.type === "image" &&                            
                                 <motion.div 
@@ -66,53 +69,56 @@ export default function PopupResource({ setIsOpenPopup, data }) {
                     </div>
                 </div>
 
-                <div className="col-span-12 lg:col-span-3">
+                <div className="col-span-12 lg:col-span-3 flex flex-col overflow-auto">
                     <div className='hidden lg:block py-[10px] border-b border-black px-[30px]'>
-                        <span className='text-[18px] cursor-pointer hover:text-[#4100FC] duration-500 uppercase font-normal' onClick={() => setIsOpenPopup(false) }>Fermer</span>
+                        <span className='cursor-pointer hover:text-[#4100FC] duration-500 uppercase font-normal' onClick={() => setIsOpenPopup(false) }>Fermer</span>
                     </div>
 
-                    <div className="content p-[30px] border-b border-black">
+					<div className='lg:h-[calc(100vh-55px)] lg:overflow-auto'>
+						<div className="content py-[30px] px-[20px] border-b border-black">
+							<div className='flex lg:block justify-between items-center'>
+								{ data?.date && (
+									data.display_year ? (
+										<span className='block text-[15px] mb-[25px]'>{ formatDateYear(data.date, locale) }</span>
+									) : (
+										<span className='block text-[15px] mb-[25px]'>{ formatDate(data.date, locale) }</span>
+									)
+								)}
 
-                        { data?.date && (
-                            data.display_year ? (
-                                <span className='block text-[15px] mb-[25px]'>{ formatDateYear(data.date, locale) }</span>
-                            ) : (
-                                <span className='block text-[15px] mb-[25px]'>{ formatDate(data.date, locale) }</span>
-                            )
-                        )}
+								{ data?.type &&
+									<span className='inline-block py-[3px] px-[10px] text-[14px] mb-[25px] bg-blue text-white rounded-[10px]'>{ formatTypeName(data.type , locale) }</span>
+								}
+							</div>
 
-                        { data?.type &&
-                            <span className='inline-block py-[3px] px-[10px] text-[14px] mb-[25px] bg-blue text-white rounded-[10px]'>{ formatTypeName(data.type , locale) }</span>
-                        }
+							<h1 className="text-[22px] leading-[32px] font-normal mb-[15px]">{ data.name[locale] }</h1>
+							
+							{ data?.description &&
+								<div className='mb-[30px] ]'>{ formatRichText(data.description[locale]) }</div>
+							}
 
-                        <h1 className="text-[22px] leading-[32px] font-normal mb-[15px]">{ data.name[locale] }</h1>
-                        
-                        { data?.description &&
-                            <div className='mb-[30px] text-[18px] leading-[28px]'>{ formatRichText(data.description[locale]) }</div>
-                        }
+							{ data?.source &&
+								<div className='text-[14px] leading-[18px]'>
+									<span className='font-semibold'>Source</span>
+									<div>{ formatRichText(data.source) }</div>
+								</div>
+							}
 
-                        { data?.source &&
-                            <div className='text-[14px] leading-[18px]'>
-                                <span className='font-semibold'>Source</span>
-                                <div>{ formatRichText(data.source) }</div>
-                            </div>
-                        }
+							{ data?.copyright &&
+								<div className='text-[14px] leading-[18px] mt-[20px]'>
+									<span className='font-semibold'>Copyright</span>
+									<div>{ formatRichText(data.copyright) }</div>
+								</div>
+							}
+						</div>
 
-                        { data?.copyright &&
-                            <div className='text-[14px] leading-[18px] mt-[20px]'>
-                                <span className='font-semibold'>Copyright</span>
-                                <div>{ formatRichText(data.copyright) }</div>
-                            </div>
-                        }
-                    </div>
-
-                    <div className="tags p-[30px]">
-                        <div className='flex flex-wrap gap-[15px]'>
-                            { data?.tags?.map(tag =>
-                                <span key={ tag.id } className='inline-block py-[4px] px-[10px] text-[12px] uppercase border border-black rounded-[8px]'>{ tag.name[locale] }</span>
-                            )}
-                        </div>
-                    </div>
+						<div className="tags py-[30px] px-[20px] overflow auto">
+							<div className='flex flex-wrap gap-[15px]'>
+								{ data?.tags?.map(tag =>
+									<span key={ tag.id } className='inline-block py-[4px] px-[10px] text-[12px] uppercase border border-black rounded-[8px]'>{ tag.name[locale] }</span>
+								)}
+							</div>
+						</div>
+					</div>
 
                 </div>
             </div>

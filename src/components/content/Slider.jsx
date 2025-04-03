@@ -34,7 +34,6 @@ export default function Slider({ items }) {
                 onRealIndexChange={(e) => setIndex(e.activeIndex)}
             >
                 {items?.map(item => {
-                    console.log('item', item)
                     const isImage = !item.url.endsWith('.pdf') && !item.url.endsWith('.mp3') && !item.url.endsWith('.m4a') && !item.url.endsWith('.wav');
                     const isAudio = item.url.endsWith('.mp3') || item.url.endsWith('.m4a') || item.url.endsWith('.wav');
                     const isPDF = item.url.endsWith('.pdf');
@@ -53,7 +52,6 @@ export default function Slider({ items }) {
                                         <div className="bg-[#DBDBD0] w-full h-[60vh] flex justify-center items-center relative mb-5 rounded-[10px]">
                                             <img src={ audioLogo } alt="Logo audio" className="h-[140px]"/>
                                         </div>
-
                                     )}
                                     <PlayerAudio url={item.url} />
                                 </div>

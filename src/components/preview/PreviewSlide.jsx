@@ -37,8 +37,6 @@ export default function PreviewSlide() {
         return <p>Chargement...</p>;
     }
 
-    console.log('daat', data)
-
     return (
         <>
             <Navbar color={data.slidable.color_menu}/>

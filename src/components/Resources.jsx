@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import Navbar from "./content/Navbar";
-import background from "../assets/images/backgrounds/bg-1.png";
+import background from "../assets/images/backgrounds/bg-1.webp";
 import MultiRangeSlider from "multi-range-slider-react";
 import Masonry, {ResponsiveMasonry} from "react-responsive-masonry";
 import classNames from 'classnames';
@@ -15,8 +15,11 @@ import { AnimatePresence, motion } from "framer-motion";
 export default function Resources() {
 
     const locale = 'fr';
-    // const API_URL = import.meta.env.VITE_API_URL;
-    const API_URL = "https://vq0qm5bppvt.preview.infomaniak.website";
+    const API_URL = import.meta.env.VITE_API_URL;
+    // const API_URL = 'https://gilberttrausch.uni.lu/';
+
+    // const API_URL = 'https://vq0qm5bppvt.preview.infomaniak.website'
+
 
     const [documents, setDocuments] = useState([]);
     const [search, setSearch] = useState("");
@@ -28,6 +31,8 @@ export default function Resources() {
     const [datesCount, setDatesCount] = useState([]);
     const [total, setTotal] = useState(null);
     const [dates, setDates] = useState("");
+    const [minDate, setMinDate] = useState("");
+    const [maxDate, setMaxDate] = useState("");
     const [imagesLoaded, setImagesLoaded] = useState(false);
     const [resetDates, setResetDates] = useState(false);
     const [isOpenPopup, setIsOpenPopup] = useState(false);
@@ -77,9 +82,15 @@ export default function Resources() {
             params.append("q", search);
         }
 
-        if (dates !== "") {
-            console.log('dates', dates)
-            params.append("dates", dates);
+        if (minDate || maxDate) {
+            if (minDate && maxDate) {
+                params.append("minDate", minDate);
+                params.append("maxDate", maxDate);
+            } else if (minDate) {
+                params.append("minDate", minDate);  // Filtrage uniquement par date de début
+            } else if (maxDate) {
+                params.append("maxDate", maxDate);  // Filtrage uniquement par date de fin
+            }
         }
 
         const url = `${API_URL}/api/resources?${params.toString()}`;
@@ -98,6 +109,8 @@ export default function Resources() {
                 setTypes(data.types);
                 setDatesCount(data.dates);
                 setTotal(data.resources.total)
+
+                console.log('documents', data.resources.data)
             })
             .catch((error) => {
                 console.error("Erreur lors du chargement des données :", error)
@@ -106,7 +119,7 @@ export default function Resources() {
 
             console.log('selected', selectedFilters)
 
-    }, [search, dates, selectedFilters]); 
+    }, [search, minDate, maxDate, selectedFilters]); 
 
 
     // TAGS 
@@ -175,16 +188,16 @@ export default function Resources() {
                             {documents.length > 0 ? (
                                 <div className="col-span-12 lg:col-span-9 flex h-[calc(100vh-160px)] px-[20px]">
                                     <div className="flex-1 overflow-y-auto py-[30px]">
-                                        <ResponsiveMasonry columnsCountBreakPoints={{300: 3, 768: 3, 1024: 3, 1280: 4}} gutterBreakpoints={{300: "12px", 768: "16px", 1024: "24px"}}>
+                                        <ResponsiveMasonry columnsCountBreakPoints={{ 300: 3, 768: 3, 1024: 3, 1280: 4 }} gutterBreakpoints={{ 300: "12px", 768: "16px", 1024: "30px" }}>
                                             <Masonry>
                                                 {documents?.map((document, index) => {
-                                                    const aspectRatio = (document?.optimized_url?.height / document?.optimized_url?.width) * 100; // Ratio pour le padding-bottom
+                                                    const aspectRatio = (document?.optimized_url?.thumbnail?.height / document?.optimized_url?.thumbnail?.width) * 100; // Ratio pour le padding-bottom
 
                                                     {/** AUDIO - VIDEO */}
                                                     if (document.type === "audio" || document.type === "video") {
                                                         if (document.cover) {
                                                             return (
-                                                                <div key={index} className="audio relative overflow-hidden cursor-pointer w-full h-[400px]" style={{ paddingBottom: `${aspectRatio}%`}} 
+                                                                <div key={index} className="audio relative overflow-hidden cursor-pointer w-full aspect-square lg:h-[300px] xl:h-[400px]" style={{ paddingBottom: `${aspectRatio}%`}} 
                                                                     onClick={() => { setIsOpenPopup(true); setDataPopup(document); }}  
                                                                 >
                                                                     <img loading="lazy" src={ document.cover } alt={document?.name[locale]} className="w-full hover:scale-[1.2] transition-all duration-[750ms]" 
@@ -193,7 +206,7 @@ export default function Resources() {
                                                                     />
 
                                                                     {/* <div className="absolute top-0 left-0 bg-black text-[14px] ">
-                                                                        <span className="block text-amber-400">{ document.type }</span>
+                                                                        <span className="block text-amber-400">{ document.type }  - { document.name[locale] }</span>
                                                                         {document.tags.map(tag =>
                                                                             <span key={tag.id} className="block text-white">{ tag.name[locale] }</span>
                                                                         )}
@@ -203,17 +216,17 @@ export default function Resources() {
                                                         } else {
                                                             return (
                                                                 <div key={index} className="relative overflow-hidden cursor-pointer w-full" onClick={() => { setIsOpenPopup(true); setDataPopup(document); }}>
-                                                                    <div className="bg-[#DBDBD0] w-full h-[200px] flex justify-center items-center relative">
+                                                                    <div className="bg-[#DBDBD0] w-full aspect-square lg:h-[200px] flex justify-center items-center relative">
                                                                         { document.type === "audio" ? (
-                                                                            <img src={ audioLogo } alt="Logo audio" className="h-[140px]"/>
+                                                                            <img src={ audioLogo } alt="Logo audio" className="h-[50px] lg:h-[140px]"/>
                                                                         ) : (
-                                                                            <img src={ videoLogo } alt="Logo video" className="h-[120px]"/>
+                                                                            <img src={ videoLogo } alt="Logo video" className="h-[50px] lg:h-[120px]"/>
                                                                         )}
                                                                         <span className="absolute w-[80%] top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] text-[14px] leading-none italic text-center">{ document.name[locale] }</span>
                                                                     </div>
-                                                                                                                                        
-                                                                    {/* <div className="absolute top-0 left-0 bg-black text-[14px] ">
-                                                                        <span className="block text-amber-400">{ document.type }</span>
+{/*                                                                                                                                         
+                                                                    <div className="absolute top-0 left-0 bg-black text-[14px] ">
+                                                                        <span className="block text-amber-400">{ document.type } - { document.name[locale] }</span>
                                                                         {document.tags.map(tag =>
                                                                             <span key={tag.id} className="block text-white">{ tag.name[locale] }</span>
                                                                         )}
@@ -223,27 +236,31 @@ export default function Resources() {
                                                         }
                                                     }
 
-                                                    {/* if (document.type !== 'video' && document.type !== 'audio' && document.optimized_url) { */}
-                                                    if (document.type !== 'video' && document.type !== 'audio') {
+                                                    if (document.type !== 'video' && document.type !== 'audio' && document.optimized_url ) {
                                                         return (
                                                             <div 
                                                                 key={index} 
-                                                                // className="relative w-full overflow-hidden cursor-pointer" style={{ paddingBottom: `${aspectRatio}%`}} 
-                                                                className="relative w-full overflow-hidden cursor-pointer"
+                                                                className="cursor-pointer overflow-hidden relative" style={{ width: `${document?.optimized_url?.thumbnail?.width}%`, height: `${document?.optimized_url?.thumbnail?.height}`}} 
                                                                 onClick={() => { setIsOpenPopup(true); setDataPopup(document);}}
                                                             >
-                                                                {/* <img 
+                                                                <img 
                                                                     loading="lazy" 
-                                                                    src={document?.optimized_url?.url}
+                                                                    src={document?.optimized_url?.thumbnail?.url }
                                                                     alt={document?.name[locale]} 
-                                                                    className="w-full hover:scale-[1.2] transition-all duration-[750ms]"
-                                                                    style={{position: 'absolute',top: 0,left: 0,width: '100%',height: '100%',objectFit: 'cover',}} 
+                                                                    className="w-full h-full hover:scale-[1.2] transition-all duration-[750ms]"
                                                                     onLoad={() => setImagesLoaded(true)}
-                                                                /> */}
+                                                                />
 
-                                                                <div className="bg-[#DBDBD0] w-full h-[200px] flex justify-center items-center relative">
+                                                                {/* <div className="bg-[#DBDBD0] w-full aspect-square lg:h-[200px] flex justify-center items-center relative">
                                                                     <span className="absolute w-[80%] top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] text-[14px] leading-none italic text-center">{ document.name[locale] }</span>
-                                                                </div>
+                                                                </div> */}
+
+                                                                {/* <div className="absolute top-0 left-0 bg-black text-[14px] ">
+                                                                        <span className="block text-amber-400">{ document.type } - { document.name[locale] }</span>
+                                                                        {document.tags.map(tag =>
+                                                                            <span key={tag.id} className="block text-white">{ tag.name[locale] }</span>
+                                                                        )}
+                                                                    </div> */}
                                                             </div>
                                                         )
                                                     }
@@ -258,6 +275,7 @@ export default function Resources() {
 
 
                             <div className="hidden col-span-3 border-l border-black h-[calc(100vh-160px)] lg:flex flex-col overflow-hidden">
+                                <div className="flex-1 overflow-y-auto">
 
                                 {/** TYPES */}
                                 <div className="types-block border-b border-black px-[20px] pb-[10px]">
@@ -281,11 +299,11 @@ export default function Resources() {
                                 <div className="periods_block border-b border-black pb-[30px] px-[20px]">
                                     <div className="flex justify-between pt-[20px]">
                                         <span className="text-[#4100FC] font-semibold text-[18px]">Période</span>
-                                        <span className="text-[#4100FC] font-semibold text-[15px] cursor-pointer uppercase" onClick={() => setResetDates(true)}>Reset</span>
+                                        <span className="text-[#4100FC] font-semibold text-[15px] cursor-pointer uppercase" onClick={() => {setResetDates(true)}}>Reset</span>
                                     </div>
 
                                     <div>
-                                        <MultiRangeSelector dates={ datesCount } total={ total } setDates={ setDates } resetDates={ resetDates } setResetDates={ setResetDates }/>
+                                        <MultiRangeSelector dates={ datesCount } resetDates={ resetDates } setResetDates={ setResetDates } setMinDate={setMinDate} setMaxDate={setMaxDate}/>
                                     </div>
                                 </div>
 
@@ -310,6 +328,9 @@ export default function Resources() {
                                         )}
                                     </div>
                                 </div>
+
+                                </div>
+
                             </div>
                         </div>
 
@@ -353,7 +374,7 @@ export default function Resources() {
                                 </div>
 
                                 <div>
-                                    <MultiRangeSelector dates={ datesCount } total={ total } setDates={ setDates } resetDates={ resetDates } setResetDates={ setResetDates }/>
+                                    <MultiRangeSelector dates={ datesCount } resetDates={ resetDates } setResetDates={ setResetDates } setMinDate={setMinDate} setMaxDate={setMaxDate}/>
                                 </div>
                             </div>
 
@@ -402,13 +423,12 @@ export default function Resources() {
                     </motion.div>
                 }
             </AnimatePresence>           
-
         </>
     )
 }
 
 
-const MultiRangeSelector = ({ dates, total, setDates, resetDates, setResetDates }) => {
+const MultiRangeSelector = ({ dates, resetDates, setResetDates, setMinDate ,setMaxDate }) => {
     const labels = ["1930", "1940", "1950", "1960", "1970", "1980", "1990", "2000", "2010", "2020"];
     const [minDateCaption, setMinDateCaption] = useState(labels[0]);
     const [maxDateCaption, setMaxDateCaption] = useState(labels[labels.length - 1]);
@@ -417,7 +437,8 @@ const MultiRangeSelector = ({ dates, total, setDates, resetDates, setResetDates 
         if (resetDates) {
             setMinDateCaption(labels[0]);
             setMaxDateCaption(labels[labels.length - 1]);
-            setDates("");
+            setMinDate("");
+            setMaxDate("");
             setResetDates(false);
         }   
     }, [resetDates])
@@ -426,7 +447,8 @@ const MultiRangeSelector = ({ dates, total, setDates, resetDates, setResetDates 
         if (!resetDates) {
             setMinDateCaption(labels[e.minValue]);
             setMaxDateCaption(labels[e.maxValue]);
-            setDates(`${labels[e.minValue]}, ${labels[e.maxValue]}`);
+            setMinDate(labels[e.minValue]);
+            setMaxDate(labels[e.maxValue]);
         }
     }
 
@@ -439,7 +461,7 @@ const MultiRangeSelector = ({ dates, total, setDates, resetDates, setResetDates 
 
     return (
         <>
-            <div className="flex h-[100px] items-end justify-items-start pb-[3px] px-[1px] space-x-[1px]">
+            <div className="flex h-[70px] items-end justify-items-start pb-[3px] px-[1px] space-x-[1px]">
                 {dates.map((item, index) => {
                     const heightPercentage = getTotal() > 0 ? (item.count / getTotal() * 100) : 0;
                     return (
@@ -479,3 +501,4 @@ const MultiRangeSelector = ({ dates, total, setDates, resetDates, setResetDates 
     <span className="text-[14px] text-amber-500 bg-black p-2">{document.type}</span>
     <span className="text-[14px] text-amber-500 bg-black p-2">{document.date}</span>
 </div> */}
+

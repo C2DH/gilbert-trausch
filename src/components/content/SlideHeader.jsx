@@ -29,7 +29,7 @@ export default function SlideHeader({ data, showSubtitle, index }) {
                                             initial={{ opacity: 0, y: -10 }}
                                             animate={{ opacity: 1, y: 0, transition: { duration: 0.6, delay: 0.3 } }}
                                             exit={{ opacity: 0, y: 10, transition: { duration: 0.3 } }} 
-                                            className="xl:absolute w-full"
+                                            className="relative w-full"
                                         >
                                             {data?.slidable?.content && locale && (
                                                 <div
@@ -50,7 +50,7 @@ export default function SlideHeader({ data, showSubtitle, index }) {
                                             initial={{ opacity: 0, y: 10 }}
                                             animate={{ opacity: 1, y: 0, transition: { duration: 0.6, delay: 0.3 } }}
                                             exit={{ opacity: 0, y: 10, transition: { duration: 0.3 } }} 
-                                            className="xl:absolute w-full"
+                                            className="relative w-full"
                                         >
                                             {data?.slidable?.subtitle && locale && (
                                                 <h2

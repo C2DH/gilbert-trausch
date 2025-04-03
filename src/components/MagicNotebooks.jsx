@@ -25,7 +25,6 @@ export default function MagicNotebooks() {
                 return response.json();
             })
             .then((data) => {
-                console.log("cahier magique :", data);
                 setData(data);
             })
             .catch((error) => console.error("Erreur lors du chargement des cahiers magiques :", error));

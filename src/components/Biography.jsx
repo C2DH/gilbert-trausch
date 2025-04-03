@@ -27,7 +27,6 @@ export default function Biography() {
             })
             .then((data) => {
                 setData(data.data);
-                console.log(data.data)
             })
             .catch((error) => console.error("Erreur de chargement :", error));
     }, []);
@@ -49,7 +48,6 @@ export default function Biography() {
         const observer = new IntersectionObserver(
             (entries) => {
                 entries.forEach((entry) => {
-                    console.log(entry)
                     if (entry.isIntersecting) {
                         setActiveElement(entry.target.id);
                         
@@ -67,7 +65,6 @@ export default function Biography() {
         );
 
         const elements = document.querySelectorAll('.timeline-event');
-        console.log("Elements observés:", elements);
         elements.forEach((element) => {
             observer.observe(element);
         });
