@@ -18,7 +18,10 @@ export default function PlayerAudio( {url} ) {
             });
 
             wavesurfer.on('ready', () => {
-                setDuration(wavesurfer.getDuration());
+                const dur = wavesurfer.getDuration();
+                if (!isNaN(dur) && dur > 0) {
+                    setDuration(dur);
+                }
             });
 
             return () => {
@@ -31,7 +34,10 @@ export default function PlayerAudio( {url} ) {
     const onReady = (ws) => {
         setWavesurfer(ws)
         setIsPlaying(false)
-        setDuration(ws.getDuration())
+        const dur = ws.getDuration();
+        if (!isNaN(dur) && dur > 0) {
+            setDuration(dur);
+        }
     }
 
     const onPlayPause = () => {
@@ -74,9 +80,13 @@ export default function PlayerAudio( {url} ) {
                     
                     <div className='flex justify-between pt-[10px] text-[13px]'>
                         <span className='block leading-none'>{formatTime(currentTime)}</span>
-                        <span className={classNames('block leading-none', {
-                            'text-[#CDD3D7]': currentTime !== duration 
-                        })}>{formatTime(duration)}</span>
+                        <span className={
+                            classNames('block leading-none', {
+                                'text-[#CDD3D7]': currentTime !== duration 
+                            })}
+                        >
+                            {!isNaN(duration) ? formatTime(duration) : '0:00'}
+                        </span>
                     </div>
                 </div>
             </div>

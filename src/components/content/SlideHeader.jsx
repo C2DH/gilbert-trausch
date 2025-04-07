@@ -3,7 +3,6 @@ import { AnimatePresence, motion } from "framer-motion";
 
 export default function SlideHeader({ data, showSubtitle, index }) {
     const API_URL = import.meta.env.VITE_API_URL;
-    // const API_URL = "https://vq0qm5bppvt.preview.infomaniak.website";
 
     const imageUrl = `${API_URL}/storage/${data?.slidable?.background?.background}`;
     const color = data?.slidable?.color_text;
@@ -21,69 +20,51 @@ export default function SlideHeader({ data, showSubtitle, index }) {
                                 </h1>
                             )}
 
-                            <div className="relative w-full xl:min-h-[150px]">
-                                <AnimatePresence mode="wait">
-                                    {!showSubtitle && (
-                                        <motion.div
-                                            key="content"
-                                            initial={{ opacity: 0, y: -10 }}
-                                            animate={{ opacity: 1, y: 0, transition: { duration: 0.6, delay: 0.3 } }}
-                                            exit={{ opacity: 0, y: 10, transition: { duration: 0.3 } }} 
-                                            className="relative w-full"
-                                        >
-                                            {data?.slidable?.content && locale && (
-                                                <div
-                                                    className="pt-[40px] richeditor"
-                                                    style={{ color }}
-                                                >
-                                                    {formatRichText(data?.slidable?.content[locale])}
-                                                </div>
-                                            )}
-                                        </motion.div>
-                                    )}
-                                </AnimatePresence>
+                            <div className="relative w-full xl:min-h-[350px] overflow-hidden">
+                                <div className="relative w-full min-h-[200px]">
+                                    
+                                    <AnimatePresence mode="wait">
+                                        {(!showSubtitle || index !== 1) && (
+                                            <motion.div
+                                                key="content"
+                                                initial={{ opacity: 0, y: -10 }}
+                                                animate={{ opacity: 1, y: 0, transition: { duration: 0.6, delay: 0.3 } }}
+                                                exit={{ opacity: 0, y: 10, transition: { duration: 0.3 } }}
+                                                className="absolute top-0 left-0 w-full"
+                                            >
+                                                {data?.slidable?.content && locale && (
+                                                    <div
+                                                        className="pt-[40px] richeditor"
+                                                        style={{ color }}
+                                                    >
+                                                        {formatRichText(data?.slidable?.content[locale])}
+                                                    </div>
+                                                )}
+                                            </motion.div>
+                                        )}
+                                    </AnimatePresence> 
 
-                                <AnimatePresence mode="wait">
-                                    {showSubtitle && (
-                                        <motion.div
-                                            key="subtitle"
-                                            initial={{ opacity: 0, y: 10 }}
-                                            animate={{ opacity: 1, y: 0, transition: { duration: 0.6, delay: 0.3 } }}
-                                            exit={{ opacity: 0, y: 10, transition: { duration: 0.3 } }} 
-                                            className="relative w-full"
-                                        >
-                                            {data?.slidable?.subtitle && locale && (
-                                                <h2
-                                                    className="pt-[40px] text-[30px] xl:text-[40px] leading-none font-extralight"
-                                                    style={{ color }}
-                                                >
-                                                    {data?.slidable?.subtitle[locale]}
-                                                </h2>
-                                            )}
-                                        </motion.div>
-                                    )}
-                                </AnimatePresence>
-
-                                <AnimatePresence mode="wait">
-                                    {index !== 1 && (
-                                        <motion.div
-                                            key="subtitle"
-                                            initial={{ opacity: 0, y: 10 }}
-                                            animate={{ opacity: 1, y: 0, transition: { duration: 0.6, delay: 0.3 } }}
-                                            exit={{ opacity: 0, y: 10, transition: { duration: 0.3 } }} 
-                                            className="absolute w-full"
-                                        >
-                                            {data?.slidable?.subtitle && locale && (
-                                                <h2
-                                                    className="pt-[40px] text-[40px] leading-none font-extralight"
-                                                    style={{ color }}
-                                                >
-                                                    {data?.slidable?.subtitle[locale]}
-                                                </h2>
-                                            )}
-                                        </motion.div>
-                                    )}
-                                </AnimatePresence>
+                                    <AnimatePresence mode="wait">
+                                        {showSubtitle && (
+                                            <motion.div
+                                                key="subtitle"
+                                                initial={{ opacity: 0, y: 10 }}
+                                                animate={{ opacity: 1, y: 0, transition: { duration: 0.6, delay: 0.3 } }}
+                                                exit={{ opacity: 0, y: 10, transition: { duration: 0.3 } }}
+                                                className="absolute top-0 left-0 w-full"
+                                            >
+                                                {data?.slidable?.subtitle && locale && (
+                                                    <h2
+                                                        className="pt-[40px] text-[30px] xl:text-[40px] leading-none font-extralight"
+                                                        style={{ color }}
+                                                    >
+                                                        {data?.slidable?.subtitle[locale]}
+                                                    </h2>
+                                                )}
+                                            </motion.div>
+                                        )}
+                                    </AnimatePresence>
+                                </div>
                             </div>
                         </div>
                     </div>

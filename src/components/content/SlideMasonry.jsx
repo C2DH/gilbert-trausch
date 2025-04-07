@@ -45,7 +45,7 @@ export default function SlideMasonry({data}) {
                                             if (document.type !== "audio" && document.type !== "video" ) {
                                                 return (
                                                     <div key={index} className="mb-4 break-inside-avoid cursor-pointer" onClick={() => { setIsOpenPopup(true); setDataPopup(document); }}>
-                                                        <img src={document?.optimized_url?.url} alt={document?.name[locale]} className="w-full" />
+                                                        <img src={document?.optimized_url?.thumbnail?.url} alt={document?.name[locale]} className="w-full" />
                                                     </div>
                                                 )
                                             }

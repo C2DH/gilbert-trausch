@@ -23,7 +23,6 @@ import { PopupProvider } from "../contexts/PopupContext";
 export default function Chapter() {
 
     const API_URL = import.meta.env.VITE_API_URL;
-        // const API_URL = "https://vq0qm5bppvt.preview.infomaniak.website";
 
     const locale = 'fr';
     const { id } = useParams();

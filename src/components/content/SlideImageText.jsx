@@ -43,14 +43,8 @@ export default function SlideImageText({ data }) {
                             <div className="col-span-12 xl:col-span-8 mb-[40px]">
                                 <div className="grid grid-cols-8 h-full">
                                     <div className="col-span-8 lg:flex lg:flex-col items-center justify-center lg:pr-[30px]">
-                                        {data?.slidable?.document?.url && locale && (
-                                            data.slidable.document.url.endsWith('.pdf') ? (
-                                                <PlayerPDF key={data.slidable.document.id} file={data.slidable.document.url} className="max-h-[60vh]" />
-                                            ) : (
-                                                <div>
-                                                    <img src={data.slidable.document.url} alt={data.slidable.document.name[locale]} className=""/>
-                                                </div>
-                                            )
+                                        {(data?.slidable?.document?.url && locale) && (
+                                            <img src={data.slidable.document.optimized_url.large.url} alt={data.slidable.document.name[locale]} className="h-[calc(100vh-200px)]"/>
                                         )}
 
                                         {/** BUTTON POPUP RESOURCE */}

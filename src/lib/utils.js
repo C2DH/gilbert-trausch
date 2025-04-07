@@ -3,7 +3,6 @@ import parse from 'html-react-parser';
 function customParser(domNode) {
   // Gérer les liens
   if (domNode.type === 'tag' && domNode.name === 'a') {
-    console.log(domNode.attribs.href.indexOf('https://gilberttrausch.uni.lu'))
     if (domNode.attribs.href.indexOf('https://gilberttrausch.uni.lu') === 0) {
       domNode.attribs.class = 'custom-link-class'; // Ajoute une classe personnalisée aux liens
       domNode.attribs.target = '_blank'; // Ouvre les liens dans un nouvel onglet
@@ -11,46 +10,40 @@ function customParser(domNode) {
   }
 
   // Gérer les titres h2 et h3
-  if (domNode.type === 'tag' && (domNode.name === 'h2' || domNode.name === 'h3')) {
-    domNode.attribs.class = `custom-${domNode.name}-class`; // Ajoute une classe personnalisée aux h2 et h3
-  }
+//   if (domNode.type === 'tag' && (domNode.name === 'h2' || domNode.name === 'h3')) {
+//     domNode.attribs.class = `custom-${domNode.name}-class`; // Ajoute une classe personnalisée aux h2 et h3
+//   }
 
   // Gérer les éléments de texte en gras (b), italique (i) et souligné (u)
-  if (domNode.type === 'tag' && ['b', 'i', 'u'].includes(domNode.name)) {
-    domNode.attribs.class = `custom-${domNode.name}-class`; // Applique une classe personnalisée selon le style
-  }
+//   if (domNode.type === 'tag' && ['b', 'i', 'u'].includes(domNode.name)) {
+//     domNode.attribs.class = `custom-${domNode.name}-class`; // Applique une classe personnalisée selon le style
+//   }
 
   // Gérer les citations (blockquote)
-  if (domNode.type === 'tag' && domNode.name === 'blockquote') {
-    domNode.attribs.class = 'custom-blockquote-class'; // Classe personnalisée pour blockquote
-  }
+//   if (domNode.type === 'tag' && domNode.name === 'blockquote') {
+//     domNode.attribs.class = 'custom-blockquote-class'; // Classe personnalisée pour blockquote
+//   }
 
   // Gérer les listes (ordonnées et non ordonnées)
-  if (domNode.type === 'tag' && ['ul', 'ol'].includes(domNode.name)) {
-    domNode.attribs.class = 'custom-list-class'; // Classe personnalisée pour les listes
-  }
+//   if (domNode.type === 'tag' && ['ul', 'ol'].includes(domNode.name)) {
+//     domNode.attribs.class = 'custom-list-class'; // Classe personnalisée pour les listes
+//   }
 
   // Gérer les éléments de liste (li)
-  if (domNode.type === 'tag' && domNode.name === 'li') {
-    domNode.attribs.class = 'custom-li-class'; // Classe personnalisée pour les éléments de liste
-  }
-
-  if (domNode.type === 'text') {
+//   if (domNode.type === 'tag' && domNode.name === 'li') {
+//     domNode.attribs.class = 'custom-li-class'; // Classe personnalisée pour les éléments de liste
+//   }
+if (domNode.type === 'text') {
     const regex = /\[\[(.*?)\]\]/g;
     if (regex.test(domNode.data)) {
-      // Remplacer les occurrences de [[ texte ]] par un <span> avec le logo et le texte en tooltip
       const newText = domNode.data.replace(regex, function(match, p1) {
-        // Remplacer [[ texte ]] par un logo avec texte au survol
         return `<span class="tooltip-logo" title="${p1}">
-                  <img src="path/to/logo.png" alt="logo" />
+                  <img src="/path/to/logo.png" alt="logo" />
                 </span>`;
       });
-
-      // Retourner le texte avec les tooltips transformés
-      return parse(newText);  // Rendu du HTML transformé
+      return parse(newText);
     }
   }
-
 
   return domNode; // Retourne les nœuds non modifiés
 }

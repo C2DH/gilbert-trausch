@@ -16,7 +16,6 @@ const images = [intro_2, intro_3, intro_4, intro_5, intro_6, intro_7, intro_8, i
 
 const EXPIRE = 6 * 3600 * 1000;
 
-
 export default function Home() {
     const [visibleImages, setVisibleImages] = useState([]);
     const [showMenu, setShowMenu] = useState(false);
@@ -52,7 +51,7 @@ export default function Home() {
                         if (index === images.length - 1) {
                             setTimeout(() => setShowMenu(true), 1000);
                         }
-                    }, index * 1000);
+                    }, index * 600);
                 });
             }, 1000); // Délai de 1s avant le début des images
         }
@@ -91,7 +90,7 @@ export default function Home() {
                             onClick={handleStart}
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
-                            exit={{ opacity: 0, y: -20 }} // Animation de sortie
+                            exit={{ opacity: 0 }} // Animation de sortie
                             transition={{ duration: 0.8, ease: "easeInOut" }}
                         >
                             Débuter

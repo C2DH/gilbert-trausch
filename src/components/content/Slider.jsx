@@ -34,18 +34,14 @@ export default function Slider({ items }) {
                 onRealIndexChange={(e) => setIndex(e.activeIndex)}
             >
                 {items?.map(item => {
-                    const isImage = !item.url.endsWith('.pdf') && !item.url.endsWith('.mp3') && !item.url.endsWith('.m4a') && !item.url.endsWith('.wav');
-                    const isAudio = item.url.endsWith('.mp3') || item.url.endsWith('.m4a') || item.url.endsWith('.wav');
-                    const isPDF = item.url.endsWith('.pdf');
-
                     return (
                         <SwiperSlide key={item.id} className="">
-                            {(isImage || isPDF) && (
-                                <img src={item.optimized_url.url} alt={item.name[locale]} className="w-auto h-[calc(100vh-500px)] lg:h-[calc(100vh-180px)]" />
+                            {(item.type !== "audio" && item.optimized_url?.large) && (
+                                <img src={item.optimized_url?.large.url} alt={item.name[locale]} className="w-auto h-[calc(100vh-500px)] lg:h-[calc(100vh-180px)]" />
                             )}
 
-                            {isAudio && (
-                                <div className="block-audio h-full flex flex-col justify-center">
+                            {item.type === "audio" && (
+                                <div className="block-audio h-full w-full flex flex-col justify-center">
                                     {item.cover ? (
                                         <img src={item.cover} alt="cover" className="max-h-[60vh] rounded-[10px] mb-[20px] object-cover" />
                                     ) : (

@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import Navbar from '../components/content/Navbar';
 import { getYear, formatRichText } from "../lib/utils";
 import PlayerPDF from './content/PlayerPDF';
-import bg from '../assets/images/biography/wallpaper_bio.png'
+import bg from '../assets/images/backgrounds/biography.webp'
 import { Link, Element } from 'react-scroll';
 import classNames from "classnames";
 

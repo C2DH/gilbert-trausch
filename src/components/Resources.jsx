@@ -16,10 +16,6 @@ export default function Resources() {
 
     const locale = 'fr';
     const API_URL = import.meta.env.VITE_API_URL;
-    // const API_URL = 'https://gilberttrausch.uni.lu/';
-
-    // const API_URL = 'https://vq0qm5bppvt.preview.infomaniak.website'
-
 
     const [documents, setDocuments] = useState([]);
     const [search, setSearch] = useState("");
@@ -237,6 +233,7 @@ export default function Resources() {
                                                     }
 
                                                     if (document.type !== 'video' && document.type !== 'audio' && document.optimized_url ) {
+                                                        console.log('document',document)
                                                         return (
                                                             <div 
                                                                 key={index} 
