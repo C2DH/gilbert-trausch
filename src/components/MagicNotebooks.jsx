@@ -3,7 +3,7 @@ import Navbar from "./content/Navbar";
 import { Link } from "react-router-dom";
 import bg from '../assets/images/magic-notebooks/index.png';
 import { romanize } from "../lib/utils";
-import bg_empty from '../assets/images/backgrounds/bg-empty.png';
+import bg_empty from '../assets/images/backgrounds/bg-1.webp';
 import { useMediaQuery } from "react-responsive";
 
 

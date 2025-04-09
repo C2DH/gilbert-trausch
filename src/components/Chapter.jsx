@@ -18,6 +18,7 @@ import { Mousewheel, EffectFade } from 'swiper/modules';
 import 'swiper/css';
 import classNames from "classnames";
 import { PopupProvider } from "../contexts/PopupContext";
+import { useMediaQuery } from "react-responsive";
 
 
 export default function Chapter() {
@@ -37,6 +38,7 @@ export default function Chapter() {
     const [isOpenMenu, setIsOpenMenu] = useState(false);
     const [firstClick, setFirstClick] = useState(true);
     const [showSubtitle, setShowSubtitle] = useState(false);
+    const isMobile = useMediaQuery({query: '(max-width: 768px)'});
 
     useEffect(() => {
         fetch(`${API_URL}/api/chapter/${id}`)
@@ -103,10 +105,13 @@ export default function Chapter() {
                     slidesPerView={1}
                     speed={800}
                     className="h-full"
-
+                    mousewheel={ false }
+                    simulateTouch={ isMobile ? false : true }
+                    grabCursor={ isMobile ? false : true }
+                    touchMoveStopPropagation={true}
+                    effect="fade"
                     // mousewheel={{ forceToAxis: true }}
                     // mousewheel={{ forceToAxis: true, nested: true }} 
-                    effect="fade"
                     // fadeEffect={{ crossFade: true }}
                     onSwiper={(swiper) => { swiperRef.current = swiper }}
                     onActiveIndexChange={swiper => setActiveIndex(swiper.activeIndex + 1)}
@@ -144,7 +149,7 @@ export default function Chapter() {
                         animate={{ opacity: 1, x: 0 }}
                         exit={{ opacity: 0, x: '100%' }}
                         transition={{ duration: 0.4 }}
-                        className='absolute right-[20px] top-[150px] z-[100]'
+                        className='hidden xl:block absolute right-[20px] top-[150px] z-[100]'
                     >
                         <svg width="50" height="50" viewBox="0 0 80 80" className="rotate-90">
                             <circle cx="40" cy="40" r="35" stroke={colorElement} strokeWidth="2" fill="none" />
@@ -195,7 +200,6 @@ export default function Chapter() {
                         </g>
                     </svg>
                 </button>
-
             </div>
 
             {/** MENU ASIDE */}
@@ -245,6 +249,49 @@ export default function Chapter() {
                 }
             </AnimatePresence>
 
-        </div>
+            <div className="absolute xl:hidden bottom-0 left-0 right-0 bg-blue h-[40px] flex border-t">
+                <div className="w-1/2 flex items-center justify-center border-r border-white">
+                    <button onClick={() => handlePrevClick() }
+                        className={classNames("cursor-pointer relative right-0", { "pointer-events-none opacity-30": !showSubtitle })}
+                    >    
+                        <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="15" cy="15" r="14.5" transform="rotate(-180 15 15)" stroke="white"/>
+                            <mask id="mask0_93_485" style={{maskType:"alpha"}} maskUnits="userSpaceOnUse" x="0" y="0" width="30" height="30">
+                            <circle cx="15" cy="15" r="15" transform="rotate(-180 15 15)" fill="#D9D9D9"/>
+                            </mask>
+                            <g mask="url(#mask0_93_485)">
+                            <path d="M20.8906 17.2734C20.8086 17.3828 20.6992 17.4375 20.5625 17.4375C20.4805 17.4375 20.3711 17.4102 20.2891 17.3281L14.9023 12.3789L9.48828 17.3281C9.32422 17.4922 9.05078 17.4922 8.88672 17.3008C8.72266 17.1367 8.72266 16.8633 8.91406 16.6992L14.6016 11.4492C14.7656 11.2852 15.0117 11.2852 15.1758 11.4492L20.8633 16.6992C21.0547 16.8359 21.0547 17.1094 20.8906 17.2734Z" fill="white"/>
+                            </g>
+                        </svg>
+                    </button>
+                </div>
+
+                <div className="w-1/2 flex items-center justify-center">
+                    <button onClick={() => handleNextClick() } 
+                        className={classNames("cursor-pointer relative right-0", {
+                            "pointer-events-none opacity-30": activeIndex >= total
+                        })}
+                    >
+                        <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="15" cy="15" r="14.5" stroke="white"/>
+                            <mask id="mask0_93_483" style={{ maskType:"alpha" }} maskUnits="userSpaceOnUse" x="0" y="0" width="30" height="30">
+                            <circle cx="15" cy="15" r="15" fill="#D9D9D9"/>
+                            </mask>
+                            <g mask="url(#mask0_93_483)">
+                            <path d="M9.10938 12.7266C9.19141 12.6172 9.30078 12.5625 9.4375 12.5625C9.51953 12.5625 9.62891 12.5898 9.71094 12.6719L15.0977 17.6211L20.5117 12.6719C20.6758 12.5078 20.9492 12.5078 21.1133 12.6992C21.2773 12.8633 21.2773 13.1367 21.0859 13.3008L15.3984 18.5508C15.2344 18.7148 14.9883 18.7148 14.8242 18.5508L9.13672 13.3008C8.94531 13.1641 8.94531 12.8906 9.10938 12.7266Z" fill="white"/>
+                            </g>
+                        </svg>
+                    </button>
+                </div>
+
+
+
+            </div>
+
+
+
+
+
+            </div>
     )
 }

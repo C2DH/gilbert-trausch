@@ -4,15 +4,19 @@ import Slider from "./Slider";
 import PopupResource from "./PopupResource";
 import {AnimatePresence, motion } from "framer-motion";
 import { PopupContext } from "../../contexts/PopupContext";
+import { useMediaQuery } from "react-responsive";
+import bgSmall from '../../assets/images/backgrounds/bg-1.webp';
+
 
 export default function SlideSlider({data}) {
 
     const API_URL = import.meta.env.VITE_API_URL;
     const imageUrl = `${API_URL}/storage/${data?.slidable?.background?.background}`;
     const color = data?.slidable?.color_text;
-    const locale = 'fr';
-
     const { isOpenPopup, setIsOpenPopup, dataPopup } = useContext(PopupContext);
+    const locale = 'fr';
+    const isDesktopOrLaptop = useMediaQuery({query: '(min-width: 1224px)'});
+    const isMobile = useMediaQuery({query: '(max-width: 768px)'});
     
     useEffect(() => {
         const swiperContainer = document.querySelector('.swiper');
@@ -23,21 +27,20 @@ export default function SlideSlider({data}) {
 
     return (
         <>
-            <div style={{ background: `url(${imageUrl}) right / cover no-repeat` }} className='slide_text_slider h-screen slide'>
+            <div style={{ background: `url(${isMobile ? bgSmall : imageUrl}) right / cover no-repeat` }} className='slide_text_slider h-screen slide'>
                 <div className="relative top-[40px]">
-                    <div className="container mx-auto px-[20px] xl:px-0">
-                        <div className="grid grid-cols-12 lg:gap-x-8 lg:h-[calc(100vh-40px)] overflow-hidden">
+                    <div className="container mx-auto px-[20px] xl:px-0 h-[calc(100vh-40px)] overflow-hidden">
+                        <div className="grid grid-cols-12 lg:gap-x-8 lg:h-full overflow-scroll">
 
-                            <div className="col-span-12 lg:col-span-4 lg:border-r border-black py-[40px] lg:pr-[30px] pt-[40px]">
+                            <div className="col-span-12 lg:col-span-4 lg:border-r border-black lg:pr-[30px] flex items-center lg:overflow-hidden">
                                 { (data?.slidable?.content && locale) &&
-                                    <div className="richeditor" style={{ color: color }}>{ formatRichText(data.slidable.content[locale])}</div>
+                                    <div className="richeditor lg:h-full overflow-scroll pb-[40px] pt-[20px] lg:py-[40px]" style={{ color: color }}>{ formatRichText(data.slidable.content[locale])}</div>
                                 }
                             </div>
 
-                            <div className="col-span-12 lg:col-span-8 relative">
-                                <div className="grid grid-cols-8 h-f
-                                l">
-                                    <div className="col-span-8 py-[40px]">
+                            <div className="col-span-12 lg:col-span-7 2xl:col-span-8 relative">
+                                <div className="grid grid-cols-8 lg:h-full">
+                                    <div className="col-span-8 lg:py-[40px]">
                                         { data?.slidable?.documents &&
                                             <Slider items={data.slidable.documents} />
                                         }

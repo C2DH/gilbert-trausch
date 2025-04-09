@@ -11,6 +11,8 @@ import intro_8 from '../assets/images/intro/wallpaper_intro_8.jpg';
 import intro_9 from '../assets/images/intro/wallpaper_intro_9.jpg';
 import { Link } from 'react-router-dom';
 import Navbar from './content/Navbar';
+import { useMediaQuery } from 'react-responsive';
+import bgSmall from '../assets/images/backgrounds/bg-home-small.webp'
 
 const images = [intro_2, intro_3, intro_4, intro_5, intro_6, intro_7, intro_8, intro_9];
 
@@ -21,6 +23,9 @@ export default function Home() {
     const [showMenu, setShowMenu] = useState(false);
     const [showStartButton, setShowStartButton] = useState(false);
     const [animationActive, setAnimationActive] = useState(false);
+    const isMobile = useMediaQuery({query: '(max-width: 1024px)'})
+    
+    console.log('isMobile', isMobile)
 
     useEffect(() => {
         const storedHome = localStorage.getItem('home');
@@ -64,14 +69,14 @@ export default function Home() {
 
                 <motion.div
                     className="h-screen absolute inset-0"
-                    style={{ background: `url(${intro_1}) center / cover no-repeat` }}
+                    style={{ background: `url(${isMobile ? bgSmall : intro_1}) center / cover no-repeat` }}
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={{ duration: 1, ease: "easeOut" }}
                 />
 
                 {/* Images animées après le clic */}
-                {visibleImages.map((img, index) => (
+                {!isMobile && visibleImages.map((img, index) => (
                     <motion.div
                         key={index}
                         className="h-screen absolute inset-0"
@@ -109,24 +114,35 @@ export default function Home() {
                             transition={{ duration: 1, ease: "easeOut" }}
                         >
                             <div className="menu w-full lg:container mx-auto">
-                                <ul className="font-normal text-[16px] xl:text-[20px] uppercase flex justify-between items-center text-center">
-                                    <li className="leading-none border-black border-t-2 border-b-2 px-[20px] py-[10px] xl:px-[40px] xl:py-[20px] hover:text-blue hover:py-[20px] hover:lg:py-[30px] hover:border-blue duration-[450ms] my-[10px] lg:my-[20px] hover:my-0">
+                                <ul className="font-normal text-[20px] 2xl:text-[20px] uppercase flex flex-col lg:flex-row justify-between items-center text-center">
+                                    <hr className='lg:hidden w-3/4 border-black'/>
+                                    <li className="leading-none border-black lg:border-t-2 lg:border-b-2 px-[10px] xl:px-[40px] py-[10px] xl:py-[20px] hover:lg:text-blue hover:lg:py-[30px] hover:lg:border-blue duration-[450ms] my-[10px] lg:my-[20px] hover:lg:my-0">
                                         <Link to={"/biography"}>Biographie</Link>
                                     </li>
-                                    <li className="leading-none border-black border-t-2 border-b-2 px-[20px] py-[10px] xl:px-[40px] xl:py-[20px] hover:text-blue hover:py-[20px] hover:lg:py-[30px] hover:border-blue duration-[450ms] my-[10px] lg:my-[20px] hover:my-0">
+
+                                    <hr className='lg:hidden w-3/4 border-black'/>
+                                    <li className="leading-none border-black lg:border-t-2 lg:border-b-2 px-[10px] xl:px-[40px] py-[10px] xl:py-[20px] hover:lg:text-blue hover:lg:py-[30px] hover:lg:border-blue duration-[450ms] my-[10px] lg:my-[20px] hover:lg:my-0">
                                         <Link to={"/professions"}>Les métiers de l'historien</Link>
                                     </li>
-                                    <li className="leading-none border-black border-t-2 border-b-2 px-[20px] py-[10px] xl:px-[40px] xl:py-[20px] hover:text-blue hover:py-[20px] hover:lg:py-[30px] hover:border-blue duration-[450ms] my-[10px] lg:my-[20px] hover:my-0">
+
+                                    <hr className='lg:hidden w-3/4 border-black'/>
+                                    <li className="leading-none border-black lg:border-t-2 lg:border-b-2 px-[10px] xl:px-[40px] py-[10px] xl:py-[20px] hover:lg:text-blue hover:lg:py-[30px] hover:lg:border-blue duration-[450ms] my-[10px] lg:my-[20px] hover:lg:my-0">
                                         <Link to={"/magic-notebooks"}>Cahiers magiques</Link>
                                     </li>
-                                    <li className="leading-none border-black border-t-2 border-b-2 px-[20px] py-[10px] xl:px-[40px] xl:py-[20px] hover:text-blue hover:py-[20px] hover:lg:py-[30px] hover:border-blue duration-[450ms] my-[10px] lg:my-[20px] hover:my-0">
+
+                                    <hr className='lg:hidden w-3/4 border-black'/>
+                                    <li className="leading-none border-black lg:border-t-2 lg:border-b-2 px-[10px] xl:px-[40px] py-[10px] xl:py-[20px] hover:lg:text-blue hover:lg:py-[30px] hover:lg:border-blue duration-[450ms] my-[10px] lg:my-[20px] hover:lg:my-0">
                                         <Link to={"/virtual-tour"}>
                                             <span className="block leading-none">La maison-bibliothèque</span>
                                         </Link>
                                     </li>
-                                    <li className="leading-none border-black border-t-2 border-b-2 px-[20px] py-[10px] xl:px-[40px] xl:py-[20px] hover:text-blue hover:py-[20px] hover:lg:py-[30px] hover:border-blue duration-[450ms] my-[10px] lg:my-[20px] hover:my-0">
+
+                                    <hr className='lg:hidden w-3/4 border-black'/>
+                                    <li className="leading-none border-black lg:border-t-2 lg:border-b-2 px-[10px] xl:px-[40px] py-[10px] xl:py-[20px] hover:lg:text-blue hover:lg:py-[30px] hover:lg:border-blue duration-[450ms] my-[10px] lg:my-[20px] hover:lg:my-0">
                                         <Link to={"/resources"}>Ressources</Link>
                                     </li> 
+
+                                    <hr className='lg:hidden w-3/4 border-black'/>
                                 </ul>
                             </div>
                         </motion.div>

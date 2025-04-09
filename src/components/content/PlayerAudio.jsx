@@ -3,6 +3,7 @@ import WavesurferPlayer from '@wavesurfer/react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPause, faPlay } from '@fortawesome/free-solid-svg-icons';
 import classNames from 'classnames';
+import { useMediaQuery } from 'react-responsive';
 
 
 export default function PlayerAudio( {url} ) {
@@ -10,6 +11,8 @@ export default function PlayerAudio( {url} ) {
     const [isPlaying, setIsPlaying] = useState(false);
     const [currentTime, setCurrentTime] = useState(0);
     const [duration, setDuration] = useState(0);
+    const isMobile = useMediaQuery({ query: '(max-width: 768px)'});
+
 
     useEffect(() => {
         if (wavesurfer) {
@@ -51,20 +54,20 @@ export default function PlayerAudio( {url} ) {
     };
   
     return (
-        <div className="w-full border border-black rounded-[10px] px-[30px] py-[20px] player-audio">
+        <div className="w-full border border-black rounded-[10px] px-[20px] lg:px-[30px] py-[10px] lg:py-[20px] player-audio">
             <div className='flex items-center justify-between'>
-                <div onClick={onPlayPause} className='w-[60px] h-[60px] bg-blue rounded-[50%] flex items-center justify-center'>
+                <div onClick={onPlayPause} className='w-[40px] lg:w-[60px] h-[40px] lg:h-[60px] bg-blue rounded-[50%] flex items-center justify-center'>
                     {isPlaying ? 
-                        <FontAwesomeIcon icon={faPause} style={{color: 'white', fontSize: '30px' }}/> 
+                        <FontAwesomeIcon icon={faPause} style={{color: 'white', fontSize: isMobile ? '20px' : '30px' }}/> 
                         : 
-                        <FontAwesomeIcon icon={faPlay} style={{color: 'white', fontSize: '30px' }}/>
+                        <FontAwesomeIcon icon={faPlay} style={{color: 'white', fontSize: isMobile ? '20px' : '30px' }}/>
                     }
                 </div>
 
                 {/* <div className='min-w-[300px] h-full'> */}
-                <div className='w-[calc(100%-150px)]'>
+                <div className='w-[calc(100%-70px)] md:w-[calc(100%-150px)]'>
                     <WavesurferPlayer
-                        height={60}
+                        height={ isMobile ? 40 : 60 }
                         cursorWidth={3}
                         waveColor="#CDD3D7"
                         barRadius={20}

@@ -3,7 +3,7 @@ import bgChapters from '../assets/images/bg-chapters.png';
 import chapter1 from '../assets/images/chapter-1.png';
 import chapter2 from '../assets/images/chapter-2.png';
 import chapter3 from '../assets/images/chapter-3.png';
-import bg_empty from '../assets/images/backgrounds/bg-empty.png';
+import bg_empty from '../assets/images/backgrounds/bg-1.webp';
 import Navbar from "./content/Navbar";
 import { Link } from "react-router-dom";
 import { romanize } from "../lib/utils";

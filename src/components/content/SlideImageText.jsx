@@ -3,6 +3,9 @@ import PlayerPDF from "./PlayerPDF";
 import { useState, useEffect } from "react";
 import PopupResource from "./PopupResource";
 import {AnimatePresence, motion } from "framer-motion";
+import bgSmall from '../../assets/images/backgrounds/bg-1.webp';
+import { useMediaQuery } from "react-responsive";
+
 
 
 export default function SlideImageText({ data }) {
@@ -11,10 +14,11 @@ export default function SlideImageText({ data }) {
     const imageUrl = `${API_URL}/storage/${data?.slidable?.background?.background}`;
     const color = data?.slidable?.color_text;
     const locale = 'fr';
-
     const [isPortrait, setIsPortrait] = useState(false);
     const [isOpenPopup, setIsOpenPopup] = useState(false);
     const [dataPopup, setDataPopup] = useState();
+    const isDesktopOrLaptop = useMediaQuery({query: '(min-width: 1224px)'});
+    const isMobile = useMediaQuery({query: '(max-width: 768px)'});
 
     useEffect(() => {
         if (data?.slidable?.document?.url && locale) {
@@ -36,15 +40,15 @@ export default function SlideImageText({ data }) {
 
     return (
         <>
-            <div style={{ background: `url(${imageUrl}) right / cover no-repeat` }} className='h-screen slide'>
-                <div className="relative top-[40px] h-full lg:h-auto flex items-center">
-                    <div className="container mx-auto px-[20px] xl:px-0 lg:h-[calc(100vh-40px)] flex items-center">
-                        <div className="grid grid-cols-12 pt-[20px] sm:pt-0 h-full">
-                            <div className="col-span-12 xl:col-span-8 mb-[40px]">
+            <div style={{ background: `url(${isMobile ? bgSmall : imageUrl}) right / cover no-repeat` }} className='h-screen slide'>
+                <div className="relative top-[40px]">
+                    <div className="container mx-auto px-[20px] xl:px-0 h-[calc(100vh-40px)] overflow-scroll">
+                        <div className="grid grid-cols-12 lg:h-full">
+                            <div className="col-span-12 xl:col-span-7 2xl:col-span-8">
                                 <div className="grid grid-cols-8 h-full">
-                                    <div className="col-span-8 lg:flex lg:flex-col items-center justify-center lg:pr-[30px]">
+                                    <div className="col-span-8 flex flex-col items-center justify-center lg:pr-[30px] pt-[20px] lg:pt-0">
                                         {(data?.slidable?.document?.url && locale) && (
-                                            <img src={data.slidable.document.optimized_url.large.url} alt={data.slidable.document.name[locale]} className="h-[calc(100vh-200px)]"/>
+                                            <img src={data.slidable.document.optimized_url.large.url} alt={data.slidable.document.name[locale]} className="lg:h-[calc(100vh-200px)] object-contain"/>
                                         )}
 
                                         {/** BUTTON POPUP RESOURCE */}
@@ -55,12 +59,14 @@ export default function SlideImageText({ data }) {
                                             </svg>
                                         </div>
                                     </div>
-                                </div>  
+                                </div>
                             </div>
 
-                            <div className="col-span-12 xl:col-span-4 xl:border-l border-black flex items-center xl:pl-[30px]">
+                            <div className="col-span-12 xl:col-span-4 xl:border-l border-black flex items-center xl:pl-[30px] overflow-hidden h-full">
                                 {data.slidable?.content && locale && (
-                                    <div className="richeditor" style={{ color: color }}>{ formatRichText(data.slidable.content[locale])}</div>
+                                    <div className="richeditor text-center lg:text-left pt-[20px] pb-[60px] lg:py-[40px] lg:overflow-scroll h-full" style={{ color: color }}>
+                                        { formatRichText(data.slidable.content[locale])}
+                                    </div>
                                 )}
                             </div>
                         </div>

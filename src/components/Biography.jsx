@@ -82,22 +82,23 @@ export default function Biography() {
         <>
             <Navbar color={'#000000'}/>
 
-            <div className="h-full" style={{ background: `url(${bg}) center / contain repeat`}}>
-                <div className="biography container mx-auto pt-[100px]">
-                    <div className="grid grid-cols-12 mb-[50px] md:mb-[100px] lg:mb-[150px]">
-                        <div className="col-span-12 md:col-span-10 lg:col-span-8 xl:col-span-6 text-[#4100FC]">
-                            <h1 className="text-[40px] leading-none md:text-[60px] md:leading-[95px] text-center md:text-left mb-[30px] md:mb-[50px]">Biographie</h1>
+            <div className="" style={{ background: `url(${bg}) center / contain repeat`}}>
+                <div className="biography container mx-auto pt-[80px] xl:pt-[100px] px-[20px] xl:px-0">
+                    <div className="grid grid-cols-12 mb-[50px] xl:mb-[100px] 2xl:mb-[150px]">
+                        <div className="col-span-12 md:col-span-10 lg:col-span-8 2xl:col-span-6 text-[#4100FC]">
+                            <h1 className="text-[40px] leading-none md:text-[60px] md:leading-[95px] text-center md:text-left mb-[30px] md:mb-[40px]">Biographie</h1>
                             <p>L’historien Gilbert Trausch (1931-2018) est encore largement connu du public luxembourgeois. Pendant des décennies, ses incontournables interventions dans les médias ont contribué à faire découvrir l’histoire du Luxembourg à toute une génération.</p>
                             <p>Ce n’est pourtant là qu’une des nombreuses facettes d’un historien prolifique de la seconde moitié du XXe siècle qui, en plus d’avoir renouvelé le paysage historiographique luxembourgeois, bénéficiait aussi d’une renommée solide en dehors des frontières du Grand-Duché.</p>
                             <p>Formateur de toute une génération d’historiens, tour à tour directeur de la Bibliothèque nationale, du Centre Universitaire de Luxembourg (CUL – ancêtre de l’Université du Luxembourg) et du Centre d'études et de recherches européennes Robert Schuman (CERE), fréquentant les cercles ministériels et diplomatiques, Gilbert Trausch était une personnalité omniprésente de la société luxembourgeoise.</p>
                         </div>
                     </div>
 
-                    <div className="grid grid-cols-12">
+                    <div className="xl:grid grid-cols-12">
 
                         {/** YEARS */}
-                        <div className="col-span-2">
-                            <div className="timeline_blocks fixed bottom-[40px]">
+                        {/** Desktop */}
+                        <div className="hidden xl:block col-span-2">
+                            <div className="timeline_blocks sticky top-40">
                                 <div className="flex flex-col">
                                     {years?.map((year, index) => 
                                         <Link
@@ -109,8 +110,34 @@ export default function Biography() {
                                             offset={-100} 
                                             smooth={true} 
                                             duration={500}
-                                            className={classNames("block text-[18px] px-[17px] py-[3px] text-white mb-[6px] cursor-pointer border border-blue transition-all  duration-300 ease-in-out", {
+                                            className={classNames("w-[100px] 2xl:w-[135px] block text-[15px] 2xl:text-[18px] px-[8px] 2xl:px-[17px] py-[3px] text-white mb-[6px] cursor-pointer border border-blue transition-all  duration-300 ease-in-out", {
                                                 "bg-white text-blue " : activeYear === year || activeElement === `event-${getYear(year)}`,
+                                                "bg-blue" : activeYear !== year && activeElement !== `event-${getYear(year)}`
+                                            })}
+                                        >
+                                            <span className="block text-center">{year}</span>
+                                        </Link>
+                                    )}
+                                </div>
+                            </div>
+                        </div>
+                        
+                        {/** Mobile */}
+                        <div className="xl:hidden sticky top-0 z-[100] mb-[40px] bg-blue rounded-b-[5px]">
+                            <div className="timeline_blocks">
+                                <div className="flex">
+                                    {years?.map((year, index) => 
+                                        <Link
+                                            onClick={() => setActiveYear(year)}
+                                            isDynamic={true}
+                                            key={index}
+                                            to={`event-${year}`}
+                                            spy={true}
+                                            offset={-100} 
+                                            smooth={true} 
+                                            duration={500}
+                                            className={classNames("block text-[14px] 2xl:text-[18px] px-[10px] 2xl:px-[17px] py-[2px] xl:py-[3px] text-white cursor-pointer transition-all duration-300 ease-in-out", {
+                                                "bg-white text-blue first:rounded-bl-[5px]" : activeYear === year || activeElement === `event-${getYear(year)}`,
                                                 "bg-blue" : activeYear !== year && activeElement !== `event-${getYear(year)}`
                                             })}
                                         >
@@ -122,31 +149,31 @@ export default function Biography() {
                         </div>
 
                         {/** EVENTS */}
-                        <div className="events col-span-12 lg:col-span-10 relative before:absolute before:left-[-82px] before:top-0 before:w-[2px] before:h-full before:bg-[#4100FC]">
+                        <div className="events col-span-12 lg:col-span-10 relative before:absolute before:left-[-82px] before:top-0 before:w-[2px] before:xl:h-full before:bg-[#4100FC]">
                             { data?.map(item => 
                                 <Element
                                     name={`event-${getYear(item.date[locale])}`}
                                     key={item.id}
                                     id={`event-${getYear(item.date[locale])}`}
                                     data-year={getYear(item.date[locale])}
-                                    className="timeline-event mb-[70px] md:mb-[120px] lg:mb-[200px] relative">
+                                    className="timeline-event pb-[50px] xl:pb-[100px] 2xl:pb-[200px] relative">
 
-                                    <div className="absolute -left-[99px] w-[36px] h-[36px] bg-blue rounded-full">
-                                        <div className={classNames("w-[10px] h-[10px] rounded-full absolute top-[50%] left-[50%] -translate-[50%]", {
+                                    <div className="hidden xl:block absolute -left-[99px] w-[36px] h-[36px] bg-blue rounded-full">
+                                        <div className={classNames("w-[10px] h-[10px] rounded-full absolute top-[50%] left-[50%] -translate-x-[50%] -translate-y-[50%]", {
                                             "bg-white": activeElement === `event-${getYear(item.date[locale])}`
                                         })}></div>
                                     </div>
 
                                     {(item?.date && locale) &&
-                                        <span className="special-elite-regular text-[#4100FC] text-[26px]">{item.date[locale]}</span>
+                                        <span className="special-elite-regular text-[#4100FC] text-[20px] lg:text-[26px]">{item.date[locale]}</span>
                                     }
 
-                                    <hr className="w-[40px] my-[20px] h-[1px] border-blue border-t"/>
+                                    <hr className="w-[40px] my-[10px] lg:my-[20px] h-[1px] border-blue border-t"/>
 
-                                    <div className="grid grid-cols-12 lg:grid-cols-10 mb-[50px]">
+                                    <div className="grid grid-cols-12 lg:grid-cols-10 pb-[30px] lg:pb-[50px]">
                                         <div className="col-span-12 lg:col-span-8">
                                             {(item?.title && locale) &&                                        
-                                                <h3 className="uppercase text-[22px] leading-[32px] font-semibold mb-[20px]">{item.title[locale]}</h3>
+                                                <h3 className="uppercase text-[18px] leading-[24px] lg:text-[22px] lg:leading-[32px] font-semibold mb-[20px]">{item.title[locale]}</h3>
                                             }
                                             {(item?.content && locale) &&
                                                 <div className="richeditor">{formatRichText(item.content[locale])}</div>
@@ -156,12 +183,9 @@ export default function Biography() {
 
                                     <div className="md:flex md:flex-wrap gap-3">
                                         {item?.documents?.map(document => 
-                                            <div key={document.id} className="mb-[30px] md:mb-0">
-                                                { document?.url?.endsWith('.pdf') ? (
-                                                    <PlayerPDF document={document.url} height={220}/>
-                                                ) : (
-                                                    <img className="w-full max-h-[350px] md:max-h-auto object-contain md:h-[220px]" src={document?.url} alt={document?.name[locale]}/>
-                                                )}
+                                            <div key={document.id} className="py-[10px] md:py-0">
+                                             
+                                                    <img className="w-full max-h-[350px] md:max-h-auto object-contain md:h-[220px]" src={ document?.optimized_url.thumbnail.url } alt={document?.name[locale]}/>
                                             </div>
                                         )}
                                     </div>

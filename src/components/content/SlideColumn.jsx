@@ -4,6 +4,8 @@ import PlayerPDF from "./PlayerPDF";
 import {AnimatePresence, motion } from "framer-motion";
 import PopupResource from "./PopupResource";
 import classNames from "classnames";
+import bgSmall from '../../assets/images/backgrounds/bg-1.webp';
+import { useMediaQuery } from "react-responsive";
 
 export default function SlideColumn({data}) {
 
@@ -14,6 +16,8 @@ export default function SlideColumn({data}) {
     const locale = 'fr';
     const [isOpenPopup, setIsOpenPopup] = useState(false);
     const [dataPopup, setDataPopup] = useState();
+    const isDesktopOrLaptop = useMediaQuery({ query: '(min-width: 1224px)'});
+    const isMobile = useMediaQuery({ query: '(max-width: 768px)'});
     let columns = [];
 
     const imageElement = (data?.slidable?.document?.url && locale) ? (
@@ -70,12 +74,12 @@ export default function SlideColumn({data}) {
 
     return (
         <>
-            <div style={{ background: `url(${imageUrl}) right / cover no-repeat` }} className="h-screen slide_columns slide">
-                <div className="relative top-[40px] h-[calc(100vh-40px)]">
-                    <div className="container mx-auto px-[20px] xl:px-0 h-full">
-                        <div className="grid grid-cols-12 h-full">
+            <div style={{ background: `url(${isMobile ? bgSmall : imageUrl}) right / cover no-repeat` }} className="h-screen slide_columns slide">
+                <div className="relative top-[40px]">
+                    <div className="container mx-auto px-[20px] xl:px-0">
+                        <div className="grid grid-cols-12 h-[calc(100vh-40px)] overflow-scroll">
                             {columns?.map((column, index) => (
-                                <div key={index} className={classNames("col-span-12 lg:col-span-4 overflow-y-scroll h-full py-[40px]",{
+                                <div key={index} className={classNames("col-span-12 lg:col-span-4 lg:overflow-y-scroll h-full pt-[20px] pb-[60px] lg:py-[40px]",{
                                     'lg:pr-[30px]' : index === 0,
                                     'lg:px-[30px] lg:border-r lg:border-l border-black' : index === 1,
                                     'lg:pl-[30px]' : index === 2

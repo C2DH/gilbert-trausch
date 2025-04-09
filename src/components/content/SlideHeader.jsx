@@ -21,7 +21,7 @@ export default function SlideHeader({ data, showSubtitle, index }) {
                             )}
 
                             <div className="relative w-full xl:min-h-[350px] overflow-hidden">
-                                <div className="relative w-full min-h-[200px]">
+                                <div className="relative w-full min-h-[300px]">
                                     
                                     <AnimatePresence mode="wait">
                                         {(!showSubtitle || index !== 1) && (
@@ -55,7 +55,7 @@ export default function SlideHeader({ data, showSubtitle, index }) {
                                             >
                                                 {data?.slidable?.subtitle && locale && (
                                                     <h2
-                                                        className="pt-[40px] text-[30px] xl:text-[40px] leading-none font-extralight"
+                                                        className="pt-[40px] text-[30px] 2xl:text-[40px] leading-none font-extralight"
                                                         style={{ color }}
                                                     >
                                                         {data?.slidable?.subtitle[locale]}

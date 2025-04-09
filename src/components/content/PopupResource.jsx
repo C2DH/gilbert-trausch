@@ -9,11 +9,14 @@ import PlayerVideo from '../content/PlayerVideo';
 import PlayerAudio from './PlayerAudio';
 import audioLogo from '../../assets/images/audio.svg';
 import PlayerPDF from './PlayerPDF';
+import { useMediaQuery } from 'react-responsive';
 
 export default function PopupResource({ setIsOpenPopup, data }) {
 
     const locale = 'fr';
     const [isImageVisible, setIsImageVisible] = useState(false);
+    const isMobile = useMediaQuery({query: '(max-width: 768px)'});
+
 
     useEffect(() => {
         setIsImageVisible(true);
@@ -31,13 +34,13 @@ export default function PopupResource({ setIsOpenPopup, data }) {
                     <div className='grid grid-cols-12 lg:grid-cols-9 h-full px-[20px]'>
                         <div className='col-span-12 lg:col-span-9 lg:flex justify-center items-center overflow-hidden h-[220px] xl:h-[calc(100vh-120px)]'>
 
-                            { data.type === "image" &&                            
+                            { (data.type === "image" && data.optimized_url) &&                            
                                 <motion.div 
                                     initial={{ opacity: 0, scale: 0.5 }}
                                     animate={{ opacity: isImageVisible ? 1 : 0, scale: isImageVisible ? 1 : 0.5 }}
                                     transition={{ duration: 0.8 }}
                                 >
-                                    <ImageZoom image={ data.url } alt={ data.name[locale] }/>
+                                    <ImageZoom image={ isMobile ? data.optimized_url.thumbnail.url : data.optimized_url.large.url } alt={ data.name[locale] }/>
                                 </motion.div>
                             }
 
@@ -140,7 +143,6 @@ const ImageZoom = ({ image, alt }) => {
                 <>
                     <TransformComponent wrapperStyle={{ overflow: 'visible'}}>
                         <img src={ image } alt={ alt } className='max-h-[50dvh] lg:max-h-[calc(100vh-120px)] object-contain'/>
-                        {/* <img src={ image } alt={ alt } className='object-contain'/> */}
                     </TransformComponent>
                     <Controls zoom={stateZoom}/>
                 </>

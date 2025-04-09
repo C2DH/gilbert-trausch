@@ -105,8 +105,6 @@ export default function Resources() {
                 setTypes(data.types);
                 setDatesCount(data.dates);
                 setTotal(data.resources.total)
-
-                console.log('documents', data.resources.data)
             })
             .catch((error) => {
                 console.error("Erreur lors du chargement des données :", error)
@@ -157,7 +155,7 @@ export default function Resources() {
                     {/** SEARCH */}
                     <div className="search xl:border-b border-black">
                         <div className="container mx-auto">
-                            <div className="grid grid-cols-12 h-[120px] px-[20px]">
+                            <div className="grid grid-cols-12 h-[120px] px-[20px] xl:px-0">
                                 <div className="col-span-12 xl:col-span-3 flex items-center justify-center xl:justify-start">
                                     <h1 className="text-[30px] xl:text-[60px] text-[#4100FC] leading-none font-light">Ressources</h1>
                                 </div>
@@ -182,7 +180,7 @@ export default function Resources() {
                             
                             {/** DOCUMENTS */}
                             {documents.length > 0 ? (
-                                <div className="col-span-12 lg:col-span-9 flex h-[calc(100vh-160px)] px-[20px]">
+                                <div className="col-span-12 lg:col-span-9 flex h-[calc(100vh-160px)] px-[20px] xl:px-0">
                                     <div className="flex-1 overflow-y-auto py-[30px]">
                                         <ResponsiveMasonry columnsCountBreakPoints={{ 300: 3, 768: 3, 1024: 3, 1280: 4 }} gutterBreakpoints={{ 300: "12px", 768: "16px", 1024: "30px" }}>
                                             <Masonry>
@@ -233,7 +231,6 @@ export default function Resources() {
                                                     }
 
                                                     if (document.type !== 'video' && document.type !== 'audio' && document.optimized_url ) {
-                                                        console.log('document',document)
                                                         return (
                                                             <div 
                                                                 key={index} 
@@ -276,25 +273,25 @@ export default function Resources() {
 
                                 {/** TYPES */}
                                 <div className="types-block border-b border-black px-[20px] pb-[10px]">
-                                    <div className="flex justify-between py-[30px] ">
+                                    <div className="flex justify-between py-[20px] ">
                                         <span className="text-[#4100FC] font-semibold text-[18px]">Types de média</span>
                                         <span className="text-[#4100FC] font-semibold text-[15px] cursor-pointer uppercase" onClick={() => setSelectedFilters(prev => ({ ...prev, types: [] }))}>Reset</span>
                                     </div>
 
                                     {types.length > 0 && types?.map(type =>
-                                        <div key={type.type} className={classNames("flex justify-between pb-[5px]", {
+                                        <div key={type.type} className={classNames("flex justify-between", {
                                             'opacity-50':  !selectedFilters.types.includes(type.type),
                                             'opacity-100': selectedFilters.types.length === 0
                                         })}>
-                                            <span className="text-[18px] capitalize cursor-pointer hover:text-[#4100FC] duration-300" data-type={ type.type } onClick={(e) => handleSelection(e, 'type')}>{formatTypeName(type.type, locale)}</span>
-                                            <span className="text-[18px] cursor-pointer hover:text-[#4100FC] duration-300">{type.count}</span>
+                                            <span className="text-[18px] leading-[30px] capitalize cursor-pointer hover:text-[#4100FC] duration-300" data-type={ type.type } onClick={(e) => handleSelection(e, 'type')}>{formatTypeName(type.type, locale)}</span>
+                                            <span className="text-[18px] leading-[30px] cursor-pointer hover:text-[#4100FC] duration-300">{type.count}</span>
                                         </div>
                                     )}
                                 </div>
 
                                 {/** PERIODS */}
                                 <div className="periods_block border-b border-black pb-[30px] px-[20px]">
-                                    <div className="flex justify-between pt-[20px]">
+                                    <div className="flex justify-between pt-[10px]">
                                         <span className="text-[#4100FC] font-semibold text-[18px]">Période</span>
                                         <span className="text-[#4100FC] font-semibold text-[15px] cursor-pointer uppercase" onClick={() => {setResetDates(true)}}>Reset</span>
                                     </div>
@@ -306,7 +303,7 @@ export default function Resources() {
 
                                 {/** TAGS */}
                                 <div className="tags_block px-[20px] flex flex-col overflow-hidden">
-                                    <div className="flex justify-between py-[20px] ">
+                                    <div className="flex justify-between py-[10px] ">
                                         <span className="text-[#4100FC] font-semibold text-[18px]">Tags</span>
                                         <span className="text-[#4100FC] font-semibold text-[15px] cursor-pointer uppercase" onClick={() => setSelectedFilters(prev => ({ ...prev, tags: [] }))}>Reset</span>
                                     </div>
