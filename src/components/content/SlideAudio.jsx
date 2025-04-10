@@ -9,14 +9,12 @@ import { useMediaQuery } from "react-responsive";
 import bgSmall from '../../assets/images/backgrounds/bg-1.webp';
 
 
-export default function SlideAudio({ data }) {
+export default function SlideAudio({ data, locale }) {
 
     const API_URL = import.meta.env.VITE_API_URL;
     const color = data?.slidable?.color_text;
     const imageUrl = `${API_URL}/storage/${data?.slidable?.background?.background}`;
-    const locale = 'fr';
     const { isOpenPopup, setIsOpenPopup, dataPopup } = useContext(PopupContext);
-    const isDesktopOrLaptop = useMediaQuery({query: '(min-width: 1224px)'});
     const isMobile = useMediaQuery({query: '(max-width: 768px)'});
 
     useEffect(() => {
@@ -37,7 +35,7 @@ export default function SlideAudio({ data }) {
                             <div className="grid grid-cols-8 h-full w-full overflow-hidden">
                                 <div className="col-span-8 lg:col-span-6 lg:col-start-2 max-h-[calc(100vh-180px)]">
                                     { data?.slidable?.documents &&
-                                        <Slider items={data.slidable.documents} />
+                                        <Slider items={data.slidable.documents} locale={ locale }/>
                                     }
                                 </div>
                             </div>
@@ -65,7 +63,7 @@ export default function SlideAudio({ data }) {
                     exit={{ scale: 0.5, opacity: 0, y: "-50%" }}
                     transition={{ duration: 0.5, ease: "easeInOut" }}
                 >
-                    <PopupResource setIsOpenPopup={ setIsOpenPopup } data={ dataPopup }/>
+                    <PopupResource setIsOpenPopup={ setIsOpenPopup } data={ dataPopup } locale={ locale }/>
                 </motion.div>
             }
         </AnimatePresence>

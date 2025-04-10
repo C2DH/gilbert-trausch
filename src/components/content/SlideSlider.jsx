@@ -8,14 +8,12 @@ import { useMediaQuery } from "react-responsive";
 import bgSmall from '../../assets/images/backgrounds/bg-1.webp';
 
 
-export default function SlideSlider({data}) {
+export default function SlideSlider({data, locale}) {
 
     const API_URL = import.meta.env.VITE_API_URL;
     const imageUrl = `${API_URL}/storage/${data?.slidable?.background?.background}`;
     const color = data?.slidable?.color_text;
     const { isOpenPopup, setIsOpenPopup, dataPopup } = useContext(PopupContext);
-    const locale = 'fr';
-    const isDesktopOrLaptop = useMediaQuery({query: '(min-width: 1224px)'});
     const isMobile = useMediaQuery({query: '(max-width: 768px)'});
     
     useEffect(() => {
@@ -42,7 +40,7 @@ export default function SlideSlider({data}) {
                                 <div className="grid grid-cols-8 lg:h-full">
                                     <div className="col-span-8 lg:py-[40px]">
                                         { data?.slidable?.documents &&
-                                            <Slider items={data.slidable.documents} />
+                                            <Slider items={data.slidable.documents} locale={ locale }/>
                                         }
                                     </div>
                                 </div>
@@ -63,7 +61,7 @@ export default function SlideSlider({data}) {
                         exit={{ scale: 0.5, opacity: 0, y: "-50%" }}
                         transition={{ duration: 0.5, ease: "easeInOut" }}
                     >
-                        <PopupResource setIsOpenPopup={ setIsOpenPopup } data={ dataPopup }/>
+                        <PopupResource setIsOpenPopup={ setIsOpenPopup } data={ dataPopup } locale={ locale }/>
                     </motion.div>
                 }
             </AnimatePresence>

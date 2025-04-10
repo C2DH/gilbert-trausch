@@ -134,8 +134,11 @@ export function formatDateYear(date, locale = 'fr') {
 }
 
 export function getYear(date) {
-    const match = date.match(/(\d{4})/g);
-    return match ? match.join(" - ") : null;
+    if (date) {
+
+        const match = date.match(/(\d{4})/g);
+        return match ? match.join(" - ") : null;
+    }
 }
 
 export function romanize(index) {

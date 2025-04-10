@@ -13,20 +13,20 @@ import { Link } from 'react-router-dom';
 import Navbar from './content/Navbar';
 import { useMediaQuery } from 'react-responsive';
 import bgSmall from '../assets/images/backgrounds/bg-home-small.webp'
+import { useTranslation } from 'react-i18next';
 
 const images = [intro_2, intro_3, intro_4, intro_5, intro_6, intro_7, intro_8, intro_9];
-
 const EXPIRE = 6 * 3600 * 1000;
 
 export default function Home() {
+
+    const { t } = useTranslation();
     const [visibleImages, setVisibleImages] = useState([]);
     const [showMenu, setShowMenu] = useState(false);
     const [showStartButton, setShowStartButton] = useState(false);
     const [animationActive, setAnimationActive] = useState(false);
     const isMobile = useMediaQuery({query: '(max-width: 1024px)'})
     
-    console.log('isMobile', isMobile)
-
     useEffect(() => {
         const storedHome = localStorage.getItem('home');
         const now = new Date().getTime();
@@ -117,29 +117,29 @@ export default function Home() {
                                 <ul className="font-normal text-[20px] 2xl:text-[20px] uppercase flex flex-col lg:flex-row justify-between items-center text-center">
                                     <hr className='lg:hidden w-3/4 border-black'/>
                                     <li className="leading-none border-black lg:border-t-2 lg:border-b-2 px-[10px] xl:px-[40px] py-[10px] xl:py-[20px] hover:lg:text-blue hover:lg:py-[30px] hover:lg:border-blue duration-[450ms] my-[10px] lg:my-[20px] hover:lg:my-0">
-                                        <Link to={"/biography"}>Biographie</Link>
+                                        <Link to={"/biography"}>{ t('biography')}</Link>
                                     </li>
 
                                     <hr className='lg:hidden w-3/4 border-black'/>
                                     <li className="leading-none border-black lg:border-t-2 lg:border-b-2 px-[10px] xl:px-[40px] py-[10px] xl:py-[20px] hover:lg:text-blue hover:lg:py-[30px] hover:lg:border-blue duration-[450ms] my-[10px] lg:my-[20px] hover:lg:my-0">
-                                        <Link to={"/professions"}>Les métiers de l'historien</Link>
+                                        <Link to={"/professions"}>{t('professions')}</Link>
                                     </li>
 
                                     <hr className='lg:hidden w-3/4 border-black'/>
                                     <li className="leading-none border-black lg:border-t-2 lg:border-b-2 px-[10px] xl:px-[40px] py-[10px] xl:py-[20px] hover:lg:text-blue hover:lg:py-[30px] hover:lg:border-blue duration-[450ms] my-[10px] lg:my-[20px] hover:lg:my-0">
-                                        <Link to={"/magic-notebooks"}>Cahiers magiques</Link>
+                                        <Link to={"/magic-notebooks"}>{t('magicNotebooks')}</Link>
                                     </li>
 
                                     <hr className='lg:hidden w-3/4 border-black'/>
                                     <li className="leading-none border-black lg:border-t-2 lg:border-b-2 px-[10px] xl:px-[40px] py-[10px] xl:py-[20px] hover:lg:text-blue hover:lg:py-[30px] hover:lg:border-blue duration-[450ms] my-[10px] lg:my-[20px] hover:lg:my-0">
                                         <Link to={"/virtual-tour"}>
-                                            <span className="block leading-none">La maison-bibliothèque</span>
+                                            <span className="block leading-none">{ t('house') }</span>
                                         </Link>
                                     </li>
 
                                     <hr className='lg:hidden w-3/4 border-black'/>
                                     <li className="leading-none border-black lg:border-t-2 lg:border-b-2 px-[10px] xl:px-[40px] py-[10px] xl:py-[20px] hover:lg:text-blue hover:lg:py-[30px] hover:lg:border-blue duration-[450ms] my-[10px] lg:my-[20px] hover:lg:my-0">
-                                        <Link to={"/resources"}>Ressources</Link>
+                                        <Link to={"/resources"}>{t('resources')}</Link>
                                     </li> 
 
                                     <hr className='lg:hidden w-3/4 border-black'/>

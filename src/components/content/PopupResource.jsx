@@ -10,13 +10,15 @@ import PlayerAudio from './PlayerAudio';
 import audioLogo from '../../assets/images/audio.svg';
 import PlayerPDF from './PlayerPDF';
 import { useMediaQuery } from 'react-responsive';
+import { useTranslation } from 'react-i18next';
 
-export default function PopupResource({ setIsOpenPopup, data }) {
+export default function PopupResource({ setIsOpenPopup, data, locale }) {
 
-    const locale = 'fr';
     const [isImageVisible, setIsImageVisible] = useState(false);
+    const { t } = useTranslation();
     const isMobile = useMediaQuery({query: '(max-width: 768px)'});
 
+    console.log('locale', locale)
 
     useEffect(() => {
         setIsImageVisible(true);
@@ -26,7 +28,7 @@ export default function PopupResource({ setIsOpenPopup, data }) {
         <div style={{ background: `url(${background}) center / cover no-repeat` }} className='popup_resource h-screen w-full'>
         
 			<div className='lg:hidden py-[10px] border-b border-black'>
-				<span className='block text-[18px] text-center cursor-pointer hover:text-[#4100FC] duration-500 uppercase font-normal' onClick={() => setIsOpenPopup(false) }>Fermer</span>
+				<span className='block text-[16px] text-center cursor-pointer hover:text-[#4100FC] duration-500 uppercase font-normal' onClick={() => setIsOpenPopup(false) }>{ t('close') }</span>
 			</div>
 
             <div className="grid grid-cols-12 h-full">
@@ -74,7 +76,7 @@ export default function PopupResource({ setIsOpenPopup, data }) {
 
                 <div className="col-span-12 lg:col-span-3 flex flex-col overflow-auto">
                     <div className='hidden lg:block py-[10px] border-b border-black px-[30px]'>
-                        <span className='cursor-pointer hover:text-[#4100FC] duration-500 uppercase font-normal' onClick={() => setIsOpenPopup(false) }>Fermer</span>
+                        <span className='cursor-pointer text-[18px] hover:text-[#4100FC] duration-500 uppercase font-normal' onClick={() => setIsOpenPopup(false) }>{ t('close') }</span>
                     </div>
 
 					<div className='lg:h-[calc(100vh-55px)] lg:overflow-auto'>

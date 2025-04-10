@@ -19,15 +19,17 @@ import 'swiper/css';
 import classNames from "classnames";
 import { PopupProvider } from "../contexts/PopupContext";
 import { useMediaQuery } from "react-responsive";
+import { useTranslation } from "react-i18next";
 
 
 export default function Chapter() {
 
     const API_URL = import.meta.env.VITE_API_URL;
-
-    const locale = 'fr';
+    const { i18n, t } = useTranslation();
+    const locale = i18n.language;
     const { id } = useParams();
     const [data, setData] = useState();
+    const [isLoading, setIsLoading] = useState(false);
     const swiperRef = useRef();
     const [activeIndex, setActiveIndex] = useState(1);
     const [total, setTotal] = useState(null);
@@ -53,6 +55,7 @@ export default function Chapter() {
                 setData(data.data);
                 setTotal(data.data.slides.length)
                 setSlideHeaders(data?.data?.slides?.filter(slide => slide.slidable.type === "SlideHeader") || []);
+                setIsLoading(true);
             })
             .catch((error) => console.error("Erreur lors du chargement du chapitre :", error));
     }, [id]);
@@ -116,18 +119,19 @@ export default function Chapter() {
                     onSwiper={(swiper) => { swiperRef.current = swiper }}
                     onActiveIndexChange={swiper => setActiveIndex(swiper.activeIndex + 1)}
                 >
-                    {data?.slides?.map((slide) =>
+
+                    {isLoading && data?.slides?.map((slide) =>
                         <SwiperSlide key={slide.id}>
-                            { slide.slidable.type === "SlideHeader" && <SlideHeader data={ slide } showSubtitle={ showSubtitle } index={ activeIndex }/> }
-                            { slide.slidable.type === "SlideMediaFull" && <SlideMediaFull data={ slide } /> }
-                            { slide.slidable.type === "SlideCitation" && <SlideCitation data={ slide } /> }
-                            { slide.slidable.type === "SlideCentralText" && <SlideCentralText data={ slide } /> }
-                            { slide.slidable.type === "SlideColumn" && <SlideColumn data={ slide } /> }
-                            { slide.slidable.type === "SlideSlider" && <SlideSlider data={ slide } /> }
-                            { slide.slidable.type === "SlideMasonry" && <SlideMasonry data={ slide } /> }
-                            { slide.slidable.type === "SlideImageText" && <SlideImageText data={ slide } /> }
-                            { slide.slidable.type === "SlideStep" && <SlideStep data={ slide } /> }
-                            { slide.slidable.type === "SlideAudio" && <SlideAudio data={ slide } /> }
+                            { slide.slidable.type === "SlideHeader" && <SlideHeader data={ slide } showSubtitle={ showSubtitle } index={ activeIndex } locale={locale}/> }
+                            { slide.slidable.type === "SlideMediaFull" && <SlideMediaFull data={ slide } locale={locale} /> }
+                            { slide.slidable.type === "SlideCitation" && <SlideCitation data={ slide } locale={locale}/> }
+                            { slide.slidable.type === "SlideCentralText" && <SlideCentralText data={ slide } locale={locale} /> }
+                            { slide.slidable.type === "SlideColumn" && <SlideColumn data={ slide } locale={locale} /> }
+                            { slide.slidable.type === "SlideSlider" && <SlideSlider data={ slide } locale={locale}/> }
+                            { slide.slidable.type === "SlideMasonry" && <SlideMasonry data={ slide } locale={locale}/> }
+                            { slide.slidable.type === "SlideImageText" && <SlideImageText data={ slide } locale={locale}/> }
+                            { slide.slidable.type === "SlideStep" && <SlideStep data={ slide } locale={locale}/> }
+                            { slide.slidable.type === "SlideAudio" && <SlideAudio data={ slide } locale={locale}/> }
                         </SwiperSlide>
                     )}
                 </Swiper>
@@ -283,15 +287,7 @@ export default function Chapter() {
                         </svg>
                     </button>
                 </div>
-
-
-
             </div>
-
-
-
-
-
-            </div>
+        </div>
     )
 }

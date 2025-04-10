@@ -2,13 +2,11 @@ import { formatRichText } from "../../lib/utils";
 import bgSmall from '../../assets/images/backgrounds/bg-1.webp';
 import { useMediaQuery } from "react-responsive";
 
-export default function SlideCentralText ({data}) {
+export default function SlideCentralText ({data, locale}) {
 
     const API_URL = import.meta.env.VITE_API_URL;
     const imageUrl = `${API_URL}/storage/${data?.slidable?.background?.background}`;
     const color = data?.slidable?.color_text;
-    const locale = 'fr';
-    const isDesktopOrLaptop = useMediaQuery({ query: '(min-width: 1224px)'});
     const isMobile = useMediaQuery({ query: '(max-width: 768px)'});
 
     return (

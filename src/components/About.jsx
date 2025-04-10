@@ -6,11 +6,13 @@ import about_1 from "../assets/images/about/about-1.webp";
 import about_2 from "../assets/images/about/about-2.webp";
 import about_3 from "../assets/images/about/about-3.webp";
 import about_4 from "../assets/images/about/about-4.webp";
+import { useTranslation } from "react-i18next";
 
 export default function About() {
 
     const API_URL = import.meta.env.VITE_API_URL;
-    const locale = 'fr';
+    const { i18n } = useTranslation();
+    const locale = i18n.language;
     const [isLoading, setIsLoading] = useState(false)
     const [data, setData] = useState({});
 
@@ -28,7 +30,7 @@ export default function About() {
                 console.log(data.data)
             })
             .catch((error) => console.error("Erreur lors du chargement des données de la page à propos :", error));
-    }, []);
+    }, [locale]);
 
 
     return (
@@ -89,8 +91,8 @@ export default function About() {
 
                     {/** SECTION 4 */}
                     <div className="pt-[80px] xl:pt-[150px] credits">
-                        <h2 className="text-center text-[30px] leading-[40px] xl:text-[40px] pb-[40px] xl:pb-[80px]">{ data.title_4[locale]}</h2>
-                        <div className="grid grid-cols-12 pb-[100px]">
+                        <h2 className="text-center text-[30px] leading-[40px] xl:text-[40px] pb-[40px]">{ data.title_4[locale]}</h2>
+                        <div className="grid grid-cols-12 pb-[40px]">
                             <div className="col-span-12 xl:col-span-8 xl:col-start-3 richeditor text-center">
                                 { formatRichText(data.section_4[locale]) }
                             </div>

@@ -7,13 +7,12 @@ import classNames from "classnames";
 import bgSmall from '../../assets/images/backgrounds/bg-1.webp';
 import { useMediaQuery } from "react-responsive";
 
-export default function SlideColumn({data}) {
+export default function SlideColumn({data, locale}) {
 
     const API_URL = import.meta.env.VITE_API_URL;
     const imageUrl = `${API_URL}/storage/${data?.slidable?.background?.background}`;
     const position = data?.slidable?.position;
     const color = data?.slidable?.color_text;
-    const locale = 'fr';
     const [isOpenPopup, setIsOpenPopup] = useState(false);
     const [dataPopup, setDataPopup] = useState();
     const isDesktopOrLaptop = useMediaQuery({ query: '(min-width: 1224px)'});
@@ -101,7 +100,7 @@ export default function SlideColumn({data}) {
                         exit={{ scale: 0.5, opacity: 0, y: "-50%" }}
                         transition={{ duration: 0.5, ease: "easeInOut" }}
                     >
-                        <PopupResource setIsOpenPopup={ setIsOpenPopup } data={ dataPopup }/>
+                        <PopupResource setIsOpenPopup={ setIsOpenPopup } data={ dataPopup } locale={ locale }/>
                     </motion.div>
                 }
             </AnimatePresence>

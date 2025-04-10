@@ -4,11 +4,10 @@ import PopupResource from "./PopupResource";
 import {AnimatePresence, motion } from "framer-motion";
 
 
-export default function SlideMediaFull({ data }) {
+export default function SlideMediaFull({ data, locale }) {
 
     const [isOpenPopup, setIsOpenPopup] = useState(false);
-    const [dataPopup, setDataPopup] = useState()
-    const locale = 'fr';
+    const [dataPopup, setDataPopup] = useState();
 
     useEffect(() => {
         const swiperContainer = document.querySelector('.swiper');
@@ -57,7 +56,7 @@ export default function SlideMediaFull({ data }) {
                         exit={{ scale: 0.5, opacity: 0, y: "-50%" }}
                         transition={{ duration: 0.5, ease: "easeInOut" }}
                     >
-                        <PopupResource setIsOpenPopup={ setIsOpenPopup } data={ dataPopup }/>
+                        <PopupResource setIsOpenPopup={ setIsOpenPopup } data={ dataPopup } locale={locale}/>
                     </motion.div>
                 }
             </AnimatePresence>

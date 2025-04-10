@@ -9,15 +9,15 @@ import audioLogo from '../assets/images/audio.svg'
 import videoLogo from '../assets/images/video.svg'
 import PopupResource from "./content/PopupResource";
 import { AnimatePresence, motion } from "framer-motion";
-
-
+import { useTranslation } from "react-i18next";
 
 export default function Resources() {
 
-    const locale = 'fr';
     const API_URL = import.meta.env.VITE_API_URL;
-
+    const { i18n, t } = useTranslation();
+    const locale = i18n.language;
     const [documents, setDocuments] = useState([]);
+    const [isLoading, setIsLoading] = useState(false);
     const [search, setSearch] = useState("");
     const [types, setTypes] = useState([]);
     const [selectedFilters, setSelectedFilters] = useState({
@@ -104,7 +104,8 @@ export default function Resources() {
                 setDocuments(data.resources.data);
                 setTypes(data.types);
                 setDatesCount(data.dates);
-                setTotal(data.resources.total)
+                setTotal(data.resources.total);
+                setIsLoading(true);
             })
             .catch((error) => {
                 console.error("Erreur lors du chargement des données :", error)
@@ -113,7 +114,7 @@ export default function Resources() {
 
             console.log('selected', selectedFilters)
 
-    }, [search, minDate, maxDate, selectedFilters]); 
+    }, [search, minDate, maxDate, selectedFilters, locale]); 
 
 
     // TAGS 
@@ -157,13 +158,13 @@ export default function Resources() {
                         <div className="container mx-auto">
                             <div className="grid grid-cols-12 h-[120px] px-[20px] xl:px-0">
                                 <div className="col-span-12 xl:col-span-3 flex items-center justify-center xl:justify-start">
-                                    <h1 className="text-[30px] xl:text-[60px] text-[#4100FC] leading-none font-light">Ressources</h1>
+                                    <h1 className="text-[30px] xl:text-[60px] text-[#4100FC] leading-none font-light">{ t('resources')}</h1>
                                 </div>
 
                                 <div className="col-span-12 xl:col-span-8 xl:col-start-5 flex items-center">
                                     <div className="flex-1 border-b border-black">
                                         <div className="flex justify-bewtween">
-                                            <input className="bg-transparent flex-1 text-[22px] xl:text-[32px] text-[#4100FC] outline-none" type="text" placeholder="Rechercher" value={search} onChange={(e) => setSearch(e.target.value)} />
+                                            <input className="bg-transparent flex-1 text-[22px] xl:text-[32px] text-[#4100FC] outline-none" type="text" placeholder={ t('search')} value={search} onChange={(e) => setSearch(e.target.value)} />
                                             <svg width="18" height="18" viewBox="0 0 23 23" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                 <path d="M15.8125 9.6875C15.8125 7.23828 14.4805 5.00391 12.375 3.75781C10.2266 2.51172 7.60547 2.51172 5.5 3.75781C3.35156 5.00391 2.0625 7.23828 2.0625 9.6875C2.0625 12.1797 3.35156 14.4141 5.5 15.6602C7.60547 16.9062 10.2266 16.9062 12.375 15.6602C14.4805 14.4141 15.8125 12.1797 15.8125 9.6875ZM14.4805 16.7344C12.9336 17.9375 11 18.625 8.9375 18.625C3.99609 18.625 0 14.6289 0 9.6875C0 4.78906 3.99609 0.75 8.9375 0.75C13.8359 0.75 17.875 4.78906 17.875 9.6875C17.875 11.793 17.1445 13.7266 15.9414 15.2734L21.6992 20.9883C22.0859 21.418 22.0859 22.0625 21.6992 22.4492C21.2695 22.8789 20.625 22.8789 20.2383 22.4492L14.4805 16.7344Z" fill="#4100FC"/>
                                             </svg>
@@ -179,93 +180,93 @@ export default function Resources() {
                         <div className="grid grid-cols-12 gap-x-[20px]">
                             
                             {/** DOCUMENTS */}
-                            {documents.length > 0 ? (
-                                <div className="col-span-12 lg:col-span-9 flex h-[calc(100vh-160px)] px-[20px] xl:px-0">
-                                    <div className="flex-1 overflow-y-auto py-[30px]">
-                                        <ResponsiveMasonry columnsCountBreakPoints={{ 300: 3, 768: 3, 1024: 3, 1280: 4 }} gutterBreakpoints={{ 300: "12px", 768: "16px", 1024: "30px" }}>
-                                            <Masonry>
-                                                {documents?.map((document, index) => {
-                                                    const aspectRatio = (document?.optimized_url?.thumbnail?.height / document?.optimized_url?.thumbnail?.width) * 100; // Ratio pour le padding-bottom
+                            {isLoading && documents.length > 0 ? (
+                                    <div className="col-span-12 lg:col-span-9 flex h-[calc(100vh-160px)] px-[20px] xl:px-0">
+                                        <div className="flex-1 overflow-y-auto py-[30px]">
+                                            <ResponsiveMasonry columnsCountBreakPoints={{ 300: 3, 768: 3, 1024: 3, 1280: 4 }} gutterBreakpoints={{ 300: "12px", 768: "16px", 1024: "30px" }}>
+                                                <Masonry>
+                                                    {documents?.map((document, index) => {
+                                                        const aspectRatio = (document?.optimized_url?.thumbnail?.height / document?.optimized_url?.thumbnail?.width) * 100; // Ratio pour le padding-bottom
 
-                                                    {/** AUDIO - VIDEO */}
-                                                    if (document.type === "audio" || document.type === "video") {
-                                                        if (document.cover) {
+                                                        {/** AUDIO - VIDEO */}
+                                                        if (document.type === "audio" || document.type === "video") {
+                                                            if (document.cover) {
+                                                                return (
+                                                                    <div key={index} className="audio relative overflow-hidden cursor-pointer w-full aspect-square lg:h-[300px] xl:h-[400px]" style={{ paddingBottom: `${aspectRatio}%`}} 
+                                                                        onClick={() => { setIsOpenPopup(true); setDataPopup(document); }}  
+                                                                    >
+                                                                        <img loading="lazy" src={ document.cover } alt={document?.name[locale]} className="w-full hover:scale-[1.2] transition-all duration-[750ms]" 
+                                                                            style={{position: 'absolute',top: 0,left: 0, width: '100%', height: '100%', objectFit: 'cover'}} 
+                                                                            onLoad={() => setImagesLoaded(true)}
+                                                                        />
+
+                                                                        {/* <div className="absolute top-0 left-0 bg-black text-[14px] ">
+                                                                            <span className="block text-amber-400">{ document.type }  - { document.name[locale] }</span>
+                                                                            {document.tags.map(tag =>
+                                                                                <span key={tag.id} className="block text-white">{ tag.name[locale] }</span>
+                                                                            )}
+                                                                        </div> */}
+                                                                    </div> 
+                                                                )
+                                                            } else {
+                                                                return (
+                                                                    <div key={index} className="relative overflow-hidden cursor-pointer w-full" onClick={() => { setIsOpenPopup(true); setDataPopup(document); }}>
+                                                                        <div className="bg-[#DBDBD0] w-full aspect-square lg:h-[200px] flex justify-center items-center relative">
+                                                                            { document.type === "audio" ? (
+                                                                                <img src={ audioLogo } alt="Logo audio" className="h-[50px] lg:h-[140px]"/>
+                                                                            ) : (
+                                                                                <img src={ videoLogo } alt="Logo video" className="h-[50px] lg:h-[120px]"/>
+                                                                            )}
+                                                                            <span className="absolute w-[80%] top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] text-[14px] leading-none italic text-center">{ document.name[locale] }</span>
+                                                                        </div>
+    {/*                                                                                                                                         
+                                                                        <div className="absolute top-0 left-0 bg-black text-[14px] ">
+                                                                            <span className="block text-amber-400">{ document.type } - { document.name[locale] }</span>
+                                                                            {document.tags.map(tag =>
+                                                                                <span key={tag.id} className="block text-white">{ tag.name[locale] }</span>
+                                                                            )}
+                                                                        </div> */}
+                                                                    </div>
+                                                                )
+                                                            }
+                                                        }
+
+                                                        if (document.type !== 'video' && document.type !== 'audio' && document.optimized_url ) {
                                                             return (
-                                                                <div key={index} className="audio relative overflow-hidden cursor-pointer w-full aspect-square lg:h-[300px] xl:h-[400px]" style={{ paddingBottom: `${aspectRatio}%`}} 
-                                                                    onClick={() => { setIsOpenPopup(true); setDataPopup(document); }}  
+                                                                <div 
+                                                                    key={index} 
+                                                                    className="cursor-pointer overflow-hidden relative" style={{ width: `${document?.optimized_url?.thumbnail?.width}%`, height: `${document?.optimized_url?.thumbnail?.height}`}} 
+                                                                    onClick={() => { setIsOpenPopup(true); setDataPopup(document);}}
                                                                 >
-                                                                    <img loading="lazy" src={ document.cover } alt={document?.name[locale]} className="w-full hover:scale-[1.2] transition-all duration-[750ms]" 
-                                                                        style={{position: 'absolute',top: 0,left: 0, width: '100%', height: '100%', objectFit: 'cover'}} 
+                                                                    <img 
+                                                                        loading="lazy" 
+                                                                        src={document?.optimized_url?.thumbnail?.url }
+                                                                        alt={document?.name[locale]} 
+                                                                        className="w-full h-full hover:scale-[1.2] transition-all duration-[750ms]"
                                                                         onLoad={() => setImagesLoaded(true)}
                                                                     />
 
-                                                                    {/* <div className="absolute top-0 left-0 bg-black text-[14px] ">
-                                                                        <span className="block text-amber-400">{ document.type }  - { document.name[locale] }</span>
-                                                                        {document.tags.map(tag =>
-                                                                            <span key={tag.id} className="block text-white">{ tag.name[locale] }</span>
-                                                                        )}
-                                                                    </div> */}
-                                                                </div> 
-                                                            )
-                                                        } else {
-                                                            return (
-                                                                <div key={index} className="relative overflow-hidden cursor-pointer w-full" onClick={() => { setIsOpenPopup(true); setDataPopup(document); }}>
-                                                                    <div className="bg-[#DBDBD0] w-full aspect-square lg:h-[200px] flex justify-center items-center relative">
-                                                                        { document.type === "audio" ? (
-                                                                            <img src={ audioLogo } alt="Logo audio" className="h-[50px] lg:h-[140px]"/>
-                                                                        ) : (
-                                                                            <img src={ videoLogo } alt="Logo video" className="h-[50px] lg:h-[120px]"/>
-                                                                        )}
+                                                                    {/* <div className="bg-[#DBDBD0] w-full aspect-square lg:h-[200px] flex justify-center items-center relative">
                                                                         <span className="absolute w-[80%] top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] text-[14px] leading-none italic text-center">{ document.name[locale] }</span>
-                                                                    </div>
-{/*                                                                                                                                         
-                                                                    <div className="absolute top-0 left-0 bg-black text-[14px] ">
-                                                                        <span className="block text-amber-400">{ document.type } - { document.name[locale] }</span>
-                                                                        {document.tags.map(tag =>
-                                                                            <span key={tag.id} className="block text-white">{ tag.name[locale] }</span>
-                                                                        )}
                                                                     </div> */}
+
+                                                                    {/* <div className="absolute top-0 left-0 bg-black text-[14px] ">
+                                                                            <span className="block text-amber-400">{ document.type } - { document.name[locale] }</span>
+                                                                            {document.tags.map(tag =>
+                                                                                <span key={tag.id} className="block text-white">{ tag.name[locale] }</span>
+                                                                            )}
+                                                                        </div> */}
                                                                 </div>
                                                             )
                                                         }
-                                                    }
-
-                                                    if (document.type !== 'video' && document.type !== 'audio' && document.optimized_url ) {
-                                                        return (
-                                                            <div 
-                                                                key={index} 
-                                                                className="cursor-pointer overflow-hidden relative" style={{ width: `${document?.optimized_url?.thumbnail?.width}%`, height: `${document?.optimized_url?.thumbnail?.height}`}} 
-                                                                onClick={() => { setIsOpenPopup(true); setDataPopup(document);}}
-                                                            >
-                                                                <img 
-                                                                    loading="lazy" 
-                                                                    src={document?.optimized_url?.thumbnail?.url }
-                                                                    alt={document?.name[locale]} 
-                                                                    className="w-full h-full hover:scale-[1.2] transition-all duration-[750ms]"
-                                                                    onLoad={() => setImagesLoaded(true)}
-                                                                />
-
-                                                                {/* <div className="bg-[#DBDBD0] w-full aspect-square lg:h-[200px] flex justify-center items-center relative">
-                                                                    <span className="absolute w-[80%] top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] text-[14px] leading-none italic text-center">{ document.name[locale] }</span>
-                                                                </div> */}
-
-                                                                {/* <div className="absolute top-0 left-0 bg-black text-[14px] ">
-                                                                        <span className="block text-amber-400">{ document.type } - { document.name[locale] }</span>
-                                                                        {document.tags.map(tag =>
-                                                                            <span key={tag.id} className="block text-white">{ tag.name[locale] }</span>
-                                                                        )}
-                                                                    </div> */}
-                                                            </div>
-                                                        )
-                                                    }
-                                                })}
-                                            </Masonry>
-                                        </ResponsiveMasonry>
+                                                    })}
+                                                </Masonry>
+                                            </ResponsiveMasonry>
+                                        </div>
                                     </div>
-                                </div>
-                            ) : (
-                                <div className="col-span-9 flex h-[calc(100vh-160px)] justify-center items-center">Aucune ressource ne correspond à votre recherche</div>
-                            )}
+                                ) : (
+                                    <div className="col-span-9 flex h-[calc(100vh-160px)] justify-center items-center">{ t('no_resources') }</div>
+                                )}
 
 
                             <div className="hidden col-span-3 border-l border-black h-[calc(100vh-160px)] lg:flex flex-col overflow-hidden">
@@ -274,7 +275,7 @@ export default function Resources() {
                                 {/** TYPES */}
                                 <div className="types-block border-b border-black px-[20px] pb-[10px]">
                                     <div className="flex justify-between py-[20px] ">
-                                        <span className="text-[#4100FC] font-semibold text-[18px]">Types de média</span>
+                                        <span className="text-[#4100FC] font-semibold text-[18px]">{ t('media_types') }</span>
                                         <span className="text-[#4100FC] font-semibold text-[15px] cursor-pointer uppercase" onClick={() => setSelectedFilters(prev => ({ ...prev, types: [] }))}>Reset</span>
                                     </div>
 
@@ -292,7 +293,7 @@ export default function Resources() {
                                 {/** PERIODS */}
                                 <div className="periods_block border-b border-black pb-[30px] px-[20px]">
                                     <div className="flex justify-between pt-[10px]">
-                                        <span className="text-[#4100FC] font-semibold text-[18px]">Période</span>
+                                        <span className="text-[#4100FC] font-semibold text-[18px]">{ t('period') }</span>
                                         <span className="text-[#4100FC] font-semibold text-[15px] cursor-pointer uppercase" onClick={() => {setResetDates(true)}}>Reset</span>
                                     </div>
 
@@ -326,6 +327,7 @@ export default function Resources() {
                                 </div>
 
                             </div>
+
                         </div>
 
                         {/** BTN MOBILE FILTERS */}

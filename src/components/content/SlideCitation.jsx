@@ -1,11 +1,10 @@
 import { formatRichText } from "../../lib/utils";
 
-export default function SlideCitation( {data} ) {
+export default function SlideCitation( {data, locale} ) {
 
     const API_URL = import.meta.env.VITE_API_URL;
     const imageUrl = `${API_URL}/storage/${data?.slidable?.background?.background}`;
     const color = data?.slidable?.color_text;
-    const locale = 'fr';
 
     return (
         <div className="h-screen w-full relative slide_citation z-1 slide">

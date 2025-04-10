@@ -6,12 +6,11 @@ import PopupResource from "./PopupResource";
 import {AnimatePresence, motion } from "framer-motion";
 import { PopupContext } from "../../contexts/PopupContext";
 
-export default function SlideStep({data}) {
+export default function SlideStep({ data, locale }) {
 
     const API_URL = import.meta.env.VITE_API_URL;
     const imageUrl = `${API_URL}/storage/${data?.slidable?.background?.background}`;
     const color = data?.slidable?.color_text;
-    const locale = 'fr';
 
     const { isOpenPopup, setIsOpenPopup, dataPopup } = useContext(PopupContext);
     
@@ -39,7 +38,7 @@ export default function SlideStep({data}) {
                                                     <img src={data.slidable.documents[0].url} alt={data.slidable.documents[0].name[locale]} className="max-h-[80vh]"/>
                                                 )
                                             ) : (
-                                                <Slider items={data.slidable.documents} />
+                                                <Slider items={data.slidable.documents} locale={ locale }/>
                                             )
                                         ) : null}
                                     </div>
@@ -71,7 +70,7 @@ export default function SlideStep({data}) {
                         exit={{ scale: 0.5, opacity: 0, y: "-50%" }}
                         transition={{ duration: 0.5, ease: "easeInOut" }}
                     >
-                        <PopupResource setIsOpenPopup={ setIsOpenPopup } data={ dataPopup }/>
+                        <PopupResource setIsOpenPopup={ setIsOpenPopup } data={ dataPopup } locale={ locale }/>
                     </motion.div>
                 }
             </AnimatePresence>

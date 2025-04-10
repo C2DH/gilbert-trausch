@@ -7,7 +7,7 @@ import videoLogo from '../../assets/images/video.svg';
 import bgSmall from '../../assets/images/backgrounds/bg-1.webp';
 import { useMediaQuery } from "react-responsive";
 
-export default function SlideMasonry({ data }) {
+export default function SlideMasonry({ data, locale }) {
 
     const API_URL = import.meta.env.VITE_API_URL;
     const imageUrl = `${API_URL}/storage/${data?.slidable?.background?.background}`;
@@ -15,8 +15,6 @@ export default function SlideMasonry({ data }) {
     const color = data?.slidable?.color_text;
     const [isOpenPopup, setIsOpenPopup] = useState(false);
     const [dataPopup, setDataPopup] = useState()
-    const locale = 'fr';
-    const isDesktopOrLaptop = useMediaQuery({ query: '(min-width: 1224px)'});
     const isMobile = useMediaQuery({ query: '(max-width: 768px)'});
 
     useEffect(() => {
@@ -86,7 +84,7 @@ export default function SlideMasonry({ data }) {
                         exit={{ scale: 0.5, opacity: 0, y: "-50%" }}
                         transition={{ duration: 0.5, ease: "easeInOut" }}
                     >
-                        <PopupResource setIsOpenPopup={ setIsOpenPopup } data={ dataPopup }/>
+                        <PopupResource setIsOpenPopup={ setIsOpenPopup } data={ dataPopup } locale={ locale }/>
                     </motion.div>
                 }
             </AnimatePresence>    

@@ -10,7 +10,7 @@ import audioLogo from '../../assets/images/audio.svg'
 import videoLogo from '../../assets/images/video.svg'
 
 
-export default function Slider({ items }) {
+export default function Slider({ items, locale }) {
 
     const swiperRefSlider = useRef(null)
     const paginationRef = useRef(null);
@@ -18,7 +18,6 @@ export default function Slider({ items }) {
     const navigationPrevRef = useRef(null);
     const [index, setIndex] = useState(0);
     const { setIsOpenPopup, setDataPopup } = useContext(PopupContext);
-    const locale = 'fr';
 
     return (
         <>

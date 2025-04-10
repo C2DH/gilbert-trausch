@@ -11,24 +11,29 @@ import Chapters from "./components/Chapters";
 import Chapter from "./components/Chapter";
 import MagicNotebook from "./components/MagicNotebook";
 import MagicNotebooks from "./components/MagicNotebooks";
+import { LanguageProvider } from './contexts/LanguageProvider';
+import '../i18n'
+
 
 export default function App() {
     return (
-        <Router>
-            <Routes>
-                <Route path='/' element={ <Home /> }/>
-                <Route path="/preview/chapter/slide/:id" element={<PreviewSlide />} />
-                <Route path="/preview/magic-notebook/slide/:id" element={<PreviewSlideMagicNotebook />} />
-                <Route path="/biography" element={<Biography />} />
-                <Route path="/professions" element={<Chapters />} />
-                <Route path="/chapter/:id" element={<Chapter />} />
-                <Route path="/magic-notebook/:id" element={<MagicNotebook />} />
-                <Route path="/magic-notebooks" element={<MagicNotebooks />} />
-                <Route path="/virtual-tour" element={<VirtualTour />} />
-                <Route path="/resources" element={<Resources />} />
-                <Route path="/about" element={<About />} />
-                <Route path="/terms-of-use" element={<Terms />} />
-            </Routes>
-        </Router>
+        <LanguageProvider>
+            <Router>
+                <Routes>
+                    <Route path='/' element={ <Home /> }/>
+                    <Route path="/preview/chapter/slide/:id" element={<PreviewSlide />} />
+                    <Route path="/preview/magic-notebook/slide/:id" element={<PreviewSlideMagicNotebook />} />
+                    <Route path="/biography" element={<Biography />} />
+                    <Route path="/professions" element={<Chapters />} />
+                    <Route path="/chapter/:id" element={<Chapter />} />
+                    <Route path="/magic-notebook/:id" element={<MagicNotebook />} />
+                    <Route path="/magic-notebooks" element={<MagicNotebooks />} />
+                    <Route path="/virtual-tour" element={<VirtualTour />} />
+                    <Route path="/resources" element={<Resources />} />
+                    <Route path="/about" element={<About />} />
+                    <Route path="/terms-of-use" element={<Terms />} />
+                </Routes>
+            </Router>
+        </LanguageProvider>
     );
 }

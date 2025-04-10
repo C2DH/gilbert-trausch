@@ -1,12 +1,11 @@
 import { formatRichText } from '../../lib/utils';
 import { AnimatePresence, motion } from "framer-motion";
 
-export default function SlideHeader({ data, showSubtitle, index }) {
+export default function SlideHeader({ data, showSubtitle, index, locale }) {
     const API_URL = import.meta.env.VITE_API_URL;
 
     const imageUrl = `${API_URL}/storage/${data?.slidable?.background?.background}`;
     const color = data?.slidable?.color_text;
-    const locale = 'fr';
 
     return (
         <div style={{ background: `url(${imageUrl}) right / cover no-repeat` }} className="h-screen slide">

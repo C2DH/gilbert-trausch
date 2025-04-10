@@ -8,12 +8,11 @@ import { useMediaQuery } from "react-responsive";
 
 
 
-export default function SlideImageText({ data }) {
+export default function SlideImageText({ data, locale }) {
 
     const API_URL = import.meta.env.VITE_API_URL;
     const imageUrl = `${API_URL}/storage/${data?.slidable?.background?.background}`;
     const color = data?.slidable?.color_text;
-    const locale = 'fr';
     const [isPortrait, setIsPortrait] = useState(false);
     const [isOpenPopup, setIsOpenPopup] = useState(false);
     const [dataPopup, setDataPopup] = useState();
@@ -85,7 +84,7 @@ export default function SlideImageText({ data }) {
                         exit={{ scale: 0.5, opacity: 0, y: "-50%" }}
                         transition={{ duration: 0.5, ease: "easeInOut" }}
                     >
-                        <PopupResource setIsOpenPopup={ setIsOpenPopup } data={ dataPopup }/>
+                        <PopupResource setIsOpenPopup={ setIsOpenPopup } data={ dataPopup } locale={ locale }/>
                     </motion.div>
                 }
             </AnimatePresence>      

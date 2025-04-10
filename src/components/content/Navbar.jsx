@@ -4,10 +4,14 @@ import logoUni from '../../assets/images/logo-uni.svg';
 import logoGouv from '../../assets/images/logo-gouv.svg';
 import { AnimatePresence, motion } from "framer-motion";
 import { Link } from "react-router-dom";
+import { useLanguageContext } from "../../contexts/LanguageProvider";
+import classNames from "classnames";
+import { t } from "i18next";
 
 export default function Navbar({color}) {
 
     const [isOpen, setIsOpen] = useState(false);
+    const {language, changeLanguage } = useLanguageContext();
 
     /** Disable scroll when menu is open */
     useEffect(() => {
@@ -39,7 +43,9 @@ export default function Navbar({color}) {
                             </svg>
                         </li>
                         
-                        <li className="hidden lg:block uppercase cursor-pointer text-[14px] hover:text-[#4100FC] duration-500 lg:order-2" style={{ color: color }} >FR</li>
+                        <li className="hidden lg:block uppercase cursor-pointer text-[14px] hover:text-[#4100FC] duration-500 lg:order-2" style={{ color: color }}>
+                            <LanguageSwitcher switchLanguage={changeLanguage} lang={language}/>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -65,8 +71,10 @@ export default function Navbar({color}) {
                                                 <span className="hidden lg:block font-light">Une vie dédiée à l'Histoire (1931-2018)</span> */}
                                             </Link>
                                             </li>
-                                        <li className="text-[18px] cursor-pointer uppercase lg:absolute left-[50%] -translate-x-[50%] hover:text-[#4100FC] " onClick={() => setIsOpen(!isOpen)}>Fermer</li>
-                                        <li className="hidden lg:block uppercase cursor-pointer text-[14px] hover:text-[#4100FC] duration-500">FR</li>
+                                        <li className="text-[18px] cursor-pointer uppercase lg:absolute left-[50%] -translate-x-[50%] hover:text-[#4100FC] " onClick={() => setIsOpen(!isOpen)}>{ t('close') }</li>
+                                        <li className="hidden lg:block uppercase cursor-pointer text-[14px] hover:text-[#4100FC] duration-500">
+                                            <LanguageSwitcher switchLanguage={changeLanguage} lang={language}/>
+                                        </li>
                                     </ul>
                                 </div>
 
@@ -74,26 +82,26 @@ export default function Navbar({color}) {
                                 <div className="2xl:flex items-center h-[calc(100vh-40px)] mt-[50px] lg:mt-[100px] 2xl:mt-0">
                                     <ul className="font-light text-[20px] md:text-[36px] 2xl:text-[60px] uppercase">
                                         <li className="hover:text-[#4100FC] duration-[450ms] hover:pl-[50px] leading-none mb-5">
-                                            <Link to={"/biography"}>Biographie</Link>
+                                            <Link to={"/biography"}>{ t('biography')}</Link>
                                         </li>
 
                                         <li className="hover:text-[#4100FC] duration-[450ms] hover:pl-[50px] leading-none mb-5">
-                                            <Link to={"/professions"}>Les metiers de l'historien</Link>
+                                            <Link to={"/professions"}>{ t('professions')}</Link>
                                         </li>
 
                                         <li className="hover:text-[#4100FC] duration-[450ms] hover:pl-[50px] leading-none mb-5">
-                                            <Link to={"/magic-notebooks"}>Cahiers magiques</Link>
+                                            <Link to={"/magic-notebooks"}>{ t('magicNotebooks')}</Link>
                                         </li>
 
                                         <li className="hover:text-[#4100FC] duration-[450ms] hover:pl-[50px] mb-5">
-                                            <Link to={"https://gilberttrausch.uni.lu/3dvista/"} target="_blank">
-                                                <span className="block leading-none">La maison-biliotheque</span>
-                                                <span className="block leading-none">(Visite virtuelle)</span>
+                                            <Link to={"/virtual-tour"} target="_blank">
+                                                <span className="block leading-none">{ t('house')}</span>
+                                                <span className="block leading-none">({ t('tour')})</span>
                                             </Link>
                                         </li>
 
                                         <li className="hover:text-[#4100FC] duration-[450ms] hover:pl-[50px] leading-none">
-                                            <Link to={"/resources"}>Ressources</Link>
+                                            <Link to={"/resources"}>{ t('resources')}</Link>
                                         </li>
                                     </ul>
                                 </div>
@@ -102,10 +110,10 @@ export default function Navbar({color}) {
                                 <div className="absolute bottom-[150px] left-0">
                                     <ul className="uppercase text-[16px] 2xl:text-[18px] font-light">
                                         <li className="hover:text-[#4100FC] w-fit">
-                                            <Link to={'/about'}>À propos</Link>
+                                            <Link to={'/about'}>{t('about')}</Link>
                                         </li>
                                         <li className="hover:text-[#4100FC] w-fit">
-                                            <Link to={'/terms-of-use'}>Conditions d'utilisations</Link>
+                                            <Link to={'/terms-of-use'}>{t('conditions')}</Link>
                                         </li>
                                         <li className="hover:text-[#4100FC] w-fit">
                                             <Link to={'mailto:c2dh@uni.lu'}>Contact</Link>
@@ -134,3 +142,14 @@ export default function Navbar({color}) {
         </>
     )
 }
+
+
+const LanguageSwitcher = ({ switchLanguage, lang }) => {
+    return (
+        <div className='text-[14px]'>   
+            <span className={classNames('cursor-pointer mr-[5px]', {'text-blue': lang === 'fr'})}  onClick={() => switchLanguage('fr') }>FR</span>
+            <span className={classNames('cursor-pointer', {'text-blue': lang === 'de'})}  onClick={() => switchLanguage('de') }>DE</span>
+        </div>
+    )
+}
+
