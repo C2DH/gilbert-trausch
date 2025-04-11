@@ -104,29 +104,29 @@ export default function Navbar({color}) {
                                 {/** MAIN MENU */}
                                 <div className="2xl:flex items-center h-auto lg:h-[calc(100vh-40px)] mt-[50px] lg:mt-[100px] 2xl:mt-0">
                                     <ul className="font-light text-[24px] md:text-[36px] 2xl:text-[60px] uppercase">
-                                        <li className="hover:text-[#4100FC] duration-[450ms] hover:pl-[50px] leading-none mb-5 cursor-pointer"
+                                        <li className="hover:text-[#4100FC] duration-[450ms] hover:pl-[50px] leading-none mb-6 cursor-pointer"
                                             onClick={() => handleMenuClick('/biography')}
                                         >
                                             { t('biography')}
                                         </li>
 
-                                        <li className="hover:text-[#4100FC] duration-[450ms] hover:pl-[50px] leading-none mb-5 cursor-pointer"
+                                        <li className="hover:text-[#4100FC] duration-[450ms] hover:pl-[50px] leading-none mb-6 cursor-pointer"
                                             onClick={() => handleMenuClick('/professions')}
                                         >
                                             { t('professions')}
                                         </li>
 
-                                        <li className="hover:text-[#4100FC] duration-[450ms] hover:pl-[50px] leading-none mb-5 cursor-pointer"
+                                        <li className="hover:text-[#4100FC] duration-[450ms] hover:pl-[50px] leading-none mb-6 cursor-pointer"
                                             onClick={() => handleMenuClick('/magic-notebooks')}
                                         >
                                             { t('magicNotebooks')}
                                         </li>
 
-                                        <li className="hover:text-[#4100FC] duration-[450ms] hover:pl-[50px] mb-5 cursor-pointer"
+                                        <li className="hover:text-[#4100FC] duration-[450ms] hover:pl-[50px] mb-6 cursor-pointer"
                                             onClick={() => handleMenuClick('/virtual-tour')} 
                                         >
                                             <span className="block leading-none">{ t('house')}</span>
-                                            <span className="block leading-none">({ t('tour')})</span>   
+                                            <span className="text-[40px] block leading-none">({ t('tour')})</span>   
                                         </li>
 
                                         <li className="hover:text-[#4100FC] duration-[450ms] hover:pl-[50px] leading-none cursor-pointer"
@@ -139,7 +139,7 @@ export default function Navbar({color}) {
 
                                 {/** SUBMENU */}
                                 <div className="lg:absolute pt-[80px] lg:pt-0 bottom-[150px] left-0">
-                                    <ul className="uppercase text-[16px] 2xl:text-[18px] font-light">
+                                    <ul className="uppercase text-[16px] 2xl:text-[18px] leading-[22px] font-light">
                                         <li className="hover:text-[#4100FC] w-fit cursor-pointer"
                                             onClick={() => handleMenuClick('/about')}
                                         >
@@ -159,7 +159,7 @@ export default function Navbar({color}) {
                                 </div>
 
                                 {/** PARTNERS */}
-                                <div className="absolute left-0 bottom-[50px] flex items-end">
+                                <div className="absolute left-0 bottom-[40px] flex items-end">
                                     <div className="mr-[50px]">
                                         <Link to={'https://www.c2dh.uni.lu/'} target="_blank">
                                             <img src={logoUni} alt="Logo Université" className="h-[50px]" />

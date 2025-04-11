@@ -10,7 +10,7 @@ import intro_6 from '../assets/images/intro/wallpaper_intro_6.jpg';
 import intro_7 from '../assets/images/intro/wallpaper_intro_7.jpg';
 import intro_8 from '../assets/images/intro/wallpaper_intro_8.jpg';
 import intro_9 from '../assets/images/intro/wallpaper_intro_9.jpg';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useMediaQuery } from 'react-responsive';
 import bgSmall from '../assets/images/backgrounds/bg-home-small.webp'
 import { useTranslation } from 'react-i18next';
@@ -37,7 +37,7 @@ export default function Home() {
         }, 1000);
     }
     
-    
+
     useEffect(() => {
         const storedHome = localStorage.getItem('home');
         const now = new Date().getTime();

@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useLocation, useNavigate, useParams } from "react-router-dom";
 import {AnimatePresence, motion } from "framer-motion";
 import SlideHeader from "./content/SlideHeader";
 import SlideCitation from "./content/SlideCitation";
@@ -21,6 +21,7 @@ import { useMediaQuery } from "react-responsive";
 import { useTranslation } from "react-i18next";
 import { useSharedState } from "../contexts/ShareStateProvider";
 import { easeInOut } from "motion";
+import { romanize } from "../lib/utils";
 
 
 export default function Chapter() {
@@ -43,6 +44,9 @@ export default function Chapter() {
     const [showSubtitle, setShowSubtitle] = useState(false);
     const isMobile = useMediaQuery({query: '(max-width: 768px)'});
     const [sharedState, setSharedState] = useSharedState();
+    const menuRef = useRef();
+    const location = useLocation();
+    const navigate = useNavigate();
     
 
     useEffect(() => {
@@ -63,6 +67,22 @@ export default function Chapter() {
             .catch((error) => console.error("Erreur lors du chargement du chapitre :", error));
     }, [id, locale]);
 
+    // Handle click outside menu
+    // useEffect(() => {
+    //     function handleClickOutside(event) {
+    //       if (menuRef.current && !menuRef.current.contains(event.target)) {
+    //         setIsOpenMenu(false);
+    //       }
+    //     }
+    
+    //     if (isOpenMenu) {
+    //       document.addEventListener('click', handleClickOutside);
+    //     }
+    
+    //     return () => {
+    //       document.removeEventListener('click', handleClickOutside);
+    //     };
+    //   }, [isOpenMenu]);
 
     // Couleur Navbar et éléments swiper
     useEffect(() => {
@@ -72,10 +92,6 @@ export default function Chapter() {
         }
     }, [activeIndex, data]);
 
-
-    useEffect(() => {
-        console.log('slideheaders', slideHeaders)
-    }, [slideHeaders])
 
     useEffect(() => {
         setSharedState({ ...sharedState, showCurtains: false }) 
@@ -106,6 +122,18 @@ export default function Chapter() {
         }
     }
 
+    const handleMenuClick = (path) => {
+        if (location.pathname === path) {
+            setIsOpenMenu(false);
+        } else {
+            setIsOpenMenu(false);
+            setSharedState((prev) => {return { ...prev, showCurtains: true }}) 
+            setTimeout(() => {
+                navigate(path);
+            }, 1000);
+        }
+    };
+
     return (
 
         <motion.div 
@@ -115,8 +143,6 @@ export default function Chapter() {
             transition={{ easeInOut, duration: 1.2 }}
         >
 
-            {/* <Navbar color={colorNavbar} /> */}
-            
             <PopupProvider>
                 <Swiper
                     modules={[Mousewheel, EffectFade]}
@@ -129,8 +155,7 @@ export default function Chapter() {
                     grabCursor={ isMobile ? false : true }
                     effect="fade"
                     // fadeEffect={{ crossFade: true }}
-
-                    mousewheel={ true }
+                    // mousewheel={ true }
                     // touchMoveStopPropagation={true}
                     // mousewheel={{ forceToAxis: true, nested: true }} 
                     onSwiper={(swiper) => { swiperRef.current = swiper }}
@@ -154,13 +179,15 @@ export default function Chapter() {
                 </Swiper>
             </PopupProvider>    
 
-            {/** BUTTON MENU SECTION */}
-            <div className='hidden xl:block absolute right-[20px] top-[80px] z-[100] cursor-pointer' onClick={() => setIsOpenMenu(true)}>
-                <svg width="50" height="50" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <circle cx="25" cy="25" r="25" fill={colorElement}/>
-                    <path d="M17.125 19.0625C17.125 18.7812 17.3711 18.5 17.6875 18.5H32.3125C32.5938 18.5 32.875 18.7812 32.875 19.0625C32.875 19.3789 32.5938 19.625 32.3125 19.625H17.6875C17.3711 19.625 17.125 19.3789 17.125 19.0625ZM17.125 24.6875C17.125 24.4062 17.3711 24.125 17.6875 24.125H27.8125C28.0938 24.125 28.375 24.4062 28.375 24.6875C28.375 25.0039 28.0938 25.25 27.8125 25.25H17.6875C17.3711 25.25 17.125 25.0039 17.125 24.6875ZM23.875 30.3125C23.875 30.6289 23.5938 30.875 23.3125 30.875H17.6875C17.3711 30.875 17.125 30.6289 17.125 30.3125C17.125 30.0312 17.3711 29.75 17.6875 29.75H23.3125C23.5938 29.75 23.875 30.0312 23.875 30.3125Z" fill={colorElement === "#ffffff" ? "#4100FC" : "#ffffff"} style={{ transition: 'all 0.5s ease-in-out'}}/>
-                </svg>
-            </div>    
+            {/** BUTTON OPEN MENU SECTIONS */}
+            { slideHeaders?.length > 0 &&            
+                <div className='hidden xl:block absolute right-[20px] top-[80px] z-[100] cursor-pointer' onClick={() => setIsOpenMenu(true)}>
+                    <svg width="50" height="50" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="25" cy="25" r="25" fill={colorElement}/>
+                        <path d="M17.125 19.0625C17.125 18.7812 17.3711 18.5 17.6875 18.5H32.3125C32.5938 18.5 32.875 18.7812 32.875 19.0625C32.875 19.3789 32.5938 19.625 32.3125 19.625H17.6875C17.3711 19.625 17.125 19.3789 17.125 19.0625ZM17.125 24.6875C17.125 24.4062 17.3711 24.125 17.6875 24.125H27.8125C28.0938 24.125 28.375 24.4062 28.375 24.6875C28.375 25.0039 28.0938 25.25 27.8125 25.25H17.6875C17.3711 25.25 17.125 25.0039 17.125 24.6875ZM23.875 30.3125C23.875 30.6289 23.5938 30.875 23.3125 30.875H17.6875C17.3711 30.875 17.125 30.6289 17.125 30.3125C17.125 30.0312 17.3711 29.75 17.6875 29.75H23.3125C23.5938 29.75 23.875 30.0312 23.875 30.3125Z" fill={colorElement === "#ffffff" ? "#4100FC" : "#ffffff"} style={{ transition: 'all 0.5s ease-in-out'}}/>
+                    </svg>
+                </div>    
+            }
 
             {/** LOADER */}
             <AnimatePresence>
@@ -229,11 +256,12 @@ export default function Chapter() {
             <AnimatePresence>
                 {isOpenMenu &&            
                     <motion.div
+                        ref={menuRef}
                         initial={{ x: '100%' }}
                         animate={{ x: 0 }}
                         exit={{ x: '100%' }}
                         transition={{ duration: 0.6 }}
-                        className="fixed top-0 right-0 bottom-0 w-full md:w-1/2 lg:w-1/3 xl:w-1/4 bg-blue z-[101]"
+                        className="fixed top-0 right-0 bottom-0 w-full md:w-1/2 lg:w-[40%] xl:w-1/3 2xl:w-1/4 bg-blue z-[101]"
                     >
                         {/* Bouton de fermeture */}
                         <div className="absolute top-4 right-4 z-[102] cursor-pointer bg-white rounded-full" onClick={() => setIsOpenMenu(false)}
@@ -248,24 +276,22 @@ export default function Chapter() {
 
                         {/* Contenu du menu */}
                         <div className="relative">
-                            <div className="absolute top-[12px] left-[30px] flex items-center">
+                            <div className="absolute top-[12px] left-[30px] flex items-center" onClick={() => handleMenuClick('/professions')}>
                                 <svg width="19" height="12" viewBox="0 0 19 12" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path d="M1.14062 5.86328L6.20312 0.800781C6.41406 0.589844 6.80078 0.589844 7.01172 0.800781C7.22266 1.01172 7.22266 1.39844 7.01172 1.60938L2.89844 5.6875H18.4375C18.7188 5.6875 19 5.96875 19 6.25C19 6.56641 18.7188 6.8125 18.4375 6.8125H2.89844L7.01172 10.9258C7.22266 11.1367 7.22266 11.5234 7.01172 11.7344C6.80078 11.9453 6.41406 11.9453 6.20312 11.7344L1.14062 6.67188C0.929688 6.46094 0.929688 6.07422 1.14062 5.86328Z" fill="white"/>
                                 </svg>
-                                <Link to={"/professions"} aria-label="Change chapter button" role="button">
                                     <span className="uppercase text-white text-[16px] font-normal pl-[10px] cursor-pointer">Changer de chapitre</span>
-                                </Link>
                             </div>
                             <img src={ wallpaper_menu } alt="Gilbert Trausch dans son bureau" className="w-full" />
-                            <span className="absolute top-1/2 left-8 transform -translate-y-1/2 text-[24px] md:text-[40px] text-white">{ title }</span>
+                            <span className="absolute top-1/2 left-8 transform -translate-y-1/2 text-[24px] md:text-[30px] xl:text-[40px] xl:leading-[42px] text-white">{romanize(id - 1)}.  { title }</span>
                         </div>
 
                         <div className="p-[30px]">
                             { slideHeaders?.map((header) => {
                                 const slideIndex = data?.slides?.findIndex(slide => slide.id === header.id)
                                 return (
-                                    <h3 key={header.slidable.id} className="text-white cursor-pointer hover:underline pb-[25px]" onClick={() => swiperRef?.current?.slideTo(slideIndex)}>
-                                        {header?.slidable.subtitle ? header?.slidable.subtitle[locale].split('.')[1] : ""}
+                                    <h3 key={header.slidable.id} className="text-white cursor-pointer hover:underline pb-[25px] w-[80%] leading-[24px]" onClick={() => swiperRef?.current?.slideTo(slideIndex)}>
+                                        {header?.slidable.subtitle[locale] }
                                     </h3>
                                 )
                             })}

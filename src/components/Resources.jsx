@@ -319,13 +319,13 @@ export default function Resources() {
                                         <span className="text-[#4100FC] font-semibold text-[18px]">Tags</span>
                                         <span className="text-[#4100FC] font-semibold text-[15px] cursor-pointer uppercase" onClick={() => setSelectedFilters(prev => ({ ...prev, tags: [] }))}>Reset</span>
                                     </div>
-                                    <div className="flex-auto overflow-y-auto pb-[20px] gap-[10px] flex flex-wrap">
+                                    <div className="flex-auto overflow-y-auto pb-[20px] gap-y-[10px] gap-x-[5px] flex flex-wrap">
                                         { tags?.map(tag => 
                                             <span 
                                                 key={ tag.id } 
                                                 data-tag= { tag.id } 
                                                 onClick={(e) => handleSelection(e, 'tag')}
-                                                className={classNames('inline-block py-[4px] px-[10px] text-[12px] uppercase border border-black rounded-[4px] leading-none hover:bg-[#4100FC] hover:text-white hover:border-[#4100FC] cursor-pointer duration-500', {
+                                                className={classNames('inline-block py-[4px] px-[6px] text-[11px] uppercase border border-black rounded-[4px] leading-none hover:bg-[#4100FC] hover:text-white hover:border-[#4100FC] cursor-pointer duration-500', {
                                                     'bg-[#4100FC] text-white border border-black': selectedFilters.tags.includes(tag.id),
                                                     'bg-none': !selectedFilters.tags.includes(tag.id),
                                                 })}
@@ -397,7 +397,7 @@ export default function Resources() {
                                             key={ tag.id } 
                                             data-tag= { tag.id } 
                                             onClick={(e) => handleSelection(e, 'tag')}
-                                            className={classNames('inline-block py-[4px] px-[10px] text-[12px] uppercase border border-black rounded-[4px] leading-none hover:bg-[#4100FC] hover:text-white hover:border-[#4100FC] cursor-pointer duration-500', {
+                                            className={classNames('inline-block py-[4px] px-[10px] text-[12px] uppercase border border-black rounded-[6px] leading-none hover:bg-[#4100FC] hover:text-white hover:border-[#4100FC] cursor-pointer duration-500', {
                                                 'bg-[#4100FC] text-white border border-black': selectedFilters.tags.includes(tag.id),
                                                 'bg-none': !selectedFilters.tags.includes(tag.id),
                                             })}
@@ -426,7 +426,7 @@ export default function Resources() {
                         exit={{ scale: 0.5, opacity: 0, y: "-50%" }}
                         transition={{ duration: 0.5, ease: "easeInOut" }}
                     >
-                        <PopupResource setIsOpenPopup={ setIsOpenPopup } data={ dataPopup }/>
+                        <PopupResource setIsOpenPopup={ setIsOpenPopup } data={ dataPopup } locale={locale}/>
                     </motion.div>
                 }
             </AnimatePresence>           

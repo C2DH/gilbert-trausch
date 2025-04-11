@@ -75,8 +75,8 @@ export default function PopupResource({ setIsOpenPopup, data, locale }) {
                 </div>
 
                 <div className="col-span-12 lg:col-span-3 flex flex-col overflow-auto">
-                    <div className='hidden lg:block py-[10px] border-b border-black px-[30px]'>
-                        <span className='cursor-pointer text-[18px] hover:text-[#4100FC] duration-500 uppercase font-normal' onClick={() => setIsOpenPopup(false) }>{ t('close') }</span>
+                    <div className='hidden border-b border-black pl-[20px] h-[40px] lg:flex items-center'>
+                        <span className='cursor-pointer text-[18px] font-light hover:text-[#4100FC] duration-500 uppercase font-normal' onClick={() => setIsOpenPopup(false) }>{ t('close') }</span>
                     </div>
 
 					<div className='lg:h-[calc(100vh-55px)] lg:overflow-auto'>
@@ -119,7 +119,7 @@ export default function PopupResource({ setIsOpenPopup, data, locale }) {
 						<div className="tags py-[30px] px-[20px] overflow auto">
 							<div className='flex flex-wrap gap-[15px]'>
 								{ data?.tags?.map(tag =>
-									<span key={ tag.id } className='inline-block py-[4px] px-[10px] text-[12px] uppercase border border-black rounded-[8px]'>{ tag.name[locale] }</span>
+									<div key={ tag.id } className='py-[7px] px-[14px] text-[12px] leading-none uppercase border border-black rounded-[6px]'>{ tag.name[locale] }</div>
 								)}
 							</div>
 						</div>
