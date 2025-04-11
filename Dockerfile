@@ -13,9 +13,9 @@ COPY package-lock.json .
 
 RUN npm install
 
-# COPY public ./public
+COPY public ./public
 COPY src ./src
-# COPY i18n.js .
+COPY i18n.js .
 COPY index.html .
 COPY postcss.config.js .
 COPY tailwind.config.js .
