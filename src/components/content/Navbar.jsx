@@ -16,7 +16,8 @@ export default function Navbar({color}) {
     const [sharedState, setSharedState] = useSharedState();
     const location = useLocation();
     const navigate = useNavigate();
-    const isChapter = location.pathname.includes('/chapter');
+    const isChapterOrNotebook = location.pathname.includes('/chapter') || location.pathname.includes('/magic-notebooks');
+
 
 
     const handleMenuClick = (path) => {
@@ -54,7 +55,7 @@ export default function Navbar({color}) {
                         </li>
 
                         {/** BUTTON MENU CHAPTER */}
-                        {isChapter &&                        
+                        {isChapterOrNotebook &&                        
                             <li className='lg:hidden cursor-pointer order-3'>
                                 <svg width="30" height="30" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <circle cx="25" cy="25" r="25" fill={"white"}/>
