@@ -15,7 +15,7 @@ RUN npm install
 
 COPY public ./public
 COPY src ./src
-COPY i18n.js .
+COPY i18n.jsx .
 COPY index.html .
 COPY postcss.config.js .
 COPY tailwind.config.js .
