@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import Navbar from "./content/Navbar";
 import background from "../assets/images/backgrounds/bg-1.webp";
 import MultiRangeSlider from "multi-range-slider-react";
 import Masonry, {ResponsiveMasonry} from "react-responsive-masonry";
@@ -9,7 +8,9 @@ import audioLogo from '../assets/images/audio.svg'
 import videoLogo from '../assets/images/video.svg'
 import PopupResource from "./content/PopupResource";
 import { AnimatePresence, motion } from "framer-motion";
+import { easeInOut } from "motion";
 import { useTranslation } from "react-i18next";
+import { useSharedState } from "../contexts/ShareStateProvider";
 
 export default function Resources() {
 
@@ -35,9 +36,10 @@ export default function Resources() {
     const [dataPopup, setDataPopup] = useState();
     const [tags, setTags] = useState([]);
     const [isOpenFilters, setIsOpenFilters] = useState(false);
+    const [sharedState, setSharedState] = useSharedState();
+    
 
     const handleSelection = (e, type) => {
-
         setSelectedFilters(prevFilters => {
             if (type === 'type') {
                 return {
@@ -57,7 +59,11 @@ export default function Resources() {
     
             return prevFilters;
         })
-    }    
+    }
+
+    useEffect(() => {
+        setSharedState({ ...sharedState, showCurtains: false }) 
+     }, [])
     
     // RESOURCES
     useEffect(() => {
@@ -148,9 +154,14 @@ export default function Resources() {
 
     return (
         <>
-            <Navbar color={"#000000"}/>
+            {/* <Navbar color={"#000000"}/> */}
 
-            <div style={{ background: `url(${background}) right / cover no-repeat` }} className='h-screen'>
+            <motion.div 
+                style={{ background: `url(${background}) right / cover no-repeat` }} className='h-screen'
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ easeInOut, duration: 1.2 }}
+            >
                 <div className="resources relative top-[40px]">
                     
                     {/** SEARCH */}
@@ -401,7 +412,7 @@ export default function Resources() {
                         </div>
                     </div>
                 </div>
-            </div>
+            </motion.div>
 
 
             {/** POPUP */}

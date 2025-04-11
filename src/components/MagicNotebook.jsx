@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import {AnimatePresence, motion } from "framer-motion";
-import Navbar from '../components/content/Navbar';
+import { easeInOut } from "motion";
 import SlideHeader from "./content/SlideHeader";
 import SlideCitation from "./content/SlideCitation";
 import SlideMediaFull from "./content/SlideMediaFull";
@@ -18,13 +18,17 @@ import { Mousewheel, EffectFade } from 'swiper/modules';
 import 'swiper/css';
 import classNames from "classnames";
 import { PopupProvider } from "../contexts/PopupContext";
+import { useTranslation } from "react-i18next";
+import { useSharedState } from "../contexts/ShareStateProvider";
 
 export default function MagicNotebook() {
     
     const API_URL = import.meta.env.VITE_API_URL;
-    const locale = 'fr';
+    const { i18n } = useTranslation();
+    const locale = i18n.language;    
     const { id } = useParams();
     const [data, setData] = useState();
+    const [isLoading, setIsLoading] = useState(false);
     const swiperRef = useRef();
     const [activeIndex, setActiveIndex] = useState(1);
     const [total, setTotal] = useState(null);
@@ -35,6 +39,8 @@ export default function MagicNotebook() {
     const [isOpenMenu, setIsOpenMenu] = useState(false);
     const [firstClick, setFirstClick] = useState(true);
     const [showSubtitle, setShowSubtitle] = useState(false);
+    const [sharedState, setSharedState] = useSharedState();
+    
 
     useEffect(() => {
         fetch(`${API_URL}/api/magic-notebook/${id}`)
@@ -49,9 +55,10 @@ export default function MagicNotebook() {
                 setData(data.data);
                 setTotal(data.data.slides.length)
                 setSlideHeaders(data?.data?.slides?.filter(slide => slide.slidable.type === "SlideHeader") || []);
+                setIsLoading(true);
             })
             .catch((error) => console.error("Erreur lors du chargement du chapitre :", error));
-    }, [id]);
+    }, [id, locale]);
 
 
     // Couleur Navbar et éléments swiper
@@ -62,6 +69,10 @@ export default function MagicNotebook() {
         }
     }, [activeIndex, data]);
 
+    useEffect(() => {
+        setSharedState({ ...sharedState, showCurtains: false }) 
+     }, [])
+
 
     // Calcul circonférence et progression
     const radius = 30;
@@ -70,18 +81,33 @@ export default function MagicNotebook() {
 
     // Click Next
     const handleNextClick = () => {
-        swiperRef.current?.slideNext()
+        if (activeIndex === 1 && firstClick) {
+            setShowSubtitle(true)
+            setFirstClick(false)
+        } else {
+            swiperRef.current?.slideNext()
+        }
     }
 
     const handlePrevClick = () => {
-        swiperRef.current?.slidePrev()
+        if (activeIndex === 1 && !firstClick) {
+            setShowSubtitle(false)
+            setFirstClick(true)
+        } else {
+            swiperRef.current?.slidePrev()
+        }
     }
 
     return (
 
-        <div className="relative w-full h-screen">
+        <motion.div 
+            className="relative w-full h-screen"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ easeInOut, duration: 1.2 }}
+        >
 
-            <Navbar color={colorNavbar} />
+            {/* <Navbar color={colorNavbar} /> */}
             
             <PopupProvider>
                 <Swiper
@@ -99,18 +125,18 @@ export default function MagicNotebook() {
                     onSwiper={(swiper) => { swiperRef.current = swiper }}
                     onActiveIndexChange={swiper => setActiveIndex(swiper.activeIndex + 1)}
                 >
-                    {data?.slides?.map((slide) =>
+                    {isLoading && data?.slides?.map((slide) =>
                         <SwiperSlide key={slide.id}>
-                            { slide.slidable.type === "SlideHeader" && <SlideHeader data={ slide } showSubtitle={ showSubtitle } index={ activeIndex }/> }
-                            { slide.slidable.type === "SlideMediaFull" && <SlideMediaFull data={ slide } /> }
-                            { slide.slidable.type === "SlideCitation" && <SlideCitation data={ slide } /> }
-                            { slide.slidable.type === "SlideCentralText" && <SlideCentralText data={ slide } /> }
-                            { slide.slidable.type === "SlideColumn" && <SlideColumn data={ slide } /> }
-                            { slide.slidable.type === "SlideSlider" && <SlideSlider data={ slide } /> }
-                            { slide.slidable.type === "SlideMasonry" && <SlideMasonry data={ slide } /> }
-                            { slide.slidable.type === "SlideImageText" && <SlideImageText data={ slide } /> }
-                            { slide.slidable.type === "SlideStep" && <SlideStep data={ slide } /> }
-                            { slide.slidable.type === "SlideAudio" && <SlideAudio data={ slide } /> }
+                            { slide.slidable.type === "SlideHeader" && <SlideHeader data={ slide } showSubtitle={ showSubtitle } index={ activeIndex } locale={ locale }/> }
+                            { slide.slidable.type === "SlideMediaFull" && <SlideMediaFull data={ slide } locale={ locale }/> }
+                            { slide.slidable.type === "SlideCitation" && <SlideCitation data={ slide } locale={ locale }/> }
+                            { slide.slidable.type === "SlideCentralText" && <SlideCentralText data={ slide } locale={ locale }/> }
+                            { slide.slidable.type === "SlideColumn" && <SlideColumn data={ slide } locale={ locale }/> }
+                            { slide.slidable.type === "SlideSlider" && <SlideSlider data={ slide } locale={ locale }/> }
+                            { slide.slidable.type === "SlideMasonry" && <SlideMasonry data={ slide } locale={ locale }/> }
+                            { slide.slidable.type === "SlideImageText" && <SlideImageText data={ slide } locale={ locale }/> }
+                            { slide.slidable.type === "SlideStep" && <SlideStep data={ slide } locale={ locale }/> }
+                            { slide.slidable.type === "SlideAudio" && <SlideAudio data={ slide } locale={ locale }/> }
                         </SwiperSlide>
                     )}
                 </Swiper>
@@ -152,6 +178,7 @@ export default function MagicNotebook() {
             <div className='absolute right-[0] top-[50%] -translate-y-[50%] z-[100]'>
                 <button onClick={() => handlePrevClick() }
                     className={classNames("cursor-pointer relative right-0 bottom-[5px]", { "pointer-events-none opacity-30": activeIndex === 1 })}
+                    aria-label="Previous button"
                 >    
                     <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <circle cx="15" cy="15" r="14.5" transform="rotate(-180 15 15)" stroke={colorElement}/>
@@ -170,6 +197,8 @@ export default function MagicNotebook() {
                     className={classNames("cursor-pointer relative right-0 top-[10px]", {
                         "pointer-events-none opacity-30": activeIndex >= total
                     })}
+                    aria-label="Next button"
+
                 >
                     <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <circle cx="15" cy="15" r="14.5" stroke={colorElement}/>
@@ -231,7 +260,7 @@ export default function MagicNotebook() {
                 }
             </AnimatePresence>
 
-        </div>
+        </motion.div>
     )
 
 }

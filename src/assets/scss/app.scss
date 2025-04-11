@@ -429,3 +429,18 @@ a.custom-link-class {
 .swiper-slide.swiper-slide-active {
     transition: all ease-in-out;
 }
+
+
+.swiper-slide {
+    pointer-events: none;
+    opacity: 0;
+    z-index: 0;
+    transition: opacity 0.4s ease-in; /* fade-out rapide */
+  }
+  
+  .swiper-slide-active {
+    pointer-events: auto;
+    opacity: 1;
+    z-index: 2;
+    transition: opacity 0.6s ease-out 0.2s; /* fade-in plus lent, avec un petit delay */
+  }

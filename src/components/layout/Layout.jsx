@@ -1,5 +1,12 @@
-export default function Layout() {
+import Navbar from '../content/Navbar';
+import { Outlet } from 'react-router-dom';
+
+export default function Layout () {
     return (
-        <div>Menu</div>
+        <>
+            <Navbar color={'#000000'} />
+            <Outlet /> 
+        </>
     )
 }
+

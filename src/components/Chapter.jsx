@@ -1,7 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import {AnimatePresence, motion } from "framer-motion";
-import Navbar from '../components/content/Navbar';
 import SlideHeader from "./content/SlideHeader";
 import SlideCitation from "./content/SlideCitation";
 import SlideMediaFull from "./content/SlideMediaFull";
@@ -20,12 +19,14 @@ import classNames from "classnames";
 import { PopupProvider } from "../contexts/PopupContext";
 import { useMediaQuery } from "react-responsive";
 import { useTranslation } from "react-i18next";
+import { useSharedState } from "../contexts/ShareStateProvider";
+import { easeInOut } from "motion";
 
 
 export default function Chapter() {
 
     const API_URL = import.meta.env.VITE_API_URL;
-    const { i18n, t } = useTranslation();
+    const { i18n } = useTranslation();
     const locale = i18n.language;
     const { id } = useParams();
     const [data, setData] = useState();
@@ -41,6 +42,8 @@ export default function Chapter() {
     const [firstClick, setFirstClick] = useState(true);
     const [showSubtitle, setShowSubtitle] = useState(false);
     const isMobile = useMediaQuery({query: '(max-width: 768px)'});
+    const [sharedState, setSharedState] = useSharedState();
+    
 
     useEffect(() => {
         fetch(`${API_URL}/api/chapter/${id}`)
@@ -58,7 +61,7 @@ export default function Chapter() {
                 setIsLoading(true);
             })
             .catch((error) => console.error("Erreur lors du chargement du chapitre :", error));
-    }, [id]);
+    }, [id, locale]);
 
 
     // Couleur Navbar et éléments swiper
@@ -68,6 +71,15 @@ export default function Chapter() {
             setColorNavbar(data.slides[activeIndex - 1].slidable.color_menu)
         }
     }, [activeIndex, data]);
+
+
+    useEffect(() => {
+        console.log('slideheaders', slideHeaders)
+    }, [slideHeaders])
+
+    useEffect(() => {
+        setSharedState({ ...sharedState, showCurtains: false }) 
+     }, [])
 
 
     // Calcul circonférence et progression
@@ -96,26 +108,31 @@ export default function Chapter() {
 
     return (
 
-        <div className="relative w-full h-screen">
+        <motion.div 
+            className="relative w-full h-screen"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ easeInOut, duration: 1.2 }}
+        >
 
-            <Navbar color={colorNavbar} />
+            {/* <Navbar color={colorNavbar} /> */}
             
             <PopupProvider>
                 <Swiper
-                    modules={[Mousewheel]}
+                    modules={[Mousewheel, EffectFade]}
                     ref={swiperRef}
                     direction="vertical"
                     slidesPerView={1}
                     speed={800}
-                    className="h-full"
-                    mousewheel={ false }
+                    className="h-full custom-fade-swiper"
                     simulateTouch={ isMobile ? false : true }
                     grabCursor={ isMobile ? false : true }
-                    touchMoveStopPropagation={true}
                     effect="fade"
-                    // mousewheel={{ forceToAxis: true }}
-                    // mousewheel={{ forceToAxis: true, nested: true }} 
                     // fadeEffect={{ crossFade: true }}
+
+                    mousewheel={ true }
+                    // touchMoveStopPropagation={true}
+                    // mousewheel={{ forceToAxis: true, nested: true }} 
                     onSwiper={(swiper) => { swiperRef.current = swiper }}
                     onActiveIndexChange={swiper => setActiveIndex(swiper.activeIndex + 1)}
                 >
@@ -175,6 +192,7 @@ export default function Chapter() {
             <div className='hidden xl:block absolute right-[0] top-[50%] -translate-y-[50%] z-[100]'>
                 <button onClick={() => handlePrevClick() }
                     className={classNames("cursor-pointer relative right-0 bottom-[5px]", { "pointer-events-none opacity-30": !showSubtitle })}
+                    aria-label="Previous button"
                 >    
                     <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <circle cx="15" cy="15" r="14.5" transform="rotate(-180 15 15)" stroke={colorElement}/>
@@ -193,6 +211,7 @@ export default function Chapter() {
                     className={classNames("cursor-pointer relative right-0 top-[10px]", {
                         "pointer-events-none opacity-30": activeIndex >= total
                     })}
+                    aria-label="Next button"
                 >
                     <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <circle cx="15" cy="15" r="14.5" stroke={colorElement}/>
@@ -218,6 +237,8 @@ export default function Chapter() {
                     >
                         {/* Bouton de fermeture */}
                         <div className="absolute top-4 right-4 z-[102] cursor-pointer bg-white rounded-full" onClick={() => setIsOpenMenu(false)}
+                            aria-label="Close menu button"
+                            role="button"
                         >
                             <svg width="50" height="50" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <circle cx="25" cy="25" r="25" fill="#ffffff"/>
@@ -231,7 +252,7 @@ export default function Chapter() {
                                 <svg width="19" height="12" viewBox="0 0 19 12" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path d="M1.14062 5.86328L6.20312 0.800781C6.41406 0.589844 6.80078 0.589844 7.01172 0.800781C7.22266 1.01172 7.22266 1.39844 7.01172 1.60938L2.89844 5.6875H18.4375C18.7188 5.6875 19 5.96875 19 6.25C19 6.56641 18.7188 6.8125 18.4375 6.8125H2.89844L7.01172 10.9258C7.22266 11.1367 7.22266 11.5234 7.01172 11.7344C6.80078 11.9453 6.41406 11.9453 6.20312 11.7344L1.14062 6.67188C0.929688 6.46094 0.929688 6.07422 1.14062 5.86328Z" fill="white"/>
                                 </svg>
-                                <Link to={"/professions"}>
+                                <Link to={"/professions"} aria-label="Change chapter button" role="button">
                                     <span className="uppercase text-white text-[16px] font-normal pl-[10px] cursor-pointer">Changer de chapitre</span>
                                 </Link>
                             </div>
@@ -244,7 +265,7 @@ export default function Chapter() {
                                 const slideIndex = data?.slides?.findIndex(slide => slide.id === header.id)
                                 return (
                                     <h3 key={header.slidable.id} className="text-white cursor-pointer hover:underline pb-[25px]" onClick={() => swiperRef?.current?.slideTo(slideIndex)}>
-                                        {header?.slidable.subtitle ? header?.slidable.subtitle[locale] : ""}
+                                        {header?.slidable.subtitle ? header?.slidable.subtitle[locale].split('.')[1] : ""}
                                     </h3>
                                 )
                             })}
@@ -288,6 +309,6 @@ export default function Chapter() {
                     </button>
                 </div>
             </div>
-        </div>
+        </motion.div>
     )
 }

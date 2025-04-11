@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { easeInOut } from "motion";
 import intro_1 from '../assets/images/intro/wallpaper_intro_1.webp';
 import intro_2 from '../assets/images/intro/wallpaper_intro_2.jpg';
 import intro_3 from '../assets/images/intro/wallpaper_intro_3.jpg';
@@ -10,10 +11,10 @@ import intro_7 from '../assets/images/intro/wallpaper_intro_7.jpg';
 import intro_8 from '../assets/images/intro/wallpaper_intro_8.jpg';
 import intro_9 from '../assets/images/intro/wallpaper_intro_9.jpg';
 import { Link } from 'react-router-dom';
-import Navbar from './content/Navbar';
 import { useMediaQuery } from 'react-responsive';
 import bgSmall from '../assets/images/backgrounds/bg-home-small.webp'
 import { useTranslation } from 'react-i18next';
+import { useSharedState } from '../contexts/ShareStateProvider';
 
 const images = [intro_2, intro_3, intro_4, intro_5, intro_6, intro_7, intro_8, intro_9];
 const EXPIRE = 6 * 3600 * 1000;
@@ -25,7 +26,9 @@ export default function Home() {
     const [showMenu, setShowMenu] = useState(false);
     const [showStartButton, setShowStartButton] = useState(false);
     const [animationActive, setAnimationActive] = useState(false);
-    const isMobile = useMediaQuery({query: '(max-width: 1024px)'})
+    const isMobile = useMediaQuery({query: '(max-width: 1024px)'});
+    const [sharedState, setSharedState] = useSharedState();
+    
     
     useEffect(() => {
         const storedHome = localStorage.getItem('home');
@@ -62,17 +65,22 @@ export default function Home() {
         }
     }, [animationActive]);
 
+    useEffect(() => {
+        setSharedState({ ...sharedState, showCurtains: false }) 
+     }, [])
+
     return (
         <>
-            <Navbar color={ '#000000' } />
-            <div className="relative h-screen w-full">
+            <motion.div 
+                className="relative h-screen w-full"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ easeInOut, duration: 1.2 }}
+            >
 
-                <motion.div
+                <div
                     className="h-screen absolute inset-0"
                     style={{ background: `url(${isMobile ? bgSmall : intro_1}) center / cover no-repeat` }}
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ duration: 1, ease: "easeOut" }}
                 />
 
                 {/* Images animées après le clic */}
@@ -148,7 +156,7 @@ export default function Home() {
                         </motion.div>
                     )}
                 </AnimatePresence>
-            </div>
+            </motion.div>
         </>
     );
 }

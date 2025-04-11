@@ -1,11 +1,13 @@
 import { useEffect, useState } from "react";
-import Navbar from "./content/Navbar";
 import { Link } from "react-router-dom";
 import bg from '../assets/images/backgrounds/bg-magic-notebooks.webp';
 import { romanize } from "../lib/utils";
 import bg_empty from '../assets/images/backgrounds/bg-1.webp';
 import { useMediaQuery } from "react-responsive";
 import { useTranslation } from "react-i18next";
+import { useSharedState } from "../contexts/ShareStateProvider";
+import { motion } from "motion/react";
+import { easeInOut } from "motion";
 
 export default function MagicNotebooks() {
 
@@ -14,6 +16,8 @@ export default function MagicNotebooks() {
     const { i18n, t } = useTranslation();
     const locale = i18n.language;    const API_URL = import.meta.env.VITE_API_URL;
     const isMobile = useMediaQuery({query: '(max-width: 768px)'});
+    const [sharedState, setSharedState] = useSharedState();
+    
 
     useEffect(() => {
         fetch(`${API_URL}/api/magic-notebooks`)
@@ -30,17 +34,24 @@ export default function MagicNotebooks() {
             .catch((error) => console.error("Erreur lors du chargement des cahiers magiques :", error));
     }, [locale]);
 
+    useEffect(() => {
+        setSharedState({ ...sharedState, showCurtains: false }) 
+     }, [])
+
     return (
         <>
-            <Navbar color={'#000000'} />
+            {/* <Navbar color={'#000000'} /> */}
 
-            <div className="h-screen"
+            <motion.div className="h-screen"
                 style={{
                     backgroundImage: isMobile ? `url(${bg_empty})` : `url(${bg})`,
                     backgroundPosition: "center",
                     backgroundSize: "cover",
                     backgroundRepeat: "no-repeat"
                 }}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ easeInOut, duration: 1.2 }}
             >
                 <div className="container mx-auto h-full px-[20px] xl:px-0">
                     <div className="relative top-[40px]">
@@ -60,14 +71,11 @@ export default function MagicNotebooks() {
                                         ))}
                                     </ul>
                                 }
-
                             </div>
                         </div>
-
                     </div>
-
                 </div>
-            </div>
+            </motion.div>
         </>
     );
 }

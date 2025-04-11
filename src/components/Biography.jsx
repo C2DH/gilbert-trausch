@@ -1,13 +1,14 @@
 import { useEffect, useState } from "react";
-import Navbar from '../components/content/Navbar';
 import { getYear, formatRichText } from "../lib/utils";
 import bg from '../assets/images/backgrounds/biography.webp'
 import { Link, Element } from 'react-scroll';
 import classNames from "classnames";
 import { useMediaQuery } from "react-responsive";
 import { AnimatePresence, motion } from "motion/react";
+import { easeInOut } from "motion";
 import PopupResource from "./content/PopupResource";
 import { useTranslation } from "react-i18next";
+import { useSharedState } from "../contexts/ShareStateProvider";
 
 export default function Biography() {
 
@@ -21,9 +22,8 @@ export default function Biography() {
     const [activeElement, setActiveElement] = useState(null); // Nouvel état pour l'élément actif
     const [isOpenPopup, setIsOpenPopup] = useState(false);
     const [dataPopup, setDataPopup] = useState();
+    const [sharedState, setSharedState] = useSharedState();
     const isMobile = useMediaQuery({ query: '(max-width: 768px)'});
-
-    console.log('locale', locale)
 
     useEffect(() => {
         fetch(`${API_URL}/api/biography`)
@@ -40,6 +40,9 @@ export default function Biography() {
             .catch((error) => console.error("Erreur de chargement :", error));
     }, [locale]);
 
+    useEffect(() => {
+       setSharedState({ ...sharedState, showCurtains: false }) 
+    }, [])
 
     useEffect(() => {
         if (data.length > 0) {
@@ -89,10 +92,13 @@ export default function Biography() {
 
     return (
         <>
-            <Navbar color={'#000000'}/>
-
             {isLoading &&            
-                <div className="" style={{ background: `url(${bg}) center / contain repeat`}}>
+                <motion.div 
+                    className="" style={{ background: `url(${bg}) center / contain repeat`}}
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ easeInOut, duration: 1.2 }}
+                >
                     <div className="biography container mx-auto pt-[80px] xl:pt-[100px] px-[20px] xl:px-0">
                         <div className="grid grid-cols-12 mb-[50px] xl:mb-[100px] 2xl:mb-[150px]">
                             <div className="col-span-12 md:col-span-10 lg:col-span-8 2xl:col-span-6 text-[#4100FC]">
@@ -207,7 +213,7 @@ export default function Biography() {
                             </div>
                         </div>
                     </div>
-                </div>
+                </motion.div>
             }
 
 

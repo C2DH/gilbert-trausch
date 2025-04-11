@@ -4,11 +4,14 @@ import chapter1 from '../assets/images/backgrounds/bg-chapter-1.webp';
 import chapter2 from '../assets/images/backgrounds/bg-chapter-2.webp';
 import chapter3 from '../assets/images/backgrounds/bg-chapter-3.webp';
 import bg_empty from '../assets/images/backgrounds/bg-1.webp';
-import Navbar from "./content/Navbar";
 import { Link } from "react-router-dom";
 import { romanize } from "../lib/utils";
 import { useMediaQuery } from 'react-responsive'
 import { useTranslation } from "react-i18next";
+import { useSharedState } from "../contexts/ShareStateProvider";
+import { motion } from "motion/react";
+import { easeInOut } from "motion";
+
 
 export default function Chapters() {
     const [data, setData] = useState();
@@ -18,6 +21,8 @@ export default function Chapters() {
     const locale = i18n.language;
     const API_URL = import.meta.env.VITE_API_URL;
     const isMobile = useMediaQuery({ query: '(max-width: 768px)'});
+    const [sharedState, setSharedState] = useSharedState();
+    
 
 
     const getBackgroundImage = () => {
@@ -48,18 +53,25 @@ export default function Chapters() {
             .catch((error) => console.error("Erreur lors du chargement des chapitres :", error));
     }, [locale]);
 
+    useEffect(() => {
+        setSharedState({ ...sharedState, showCurtains: false }) 
+     }, [])
+
     return (
         <>
-            <Navbar color={'#000000'} />
+            {/* <Navbar color={'#000000'} /> */}
 
-            <div className="relative h-screen overflow-hidden"
+            <motion.div className="relative h-screen overflow-hidden"
                 style={{
                     backgroundImage: isMobile ? `url(${bg_empty})` : getBackgroundImage(),
                     backgroundPosition: "right",
                     backgroundSize: "cover",
                     backgroundRepeat: "no-repeat",
                     transition: "background-image 2s ease-in-out"
-                }}    
+                }}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ easeInOut, duration: 1.2 }}   
             >
                 <div className="container mx-auto h-full px-[20px] xl:px-0">
                     <div className="h-full flex flex-col justify-center">
@@ -82,7 +94,7 @@ export default function Chapters() {
                         }
                     </div>
                 </div>
-            </div>
+            </motion.div>
         </>
     );
 }

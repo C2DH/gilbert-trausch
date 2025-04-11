@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react";
 import { formatRichText } from "../lib/utils";
-import Navbar from "./content/Navbar";
 import bg from '../assets/images/backgrounds/bg_360.webp';
 import { useTranslation } from "react-i18next";
+import { useSharedState } from "../contexts/ShareStateProvider";
+import { motion } from "motion/react";
+import { easeInOut } from "motion";
 
 export default function VirtualTour() {
 
@@ -11,9 +13,8 @@ export default function VirtualTour() {
     const locale = i18n.language;
     const [isLoading, setIsLoading] = useState(false)
     const [data, setData] = useState({});
-
-    console.log(i18n.language)
-
+    const [sharedState, setSharedState] = useSharedState();
+    
     useEffect(() => {
         fetch(`${API_URL}/api/virtual-tour`)
             .then((response) => {
@@ -30,10 +31,20 @@ export default function VirtualTour() {
             .catch((error) => console.error("Erreur lors du chargement des données de la page du tour virtuel :", error));
     }, [locale]);
 
+    useEffect(() => {
+        setSharedState({ ...sharedState, showCurtains: false }) 
+     }, [])
+
+
 
     return (
-        <div style={{ background: `url(${bg}) center / cover no-repeat`}} className="h-screen">
-            <Navbar color={'#000000'} />                
+        <motion.div 
+            style={{ background: `url(${bg}) center / cover no-repeat`}} 
+            className="h-screen"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ easeInOut, duration: 1.2 }}
+        >
 
             {isLoading &&
                 <div className="relative top-[40px]">
@@ -47,13 +58,18 @@ export default function VirtualTour() {
                                     { formatRichText(data.content[locale]) }
                                 </div>
                                 <div className="flex justify-center pt-[40px] lg:pt-[80px]">
-                                    <button className="uppercase text-blue text-[14px] px-[10px] lg:px-[25px] py-[7px] border border-blue w-fit rounded-[7px] hover:bg-blue hover:text-white outline-none duration-500">{t('link_virtual_tour')}</button>
+                                    <button 
+                                        className="uppercase text-blue text-[14px] px-[10px] lg:px-[25px] py-[7px] border border-blue w-fit rounded-[7px] hover:bg-blue hover:text-white outline-none duration-500"
+                                        aria-label="Virtual tour button"    
+                                    >
+                                    {t('link_virtual_tour')}
+                                    </button>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             }
-        </div>    
+        </motion.div>    
     )
 }

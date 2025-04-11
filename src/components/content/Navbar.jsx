@@ -3,15 +3,31 @@ import bgMenu from '../../assets/images/backgrounds/bg-menu.webp';
 import logoUni from '../../assets/images/logo-uni.svg';
 import logoGouv from '../../assets/images/logo-gouv.svg';
 import { AnimatePresence, motion } from "framer-motion";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useLanguageContext } from "../../contexts/LanguageProvider";
 import classNames from "classnames";
 import { t } from "i18next";
+import { useSharedState } from "../../contexts/ShareStateProvider";
 
 export default function Navbar({color}) {
 
     const [isOpen, setIsOpen] = useState(false);
     const {language, changeLanguage } = useLanguageContext();
+    const [sharedState, setSharedState] = useSharedState();
+    const location = useLocation();
+    const navigate = useNavigate();
+
+    const handleMenuClick = (path) => {
+        if (location.pathname === path) {
+            setIsOpen(false);
+        } else {
+            setIsOpen(false);
+            setSharedState((prev) => {return { ...prev, showCurtains: true }}) 
+            setTimeout(() => {
+                navigate(path);
+            }, 1000);
+        }
+      };
 
     /** Disable scroll when menu is open */
     useEffect(() => {
@@ -24,8 +40,8 @@ export default function Navbar({color}) {
             <div className="navbar h-[40px] absolute inset-0 border-b z-[101] px-[20px]" style={{ borderColor: color }}>
                 <div className="container mx-auto h-full">
                     <ul className="flex justify-between items-center h-full relative">
-                        <li className="uppercase cursor-pointer order-2 lg:order-1 absolute left-[50%] -translate-x-[50%] lg:static lg:translate-x-0">
-                            <Link to={"/"} className="text-[14px] sm:text-[18px] hover:text-[#4100FC] duration-500" style={{ color: color }} >Gilbert Trausch</Link>
+                        <li className="uppercase cursor-pointer order-2 lg:order-1 absolute left-[50%] -translate-x-[50%] lg:static lg:translate-x-0" onClick={() => handleMenuClick('/') }>
+                            <span to={"/"} className="text-[14px] sm:text-[18px] hover:text-[#4100FC] duration-500" style={{ color: color }} >Gilbert Trausch</span>
                         </li>
 
                         {/** BUTTON MAIN MENU */}
@@ -58,20 +74,22 @@ export default function Navbar({color}) {
                         initial={{ y: "-100%" }}
                         animate={{ y: 0 }}
                         exit={{ y: "-100%" }}
-                        transition={{ duration: 0.5, ease: "easeInOut" }}
+                        transition={{ duration: 0.8, ease: "easeInOut" }}
                     >
                         <div className="h-screen px-[20px]" style={{ background: `url(${bgMenu}) center / cover no-repeat` }}>
                             <div className="container mx-auto h-full relative">
                                 <div className="header h-[40px]">
                                     <ul className="flex justify-between h-full items-center">
-                                        <li className="uppercase cursor-pointer text-[18px] hover:text-[#4100FC] duration-500">
-                                            <Link to={"/"}>
-                                                <span>Gilbert Trausch</span>
-                                                {/* <br className="hidden lg:block"/>
-                                                <span className="hidden lg:block font-light">Une vie dédiée à l'Histoire (1931-2018)</span> */}
-                                            </Link>
-                                            </li>
+                                        <li className="uppercase cursor-pointer text-[18px] hover:text-[#4100FC] duration-500"
+                                            onClick={() => handleMenuClick('/')}
+                                        >
+                                            <span>Gilbert Trausch</span>
+                                            {/* <br className="hidden lg:block"/>
+                                            <span className="hidden lg:block font-light">Une vie dédiée à l'Histoire (1931-2018)</span> */}
+                                        </li>
+
                                         <li className="text-[18px] cursor-pointer uppercase lg:absolute left-[50%] -translate-x-[50%] hover:text-[#4100FC] " onClick={() => setIsOpen(!isOpen)}>{ t('close') }</li>
+                                        
                                         <li className="hidden lg:block uppercase cursor-pointer text-[14px] hover:text-[#4100FC] duration-500">
                                             <LanguageSwitcher switchLanguage={changeLanguage} lang={language}/>
                                         </li>
@@ -81,27 +99,35 @@ export default function Navbar({color}) {
                                 {/** MAIN MENU */}
                                 <div className="2xl:flex items-center h-[calc(100vh-40px)] mt-[50px] lg:mt-[100px] 2xl:mt-0">
                                     <ul className="font-light text-[20px] md:text-[36px] 2xl:text-[60px] uppercase">
-                                        <li className="hover:text-[#4100FC] duration-[450ms] hover:pl-[50px] leading-none mb-5">
-                                            <Link to={"/biography"}>{ t('biography')}</Link>
+                                        <li className="hover:text-[#4100FC] duration-[450ms] hover:pl-[50px] leading-none mb-5 cursor-pointer"
+                                            onClick={() => handleMenuClick('/biography')}
+                                        >
+                                            { t('biography')}
                                         </li>
 
-                                        <li className="hover:text-[#4100FC] duration-[450ms] hover:pl-[50px] leading-none mb-5">
-                                            <Link to={"/professions"}>{ t('professions')}</Link>
+                                        <li className="hover:text-[#4100FC] duration-[450ms] hover:pl-[50px] leading-none mb-5 cursor-pointer"
+                                            onClick={() => handleMenuClick('/professions')}
+                                        >
+                                            { t('professions')}
                                         </li>
 
-                                        <li className="hover:text-[#4100FC] duration-[450ms] hover:pl-[50px] leading-none mb-5">
-                                            <Link to={"/magic-notebooks"}>{ t('magicNotebooks')}</Link>
+                                        <li className="hover:text-[#4100FC] duration-[450ms] hover:pl-[50px] leading-none mb-5 cursor-pointer"
+                                            onClick={() => handleMenuClick('/magic-notebooks')}
+                                        >
+                                            { t('magicNotebooks')}
                                         </li>
 
-                                        <li className="hover:text-[#4100FC] duration-[450ms] hover:pl-[50px] mb-5">
-                                            <Link to={"/virtual-tour"} target="_blank">
-                                                <span className="block leading-none">{ t('house')}</span>
-                                                <span className="block leading-none">({ t('tour')})</span>
-                                            </Link>
+                                        <li className="hover:text-[#4100FC] duration-[450ms] hover:pl-[50px] mb-5 cursor-pointer"
+                                            onClick={() => handleMenuClick('/virtual-tour')} 
+                                        >
+                                            <span className="block leading-none">{ t('house')}</span>
+                                            <span className="block leading-none">({ t('tour')})</span>   
                                         </li>
 
-                                        <li className="hover:text-[#4100FC] duration-[450ms] hover:pl-[50px] leading-none">
-                                            <Link to={"/resources"}>{ t('resources')}</Link>
+                                        <li className="hover:text-[#4100FC] duration-[450ms] hover:pl-[50px] leading-none cursor-pointer"
+                                            onClick={() => handleMenuClick('/resources')}       
+                                        >
+                                            { t('resources')}
                                         </li>
                                     </ul>
                                 </div>
@@ -109,13 +135,19 @@ export default function Navbar({color}) {
                                 {/** SUBMENU */}
                                 <div className="absolute bottom-[150px] left-0">
                                     <ul className="uppercase text-[16px] 2xl:text-[18px] font-light">
-                                        <li className="hover:text-[#4100FC] w-fit">
-                                            <Link to={'/about'}>{t('about')}</Link>
+                                        <li className="hover:text-[#4100FC] w-fit cursor-pointer"
+                                            onClick={() => handleMenuClick('/about')}
+                                        >
+                                            {t('about')}
                                         </li>
-                                        <li className="hover:text-[#4100FC] w-fit">
-                                            <Link to={'/terms-of-use'}>{t('conditions')}</Link>
+
+                                        <li className="hover:text-[#4100FC] w-fit cursor-pointer"
+                                            onClick={() => handleMenuClick('/terms-of-use')}
+                                        >
+                                            {t('conditions')}
                                         </li>
-                                        <li className="hover:text-[#4100FC] w-fit">
+
+                                        <li className="hover:text-[#4100FC] w-fit cursor-pointer">
                                             <Link to={'mailto:c2dh@uni.lu'}>Contact</Link>
                                         </li>
                                     </ul>

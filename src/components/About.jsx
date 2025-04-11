@@ -1,12 +1,15 @@
 import { useEffect, useState } from "react";
 import { formatRichText } from "../lib/utils";
-import Navbar from "./content/Navbar";
 import bg from '../assets/images/backgrounds/bg-1.webp';
 import about_1 from "../assets/images/about/about-1.webp";
 import about_2 from "../assets/images/about/about-2.webp";
 import about_3 from "../assets/images/about/about-3.webp";
 import about_4 from "../assets/images/about/about-4.webp";
 import { useTranslation } from "react-i18next";
+import { useSharedState } from "../contexts/ShareStateProvider";
+import { motion } from "motion/react";
+import { easeInOut } from "motion";
+
 
 export default function About() {
 
@@ -15,6 +18,8 @@ export default function About() {
     const locale = i18n.language;
     const [isLoading, setIsLoading] = useState(false)
     const [data, setData] = useState({});
+    const [sharedState, setSharedState] = useSharedState();
+    
 
     useEffect(() => {
         fetch(`${API_URL}/api/about`)
@@ -27,15 +32,22 @@ export default function About() {
             .then((data) => {
                 setData(data.data);
                 setIsLoading(true)
-                console.log(data.data)
             })
             .catch((error) => console.error("Erreur lors du chargement des données de la page à propos :", error));
     }, [locale]);
 
+    useEffect(() => {
+        setSharedState({ ...sharedState, showCurtains: false }) 
+     }, [])
+
 
     return (
-        <div style={{ background: `url(${bg}) center / contain repeat`}}>
-            <Navbar color={'#000000'} />                
+        <motion.div 
+            style={{ background: `url(${bg}) center / contain repeat`}}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ easeInOut, duration: 1.2 }}
+        >
 
             {isLoading &&
                 <div className="container mx-auto text-blue about px-[20px] xl:px-0">
@@ -101,6 +113,6 @@ export default function About() {
 
                 </div>
             }
-        </div>    
+        </motion.div>    
     )
 }
