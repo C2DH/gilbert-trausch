@@ -16,6 +16,8 @@ export default function Navbar({color}) {
     const [sharedState, setSharedState] = useSharedState();
     const location = useLocation();
     const navigate = useNavigate();
+    const isChapter = location.pathname.includes('/chapter');
+
 
     const handleMenuClick = (path) => {
         if (location.pathname === path) {
@@ -27,7 +29,7 @@ export default function Navbar({color}) {
                 navigate(path);
             }, 1000);
         }
-      };
+    };
 
     /** Disable scroll when menu is open */
     useEffect(() => {
@@ -51,13 +53,15 @@ export default function Navbar({color}) {
                             </svg>
                         </li>
 
-                        {/** BUTTON SECTION MENU */}
-                        <li className='lg:hidden cursor-pointer order-3'>
-                            <svg width="30" height="30" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <circle cx="25" cy="25" r="25" fill={"white"}/>
-                                <path d="M17.125 19.0625C17.125 18.7812 17.3711 18.5 17.6875 18.5H32.3125C32.5938 18.5 32.875 18.7812 32.875 19.0625C32.875 19.3789 32.5938 19.625 32.3125 19.625H17.6875C17.3711 19.625 17.125 19.3789 17.125 19.0625ZM17.125 24.6875C17.125 24.4062 17.3711 24.125 17.6875 24.125H27.8125C28.0938 24.125 28.375 24.4062 28.375 24.6875C28.375 25.0039 28.0938 25.25 27.8125 25.25H17.6875C17.3711 25.25 17.125 25.0039 17.125 24.6875ZM23.875 30.3125C23.875 30.6289 23.5938 30.875 23.3125 30.875H17.6875C17.3711 30.875 17.125 30.6289 17.125 30.3125C17.125 30.0312 17.3711 29.75 17.6875 29.75H23.3125C23.5938 29.75 23.875 30.0312 23.875 30.3125Z" fill="blue" style={{ transition: 'all 0.5s ease-in-out'}}/>
-                            </svg>
-                        </li>
+                        {/** BUTTON MENU CHAPTER */}
+                        {isChapter &&                        
+                            <li className='lg:hidden cursor-pointer order-3'>
+                                <svg width="30" height="30" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <circle cx="25" cy="25" r="25" fill={"white"}/>
+                                    <path d="M17.125 19.0625C17.125 18.7812 17.3711 18.5 17.6875 18.5H32.3125C32.5938 18.5 32.875 18.7812 32.875 19.0625C32.875 19.3789 32.5938 19.625 32.3125 19.625H17.6875C17.3711 19.625 17.125 19.3789 17.125 19.0625ZM17.125 24.6875C17.125 24.4062 17.3711 24.125 17.6875 24.125H27.8125C28.0938 24.125 28.375 24.4062 28.375 24.6875C28.375 25.0039 28.0938 25.25 27.8125 25.25H17.6875C17.3711 25.25 17.125 25.0039 17.125 24.6875ZM23.875 30.3125C23.875 30.6289 23.5938 30.875 23.3125 30.875H17.6875C17.3711 30.875 17.125 30.6289 17.125 30.3125C17.125 30.0312 17.3711 29.75 17.6875 29.75H23.3125C23.5938 29.75 23.875 30.0312 23.875 30.3125Z" fill="blue" style={{ transition: 'all 0.5s ease-in-out'}}/>
+                                </svg>
+                            </li>
+                        }
                         
                         <li className="hidden lg:block uppercase cursor-pointer text-[14px] hover:text-[#4100FC] duration-500 lg:order-2" style={{ color: color }}>
                             <LanguageSwitcher switchLanguage={changeLanguage} lang={language}/>
@@ -80,7 +84,7 @@ export default function Navbar({color}) {
                             <div className="container mx-auto h-full relative">
                                 <div className="header h-[40px]">
                                     <ul className="flex justify-between h-full items-center">
-                                        <li className="uppercase cursor-pointer text-[18px] hover:text-[#4100FC] duration-500"
+                                        <li className="uppercase cursor-pointer text-[14px] lg:text-[18px] hover:text-[#4100FC] duration-500"
                                             onClick={() => handleMenuClick('/')}
                                         >
                                             <span>Gilbert Trausch</span>
@@ -88,7 +92,7 @@ export default function Navbar({color}) {
                                             <span className="hidden lg:block font-light">Une vie dédiée à l'Histoire (1931-2018)</span> */}
                                         </li>
 
-                                        <li className="text-[18px] cursor-pointer uppercase lg:absolute left-[50%] -translate-x-[50%] hover:text-[#4100FC] " onClick={() => setIsOpen(!isOpen)}>{ t('close') }</li>
+                                        <li className="text-[14px] lg:text-[18px] cursor-pointer uppercase lg:absolute lg:left-[50%] lg:-translate-x-[50%] hover:text-[#4100FC] " onClick={() => setIsOpen(!isOpen)}>{ t('close') }</li>
                                         
                                         <li className="hidden lg:block uppercase cursor-pointer text-[14px] hover:text-[#4100FC] duration-500">
                                             <LanguageSwitcher switchLanguage={changeLanguage} lang={language}/>
@@ -97,8 +101,8 @@ export default function Navbar({color}) {
                                 </div>
 
                                 {/** MAIN MENU */}
-                                <div className="2xl:flex items-center h-[calc(100vh-40px)] mt-[50px] lg:mt-[100px] 2xl:mt-0">
-                                    <ul className="font-light text-[20px] md:text-[36px] 2xl:text-[60px] uppercase">
+                                <div className="2xl:flex items-center h-auto lg:h-[calc(100vh-40px)] mt-[50px] lg:mt-[100px] 2xl:mt-0">
+                                    <ul className="font-light text-[24px] md:text-[36px] 2xl:text-[60px] uppercase">
                                         <li className="hover:text-[#4100FC] duration-[450ms] hover:pl-[50px] leading-none mb-5 cursor-pointer"
                                             onClick={() => handleMenuClick('/biography')}
                                         >
@@ -133,7 +137,7 @@ export default function Navbar({color}) {
                                 </div>
 
                                 {/** SUBMENU */}
-                                <div className="absolute bottom-[150px] left-0">
+                                <div className="lg:absolute pt-[80px] lg:pt-0 bottom-[150px] left-0">
                                     <ul className="uppercase text-[16px] 2xl:text-[18px] font-light">
                                         <li className="hover:text-[#4100FC] w-fit cursor-pointer"
                                             onClick={() => handleMenuClick('/about')}

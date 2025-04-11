@@ -10,7 +10,7 @@ import intro_6 from '../assets/images/intro/wallpaper_intro_6.jpg';
 import intro_7 from '../assets/images/intro/wallpaper_intro_7.jpg';
 import intro_8 from '../assets/images/intro/wallpaper_intro_8.jpg';
 import intro_9 from '../assets/images/intro/wallpaper_intro_9.jpg';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useMediaQuery } from 'react-responsive';
 import bgSmall from '../assets/images/backgrounds/bg-home-small.webp'
 import { useTranslation } from 'react-i18next';
@@ -28,6 +28,14 @@ export default function Home() {
     const [animationActive, setAnimationActive] = useState(false);
     const isMobile = useMediaQuery({query: '(max-width: 1024px)'});
     const [sharedState, setSharedState] = useSharedState();
+    const navigate = useNavigate();
+
+    const handleMenuClick = (path) => {
+        setSharedState((prev) => {return { ...prev, showCurtains: true }}) 
+        setTimeout(() => {
+            navigate(path);
+        }, 1000);
+    }
     
     
     useEffect(() => {
@@ -70,93 +78,97 @@ export default function Home() {
      }, [])
 
     return (
-        <>
-            <motion.div 
-                className="relative h-screen w-full"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ easeInOut, duration: 1.2 }}
-            >
+        <motion.div 
+            className="relative h-screen w-full"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ easeInOut, duration: 1.2 }}
+            style={{ background: `url(${isMobile ? bgSmall : intro_1}) center / cover no-repeat` }}
+        >
 
-                <div
+  
+
+            {/* Images animées après le clic */}
+            {!isMobile && visibleImages.map((img, index) => (
+                <motion.div
+                    key={index}
                     className="h-screen absolute inset-0"
-                    style={{ background: `url(${isMobile ? bgSmall : intro_1}) center / cover no-repeat` }}
+                    style={{ background: `url(${img}) center / cover no-repeat` }}
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ duration: animationActive ? 0.2 : 0, ease: "easeOut" }}
                 />
+            ))}
 
-                {/* Images animées après le clic */}
-                {!isMobile && visibleImages.map((img, index) => (
-                    <motion.div
-                        key={index}
-                        className="h-screen absolute inset-0"
-                        style={{ background: `url(${img}) center / cover no-repeat` }}
+            {/* Bouton */}
+            <AnimatePresence>
+                {showStartButton && (
+                    <motion.button
+                        className="absolute top-[50%] left-[50%] -translate-x-[50%] -translate-y-[50%] px-[25px] py-[7px] rounded-[7px] border border-[#4100FC] text-[14px] uppercase font-medium text-[#4100FC] cursor-pointer hover:text-white hover:bg-[#4100FC] duration-500"
+                        onClick={handleStart}
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
-                        transition={{ duration: animationActive ? 0.2 : 0, ease: "easeOut" }}
-                    />
-                ))}
-
-                {/* Bouton */}
-                <AnimatePresence>
-                    {showStartButton && (
-                        <motion.button
-                            className="absolute top-[50%] left-[50%] -translate-x-[50%] -translate-y-[50%] px-[25px] py-[7px] rounded-[7px] border border-[#4100FC] text-[14px] uppercase font-medium text-[#4100FC] cursor-pointer hover:text-white hover:bg-[#4100FC] duration-500"
-                            onClick={handleStart}
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 1 }}
-                            exit={{ opacity: 0 }} // Animation de sortie
-                            transition={{ duration: 0.8, ease: "easeInOut" }}
-                        >
-                            Débuter
-                        </motion.button>
-                    )}
-                </AnimatePresence>
+                        exit={{ opacity: 0 }} // Animation de sortie
+                        transition={{ duration: 0.8, ease: "easeInOut" }}
+                    >
+                        Débuter
+                    </motion.button>
+                )}
+            </AnimatePresence>
 
 
-                <AnimatePresence>
-                    {showMenu && (
-                        <motion.div
-                            className="absolute bottom-[80px] left-0 right-0 flex justify-between"
-                            initial={{ opacity: 0, y: 100 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            exit={{ opacity: 0, y: 100 }}
-                            transition={{ duration: 1, ease: "easeOut" }}
-                        >
-                            <div className="menu w-full lg:container mx-auto">
-                                <ul className="font-normal text-[20px] 2xl:text-[20px] uppercase flex flex-col lg:flex-row justify-between items-center text-center">
-                                    <hr className='lg:hidden w-3/4 border-black'/>
-                                    <li className="leading-none border-black lg:border-t-2 lg:border-b-2 px-[10px] xl:px-[40px] py-[10px] xl:py-[20px] hover:lg:text-blue hover:lg:py-[30px] hover:lg:border-blue duration-[450ms] my-[10px] lg:my-[20px] hover:lg:my-0">
-                                        <Link to={"/biography"}>{ t('biography')}</Link>
-                                    </li>
+            <AnimatePresence>
+                {showMenu && (
+                    <motion.div
+                        className="absolute bottom-[80px] left-0 right-0 flex justify-between"
+                        initial={{ opacity: 0, y: 100 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: 100 }}
+                        transition={{ duration: 1, ease: "easeOut" }}
+                    >
+                        <div className="menu w-full lg:container mx-auto">
+                            <ul className="font-normal text-[20px] 2xl:text-[20px] uppercase flex flex-col lg:flex-row justify-between items-center text-center">
+                                <hr className='lg:hidden w-3/4 border-black'/>
+                                <li className="leading-none border-black lg:border-t-2 lg:border-b-2 px-[10px] xl:px-[40px] py-[10px] xl:py-[20px] hover:lg:text-blue hover:lg:py-[30px] hover:lg:border-blue duration-[450ms] my-[10px] lg:my-[20px] hover:lg:my-0 cursor-pointer"
+                                    onClick={() => handleMenuClick('/biography')}
+                                >
+                                    {t('biography')}
+                                </li>
 
-                                    <hr className='lg:hidden w-3/4 border-black'/>
-                                    <li className="leading-none border-black lg:border-t-2 lg:border-b-2 px-[10px] xl:px-[40px] py-[10px] xl:py-[20px] hover:lg:text-blue hover:lg:py-[30px] hover:lg:border-blue duration-[450ms] my-[10px] lg:my-[20px] hover:lg:my-0">
-                                        <Link to={"/professions"}>{t('professions')}</Link>
-                                    </li>
+                                <hr className='lg:hidden w-3/4 border-black'/>
+                                <li className="leading-none border-black lg:border-t-2 lg:border-b-2 px-[10px] xl:px-[40px] py-[10px] xl:py-[20px] hover:lg:text-blue hover:lg:py-[30px] hover:lg:border-blue duration-[450ms] my-[10px] lg:my-[20px] hover:lg:my-0 cursor-pointer"
+                                    onClick={() => handleMenuClick('/professions')}
+                                >
+                                    {t('professions')}
+                                </li>
 
-                                    <hr className='lg:hidden w-3/4 border-black'/>
-                                    <li className="leading-none border-black lg:border-t-2 lg:border-b-2 px-[10px] xl:px-[40px] py-[10px] xl:py-[20px] hover:lg:text-blue hover:lg:py-[30px] hover:lg:border-blue duration-[450ms] my-[10px] lg:my-[20px] hover:lg:my-0">
-                                        <Link to={"/magic-notebooks"}>{t('magicNotebooks')}</Link>
-                                    </li>
+                                <hr className='lg:hidden w-3/4 border-black'/>
+                                <li className="leading-none border-black lg:border-t-2 lg:border-b-2 px-[10px] xl:px-[40px] py-[10px] xl:py-[20px] hover:lg:text-blue hover:lg:py-[30px] hover:lg:border-blue duration-[450ms] my-[10px] lg:my-[20px] hover:lg:my-0 cursor-pointer"
+                                    onClick={() => handleMenuClick('/magic-notebooks')}
+                                >
+                                    {t('magicNotebooks')}
+                                </li>
 
-                                    <hr className='lg:hidden w-3/4 border-black'/>
-                                    <li className="leading-none border-black lg:border-t-2 lg:border-b-2 px-[10px] xl:px-[40px] py-[10px] xl:py-[20px] hover:lg:text-blue hover:lg:py-[30px] hover:lg:border-blue duration-[450ms] my-[10px] lg:my-[20px] hover:lg:my-0">
-                                        <Link to={"/virtual-tour"}>
-                                            <span className="block leading-none">{ t('house') }</span>
-                                        </Link>
-                                    </li>
+                                <hr className='lg:hidden w-3/4 border-black'/>
+                                <li className="leading-none border-black lg:border-t-2 lg:border-b-2 px-[10px] xl:px-[40px] py-[10px] xl:py-[20px] hover:lg:text-blue hover:lg:py-[30px] hover:lg:border-blue duration-[450ms] my-[10px] lg:my-[20px] hover:lg:my-0 cursor-pointer"
+                                    onClick={() => handleMenuClick('/virtual-tour')}
+                                >
+                                    <span className="block leading-none">{ t('house') }</span>
+                                </li>
 
-                                    <hr className='lg:hidden w-3/4 border-black'/>
-                                    <li className="leading-none border-black lg:border-t-2 lg:border-b-2 px-[10px] xl:px-[40px] py-[10px] xl:py-[20px] hover:lg:text-blue hover:lg:py-[30px] hover:lg:border-blue duration-[450ms] my-[10px] lg:my-[20px] hover:lg:my-0">
-                                        <Link to={"/resources"}>{t('resources')}</Link>
-                                    </li> 
+                                <hr className='lg:hidden w-3/4 border-black'/>
+                                <li className="leading-none border-black lg:border-t-2 lg:border-b-2 px-[10px] xl:px-[40px] py-[10px] xl:py-[20px] hover:lg:text-blue hover:lg:py-[30px] hover:lg:border-blue duration-[450ms] my-[10px] lg:my-[20px] hover:lg:my-0 cursor-pointer"
+                                    onClick={() => handleMenuClick('/resources')}
+                                >
+                                    {t('resources')}
+                                </li> 
 
-                                    <hr className='lg:hidden w-3/4 border-black'/>
-                                </ul>
-                            </div>
-                        </motion.div>
-                    )}
-                </AnimatePresence>
-            </motion.div>
-        </>
+                                <hr className='lg:hidden w-3/4 border-black'/>
+                            </ul>
+                        </div>
+                    </motion.div>
+                )}
+            </AnimatePresence>
+        </motion.div>
     );
 }

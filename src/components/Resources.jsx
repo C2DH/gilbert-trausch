@@ -342,12 +342,12 @@ export default function Resources() {
                         </div>
 
                         {/** BTN MOBILE FILTERS */}
-                        <div className="lg:hidden fixed left-0 right-0 bottom-0 bg-white h-[70px] flex justify-center items-center border-t border-black cursor-pointer z-[101]" onClick={() => setIsOpenFilters(!isOpenFilters)}>
-                            <span className="text-blue text-[22px] font-semibold uppercase cursor-">Filtres</span>
+                        <div className="lg:hidden fixed left-0 right-0 bottom-0 bg-white h-[40px] flex justify-center items-center border-t border-black cursor-pointer z-[101]" onClick={() => setIsOpenFilters(!isOpenFilters)}>
+                            <span className="text-blue test-[18px] md:text-[22px] font-semibold uppercase cursor-">Filtres</span>
                         </div>
                         
                         {/** MOBILE FILTERS */}
-                        <div className={classNames("lg:hidden fixed bottom-[70px] bg-white flex flex-col h-[50%] left-0 right-0 transition-all duration-[750ms] z-[100] border-t border-black", {
+                        <div className={classNames("lg:hidden fixed bottom-[40px] bg-white flex flex-col h-[50%] left-0 right-0 transition-all duration-[750ms] z-[100] border-t border-black", {
                                 "translate-y-[100%]": !isOpenFilters
                             })}
                         >
