@@ -30,7 +30,7 @@ ENV VITE_GIT_BRANCH=${GIT_BRANCH}
 ENV VITE_GIT_COMMIT_SHA=${GIT_COMMIT_SHA}
 ENV VITE_GIT_LAST_COMMIT_DATE=${GIT_LAST_COMMIT_DATE}
 ENV VITE_BUILD_DATE=${BUILD_DATE}
-ENV VITE_API_URL=https://vq0qm5bppvt.preview.infomaniak.website
+ENV VITE_API_URL=
 RUN npm run build
 
 # print out these env values to a info.json file
