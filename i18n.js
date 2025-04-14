@@ -32,7 +32,8 @@ i18n
 					"tour": "Visite virtuelle",
 					"about":"A propos",
 					"conditions": "Conditions d'utilisation",
-					"close": "Fermer"
+					"close": "Fermer",
+					'start': "Débuter"
 				}
 			},
 			de: {
@@ -51,7 +52,8 @@ i18n
 					"tour": "Virtuelle Tour",
 					"about":"Über",
 					"conditions": "Bedingungen für die Nutzung",
-					"close": "Schließen"
+					"close": "Schließen",
+					"start": "Starten"
 
 
 

@@ -1,11 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import { Document, Page, pdfjs } from 'react-pdf';
-import {
-  MagnifyingGlassMinusIcon,
-  MagnifyingGlassPlusIcon,
-  ArrowLeftIcon,
-  ArrowRightIcon,
-} from '@heroicons/react/24/outline';
+import {MagnifyingGlassMinusIcon, MagnifyingGlassPlusIcon, ArrowLeftIcon, ArrowRightIcon } from '@heroicons/react/24/outline';
 import classNames from 'classnames';
 
 pdfjs.GlobalWorkerOptions.workerSrc = new URL(

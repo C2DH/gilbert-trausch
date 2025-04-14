@@ -3,7 +3,6 @@ import { getYear, formatRichText } from "../lib/utils";
 import bg from '../assets/images/backgrounds/biography.webp'
 import { Link, Element } from 'react-scroll';
 import classNames from "classnames";
-import { useMediaQuery } from "react-responsive";
 import { AnimatePresence, motion } from "motion/react";
 import { easeInOut } from "motion";
 import PopupResource from "./content/PopupResource";
@@ -23,7 +22,6 @@ export default function Biography() {
     const [isOpenPopup, setIsOpenPopup] = useState(false);
     const [dataPopup, setDataPopup] = useState();
     const [sharedState, setSharedState] = useSharedState();
-    const isMobile = useMediaQuery({ query: '(max-width: 768px)'});
 
     useEffect(() => {
         fetch(`${API_URL}/api/biography`)
@@ -204,7 +202,7 @@ export default function Biography() {
                                                     className="py-[10px] md:py-0 cursor-pointer"
                                                     onClick={() => { setIsOpenPopup(true); setDataPopup(document) }}
                                                 >
-                                                    <img className="w-full max-h-[350px] md:max-h-auto object-contain md:h-[220px]" src={ document?.optimized_url.thumbnail.url } alt={document?.name[locale]}/>
+                                                    <img className="w-full max-h-[350px] md:max-h-auto object-contain md:h-[220px]" src={ document?.optimized_url?.thumbnail.url } alt={document?.name[locale]}/>
                                                 </div>
                                             )}
                                         </div>

@@ -1,5 +1,4 @@
 import { formatRichText } from "../../lib/utils";
-import PlayerPDF from "./PlayerPDF";
 import { useState, useEffect } from "react";
 import PopupResource from "./PopupResource";
 import {AnimatePresence, motion } from "framer-motion";
@@ -13,15 +12,14 @@ export default function SlideImageText({ data, locale }) {
     const API_URL = import.meta.env.VITE_API_URL;
     const imageUrl = `${API_URL}/storage/${data?.slidable?.background?.background}`;
     const color = data?.slidable?.color_text;
-    const [isPortrait, setIsPortrait] = useState(false);
+    const [, setIsPortrait] = useState(false);
     const [isOpenPopup, setIsOpenPopup] = useState(false);
     const [dataPopup, setDataPopup] = useState();
-    const isDesktopOrLaptop = useMediaQuery({query: '(min-width: 1224px)'});
     const isMobile = useMediaQuery({query: '(max-width: 768px)'});
 
     useEffect(() => {
         if (data?.slidable?.document?.url && locale) {
-            const img = new Image();
+            const img = new Image(); 
             img.src = data.slidable.document.url;
             img.onload = () => {
                 setIsPortrait(img.height > img.width);
@@ -41,7 +39,7 @@ export default function SlideImageText({ data, locale }) {
         <>
             <div style={{ background: `url(${isMobile ? bgSmall : imageUrl}) right / cover no-repeat` }} className='h-screen slide'>
                 <div className="relative top-[40px]">
-                    <div className="container mx-auto px-[20px] xl:px-0 h-[calc(100vh-40px)] overflow-scroll">
+                    <div className="container mx-auto px-[20px] xl:px-0 h-[calc(100vh-40px)] overflow-y-scroll">
                         <div className="grid grid-cols-12 lg:h-full">
                             <div className="col-span-12 xl:col-span-7 2xl:col-span-8">
                                 <div className="grid grid-cols-8 h-full">

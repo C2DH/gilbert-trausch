@@ -13,12 +13,10 @@ export default function Navbar({color}) {
 
     const [isOpen, setIsOpen] = useState(false);
     const {language, changeLanguage } = useLanguageContext();
-    const [sharedState, setSharedState] = useSharedState();
+    const [ ,setSharedState] = useSharedState();
     const location = useLocation();
     const navigate = useNavigate();
     const isChapterOrNotebook = location.pathname.includes('/chapter') || location.pathname.includes('/magic-notebooks');
-
-
 
     const handleMenuClick = (path) => {
         if (location.pathname === path) {
@@ -126,7 +124,7 @@ export default function Navbar({color}) {
                                             onClick={() => handleMenuClick('/virtual-tour')} 
                                         >
                                             <span className="block leading-none">{ t('house')}</span>
-                                            <span className="text-[40px] block leading-none">({ t('tour')})</span>   
+                                            <span className="text-[20px] md:text-[30px] 2xl:text-[40px] block leading-none">({ t('tour')})</span>   
                                         </li>
 
                                         <li className="hover:text-[#4100FC] duration-[450ms] hover:pl-[50px] leading-none cursor-pointer"

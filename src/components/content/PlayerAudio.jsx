@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import WavesurferPlayer from '@wavesurfer/react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPause, faPlay } from '@fortawesome/free-solid-svg-icons';
+import { PauseIcon } from '@heroicons/react/24/outline';
+import { PlayIcon } from '@heroicons/react/24/solid';
 import classNames from 'classnames';
 import { useMediaQuery } from 'react-responsive';
 
@@ -58,9 +58,9 @@ export default function PlayerAudio( {url} ) {
             <div className='flex items-center justify-between'>
                 <div onClick={onPlayPause} className='w-[40px] lg:w-[60px] h-[40px] lg:h-[60px] bg-blue rounded-[50%] flex items-center justify-center'>
                     {isPlaying ? 
-                        <FontAwesomeIcon icon={faPause} style={{color: 'white', fontSize: isMobile ? '20px' : '30px' }}/> 
+                        <PauseIcon className='text-white w-[40px]'/> 
                         : 
-                        <FontAwesomeIcon icon={faPlay} style={{color: 'white', fontSize: isMobile ? '20px' : '30px' }}/>
+                        <PlayIcon  className='text-white w-[40px]'/>
                     }
                 </div>
 

@@ -17,47 +17,34 @@ import '../i18n'
 import { AnimatePresence } from "motion/react";
 import Curtains from "./components/content/Curtains";
 import { useSharedState } from "./contexts/ShareStateProvider";
-import { useEffect, useState } from "react";
+import { NavbarProvider } from "./contexts/NavbarProvider";
 
 export default function App() {
     
     const location = useLocation();
-    const [sharedState, setSharedState] = useSharedState();
-    const [firstLaunch, setFirstLaunch] = useState(true)
-
-    // useEffect(() => {
-
-    //     // console.log('sharedstate',sharedState)
-
-    //     // if (!firstLaunch) {
-    //     //     setSharedState({ ...sharedState, showCurtains: true })
-    //     // }
-    //     // setFirstLaunch(false);
-    // }, [location.pathname]);
-
-    // useEffect(() => {
-    //     console.log('refresh');
-    // }, []);
+    const [sharedState] = useSharedState();
     
     return (    
         <>            
             <LanguageProvider>
-                <Routes location={location} key={location.pathname}>
-                    <Route path="/" element={<Layout />}>
-                        <Route path='/' element={ <Home /> }/>
-                        <Route path="/preview/chapter/slide/:id" element={<PreviewSlide />} />
-                        <Route path="/preview/magic-notebook/slide/:id" element={<PreviewSlideMagicNotebook />} />
-                        <Route path="/biography" element={<Biography />} />
-                        <Route path="/professions" element={<Chapters />} />
-                        <Route path="/chapter/:id" element={<Chapter />} />
-                        <Route path="/magic-notebook/:id" element={<MagicNotebook />} />
-                        <Route path="/magic-notebooks" element={<MagicNotebooks />} />
-                        <Route path="/virtual-tour" element={<VirtualTour />} />
-                        <Route path="/resources" element={<Resources />} />
-                        <Route path="/about" element={<About />} />
-                        <Route path="/terms-of-use" element={<Terms />} />
-                    </Route>
-                </Routes>
+                <NavbarProvider>
+                    <Routes location={location} key={location.pathname}>
+                        <Route path="/" element={<Layout />}>
+                            <Route path='/' element={ <Home /> }/>
+                            <Route path="/preview/chapter/slide/:id" element={<PreviewSlide />} />
+                            <Route path="/preview/magic-notebook/slide/:id" element={<PreviewSlideMagicNotebook />} />
+                            <Route path="/biography" element={<Biography />} />
+                            <Route path="/professions" element={<Chapters />} />
+                            <Route path="/chapter/:id" element={<Chapter />} />
+                            <Route path="/magic-notebook/:id" element={<MagicNotebook />} />
+                            <Route path="/magic-notebooks" element={<MagicNotebooks />} />
+                            <Route path="/virtual-tour" element={<VirtualTour />} />
+                            <Route path="/resources" element={<Resources />} />
+                            <Route path="/about" element={<About />} />
+                            <Route path="/terms-of-use" element={<Terms />} />
+                        </Route>
+                    </Routes>
+                </NavbarProvider>
             </LanguageProvider>
 
             <AnimatePresence mode="wait">

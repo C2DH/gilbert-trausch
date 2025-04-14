@@ -18,8 +18,6 @@ export default function PopupResource({ setIsOpenPopup, data, locale }) {
     const { t } = useTranslation();
     const isMobile = useMediaQuery({query: '(max-width: 768px)'});
 
-    console.log('locale', locale)
-
     useEffect(() => {
         setIsImageVisible(true);
     }, []);

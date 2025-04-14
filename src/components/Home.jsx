@@ -57,21 +57,24 @@ export default function Home() {
     };
 
     useEffect(() => {
-        if (animationActive) {
+        if (!animationActive) return;
+    
+        if (isMobile) {
+            setShowMenu(true);
+        } else {
             setTimeout(() => {
                 images.forEach((img, index) => {
                     setTimeout(() => {
                         setVisibleImages((prev) => [...prev, img]);
-
-                        // Afficher le menu seulement après la dernière image
+    
                         if (index === images.length - 1) {
                             setTimeout(() => setShowMenu(true), 1000);
                         }
                     }, index * 600);
                 });
-            }, 1000); // Délai de 1s avant le début des images
+            }, 1000); // Délai avant le début des images
         }
-    }, [animationActive]);
+    }, [animationActive, isMobile]);
 
     useEffect(() => {
         setSharedState({ ...sharedState, showCurtains: false }) 
@@ -85,8 +88,6 @@ export default function Home() {
             transition={{ easeInOut, duration: 1.2 }}
             style={{ background: `url(${isMobile ? bgSmall : intro_1}) center / cover no-repeat` }}
         >
-
-  
 
             {/* Images animées après le clic */}
             {!isMobile && visibleImages.map((img, index) => (
@@ -111,7 +112,7 @@ export default function Home() {
                         exit={{ opacity: 0 }} // Animation de sortie
                         transition={{ duration: 0.8, ease: "easeInOut" }}
                     >
-                        Débuter
+                        { t('start') }
                     </motion.button>
                 )}
             </AnimatePresence>

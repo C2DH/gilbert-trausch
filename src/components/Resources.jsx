@@ -26,8 +26,7 @@ export default function Resources() {
         tags: []
     });
     const [datesCount, setDatesCount] = useState([]);
-    const [total, setTotal] = useState(null);
-    const [dates, setDates] = useState("");
+    const [ , setTotal] = useState(null);
     const [minDate, setMinDate] = useState("");
     const [maxDate, setMaxDate] = useState("");
     const [imagesLoaded, setImagesLoaded] = useState(false);

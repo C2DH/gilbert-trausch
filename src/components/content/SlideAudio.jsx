@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { formatRichText } from "../../lib/utils";
 import Slider from "./Slider";
 import PopupResource from "./PopupResource";

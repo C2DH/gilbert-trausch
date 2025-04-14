@@ -23,7 +23,7 @@ export default function SlideHeader({ data, showSubtitle, index, locale }) {
                                 <div className="relative w-full min-h-[300px]">
                                     
                                     <AnimatePresence mode="wait">
-                                        {(!showSubtitle || index !== 1) && (
+                                        {(!showSubtitle || index !== 0) && (
                                             <motion.div
                                                 key="content"
                                                 initial={{ opacity: 0, y: -10 }}

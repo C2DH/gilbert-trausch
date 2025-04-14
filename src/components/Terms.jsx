@@ -27,7 +27,6 @@ export default function Terms() {
             .then((data) => {
                 setData(data.data);
                 setIsLoading(true)
-                console.log(data.data)
             })
             .catch((error) => console.error("Erreur lors du chargement des données de la page à propos :", error));
     }, [locale]);

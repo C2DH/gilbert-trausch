@@ -15,7 +15,6 @@ export default function SlideColumn({data, locale}) {
     const color = data?.slidable?.color_text;
     const [isOpenPopup, setIsOpenPopup] = useState(false);
     const [dataPopup, setDataPopup] = useState();
-    const isDesktopOrLaptop = useMediaQuery({ query: '(min-width: 1224px)'});
     const isMobile = useMediaQuery({ query: '(max-width: 768px)'});
     let columns = [];
 

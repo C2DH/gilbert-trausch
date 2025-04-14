@@ -23,8 +23,6 @@ export default function Chapters() {
     const isMobile = useMediaQuery({ query: '(max-width: 768px)'});
     const [sharedState, setSharedState] = useSharedState();
     
-
-
     const getBackgroundImage = () => {
         switch (hoveredIndex) {
             case 0:
