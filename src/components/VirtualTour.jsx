@@ -31,9 +31,9 @@ export default function VirtualTour() {
             .catch((error) => console.error("Erreur lors du chargement des données de la page du tour virtuel :", error));
     }, [locale]);
 
-    useEffect(() => {
-        setSharedState({ ...sharedState, showCurtains: false }) 
-     }, [])
+    // useEffect(() => {
+    //     setSharedState({ ...sharedState, showCurtains: false }) 
+    //  }, [])
 
 
 

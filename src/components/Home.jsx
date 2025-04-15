@@ -76,9 +76,9 @@ export default function Home() {
         }
     }, [animationActive, isMobile]);
 
-    useEffect(() => {
-        setSharedState({ ...sharedState, showCurtains: false }) 
-     }, [])
+    // useEffect(() => {
+    //     setSharedState({ ...sharedState, showCurtains: false }) 
+    //  }, [])
 
     return (
         <motion.div 

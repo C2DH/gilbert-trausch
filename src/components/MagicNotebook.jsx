@@ -1,7 +1,6 @@
 import { useContext, useEffect, useRef, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useLocation, useNavigate, useParams, useSearchParams } from "react-router-dom";
 import {AnimatePresence, motion } from "framer-motion";
-import { easeInOut } from "motion";
 import SlideHeader from "./content/SlideHeader";
 import SlideCitation from "./content/SlideCitation";
 import SlideMediaFull from "./content/SlideMediaFull";
@@ -14,22 +13,42 @@ import SlideStep from "./content/SlideStep";
 import SlideAudio from "./content/SlideAudio";
 import { useMediaQuery } from "react-responsive";
 import wallpaper_menu from '../assets/images/menu/menu-wallpaper-ch1.png';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Mousewheel, EffectFade } from 'swiper/modules';
-import 'swiper/css';
 import classNames from "classnames";
 import { PopupProvider } from "../contexts/PopupContext";
 import { useTranslation } from "react-i18next";
 import { useSharedState } from "../contexts/ShareStateProvider";
 import { NavbarContext } from "../contexts/NavbarProvider";
 
+// Variants pour les animations
+const variants = {
+    initial: (direction) => {
+        return {
+            y: direction > 0 ? '100%' : '-100%',
+            opacity: 0
+        };
+    },
+    animate: {
+        zIndex: 1,
+        y: 0,
+        opacity: 1
+    },
+    exit: (direction) => {
+        return {
+            zIndex: 0,
+            y: direction < 0 ? '100%' : '-100%',
+            opacity: 0
+        };
+    }
+};
+
 
 export default function MagicNotebook() {
     
     const API_URL = import.meta.env.VITE_API_URL;
+    const [searchParams] = useSearchParams();
     const { i18n } = useTranslation();
     const locale = i18n.language;    
-    const { id } = useParams();
+    const { slug, id } = useParams();
     const [data, setData] = useState();
     const [isLoading, setIsLoading] = useState(false);
     const swiperRef = useRef();
@@ -47,11 +66,26 @@ export default function MagicNotebook() {
     const [slideGroups, setSlideGroups] = useState([]);
     const [currentInGroupIndex, setCurrentInGroupIndex] = useState(1);
     const [currentGroupTotal, setCurrentGroupTotal] = useState(1);
+    const [direction, setDirection] = useState(0)
+    const location = useLocation();
+    const navigate = useNavigate();
+
+    // http://localhost/api/chapter/le-personnage-public
+    // http://localhost/api/magic-notebook/undefined
 
     
+    useEffect(() => {
+        setActiveIndex(parseInt(searchParams.get('index') ?? 0));
+        if (parseInt(searchParams.get('index')) === 0) {
+                setShowSubtitle(false)
+        } else {
+            setShowSubtitle(true)
+
+        }
+    }, [searchParams]);
 
     useEffect(() => {
-        fetch(`${API_URL}/api/magic-notebook/${id}`)
+        fetch(`${API_URL}/api/magic-notebook/${slug}`)
             .then((response) => {
                 if (!response.ok) {
                     throw new Error(`Erreur HTTP : ${response.status}`);
@@ -123,9 +157,9 @@ export default function MagicNotebook() {
         }
     }, [activeIndex, data]);
 
-    useEffect(() => {
-        setSharedState({ ...sharedState, showCurtains: false }) 
-     }, [])
+    // useEffect(() => {
+    //     setSharedState({ ...sharedState, showCurtains: false }) 
+    //  }, [])
 
 
     // Calcul circonférence et progression
@@ -135,78 +169,63 @@ export default function MagicNotebook() {
 
     // Click Next
     const handleNextClick = () => {
+        setDirection(1);
         if (activeIndex === 0 && firstClick) {
             setShowSubtitle(true)
             setFirstClick(false)
         } else {
-            swiperRef.current?.slideNext()
+            navigate(location.pathname + '?index=' + Math.min(data.slides.length - 1, activeIndex + 1)); 
         }
     }
 
     const handlePrevClick = () => {
+        setDirection(-1);
         if (activeIndex === 0 && !firstClick) {
             setShowSubtitle(false)
             setFirstClick(true)
         } else {
-            swiperRef.current?.slidePrev()
+            navigate(location.pathname + '?index=' + Math.max(0, activeIndex - 1));
         }
     }
 
     return (
-        <motion.div 
-            className="relative w-full h-screen"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ easeInOut, duration: 1.2 }}
-        >
+        <div className="relative w-full h-screen">
             {isLoading &&
                 <>
                     <PopupProvider>
-                        <Swiper
-                            modules={[Mousewheel, EffectFade]}
-                            ref={swiperRef}
-                            direction="vertical"
-                            slidesPerView={1}
-                            speed={800}
-                            className="h-full custom-fade-swiper"
-                            simulateTouch={ isMobile ? false : true }
-                            grabCursor={ isMobile ? false : true }
-                            effect="fade"
-                            // fadeEffect={{ crossFade: true }}
-                            // mousewheel={ true }
-                            // touchMoveStopPropagation={true}
-                            // mousewheel={{ forceToAxis: true, nested: true }} 
-                            // onActiveIndexChange={swiper => setActiveIndex(swiper.activeIndex + 1)}
-                            onSwiper={(swiper) => { swiperRef.current = swiper }}
-                            onSlideChange={(swiper) => {
-                                setActiveIndex(swiper.activeIndex);
-                                // Reset scroll in slide
-                                const slides = document.querySelectorAll('.overflow-y-scroll');
-                                slides.forEach(slide => {
-                                    slide.scrollTop = 0;
-                                });
-                            }}
-                        >
-                            {data?.slides?.map((slide, index) => (
-                                <SwiperSlide key={slide.id}>
-                                    {index === activeIndex && (
-                                        <>
-                                            { slide.slidable.type === "SlideHeader" && <SlideHeader data={slide} showSubtitle={showSubtitle} index={activeIndex} locale={locale} /> }
-                                            { slide.slidable.type === "SlideMediaFull" && <SlideMediaFull data={slide} locale={locale} /> }
-                                            { slide.slidable.type === "SlideCitation" && <SlideCitation data={slide} locale={locale} /> }
-                                            { slide.slidable.type === "SlideCentralText" && <SlideCentralText data={slide} locale={locale} /> }
-                                            { slide.slidable.type === "SlideColumn" && <SlideColumn data={slide} locale={locale} /> }
-                                            { slide.slidable.type === "SlideSlider" && <SlideSlider data={slide} locale={locale} /> }
-                                            { slide.slidable.type === "SlideMasonry" && <SlideMasonry data={slide} locale={locale} /> }
-                                            { slide.slidable.type === "SlideImageText" && <SlideImageText data={slide} locale={locale} /> }
-                                            { slide.slidable.type === "SlideStep" && <SlideStep data={slide} locale={locale} /> }
-                                            { slide.slidable.type === "SlideAudio" && <SlideAudio data={slide} locale={locale} /> }
-                                        </>
-                                    )}
-                                </SwiperSlide>
-                            ))}
-                        </Swiper>
-                    </PopupProvider>    
+                        <AnimatePresence mode="wait" initial={false} custom={direction}>
+                            {data?.slides?.map((slide, index) => {
+                                return (
+                                    index === activeIndex && (
+                                        <motion.div key={`${slide.id}-${activeIndex}`}
+                                            custom={direction}
+                                            variants={variants}
+                                            initial="initial"
+                                            animate="animate"
+                                            exit="exit"
+                                            transition={{
+                                                y: { type: "spring", stiffness: 300, damping: 30 },
+                                                opacity: { duration: 0.2 }
+                                            }}
+                                        >
+                                            <>
+                                                {slide.slidable.type === "SlideHeader" && <SlideHeader data={slide} showSubtitle={showSubtitle} index={activeIndex} locale={locale} />}
+                                                {slide.slidable.type === "SlideMediaFull" && <SlideMediaFull data={slide} locale={locale} />}
+                                                {slide.slidable.type === "SlideCitation" && <SlideCitation data={slide} locale={locale} />}
+                                                {slide.slidable.type === "SlideCentralText" && <SlideCentralText data={slide} locale={locale} />}
+                                                {slide.slidable.type === "SlideColumn" && <SlideColumn data={slide} locale={locale} />}
+                                                {slide.slidable.type === "SlideSlider" && <SlideSlider data={slide} locale={locale} />}
+                                                {slide.slidable.type === "SlideMasonry" && <SlideMasonry data={slide} locale={locale} />}
+                                                {slide.slidable.type === "SlideImageText" && <SlideImageText data={slide} locale={locale} />}
+                                                {slide.slidable.type === "SlideStep" && <SlideStep data={slide} locale={locale} />}
+                                                {slide.slidable.type === "SlideAudio" && <SlideAudio data={slide} locale={locale} />}
+                                            </>
+                                        </motion.div>
+                                    )
+                                );
+                            })}
+                        </AnimatePresence>
+                    </PopupProvider>
                     
                     {/** BUTTON MENU ASIDE */}
                     { slideHeaders?.length > 0 &&            
@@ -366,6 +385,6 @@ export default function MagicNotebook() {
                     </AnimatePresence>
                 </>
             }
-        </motion.div>
+        </div>
     )
 }

@@ -34,9 +34,9 @@ export default function MagicNotebooks() {
             .catch((error) => console.error("Erreur lors du chargement des cahiers magiques :", error));
     }, [locale]);
 
-    useEffect(() => {
-        setSharedState({ ...sharedState, showCurtains: false }) 
-     }, [])
+    // useEffect(() => {
+    //     setSharedState({ ...sharedState, showCurtains: false }) 
+    //  }, [])
 
     return (
         <>
@@ -66,7 +66,7 @@ export default function MagicNotebooks() {
                                         {data?.map((item, index) => (
                                             <li key={item.id} className="group mb-[20px] lg:mb-[50px] last:mb-0 flex gap-5 font-extralight ">
                                                 <span className="transition-all duration-500 group-hover:text-[#4100FC]">{romanize(index)}.</span>
-                                                <Link to={`/magic-notebook/${item.id}`} className="transition-all duration-500 group-hover:text-[#4100FC] group-hover:pl-[30px]">{item.name[locale]}</Link>
+                                                <Link to={`/magic-notebook/${item.slug}`} className="transition-all duration-500 group-hover:text-[#4100FC] group-hover:pl-[30px]">{item.name[locale]}</Link>
                                             </li>
                                         ))}
                                     </ul>

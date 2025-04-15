@@ -38,9 +38,9 @@ export default function Biography() {
             .catch((error) => console.error("Erreur de chargement :", error));
     }, [locale]);
 
-    useEffect(() => {
-       setSharedState({ ...sharedState, showCurtains: false }) 
-    }, [])
+    // useEffect(() => {
+    //    setSharedState({ ...sharedState, showCurtains: false }) 
+    // }, [])
 
     useEffect(() => {
         if (data.length > 0) {

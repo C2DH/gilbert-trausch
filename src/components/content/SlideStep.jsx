@@ -3,7 +3,7 @@ import { formatRichText } from "../../lib/utils";
 import PlayerPDF from "./PlayerPDF";
 import Slider from "./Slider";
 import PopupResource from "./PopupResource";
-import {AnimatePresence, motion } from "framer-motion";
+import {AnimatePresence, motion } from "motion/react";
 import { PopupContext } from "../../contexts/PopupContext";
 
 export default function SlideStep({ data, locale }) {

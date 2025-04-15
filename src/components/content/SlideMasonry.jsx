@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { formatRichText } from "../../lib/utils";
 import PopupResource from "./PopupResource";
-import {AnimatePresence, motion } from "framer-motion";
+import {AnimatePresence, motion } from "motion/react";
 import audioLogo from '../../assets/images/audio.svg';
 import videoLogo from '../../assets/images/video.svg';
 import bgSmall from '../../assets/images/backgrounds/bg-1.webp';

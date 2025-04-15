@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import PlayerVideo from "./PlayerVideo";
 import PopupResource from "./PopupResource";
-import {AnimatePresence, motion } from "framer-motion";
+import {AnimatePresence, motion } from "motion/react";
 
 
 export default function SlideMediaFull({ data, locale }) {

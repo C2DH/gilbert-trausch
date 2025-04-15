@@ -36,9 +36,9 @@ export default function About() {
             .catch((error) => console.error("Erreur lors du chargement des données de la page à propos :", error));
     }, [locale]);
 
-    useEffect(() => {
-        setSharedState({ ...sharedState, showCurtains: false }) 
-     }, [])
+    // useEffect(() => {
+    //     setSharedState({ ...sharedState, showCurtains: false }) 
+    //  }, [])
 
 
     return (

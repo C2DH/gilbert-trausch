@@ -1,7 +1,7 @@
 import { formatRichText } from "../../lib/utils";
 import { useState, useEffect } from "react";
 import PopupResource from "./PopupResource";
-import {AnimatePresence, motion } from "framer-motion";
+import {AnimatePresence, motion } from "motion/react";
 import bgSmall from '../../assets/images/backgrounds/bg-1.webp';
 import { useMediaQuery } from "react-responsive";
 

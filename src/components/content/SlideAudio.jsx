@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { formatRichText } from "../../lib/utils";
 import Slider from "./Slider";
 import PopupResource from "./PopupResource";
-import {AnimatePresence, motion } from "framer-motion";
+import {AnimatePresence, motion } from "motion/react";
 import { useContext } from "react";
 import { PopupContext } from "../../contexts/PopupContext";
 import { useMediaQuery } from "react-responsive";

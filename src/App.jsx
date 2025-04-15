@@ -35,8 +35,8 @@ export default function App() {
                             <Route path="/preview/magic-notebook/slide/:id" element={<PreviewSlideMagicNotebook />} />
                             <Route path="/biography" element={<Biography />} />
                             <Route path="/professions" element={<Chapters />} />
-                            <Route path="/chapter/:id" element={<Chapter />} />
-                            <Route path="/magic-notebook/:id" element={<MagicNotebook />} />
+                            <Route path="/chapter/:slug" element={<Chapter />} />
+                            <Route path="/magic-notebook/:slug" element={<MagicNotebook />} />
                             <Route path="/magic-notebooks" element={<MagicNotebooks />} />
                             <Route path="/virtual-tour" element={<VirtualTour />} />
                             <Route path="/resources" element={<Resources />} />
@@ -47,9 +47,9 @@ export default function App() {
                 </NavbarProvider>
             </LanguageProvider>
 
-            <AnimatePresence mode="wait">
+            {/* <AnimatePresence mode="wait">
                 {sharedState.showCurtains && <Curtains key="curtains" />}
-            </AnimatePresence>
+            </AnimatePresence> */}
         </>
     );
 }

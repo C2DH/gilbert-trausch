@@ -36,9 +36,9 @@ export default function PopupResource({ setIsOpenPopup, data, locale }) {
 
                             { (data.type === "image" && data.optimized_url) &&                            
                                 <motion.div 
-                                    initial={{ opacity: 0, scale: 0.5 }}
-                                    animate={{ opacity: isImageVisible ? 1 : 0, scale: isImageVisible ? 1 : 0.5 }}
-                                    transition={{ duration: 0.8 }}
+                                    // initial={{ opacity: 0, scale: 0.5 }}
+                                    // animate={{ opacity: isImageVisible ? 1 : 0, scale: isImageVisible ? 1 : 0.5 }}
+                                    // transition={{ duration: 0.8 }}
                                 >
                                     <ImageZoom image={ isMobile ? data.optimized_url.thumbnail.url : data.optimized_url.large.url } alt={ data.name[locale] }/>
                                 </motion.div>

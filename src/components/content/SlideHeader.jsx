@@ -1,5 +1,6 @@
 import { formatRichText } from '../../lib/utils';
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, motion } from "motion/react";
+
 
 export default function SlideHeader({ data, showSubtitle, index, locale }) {
     const API_URL = import.meta.env.VITE_API_URL;

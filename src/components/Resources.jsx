@@ -60,9 +60,9 @@ export default function Resources() {
         })
     }
 
-    useEffect(() => {
-        setSharedState({ ...sharedState, showCurtains: false }) 
-     }, [])
+    // useEffect(() => {
+    //     setSharedState({ ...sharedState, showCurtains: false }) 
+    //  }, [])
     
     // RESOURCES
     useEffect(() => {
@@ -166,7 +166,7 @@ export default function Resources() {
                     {/** SEARCH */}
                     <div className="search xl:border-b border-black">
                         <div className="container mx-auto">
-                            <div className="grid grid-cols-12 h-[120px] px-[20px] xl:px-0">
+                            <div className="grid grid-cols-12 h-[120px]">
                                 <div className="col-span-12 xl:col-span-3 flex items-center justify-center xl:justify-start">
                                     <h1 className="text-[30px] xl:text-[60px] text-[#4100FC] leading-none font-light">{ t('resources')}</h1>
                                 </div>
@@ -191,9 +191,9 @@ export default function Resources() {
                             
                             {/** DOCUMENTS */}
                             {isLoading && documents.length > 0 ? (
-                                    <div className="col-span-12 lg:col-span-9 flex h-[calc(100vh-160px)] px-[20px] xl:px-0">
+                                    <div className="col-span-12 lg:col-span-9 flex h-[calc(100vh-160px)]">
                                         <div className="flex-1 overflow-y-auto py-[30px]">
-                                            <ResponsiveMasonry columnsCountBreakPoints={{ 300: 3, 768: 3, 1024: 3, 1280: 4 }} gutterBreakpoints={{ 300: "12px", 768: "16px", 1024: "30px" }}>
+                                            <ResponsiveMasonry columnsCountBreakPoints={{ 300: 3, 768: 3, 1024: 3, 1280: 4 }} gutterBreakpoints={{ 300: "12px", 768: "16px", 1024: "20px" }}>
                                                 <Masonry>
                                                     {documents?.map((document, index) => {
                                                         const aspectRatio = (document?.optimized_url?.thumbnail?.height / document?.optimized_url?.thumbnail?.width) * 100; // Ratio pour le padding-bottom
@@ -417,16 +417,16 @@ export default function Resources() {
             {/** POPUP */}
             <AnimatePresence>           
                 {isOpenPopup &&
-                    <motion.div 
+                    <div
                         className="w-full h-full fixed inset-0 z-[103] flex items-center justify-center bg-black/50"
                         key="popupResource"
-                        initial={{ scale: 0.5, opacity: 0, y: "-50%" }}
-                        animate={{ scale: 1, opacity: 1, y: 0 }}
-                        exit={{ scale: 0.5, opacity: 0, y: "-50%" }}
-                        transition={{ duration: 0.5, ease: "easeInOut" }}
+                        // initial={{ scale: 0.5, opacity: 0, y: "-50%" }}
+                        // animate={{ scale: 1, opacity: 1, y: 0 }}
+                        // exit={{ scale: 0.5, opacity: 0, y: "-50%" }}
+                        // transition={{ duration: 0.5, ease: "easeInOut" }}
                     >
                         <PopupResource setIsOpenPopup={ setIsOpenPopup } data={ dataPopup } locale={locale}/>
-                    </motion.div>
+                    </div>
                 }
             </AnimatePresence>           
         </>

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { formatRichText } from "../../lib/utils";
 import PlayerPDF from "./PlayerPDF";
-import {AnimatePresence, motion } from "framer-motion";
+import {AnimatePresence, motion } from "motion/react";
 import PopupResource from "./PopupResource";
 import classNames from "classnames";
 import bgSmall from '../../assets/images/backgrounds/bg-1.webp';
@@ -72,6 +72,7 @@ export default function SlideColumn({data, locale}) {
 
     return (
         <>
+        {/* initial={{ opacity: 0 }} animate={{ opacity: 1, transition: {delay: 0.7} }}  */}
             <div style={{ background: `url(${isMobile ? bgSmall : imageUrl}) right / cover no-repeat` }} className="h-screen slide_columns slide">
                 <div className="relative top-[40px]">
                     <div className="container mx-auto px-[20px] xl:px-0">

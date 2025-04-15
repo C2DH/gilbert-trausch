@@ -1,6 +1,8 @@
 import { formatRichText } from "../../lib/utils";
 import bgSmall from '../../assets/images/backgrounds/bg-1.webp';
 import { useMediaQuery } from "react-responsive";
+import { motion } from "motion/react";
+
 
 export default function SlideCentralText ({data, locale}) {
 
