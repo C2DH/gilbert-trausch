@@ -100,7 +100,7 @@ export default function Navbar({color}) {
                                 </div>
 
                                 {/** MAIN MENU */}
-                                <div className="2xl:flex items-center h-auto lg:h-[calc(100vh-40px)] mt-[50px] lg:mt-[100px] 2xl:mt-0">
+                                <div className="2xl:flex items-center h-auto lg:h-[calc(100dvh-40px)] mt-[50px] lg:mt-[100px] 2xl:mt-0">
                                     <ul className="font-light text-[24px] md:text-[36px] 2xl:text-[60px] uppercase">
                                         <li className="hover:text-[#4100FC] duration-[450ms] hover:pl-[50px] leading-none mb-6 cursor-pointer"
                                             onClick={() => handleMenuClick('/biography')}

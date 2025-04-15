@@ -92,7 +92,7 @@ export default function PlayerPDF({ url }) {
     <div
       ref={containerRef}
       className={classNames(
-        'w-full h-[calc(100vh-120px)] flex justify-center items-center',
+        'w-full h-[calc(100dvh-120px)] flex justify-center items-center',
         {
           'overflow-hidden': fitToScreen,
           'overflow-auto': !fitToScreen,

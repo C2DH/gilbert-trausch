@@ -26,13 +26,13 @@ export default function PopupResource({ setIsOpenPopup, data, locale }) {
         <div style={{ background: `url(${background}) center / cover no-repeat` }} className='popup_resource h-screen w-full'>
         
 			<div className='lg:hidden py-[10px] border-b border-black'>
-				<span className='block text-[16px] text-center cursor-pointer hover:text-[#4100FC] duration-500 uppercase font-normal' onClick={() => setIsOpenPopup(false) }>{ t('close') }</span>
+				<span className='block text-[16px] text-center cursor-pointer hover:text-[#4100FC] duration-500 uppercase font-light' onClick={() => setIsOpenPopup(false) }>{ t('close') }</span>
 			</div>
 
             <div className="grid grid-cols-12 h-full">
                 <div className="col-span-12 lg:col-span-9 border-r border-black pt-[20px] lg:pt-[60px] lg:py-[60px] h-[300px] lg:h-full relative overflow-hidden">
                     <div className='grid grid-cols-12 lg:grid-cols-9 h-full px-[20px]'>
-                        <div className='col-span-12 lg:col-span-9 lg:flex justify-center items-center overflow-hidden h-[220px] xl:h-[calc(100vh-120px)]'>
+                        <div className='col-span-12 lg:col-span-9 lg:flex justify-center items-center overflow-hidden h-[220px] xl:h-[calc(100dvh-120px)]'>
 
                             { (data.type === "image" && data.optimized_url) &&                            
                                 <motion.div 
@@ -74,10 +74,10 @@ export default function PopupResource({ setIsOpenPopup, data, locale }) {
 
                 <div className="col-span-12 lg:col-span-3 flex flex-col overflow-auto">
                     <div className='hidden border-b border-black pl-[20px] h-[40px] lg:flex items-center'>
-                        <span className='cursor-pointer text-[18px] font-light hover:text-[#4100FC] duration-500 uppercase font-normal' onClick={() => setIsOpenPopup(false) }>{ t('close') }</span>
+                        <span className='cursor-pointer text-[18px] font-light hover:text-[#4100FC] duration-500 uppercase' onClick={() => setIsOpenPopup(false) }>{ t('close') }</span>
                     </div>
 
-					<div className='lg:h-[calc(100vh-55px)] lg:overflow-auto'>
+					<div className='lg:h-[calc(100dvh-55px)] lg:overflow-auto'>
 						<div className="content py-[30px] px-[20px] border-b border-black">
 							<div className='flex lg:block justify-between items-center'>
 								{ data?.date && (
@@ -142,7 +142,7 @@ const ImageZoom = ({ image, alt }) => {
             {() => (
                 <>
                     <TransformComponent wrapperStyle={{ overflow: 'visible'}}>
-                        <img src={ image } alt={ alt } className='max-h-[50dvh] lg:max-h-[calc(100vh-120px)] object-contain'/>
+                        <img src={ image } alt={ alt } className='max-h-[50dvh] lg:max-h-[calc(100dvh-120px)] object-contain'/>
                     </TransformComponent>
                     <Controls zoom={stateZoom}/>
                 </>

@@ -191,7 +191,7 @@ export default function Resources() {
                             
                             {/** DOCUMENTS */}
                             {isLoading && documents.length > 0 ? (
-                                    <div className="col-span-12 lg:col-span-9 flex h-[calc(100vh-160px)]">
+                                    <div className="col-span-12 lg:col-span-9 flex h-[calc(100dvh-160px)]">
                                         <div className="flex-1 overflow-y-auto py-[30px]">
                                             <ResponsiveMasonry columnsCountBreakPoints={{ 300: 3, 768: 3, 1024: 3, 1280: 4 }} gutterBreakpoints={{ 300: "12px", 768: "16px", 1024: "20px" }}>
                                                 <Masonry>
@@ -275,11 +275,11 @@ export default function Resources() {
                                         </div>
                                     </div>
                                 ) : (
-                                    <div className="col-span-9 flex h-[calc(100vh-160px)] justify-center items-center">{ t('no_resources') }</div>
+                                    <div className="col-span-9 flex h-[calc(100dvh-160px)] justify-center items-center">{ t('no_resources') }</div>
                                 )}
 
 
-                            <div className="hidden col-span-3 border-l border-black h-[calc(100vh-160px)] lg:flex flex-col overflow-hidden">
+                            <div className="hidden col-span-3 border-l border-black h-[calc(100dvh-160px)] lg:flex flex-col overflow-hidden">
                                 <div className="flex-1 overflow-y-auto">
 
                                 {/** TYPES */}

@@ -15,7 +15,7 @@ export default function SlideCentralText ({data, locale}) {
         <div style={{ background: `url(${isMobile ? bgSmall : imageUrl}) right / cover no-repeat` }} className='slide_central_text h-screen slide'>
             <div className="container mx-auto px-[20px] xl:px-0">
                 <div className="relative top-[40px]">
-                    <div className="grid grid-cols-12 h-[calc(100vh-40px)]">
+                    <div className="grid grid-cols-12 h-[calc(100dvh-40px)]">
                         { (data?.slidable?.content && locale) &&
                             <div className="overflow-hidden col-span-12 lg:col-span-8 lg:col-start-3 lg:border-r lg:border-l border-black lg:px-[30px] h-full flex items-center richeditor" style={{ color: color }}>
                                 <div className="pt-[20px] pb-[60px] lg:py-[40px] h-full overflow-scroll richeditor">

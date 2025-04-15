@@ -27,12 +27,12 @@ export default function SlideSlider({data, locale}) {
         <>
             <div style={{ background: `url(${isMobile ? bgSmall : imageUrl}) right / cover no-repeat` }} className='slide_text_slider h-screen slide'>
                 <div className="relative top-[40px]">
-                    <div className="container mx-auto px-[20px] xl:px-0 h-[calc(100vh-80px)] xl:h-[calc(100vh-40px)] overflow-hidden">
+                    <div className="container mx-auto px-[20px] xl:px-0 h-[calc(100dvh-80px)] xl:h-[calc(100dvh-40px)] overflow-hidden">
                         <div className="grid grid-cols-12 h-full overflow-y-scroll">
 
                             <div className="col-span-12 lg:col-span-4 lg:border-r border-black lg:pr-[30px] flex items-center lg:overflow-hidden">
                                 { (data?.slidable?.content && locale) &&
-                                    <div className="richeditor lg:h-full overflow-scroll pb-[40px] lg:pt-[40px] lg:pb-[40px]" style={{ color: color }}>{ formatRichText(data.slidable.content[locale])}</div>
+                                    <div className="richeditor lg:h-full overflow-scroll pb-[40px] pt-[20px] lg:pt-[40px] lg:pb-[40px]" style={{ color: color }}>{ formatRichText(data.slidable.content[locale])}</div>
                                 }
                             </div>
 

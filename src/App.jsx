@@ -14,15 +14,19 @@ import MagicNotebook from "./components/MagicNotebook";
 import MagicNotebooks from "./components/MagicNotebooks";
 import { LanguageProvider } from './contexts/LanguageProvider';
 import '../i18n'
-import { AnimatePresence } from "motion/react";
-import Curtains from "./components/content/Curtains";
-import { useSharedState } from "./contexts/ShareStateProvider";
 import { NavbarProvider } from "./contexts/NavbarProvider";
+import { useEffect } from "react";
 
 export default function App() {
     
     const location = useLocation();
-    const [sharedState] = useSharedState();
+
+    useEffect(() => {
+        var _mtm = window._mtm = window._mtm || [];
+        _mtm.push({'mtm.startTime': (new Date().getTime()), 'event': 'mtm.Start'});
+        var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+        g.async=true; g.src='https://cdn.matomo.cloud/journalofdigitalhistory.matomo.cloud/container_9xdyUNCi.js'; s.parentNode.insertBefore(g,s);
+    }, [])
     
     return (    
         <>            
@@ -46,10 +50,6 @@ export default function App() {
                     </Routes>
                 </NavbarProvider>
             </LanguageProvider>
-
-            {/* <AnimatePresence mode="wait">
-                {sharedState.showCurtains && <Curtains key="curtains" />}
-            </AnimatePresence> */}
         </>
     );
 }

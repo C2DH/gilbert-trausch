@@ -48,7 +48,7 @@ export default function VirtualTour() {
 
             {isLoading &&
                 <div className="relative top-[40px]">
-                    <div className="container mx-auto px-[20px] xl:px-0 h-[calc(100vh-40px)]">
+                    <div className="container mx-auto px-[20px] xl:px-0 h-[calc(100dvh-40px)]">
 
                         {/** SECTION 1 */}
                         <div className="grid grid-cols-12 h-full">

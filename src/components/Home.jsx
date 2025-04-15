@@ -72,7 +72,7 @@ export default function Home() {
                         }
                     }, index * 600);
                 });
-            }, 1000); // Délai avant le début des images
+            }, 1000); // Délai avant le début des images"
         }
     }, [animationActive, isMobile]);
 

@@ -25,7 +25,7 @@ export default function SlideStep({ data, locale }) {
         <>
             <div style={{ background: `url(${imageUrl}) right / cover no-repeat` }} className='h-screen slide slide_step'>
                 <div className="relative top-[40px]">
-                    <div className="container mx-auto px-[20px] xl:px-0 h-[calc(100vh-80px)] xl:h-[calc(100vh-40px)] overflow-hidden">
+                    <div className="container mx-auto px-[20px] xl:px-0 h-[calc(100dvh-80px)] xl:h-[calc(100dvh-40px)] overflow-hidden">
                         <div className="grid grid-cols-12 h-full overflow-y-scroll">
                             <div className="col-span-12 lg:col-span-8 relative order-2 lg:order-1 h-full">
                                 <div className="grid grid-cols-8 lg:h-full">

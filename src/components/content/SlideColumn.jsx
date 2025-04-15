@@ -76,7 +76,7 @@ export default function SlideColumn({data, locale}) {
             <div style={{ background: `url(${isMobile ? bgSmall : imageUrl}) right / cover no-repeat` }} className="h-screen slide_columns slide">
                 <div className="relative top-[40px]">
                     <div className="container mx-auto px-[20px] xl:px-0">
-                        <div className="grid grid-cols-12 h-[calc(100vh-40px)] overflow-scroll">
+                        <div className="grid grid-cols-12 h-[calc(100dvh-40px)] overflow-scroll">
                             {columns?.map((column, index) => (
                                 <div key={index} className={classNames("col-span-12 lg:col-span-4 lg:overflow-y-scroll h-full pt-[20px] pb-[60px] lg:py-[40px]",{
                                     'lg:pr-[30px]' : index === 0,
