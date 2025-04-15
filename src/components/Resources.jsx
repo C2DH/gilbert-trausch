@@ -164,17 +164,17 @@ export default function Resources() {
                 <div className="resources relative top-[40px]">
                     
                     {/** SEARCH */}
-                    <div className="search xl:border-b border-black">
-                        <div className="container mx-auto">
+                    <div className="search lg:border-b border-black">
+                        <div className="container mx-auto px-[20px] xl:px-0">
                             <div className="grid grid-cols-12 h-[120px]">
-                                <div className="col-span-12 xl:col-span-3 flex items-center justify-center xl:justify-start">
-                                    <h1 className="text-[30px] xl:text-[60px] text-[#4100FC] leading-none font-light">{ t('resources')}</h1>
+                                <div className="col-span-12 lg:col-span-3 flex items-center justify-center xl:justify-start">
+                                    <h1 className="text-[24px] md:text-[30px] xl:text-[60px] text-[#4100FC] leading-none font-light">{ t('resources')}</h1>
                                 </div>
 
-                                <div className="col-span-12 xl:col-span-8 xl:col-start-5 flex items-center">
+                                <div className="col-span-12 lg:col-span-8 xl:col-start-5 flex items-center">
                                     <div className="flex-1 border-b border-black">
-                                        <div className="flex justify-bewtween">
-                                            <input className="bg-transparent flex-1 text-[22px] xl:text-[32px] text-[#4100FC] outline-none" type="text" placeholder={ t('search')} value={search} onChange={(e) => setSearch(e.target.value)} />
+                                        <div className="flex justify-between">
+                                            <input className="bg-transparent fl lg:w-1/2 text-[22px] xl:text-[32px] text-[#4100FC] outline-none" type="text" placeholder={ t('search')} value={search} onChange={(e) => setSearch(e.target.value)} />
                                             <svg width="18" height="18" viewBox="0 0 23 23" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                 <path d="M15.8125 9.6875C15.8125 7.23828 14.4805 5.00391 12.375 3.75781C10.2266 2.51172 7.60547 2.51172 5.5 3.75781C3.35156 5.00391 2.0625 7.23828 2.0625 9.6875C2.0625 12.1797 3.35156 14.4141 5.5 15.6602C7.60547 16.9062 10.2266 16.9062 12.375 15.6602C14.4805 14.4141 15.8125 12.1797 15.8125 9.6875ZM14.4805 16.7344C12.9336 17.9375 11 18.625 8.9375 18.625C3.99609 18.625 0 14.6289 0 9.6875C0 4.78906 3.99609 0.75 8.9375 0.75C13.8359 0.75 17.875 4.78906 17.875 9.6875C17.875 11.793 17.1445 13.7266 15.9414 15.2734L21.6992 20.9883C22.0859 21.418 22.0859 22.0625 21.6992 22.4492C21.2695 22.8789 20.625 22.8789 20.2383 22.4492L14.4805 16.7344Z" fill="#4100FC"/>
                                             </svg>
@@ -187,7 +187,7 @@ export default function Resources() {
 
                     {/** CONTENT */}
                     <div className="container mx-auto lg:border-r border-black">
-                        <div className="grid grid-cols-12 gap-x-[20px]">
+                        <div className="grid grid-cols-12 px-[20px] xl:px-0 gap-x-[20px]">
                             
                             {/** DOCUMENTS */}
                             {isLoading && documents.length > 0 ? (

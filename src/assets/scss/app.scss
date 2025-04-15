@@ -81,6 +81,18 @@ blockquote {
     position: relative;
     display: inline-block;
     cursor: pointer;
+    animation: pulseBlink 1.2s infinite ease-in-out;
+
+    @keyframes pulseBlink {
+        0%, 100% {
+          transform: scale(1);
+          opacity: 1;
+        }
+        50% {
+          transform: scale(1.1);
+          opacity: 0.6;
+        }
+    }
 
     .tooltipText {
         opacity: 0;
@@ -88,8 +100,9 @@ blockquote {
         padding: 10px 16px 15px 16px;
         font-size: 14px;
         line-height: 18px;
-        background-color: black;
-        color: #fff;
+        background-color: white;
+        color: black;
+        border: 1px solid black;
         text-align: center;
         border-radius: 5px;
         position: absolute;
@@ -112,7 +125,9 @@ blockquote {
             left: 50%;
             width: 12px;
             height: 12px;
-            background: black;
+            background: white;
+            border-bottom: 1px solid black;
+            border-right: 1px solid black;
             transform: translateX(-50%) rotate(45deg);
             pointer-events: auto;
         }
@@ -300,10 +315,16 @@ blockquote {
 
 .slide_citation {
     blockquote {
+        padding: 30px 0;
         font-size: 22px;
         line-height: 34px;
 
         @media screen and (min-width: 768px) {
+            font-size: 24px;
+            line-height: 40px;
+        }
+
+        @media screen and (min-width: 1280px) {
             font-size: 28px;
             line-height: 50px;
         }

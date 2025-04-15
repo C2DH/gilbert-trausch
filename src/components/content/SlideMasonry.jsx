@@ -39,8 +39,8 @@ export default function SlideMasonry({ data, locale }) {
                                 }
                             </div>
 
-                            <div className="col-span-12 lg:col-span-7 2xl:col-span-8 lg:overflow-y-scroll pb-[20px] lg:py-[40px] lg:pl-[30px]">
-                                <ResponsiveMasonry columnsCountBreakPoints={{ 300: 2, 768: 3, 1024: 3, 1280: 4 }} gutterBreakpoints={{ 300: "12px", 768: "16px", 1024: "20px" }}>
+                            <div className="col-span-12 lg:col-span-7 2xl:col-span-8 lg:overflow-y-scroll pb-[20px] lg:pt-[40px] lg:pb-[60px] xl:pb-[40px] lg:pl-[30px]">
+                                <ResponsiveMasonry columnsCountBreakPoints={{ 300: 2, 767: 3, 1024: 3, 1280: 4 }} gutterBreakpoints={{ 300: "12px", 768: "16px", 1024: "20px" }}>
                                     <Masonry>
                                         {documents?.map((document, index) => {
                                             if (document?.url && locale) {
@@ -81,7 +81,7 @@ export default function SlideMasonry({ data, locale }) {
             <AnimatePresence>           
                 {isOpenPopup &&
                     <motion.div 
-                        className="w-full h-full absolute inset-0 z-[103] flex items-center justify-center bg-black/50"
+                        className="w-full h-full absolute inset-0 z-[1000] flex items-center justify-center bg-black/50"
                         key="popupResource"
                         initial={{ scale: 0.5, opacity: 0, y: "-50%" }}
                         animate={{ scale: 1, opacity: 1, y: 0 }}

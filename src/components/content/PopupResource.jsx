@@ -89,7 +89,7 @@ export default function PopupResource({ setIsOpenPopup, data, locale }) {
 								)}
 
 								{ data?.type &&
-									<span className='inline-block py-[3px] px-[10px] text-[14px] mb-[25px] bg-blue text-white rounded-[10px]'>{ formatTypeName(data.type , locale) }</span>
+									<span className='inline-block py-[4px] px-[6px] text-[12px] leading-[12px] mb-[25px] bg-blue text-white rounded-[4px]'>{ formatTypeName(data.type , locale) }</span>
 								}
 							</div>
 

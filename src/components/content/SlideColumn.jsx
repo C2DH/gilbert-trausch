@@ -93,7 +93,7 @@ export default function SlideColumn({data, locale}) {
             <AnimatePresence>           
                 {isOpenPopup &&
                     <motion.div 
-                        className="w-full h-full absolute inset-0 z-[103] flex items-center justify-center bg-black/50"
+                        className="w-full h-full absolute inset-0 z-[1000] flex items-center justify-center bg-black/50"
                         key="popupResourceChapter"
                         initial={{ scale: 0.5, opacity: 0, y: "-50%" }}
                         animate={{ scale: 1, opacity: 1, y: 0 }}

@@ -56,7 +56,7 @@ export default function SlideAudio({ data, locale }) {
         <AnimatePresence>           
             {isOpenPopup &&
                 <motion.div 
-                    className="w-full h-full absolute inset-0 z-[103]"
+                    className="w-full h-full absolute inset-0 z-[1000]"
                     key="popupResource"
                     initial={{ scale: 0.5, opacity: 0, y: "-50%" }}
                     animate={{ scale: 1, opacity: 1, y: 0 }}

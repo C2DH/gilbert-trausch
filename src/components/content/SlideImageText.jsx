@@ -41,11 +41,11 @@ export default function SlideImageText({ data, locale }) {
                 <div className="relative top-[40px]">
                     <div className="container mx-auto px-[20px] xl:px-0 h-[calc(100vh-40px)] overflow-y-scroll">
                         <div className="grid grid-cols-12 lg:h-full">
-                            <div className="col-span-12 xl:col-span-7 2xl:col-span-8">
+                            <div className="col-span-12 lg:col-span-7 2xl:col-span-8">
                                 <div className="grid grid-cols-8 h-full">
                                     <div className="col-span-8 flex flex-col items-center justify-center lg:pr-[30px] pt-[20px] lg:pt-0">
                                         {(data?.slidable?.document?.url && locale) && (
-                                            <img src={data.slidable.document.optimized_url.large.url} alt={data.slidable.document.name[locale]} className="lg:h-[calc(100vh-200px)] object-contain"/>
+                                            <img src={data.slidable.document.optimized_url.large.url} alt={data.slidable.document.name[locale]} className="md:h-[400px] lg:h-[calc(100vh-200px)] object-contain"/>
                                         )}
 
                                         {/** BUTTON POPUP RESOURCE */}
@@ -59,9 +59,9 @@ export default function SlideImageText({ data, locale }) {
                                 </div>
                             </div>
 
-                            <div className="col-span-12 xl:col-span-4 xl:border-l border-black flex items-center xl:pl-[30px] overflow-hidden h-full">
+                            <div className="col-span-12 lg:col-span-4 lg:border-l border-black flex items-center lg:pl-[30px] overflow-hidden h-full">
                                 {data.slidable?.content && locale && (
-                                    <div className="richeditor text-center lg:text-left pt-[20px] pb-[60px] lg:py-[40px] lg:overflow-scroll h-full" style={{ color: color }}>
+                                    <div className="richeditor text-center lg:text-left pt-[20px] pb-[60px] lg:py-[40px] lg:overflow-scroll h-full xl:flex items-center" style={{ color: color }}>
                                         { formatRichText(data.slidable.content[locale])}
                                     </div>
                                 )}
@@ -75,7 +75,7 @@ export default function SlideImageText({ data, locale }) {
             <AnimatePresence>           
                 {isOpenPopup &&
                     <motion.div 
-                        className="w-full h-full absolute inset-0 z-[103] flex items-center justify-center bg-black/50"
+                        className="w-full h-full absolute inset-0 z-[1000] flex items-center justify-center bg-black/50"
                         key="popupResource"
                         initial={{ scale: 0.5, opacity: 0, y: "-50%" }}
                         animate={{ scale: 1, opacity: 1, y: 0 }}
