@@ -79,7 +79,7 @@ export default function Navbar({color}) {
                         exit={{ y: "-100%" }}
                         transition={{ duration: 0.8, ease: "easeInOut" }}
                     >
-                        <div className="h-[calc(100svh)] sm:h-screen px-[20px]" style={{ background: `url(${bgMenu}) center / cover no-repeat` }}>
+                        <div className="h-[100svh] sm:h-screen px-[20px]" style={{ background: `url(${bgMenu}) center / cover no-repeat` }}>
                             <div className="container mx-auto h-full relative">
                                 <div className="header h-[40px]">
                                     <ul className="flex justify-between h-full items-center">
