@@ -79,7 +79,7 @@ export default function Navbar({color}) {
                         exit={{ y: "-100%" }}
                         transition={{ duration: 0.8, ease: "easeInOut" }}
                     >
-                        <div className="h-screen px-[20px]" style={{ background: `url(${bgMenu}) center / cover no-repeat` }}>
+                        <div className="h-[calc(100svh)] sm:h-screen px-[20px]" style={{ background: `url(${bgMenu}) center / cover no-repeat` }}>
                             <div className="container mx-auto h-full relative">
                                 <div className="header h-[40px]">
                                     <ul className="flex justify-between h-full items-center">
@@ -157,7 +157,7 @@ export default function Navbar({color}) {
                                 </div>
 
                                 {/** PARTNERS */}
-                                <div className="absolute left-0 bottom-[40px] flex items-end">
+                                <div className="absolute left-0 bottom-[60px] flex items-end">
                                     <div className="mr-[50px]">
                                         <Link to={'https://www.c2dh.uni.lu/'} target="_blank">
                                             <img src={logoUni} alt="Logo Université" className="h-[50px]" />
@@ -169,6 +169,11 @@ export default function Navbar({color}) {
                                         </Link>
                                     </div>
                                 </div>
+
+                                <div className="text-[12px] leading-[12px] lg:text-[15px] lg:leading-[15px] absolute left-0 bottom-[10px] flex items-end">
+                                    <span>Copyright © Université du Luxembourg 2022. All rights reserved.</span>
+                                </div>
+
                             </div>
                         </div>
                     </motion.div>
