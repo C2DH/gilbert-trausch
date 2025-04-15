@@ -65,15 +65,15 @@ export default function Chapters() {
                     backgroundPosition: "right",
                     backgroundSize: "cover",
                     backgroundRepeat: "no-repeat",
-                    transition: "background-image 2s ease-in-out"
+                    transition: "background-image 0.5s ease-in-out"
                 }}
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
-                transition={{ easeInOut, duration: 1.2 }}   
+                transition={{ easeInOut, duration: 0.5 }}   
             >
                 <div className="container mx-auto h-full px-[20px] xl:px-0">
                     <div className="h-full flex flex-col justify-center">
-                        <h1 className="text-[30px] leading-[35px] lg:text-[40px] 2xl:text-[60px] 2xl:leading-[66px] text-[#4100FC] mb-[50px] uppercase">{t('professions')}</h1>
+                        <h1 className="text-[30px] leading-[35px] lg:text-[40px] 2xl:text-[60px] 2xl:leading-[66px] text-[#4100FC] mb-[50px]">{t('professions')}</h1>
                         
                         { isLoading &&                        
                             <ul className="text-[20px] lg:text-[30px] 2xl:text-[40px] 2xl:leading-[48px] pl-0 list-inside">

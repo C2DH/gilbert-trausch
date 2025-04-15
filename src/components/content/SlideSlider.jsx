@@ -27,8 +27,8 @@ export default function SlideSlider({data, locale}) {
         <>
             <div style={{ background: `url(${isMobile ? bgSmall : imageUrl}) right / cover no-repeat` }} className='slide_text_slider h-screen slide'>
                 <div className="relative top-[40px]">
-                    <div className="container mx-auto px-[20px] xl:px-0 h-[calc(100vh-40px)] overflow-hidden">
-                        <div className="grid grid-cols-12 lg:h-full overflow-y-scroll">
+                    <div className="container mx-auto px-[20px] xl:px-0 h-[calc(100vh-80px)] lg:h-[calc(100vh-40px)] overflow-hidden">
+                        <div className="grid grid-cols-12 h-full overflow-y-scroll">
 
                             <div className="col-span-12 lg:col-span-4 lg:border-r border-black lg:pr-[30px] flex items-center lg:overflow-hidden">
                                 { (data?.slidable?.content && locale) &&
@@ -38,7 +38,7 @@ export default function SlideSlider({data, locale}) {
 
                             <div className="col-span-12 lg:col-span-7 2xl:col-span-8 relative lg:pl-[30px]">
                                 <div className="grid grid-cols-8 lg:h-full">
-                                    <div className="col-span-8 lg:py-[40px]">
+                                    <div className="col-span-8 pb-[70px] lg:pb-0 lg:py-[40px]">
                                         { data?.slidable?.documents &&
                                             <Slider items={data.slidable.documents} locale={ locale }/>
                                         }

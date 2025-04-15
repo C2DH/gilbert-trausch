@@ -121,44 +121,44 @@ export default function Home() {
             <AnimatePresence>
                 {showMenu && (
                     <motion.div
-                        className="absolute bottom-[80px] left-0 right-0 flex justify-between"
+                        className="absolute bottom-[20px] 2xl:bottom-[80px] left-0 right-0 flex justify-between"
                         initial={{ opacity: 0, y: 100 }}
                         animate={{ opacity: 1, y: 0 }}
                         exit={{ opacity: 0, y: 100 }}
                         transition={{ duration: 1, ease: "easeOut" }}
                     >
                         <div className="menu w-full lg:container mx-auto">
-                            <ul className="font-normal text-[20px] 2xl:text-[20px] uppercase flex flex-col lg:flex-row justify-between items-center text-center">
+                            <ul className="font-normal text-[18px] 2xl:text-[20px] uppercase flex flex-col lg:flex-row justify-between items-center text-center">
                                 <hr className='lg:hidden w-3/4 border-black'/>
-                                <li className="leading-none border-black lg:border-t-2 lg:border-b-2 px-[10px] xl:px-[40px] py-[10px] xl:py-[20px] hover:lg:text-blue hover:lg:py-[30px] hover:lg:border-blue duration-[450ms] my-[10px] lg:my-[20px] hover:lg:my-0 cursor-pointer"
+                                <li className="leading-none border-black lg:border-t-2 lg:border-b-2 px-[10px] xl:px-[20px] 2xl:px-[40px] py-[10px] xl:py-[20px] hover:lg:text-blue hover:lg:py-[30px] hover:lg:border-blue duration-[450ms] my-[10px] lg:my-[20px] hover:lg:my-0 cursor-pointer"
                                     onClick={() => handleMenuClick('/biography')}
                                 >
                                     {t('biography')}
                                 </li>
 
                                 <hr className='lg:hidden w-3/4 border-black'/>
-                                <li className="leading-none border-black lg:border-t-2 lg:border-b-2 px-[10px] xl:px-[40px] py-[10px] xl:py-[20px] hover:lg:text-blue hover:lg:py-[30px] hover:lg:border-blue duration-[450ms] my-[10px] lg:my-[20px] hover:lg:my-0 cursor-pointer"
+                                <li className="leading-none border-black lg:border-t-2 lg:border-b-2 px-[10px] xl:px-[20px] 2xl:px-[40px] py-[10px] xl:py-[20px] hover:lg:text-blue hover:lg:py-[30px] hover:lg:border-blue duration-[450ms] my-[10px] lg:my-[20px] hover:lg:my-0 cursor-pointer"
                                     onClick={() => handleMenuClick('/professions')}
                                 >
                                     {t('professions')}
                                 </li>
 
                                 <hr className='lg:hidden w-3/4 border-black'/>
-                                <li className="leading-none border-black lg:border-t-2 lg:border-b-2 px-[10px] xl:px-[40px] py-[10px] xl:py-[20px] hover:lg:text-blue hover:lg:py-[30px] hover:lg:border-blue duration-[450ms] my-[10px] lg:my-[20px] hover:lg:my-0 cursor-pointer"
+                                <li className="leading-none border-black lg:border-t-2 lg:border-b-2 px-[10px] xl:px-[20px] 2xl:px-[40px] py-[10px] xl:py-[20px] hover:lg:text-blue hover:lg:py-[30px] hover:lg:border-blue duration-[450ms] my-[10px] lg:my-[20px] hover:lg:my-0 cursor-pointer"
                                     onClick={() => handleMenuClick('/magic-notebooks')}
                                 >
                                     {t('magicNotebooks')}
                                 </li>
 
                                 <hr className='lg:hidden w-3/4 border-black'/>
-                                <li className="leading-none border-black lg:border-t-2 lg:border-b-2 px-[10px] xl:px-[40px] py-[10px] xl:py-[20px] hover:lg:text-blue hover:lg:py-[30px] hover:lg:border-blue duration-[450ms] my-[10px] lg:my-[20px] hover:lg:my-0 cursor-pointer"
+                                <li className="leading-none border-black lg:border-t-2 lg:border-b-2 px-[10px] xl:px-[20px] 2xl:px-[40px] py-[10px] xl:py-[20px] hover:lg:text-blue hover:lg:py-[30px] hover:lg:border-blue duration-[450ms] my-[10px] lg:my-[20px] hover:lg:my-0 cursor-pointer"
                                     onClick={() => handleMenuClick('/virtual-tour')}
                                 >
                                     <span className="block leading-none">{ t('house') }</span>
                                 </li>
 
                                 <hr className='lg:hidden w-3/4 border-black'/>
-                                <li className="leading-none border-black lg:border-t-2 lg:border-b-2 px-[10px] xl:px-[40px] py-[10px] xl:py-[20px] hover:lg:text-blue hover:lg:py-[30px] hover:lg:border-blue duration-[450ms] my-[10px] lg:my-[20px] hover:lg:my-0 cursor-pointer"
+                                <li className="leading-none border-black lg:border-t-2 lg:border-b-2 px-[10px] xl:px-[20px] 2xl:px-[40px] py-[10px] xl:py-[20px] hover:lg:text-blue hover:lg:py-[30px] hover:lg:border-blue duration-[450ms] my-[10px] lg:my-[20px] hover:lg:my-0 cursor-pointer"
                                     onClick={() => handleMenuClick('/resources')}
                                 >
                                     {t('resources')}

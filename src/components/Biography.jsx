@@ -137,7 +137,7 @@ export default function Biography() {
                             </div>
                             
                             {/** Mobile */}
-                            <div className="xl:hidden sticky top-0 z-[100] mb-[40px] bg-blue rounded-b-[5px]">
+                            <div className="hidden sticky top-0 z-[100] mb-[40px] bg-blue rounded-b-[5px]">
                                 <div className="timeline_blocks">
                                     <div className="flex">
                                         {years?.map((year, index) => 
@@ -199,10 +199,10 @@ export default function Biography() {
                                             {item?.documents?.map(document => 
                                                 <div 
                                                     key={document.id} 
-                                                    className="py-[10px] md:py-0 cursor-pointer"
+                                                    className="py-[10px] md:py-0 cursor-pointer flex justify-center md:block"
                                                     onClick={() => { setIsOpenPopup(true); setDataPopup(document) }}
                                                 >
-                                                    <img className="w-full max-h-[350px] md:max-h-auto object-contain md:h-[220px]" src={ document?.optimized_url?.thumbnail.url } alt={document?.name[locale]}/>
+                                                    <img className="h-[200px] md:h-[220px] md:max-h-auto max-h-[350px] object-contain" src={ document?.optimized_url?.thumbnail.url } alt={document?.name[locale]}/>
                                                 </div>
                                             )}
                                         </div>

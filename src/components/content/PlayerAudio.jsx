@@ -58,9 +58,9 @@ export default function PlayerAudio( {url} ) {
             <div className='flex items-center justify-between'>
                 <div onClick={onPlayPause} className='w-[40px] lg:w-[60px] h-[40px] lg:h-[60px] bg-blue rounded-[50%] flex items-center justify-center'>
                     {isPlaying ? 
-                        <PauseIcon className='text-white w-[40px]'/> 
+                        <PauseIcon className='text-white w-[30px] lg:w-[40px]'/> 
                         : 
-                        <PlayIcon  className='text-white w-[40px]'/>
+                        <PlayIcon  className='text-white w-[30px] lg:w-[40px]'/>
                     }
                 </div>
 

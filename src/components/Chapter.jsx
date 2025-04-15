@@ -73,6 +73,7 @@ export default function Chapter() {
     const navigate = useNavigate();
 
     useEffect(() => {
+        console.log('ici debut')
         setActiveIndex(parseInt(searchParams.get('index') ?? 0));
         if (parseInt(searchParams.get('index')) === 0) {
                 setShowSubtitle(false)
@@ -154,9 +155,9 @@ export default function Chapter() {
         }
     }, [activeIndex, data]);
 
-    // useEffect(() => {
-    //     setSharedState({ ...sharedState, showCurtains: false }) 
-    //  }, [])
+    useEffect(() => {
+        setShowSubtitle(false)
+     }, [])
 
 
     // Calcul circonférence et progression

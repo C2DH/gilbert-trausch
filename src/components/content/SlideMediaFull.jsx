@@ -29,7 +29,7 @@ export default function SlideMediaFull({ data, locale }) {
                 }
 
                 {/** IMAGES / PDF */}
-                { data?.slidable?.document &&
+                { data?.slidable?.document?.type !== "video" &&
                     <div className="h-screen w-full flex items-center justify-center" style={{ background: `url(${data?.slidable?.document?.optimized_url?.large?.url}) center / cover no-repeat` }}>
                     </div>
                 }
