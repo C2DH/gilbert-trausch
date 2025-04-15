@@ -33,7 +33,9 @@ i18n
 					"about":"A propos",
 					"conditions": "Conditions d'utilisation",
 					"close": "Fermer",
-					'start': "Débuter"
+					'start': "Débuter",
+					'change_chapter': "Changer de chapitre",
+					"filters": "Filtres"
 				}
 			},
 			de: {
@@ -53,12 +55,9 @@ i18n
 					"about":"Über",
 					"conditions": "Bedingungen für die Nutzung",
 					"close": "Schließen",
-					"start": "Starten"
-
-
-
-
-
+					"start": "Starten",
+					'change_chapter': "Kapitel wechseln",
+					"filters": "Filter"
 				}
 			}
 		}

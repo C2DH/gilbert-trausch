@@ -25,8 +25,8 @@ export default function PopupResource({ setIsOpenPopup, data, locale }) {
     return (
         <div style={{ background: `url(${background}) center / cover no-repeat` }} className='popup_resource h-screen w-full'>
         
-			<div className='lg:hidden py-[10px] border-b border-black'>
-				<span className='block text-[16px] text-center cursor-pointer hover:text-[#4100FC] duration-500 uppercase font-light' onClick={() => setIsOpenPopup(false) }>{ t('close') }</span>
+			<div className='lg:hidden py-[10px] border-b border-black h-[40px]'>
+				<span className='block text-[14px] text-center cursor-pointer hover:text-[#4100FC] duration-500 uppercase font-light' onClick={() => setIsOpenPopup(false) }>{ t('close') }</span>
 			</div>
 
             <div className="grid grid-cols-12 h-full">

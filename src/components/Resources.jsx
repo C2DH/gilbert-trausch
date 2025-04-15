@@ -279,7 +279,7 @@ export default function Resources() {
                                 )}
 
 
-                            <div className="hidden col-span-3 border-l border-black h-[calc(100dvh-160px)] lg:flex flex-col overflow-hidden">
+                            <div className="hidden lg:flex flex-col col-span-3 border-l border-black h-[calc(100dvh-160px)] overflow-hidden">
                                 <div className="flex-1 overflow-y-auto">
 
                                 {/** TYPES */}
@@ -342,11 +342,11 @@ export default function Resources() {
 
                         {/** BTN MOBILE FILTERS */}
                         <div className="lg:hidden fixed left-0 right-0 bottom-0 bg-white h-[40px] flex justify-center items-center border-t border-black cursor-pointer z-[101]" onClick={() => setIsOpenFilters(!isOpenFilters)}>
-                            <span className="text-blue test-[18px] md:text-[22px] font-semibold uppercase cursor-">Filtres</span>
+                            <span className="text-blue test-[18px] md:text-[22px] font-semibold uppercase cursor-">{isOpenFilters ? t('close') : t('filters') }</span>
                         </div>
                         
                         {/** MOBILE FILTERS */}
-                        <div className={classNames("lg:hidden fixed bottom-[40px] bg-white flex flex-col h-[50%] left-0 right-0 transition-all duration-[750ms] z-[100] border-t border-black", {
+                        <div className={classNames("lg:hidden fixed bottom-[40px] bg-white flex flex-col h-[50%] left-0 right-0 transition-all duration-[750ms] z-[100] border-t border-black overflow-scroll", {
                                 "translate-y-[100%]": !isOpenFilters
                             })}
                         >
@@ -385,7 +385,7 @@ export default function Resources() {
                             </div>
 
                             {/** TAGS */}
-                            <div className="tags_block px-[20px] flex flex-col flex-grow overflow-hidden">
+                            <div className="tags_block px-[20px] flex flex-col flex-grow">
                                 <div className="flex justify-between py-[20px] ">
                                     <span className="text-[#4100FC] font-semibold text-[18px]">Tags</span>
                                     <span className="text-[#4100FC] font-semibold text-[15px] cursor-pointer uppercase" onClick={() => setSelectedFilters(prev => ({ ...prev, tags: [] }))}>Reset</span>

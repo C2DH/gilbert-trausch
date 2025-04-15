@@ -1,4 +1,4 @@
-import { useContext, useEffect, useRef, useState } from "react";
+import { useContext, useEffect, useMemo, useRef, useState } from "react";
 import { useLocation, useNavigate, useParams, useSearchParams } from "react-router-dom";
 import SlideHeader from "./content/SlideHeader";
 import SlideCitation from "./content/SlideCitation";
@@ -47,7 +47,7 @@ export default function Chapter() {
 
     const API_URL = import.meta.env.VITE_API_URL;
     const [searchParams] = useSearchParams();
-    const { i18n } = useTranslation();
+    const { i18n, t } = useTranslation();
     const locale = i18n.language;
     const { slug, id } = useParams();
     const [data, setData] = useState();
@@ -73,7 +73,6 @@ export default function Chapter() {
     const navigate = useNavigate();
 
     useEffect(() => {
-        console.log('ici debut')
         setActiveIndex(parseInt(searchParams.get('index') ?? 0));
         if (parseInt(searchParams.get('index')) === 0) {
                 setShowSubtitle(false)
@@ -94,8 +93,8 @@ export default function Chapter() {
             .then((data) => {
                 setTitle(data.data.name);
                 setData(data.data);
-                setTotal(data.data.slides.length)
-                setSlideHeaders(data?.data?.slides?.filter(slide => slide.slidable.type === "SlideHeader") || []);
+                setTotal(data.data.slides.length)   
+                setSlideHeaders(data?.data?.slides?.map((slide, index) => ({ slide, index }))?.filter(({ slide }) => slide.slidable.type === "SlideHeader"));
                 setIsLoading(true);
             })
             .catch((error) => console.error("Erreur lors du chargement du chapitre :", error));
@@ -160,6 +159,23 @@ export default function Chapter() {
      }, [])
 
 
+    const activeHeaderIndex = useMemo(() => {
+        if (!slideHeaders || slideHeaders.length === 0) return -1;
+    
+        let lastValidIndex = 0;
+    
+        for (let i = 0; i < slideHeaders.length; i++) {
+            if (activeIndex >= slideHeaders[i].index) {
+                lastValidIndex = i;
+            } else {
+                break;
+            }
+        }
+    
+        return lastValidIndex;
+    }, [activeIndex, slideHeaders]);
+
+
     // Calcul circonférence et progression
     const radius = 30;
     const circumference = 2 * Math.PI * radius;
@@ -197,6 +213,11 @@ export default function Chapter() {
             }, 1000);
         }
     };
+
+    // useEffect(() => {
+    //     console.log('slideHeaders', slideHeaders)
+    //     console.log('slidegroups', slideGroups)
+    // }, [slideHeaders, slideGroups])
 
 
     return (
@@ -377,24 +398,33 @@ export default function Chapter() {
                                         <svg width="19" height="12" viewBox="0 0 19 12" fill="none" xmlns="http://www.w3.org/2000/svg">
                                             <path d="M1.14062 5.86328L6.20312 0.800781C6.41406 0.589844 6.80078 0.589844 7.01172 0.800781C7.22266 1.01172 7.22266 1.39844 7.01172 1.60938L2.89844 5.6875H18.4375C18.7188 5.6875 19 5.96875 19 6.25C19 6.56641 18.7188 6.8125 18.4375 6.8125H2.89844L7.01172 10.9258C7.22266 11.1367 7.22266 11.5234 7.01172 11.7344C6.80078 11.9453 6.41406 11.9453 6.20312 11.7344L1.14062 6.67188C0.929688 6.46094 0.929688 6.07422 1.14062 5.86328Z" fill="white"/>
                                         </svg>
-                                            <span className="uppercase text-white text-[16px] font-normal pl-[10px] cursor-pointer">Changer de chapitre</span>
+                                            <span className="uppercase text-white text-[16px] font-normal pl-[10px] cursor-pointer">{ t('change_chapter')}</span>
                                     </div>
                                     <img src={ wallpaper_menu } alt="Gilbert Trausch dans son bureau" className="w-full" />
-                                    <span className="absolute top-1/2 left-8 transform -translate-y-1/2 text-[24px] md:text-[30px] xl:text-[40px] xl:leading-[42px] text-white">{romanize(id - 1)}.  { title }</span>
+                                    <span className="absolute top-1/2 left-8 transform -translate-y-1/2 text-[24px] md:text-[30px] xl:text-[40px] xl:leading-[42px] text-white">{ title }</span>
                                 </div>
 
                                 <div className="p-[30px]">
                                     { slideHeaders?.map((header, index) => {
-                                        const slideIndex = data?.slides?.findIndex(slide => slide.id === header.id)
+                                        console.log('index',index)
+                                        console.log('header',header.index)
+                                        console.log('activeindex',activeIndex)
                                         return (
                                             <h3 
-                                                key={header.slidable.id} 
-                                                className={classNames("text-white cursor-pointer hover:underline pb-[25px] w-[80%] leading-[24px] opacity-30", {
-                                                    "opacity-100": currentInGroupIndex === index
-                                                })} 
-                                                onClick={() => swiperRef?.current?.slideTo(slideIndex)}
+                                                key={header.slide.slidable.id} 
+                                                className={classNames("text-white cursor-pointer hover:opacity-100 w-[80%] relative flex items-center gap-3 pb-[25px]", {
+                                                    "opacity-100 before:content-[''] before:block before:w-[1px] before:h-[30px] before:bg-white": index === activeHeaderIndex,
+                                                    "opacity-30": index !== activeHeaderIndex
+                                                }
+                                            )}
+                                                onClick={() => { 
+                                                    setIsOpenMenu(false);
+                                                    setTimeout(() => {
+                                                        navigate(location.pathname + '?index=' + Math.max(0, header.index ))
+                                                    }, 1000)
+                                                }}
                                             >
-                                                {header?.slidable.subtitle[locale] }
+                                                { header?.slide?.slidable.subtitle[locale].split('.')[1] }
                                             </h3>
                                         )
                                     })}

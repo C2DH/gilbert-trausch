@@ -39,7 +39,7 @@ export default function Navbar({color}) {
     return (
         <>
             <div className="navbar h-[40px] absolute inset-0 border-b z-[101] px-[20px]" style={{ borderColor: color }}>
-                <div className="container mx-auto h-full">
+                <div className="container mx-auto h-[40px]">
                     <ul className="flex justify-between items-center h-full relative">
                         <li className="uppercase cursor-pointer order-2 lg:order-1 absolute left-[50%] -translate-x-[50%] lg:static lg:translate-x-0" onClick={() => handleMenuClick('/') }>
                             <span to={"/"} className="text-[14px] sm:text-[18px] hover:text-[#4100FC] duration-500" style={{ color: color }} >Gilbert Trausch</span>
@@ -102,32 +102,32 @@ export default function Navbar({color}) {
                                 {/** MAIN MENU */}
                                 <div className="2xl:flex items-center h-auto lg:h-[calc(100dvh-40px)] mt-[50px] lg:mt-[100px] 2xl:mt-0">
                                     <ul className="font-light text-[24px] md:text-[36px] 2xl:text-[60px] uppercase">
-                                        <li className="hover:text-[#4100FC] duration-[450ms] hover:pl-[50px] leading-none mb-6 cursor-pointer"
+                                        <li className="hover:text-[#4100FC] duration-[450ms] hover:lg:pl-[50px] leading-none mb-6 cursor-pointer"
                                             onClick={() => handleMenuClick('/biography')}
                                         >
                                             { t('biography')}
                                         </li>
 
-                                        <li className="hover:text-[#4100FC] duration-[450ms] hover:pl-[50px] leading-none mb-6 cursor-pointer"
+                                        <li className="hover:text-[#4100FC] duration-[450ms] hover:lg:pl-[50px] leading-none mb-6 cursor-pointer"
                                             onClick={() => handleMenuClick('/professions')}
                                         >
                                             { t('professions')}
                                         </li>
 
-                                        <li className="hover:text-[#4100FC] duration-[450ms] hover:pl-[50px] leading-none mb-6 cursor-pointer"
+                                        <li className="hover:text-[#4100FC] duration-[450ms] hover:lg:pl-[50px] leading-none mb-6 cursor-pointer"
                                             onClick={() => handleMenuClick('/magic-notebooks')}
                                         >
                                             { t('magicNotebooks')}
                                         </li>
 
-                                        <li className="hover:text-[#4100FC] duration-[450ms] hover:pl-[50px] mb-6 cursor-pointer"
+                                        <li className="hover:text-[#4100FC] duration-[450ms] hover:lg:pl-[50px] mb-6 cursor-pointer"
                                             onClick={() => handleMenuClick('/virtual-tour')} 
                                         >
                                             <span className="block leading-none">{ t('house')}</span>
                                             <span className="text-[20px] md:text-[30px] 2xl:text-[40px] block leading-none">({ t('tour')})</span>   
                                         </li>
 
-                                        <li className="hover:text-[#4100FC] duration-[450ms] hover:pl-[50px] leading-none cursor-pointer"
+                                        <li className="hover:text-[#4100FC] duration-[450ms] hover:lg:pl-[50px] leading-none cursor-pointer"
                                             onClick={() => handleMenuClick('/resources')}       
                                         >
                                             { t('resources')}
