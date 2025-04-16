@@ -12,6 +12,8 @@ import { easeInOut } from "motion";
 import { useTranslation } from "react-i18next";
 import { useSharedState } from "../contexts/ShareStateProvider";
 import { useNavigate } from "react-router-dom";
+import bgAudio from '../assets/images/backgrounds/bg-audio-default.webp';
+
 
 export default function Resources() {
 
@@ -218,13 +220,14 @@ export default function Resources() {
                                                             } else {
                                                                 return (
                                                                     <div key={index} className="relative overflow-hidden cursor-pointer w-full" onClick={() => { navigate(`/resources/${document.id}`, { state: { modal: true } }) }}>
-                                                                        <div className="bg-[#DBDBD0] w-full aspect-square lg:h-[200px] flex justify-center items-center relative">
+                                                                        <div className="bg-[#DBDBD0] w-full aspect-square flex justify-center items-center relative">
                                                                             { document.type === "audio" ? (
-                                                                                <img src={ audioLogo } alt="Logo audio" className="h-[50px] lg:h-[140px]"/>
+                                                                                <img src={ bgAudio } alt="Logo audio" className="aspect-square"/>
                                                                             ) : (
                                                                                 <img src={ videoLogo } alt="Logo video" className="h-[50px] lg:h-[120px]"/>
                                                                             )}
-                                                                            <span className="absolute w-[80%] top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] text-[14px] leading-none italic text-center">{ document.name[locale] }</span>
+                                                                            <div className="absolute inset-0 bg-black/60"></div>
+                                                                            <span className="text-white absolute w-[80%] top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] text-[14px] leading-none italic text-center">{ document.name[locale] }</span>
                                                                         </div>
     {/*                                                                                                                                         
                                                                         <div className="absolute top-0 left-0 bg-black text-[14px] ">

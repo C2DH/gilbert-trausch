@@ -80,7 +80,7 @@ export default function Home() {
 
     return (
         <motion.div 
-            className="relative h-[100svh] sm:h-screen w-full"
+            className="relative h-[100dvh] sm:h-screen w-full"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ easeInOut, duration: 1.2 }}

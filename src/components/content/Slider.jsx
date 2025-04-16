@@ -3,12 +3,11 @@ import { Pagination, Navigation } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
-import { useContext, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import PlayerAudio from '../content/PlayerAudio';
-import { PopupContext } from "../../contexts/PopupContext";
-import audioLogo from '../../assets/images/audio.svg'
 import videoLogo from '../../assets/images/video.svg'
 import { useNavigate } from 'react-router-dom';
+import bgAudio from '../../assets/images/backgrounds/bg-audio-default.webp';
 
 
 export default function Slider({ items, locale }) {
@@ -18,7 +17,6 @@ export default function Slider({ items, locale }) {
     const navigationNextRef = useRef(null);
     const navigationPrevRef = useRef(null);
     const [index, setIndex] = useState(0);
-    const { setIsOpenPopup, setDataPopup } = useContext(PopupContext);
     const navigate = useNavigate();
 
     return (
@@ -46,14 +44,12 @@ export default function Slider({ items, locale }) {
                             {item.type === "audio" && (
                                 <div className="lg:h-full w-full flex flex-col justify-center">
                                     {item.cover ? (
-                                        <img 
-                                            onClick={() => { navigate(`/resources/${item.id}`, { state: { modal: true } }) }}
+                                        <img onClick={() => { navigate(`/resources/${item.id}`, { state: { modal: true } }) }}
                                             src={item.cover} alt="cover" className="max-h-[60vh] rounded-[10px] mb-[20px] object-cover" />
                                     ) : (
-                                        <div 
-                                            onClick={() => { navigate(`/resources/${item.id}`, { state: { modal: true } }) }}
-                                            className="bg-[#DBDBD0] w-full h-[150px] md:h-[200px] lg:h-[40vh] xl:h-[55vh] 2xl:h-[60vh] flex justify-center items-center relative mb-5 rounded-[10px]">
-                                            <img src={ audioLogo } alt="Logo audio" className="h-[80px] lg:h-[140px]"/>
+                                        <div onClick={() => { navigate(`/resources/${item.id}`, { state: { modal: true } }) }}
+                                            className="bg-[#DBDBD0] w-[60%] aspect-square flex justify-center items-center relative mb-5 rounded-[10px] border border-black">
+                                            <img src={ bgAudio } alt="Logo audio" className="rounded-[10px]"/>
                                         </div>
                                     )}
                                     <PlayerAudio url={item.url} />

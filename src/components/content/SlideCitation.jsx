@@ -23,7 +23,7 @@ export default function SlideCitation( {data, locale} ) {
                         </svg>
 
                         { (data?.slidable?.content && locale) &&
-                            <div className="shrink-0 text-[16px] text-center lg:w-2/3 richeditor">{ formatRichText(data.slidable.content[locale])}</div>
+                            <div className="shrink-0 text-[16px] text-center lg:w-2/3 richeditor tracking-[2px]">{ formatRichText(data.slidable.content[locale])}</div>
                         }
 
                         <svg className="shrink-0" width="32" height="33" viewBox="0 0 32 33" fill="none" xmlns="http://www.w3.org/2000/svg">

@@ -73,7 +73,7 @@ export default function Chapters() {
                         </div>
                     }
 
-                    <div className="xl:h-full flex flex-col justify-center md:items-center lg:items-start px-[20px] xl:px-0">
+                    <div className="xl:h-full flex flex-col justify-center items-center lg:items-start px-[20px] xl:px-0">
                         <h1 className="uppercase text-[24px] leading-[30px] lg:text-[32px] 2xl:text-[60px] 2xl:leading-[66px] text-[#4100FC] mb-[30px] xl:mb-[50px]">
                         {t('professions')}
                         </h1>
