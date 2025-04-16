@@ -1,13 +1,11 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { formatRichText } from "../../lib/utils";
-import PopupResource from "./PopupResource";
-import {AnimatePresence, motion } from "motion/react";
 import audioLogo from '../../assets/images/audio.svg';
 import videoLogo from '../../assets/images/video.svg';
 import bgSmall from '../../assets/images/backgrounds/bg-1.webp';
 import { useMediaQuery } from "react-responsive";
 import Masonry, {ResponsiveMasonry} from "react-responsive-masonry";
-
+import { useNavigate } from "react-router-dom";
 
 export default function SlideMasonry({ data, locale }) {
 
@@ -15,16 +13,8 @@ export default function SlideMasonry({ data, locale }) {
     const imageUrl = `${API_URL}/storage/${data?.slidable?.background?.background}`;
     const documents = data?.slidable?.documents;
     const color = data?.slidable?.color_text;
-    const [isOpenPopup, setIsOpenPopup] = useState(false);
-    const [dataPopup, setDataPopup] = useState()
     const isMobile = useMediaQuery({ query: '(max-width: 768px)'});
-
-    useEffect(() => {
-        const swiperContainer = document.querySelector('.swiper');
-        if (swiperContainer) {
-            swiperContainer.style.zIndex = isOpenPopup ? "1000" : "0";
-        }
-    }, [isOpenPopup])
+    const navigate = useNavigate();
 
     return (
         <>
@@ -48,7 +38,7 @@ export default function SlideMasonry({ data, locale }) {
                                                 // All types except Video and Audio
                                                 if (document.type !== "audio" && document.type !== "video" && document.optimized_url ) {
                                                     return (
-                                                        <div key={index} className="mb-4 break-inside-avoid cursor-pointer" onClick={() => { setIsOpenPopup(true); setDataPopup(document); }}>
+                                                        <div key={index} className="mb-4 break-inside-avoid cursor-pointer" onClick={() => { navigate(`/resources/${document.id}`, { state: { modal: true } }) }}>
                                                             <img src={document?.optimized_url?.thumbnail?.url} alt={document?.name[locale]} className="w-full" />
                                                         </div>
                                                     )
@@ -57,11 +47,11 @@ export default function SlideMasonry({ data, locale }) {
                                                 // Audio / Video
                                                 if (document.type === "audio" || document.type === "video") {
                                                     return document?.cover ? (
-                                                        <div key={index} className="mb-4 break-inside-avoid cursor-pointer" onClick={() => { setIsOpenPopup(true); setDataPopup(document); }}>
+                                                        <div key={index} className="mb-4 break-inside-avoid cursor-pointer" onClick={() => { navigate(`/resources/${document.id}`, { state: { modal: true } }) }}>
                                                             <img src={document.cover} alt={document?.name[locale]} className="w-full" />
                                                         </div>
                                                     ) : (
-                                                        <div className="mb-4 break-inside-avoid cursor-pointer bg-[#DBDBD0] flex justify-center items-center h-[200px]" onClick={() => { setIsOpenPopup(true); setDataPopup(document); }}>
+                                                        <div className="mb-4 break-inside-avoid cursor-pointer bg-[#DBDBD0] flex justify-center items-center h-[200px]" onClick={() => { navigate(`/resources/${document.id}`, { state: { modal: true } }) }}>
                                                             <img src={ document.type === "audio" ? audioLogo : videoLogo } alt={ document.name[locale]} className="h-[100px]"/>
                                                         </div>
                                                     )
@@ -78,7 +68,7 @@ export default function SlideMasonry({ data, locale }) {
             </div>
 
             {/** POPUP */}
-            <AnimatePresence>           
+            {/* <AnimatePresence>           
                 {isOpenPopup &&
                     <motion.div 
                         className="w-full h-full absolute inset-0 z-[1000] flex items-center justify-center bg-black/50"
@@ -91,7 +81,7 @@ export default function SlideMasonry({ data, locale }) {
                         <PopupResource setIsOpenPopup={ setIsOpenPopup } data={ dataPopup } locale={ locale }/>
                     </motion.div>
                 }
-            </AnimatePresence>    
+            </AnimatePresence>     */}
         </>    
     )
 }

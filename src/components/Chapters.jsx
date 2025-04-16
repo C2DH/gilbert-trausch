@@ -8,7 +8,6 @@ import { Link } from "react-router-dom";
 import { romanize } from "../lib/utils";
 import { useMediaQuery } from 'react-responsive'
 import { useTranslation } from "react-i18next";
-import { useSharedState } from "../contexts/ShareStateProvider";
 import { motion } from "motion/react";
 import { easeInOut } from "motion";
 import logoMobile from '../assets/images/backgrounds/logo-professions-mobile.png';
@@ -16,13 +15,12 @@ import logoMobile from '../assets/images/backgrounds/logo-professions-mobile.png
 
 export default function Chapters() {
     const [data, setData] = useState();
-    const [isLoading, setIsLoading] = useState(false);
+    const [isLoaded, setIsLoaded] = useState(false);
     const [hoveredIndex, setHoveredIndex] = useState(null);
     const { i18n, t } = useTranslation();
     const locale = i18n.language;
     const API_URL = import.meta.env.VITE_API_URL;
-    const isMobile = useMediaQuery({ query: '(max-width: 768px)'});
-    const [sharedState, setSharedState] = useSharedState();
+    const isMobile = useMediaQuery({ query: '(max-width: 1023px)'});
     
     const getBackgroundImage = () => {
         switch (hoveredIndex) {
@@ -47,7 +45,7 @@ export default function Chapters() {
             })
             .then((data) => {
                 setData(data);
-                setIsLoading(true);
+                setIsLoaded(true);
             })
             .catch((error) => console.error("Erreur lors du chargement des chapitres :", error));
     }, [locale]);
@@ -55,7 +53,7 @@ export default function Chapters() {
 
     return (
         <>
-            <motion.div className="relative h-screen overflow-hidden"
+            <motion.div className="h-screen overflow-hidden"
                 style={{
                     backgroundImage: isMobile ? `url(${bg_empty})` : getBackgroundImage(),
                     backgroundPosition: "right",
@@ -67,25 +65,25 @@ export default function Chapters() {
                 animate={{ opacity: 1 }}
                 transition={{ easeInOut, duration: 0.5 }}   
             >
-                <div className="container mx-auto lg:px-[20px] xl:px-0 flex flex-col justify-center h-full">
+                <div className="container mx-auto flex flex-col justify-center h-full">
                    
                    {isMobile &&
-                        <div className='w-full flex justify-center'>
-                            <img src={logoMobile} alt="Logo Gilbert Trausch" className='w-full md:w-[80%]'/>
+                        <div className='w-full flex justify-center mb-[30px]'>
+                            <img src={logoMobile} alt="Logo Gilbert Trausch" className='w-full md:w-[90%]'/>
                         </div>
                     }
 
-                    <div className="xl:h-full xl:flex flex-col justify-center">
-                        <div className="border-black border-t-2 border-b-2 xl:border-none mb-[50px] mt-[30px]">
-                            <h1 className="text-[18px] px-[20px] py-[10px] uppercase xl:normal-case text-center xl:text-left xl:border-t-0 xl:border-b-0 lg:text-[40px] 2xl:text-[60px] 2xl:leading-[66px] xl:text-[#4100FC]">{t('professions')}</h1>
-                        </div>
-                        
-                        { isLoading &&                        
-                            <ul className="text-[20px] lg:text-[30px] 2xl:text-[40px] 2xl:leading-[48px] pl-0 list-inside flex xl:block flex-col items-center">
+                    <div className="xl:h-full flex flex-col justify-center md:items-center lg:items-start px-[20px] xl:px-0">
+                        <h1 className="uppercase text-[24px] leading-[30px] lg:text-[32px] 2xl:text-[60px] 2xl:leading-[66px] text-[#4100FC] mb-[30px] xl:mb-[50px]">
+                        {t('professions')}
+                        </h1>
+                       
+                        { isLoaded &&                        
+                            <ul className="text-[22px] lg:text-[24px] 2xl:text-[40px] 2xl:leading-[48px] pl-0 list-inside">
                                 {data?.map((item, index) => (
                                     <li
                                         key={item.id}
-                                        className="group mb-[50px] last:mb-0 hover:text-[#4100FC] transition-all duration-350 flex gap-2 font-extralight w-fit"
+                                        className="group mb-[20px] lg:mb-[50px] last:mb-0  hover:text-[#4100FC] transition-all duration-350 font-extralight w-fit flex gap-5"
                                         onMouseEnter={() => setHoveredIndex(index)}
                                         onMouseLeave={() => setHoveredIndex(null)}
                                     >

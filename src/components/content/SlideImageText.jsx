@@ -1,9 +1,8 @@
 import { formatRichText } from "../../lib/utils";
 import { useState, useEffect } from "react";
-import PopupResource from "./PopupResource";
-import {AnimatePresence, motion } from "motion/react";
 import bgSmall from '../../assets/images/backgrounds/bg-1.webp';
 import { useMediaQuery } from "react-responsive";
+import { useNavigate } from "react-router-dom";
 
 
 
@@ -13,9 +12,8 @@ export default function SlideImageText({ data, locale }) {
     const imageUrl = `${API_URL}/storage/${data?.slidable?.background?.background}`;
     const color = data?.slidable?.color_text;
     const [, setIsPortrait] = useState(false);
-    const [isOpenPopup, setIsOpenPopup] = useState(false);
-    const [dataPopup, setDataPopup] = useState();
     const isMobile = useMediaQuery({query: '(max-width: 768px)'});
+    const navigate = useNavigate();
 
     useEffect(() => {
         if (data?.slidable?.document?.url && locale) {
@@ -27,14 +25,6 @@ export default function SlideImageText({ data, locale }) {
         }
     }, [data, locale]);
 
-    useEffect(() => {
-        const swiperContainer = document.querySelector('.swiper');
-        if (swiperContainer) {
-            swiperContainer.style.zIndex = isOpenPopup ? "1000" : "0";
-        }
-    }, [isOpenPopup])
-
-
     return (
         <>
             <div style={{ background: `url(${isMobile ? bgSmall : imageUrl}) right / cover no-repeat` }} className='h-screen slide'>
@@ -45,11 +35,15 @@ export default function SlideImageText({ data, locale }) {
                                 <div className="grid grid-cols-8 h-full">
                                     <div className="col-span-8 flex flex-col items-center justify-center lg:pr-[30px] pt-[20px] lg:pt-0">
                                         {(data?.slidable?.document?.url && locale) && (
-                                            <img src={data.slidable.document.optimized_url.large.url} alt={data.slidable.document.name[locale]} className="md:h-[400px] lg:h-[calc(100dvh-200px)] object-contain"/>
+                                            <img src={data.slidable.document.optimized_url.large.url} 
+                                                alt={data.slidable.document.name[locale]} 
+                                                className="md:h-[400px] lg:h-[calc(100dvh-200px)] object-contain cursor-pointer"
+                                                onClick={() => { navigate(`/resources/${data?.slidable?.document.id}`, { state: { modal: true } }) }}    
+                                            />
                                         )}
 
                                         {/** BUTTON POPUP RESOURCE */}
-                                        <div className="mt-5 cursor-pointer flex justify-center" onClick={() => { setIsOpenPopup(true); setDataPopup(data.slidable?.document); }} >
+                                        <div className="mt-5 cursor-pointer flex justify-center" onClick={() => { navigate(`/resources/${data?.slidable?.document.id}`, { state: { modal: true } }) }}>
                                             <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                 <circle cx="15" cy="15" r="14.5" stroke="black"/>
                                                 <path d="M14.125 9.5C14.125 9.03516 14.5078 8.625 15 8.625C15.4648 8.625 15.875 9.03516 15.875 9.5C15.875 9.99219 15.4648 10.375 15 10.375C14.5078 10.375 14.125 9.99219 14.125 9.5ZM12.8125 12.5625C12.8125 12.3438 13.0039 12.125 13.25 12.125H15C15.2188 12.125 15.4375 12.3438 15.4375 12.5625V20H17.1875C17.4062 20 17.625 20.2188 17.625 20.4375C17.625 20.6836 17.4062 20.875 17.1875 20.875H12.8125C12.5664 20.875 12.375 20.6836 12.375 20.4375C12.375 20.2188 12.5664 20 12.8125 20H14.5625V13H13.25C13.0039 13 12.8125 12.8086 12.8125 12.5625Z" fill="black"/>
@@ -61,7 +55,7 @@ export default function SlideImageText({ data, locale }) {
 
                             <div className="col-span-12 lg:col-span-4 lg:border-l border-black flex items-center lg:pl-[30px] overflow-hidden h-full">
                                 {data.slidable?.content && locale && (
-                                    <div className="richeditor text-center lg:text-left pt-[20px] pb-[60px] lg:py-[40px] lg:overflow-scroll h-full xl:flex items-center" style={{ color: color }}>
+                                    <div className="richeditor text-center lg:text-left pt-[20px] pb-[60px] lg:py-[40px] lg:overflow-scroll h-full xl:flex flex-col justify-center" style={{ color: color }}>
                                         { formatRichText(data.slidable.content[locale])}
                                     </div>
                                 )}
@@ -70,22 +64,6 @@ export default function SlideImageText({ data, locale }) {
                     </div>
                 </div>
             </div>
-
-            {/** POPUP */}
-            <AnimatePresence>           
-                {isOpenPopup &&
-                    <motion.div 
-                        className="w-full h-full absolute inset-0 z-[1000] flex items-center justify-center bg-black/50"
-                        key="popupResource"
-                        initial={{ scale: 0.5, opacity: 0, y: "-50%" }}
-                        animate={{ scale: 1, opacity: 1, y: 0 }}
-                        exit={{ scale: 0.5, opacity: 0, y: "-50%" }}
-                        transition={{ duration: 0.5, ease: "easeInOut" }}
-                    >
-                        <PopupResource setIsOpenPopup={ setIsOpenPopup } data={ dataPopup } locale={ locale }/>
-                    </motion.div>
-                }
-            </AnimatePresence>      
         </>    
     )
 }

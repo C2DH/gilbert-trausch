@@ -7,12 +7,11 @@ import { AnimatePresence, motion } from "motion/react";
 import { easeInOut } from "motion";
 import PopupResource from "./content/PopupResource";
 import { useTranslation } from "react-i18next";
-import { useSharedState } from "../contexts/ShareStateProvider";
 
 export default function Biography() {
 
     const API_URL = import.meta.env.VITE_API_URL;
-    const { i18n } = useTranslation();
+    const { i18n, t } = useTranslation();
     const locale = i18n.language;
     const [data, setData] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
@@ -21,7 +20,6 @@ export default function Biography() {
     const [activeElement, setActiveElement] = useState(null); // Nouvel état pour l'élément actif
     const [isOpenPopup, setIsOpenPopup] = useState(false);
     const [dataPopup, setDataPopup] = useState();
-    const [sharedState, setSharedState] = useSharedState();
 
     useEffect(() => {
         fetch(`${API_URL}/api/biography`)
@@ -37,10 +35,6 @@ export default function Biography() {
             })
             .catch((error) => console.error("Erreur de chargement :", error));
     }, [locale]);
-
-    // useEffect(() => {
-    //    setSharedState({ ...sharedState, showCurtains: false }) 
-    // }, [])
 
     useEffect(() => {
         if (data.length > 0) {
@@ -101,9 +95,10 @@ export default function Biography() {
                         <div className="grid grid-cols-12 mb-[50px] xl:mb-[100px] 2xl:mb-[150px]">
                             <div className="col-span-12 md:col-span-10 lg:col-span-8 2xl:col-span-6 text-[#4100FC]">
                                 <h1 className="text-[40px] leading-none md:text-[60px] md:leading-[95px] text-center md:text-left mb-[30px] md:mb-[40px]">Biographie</h1>
-                                <p>L’historien Gilbert Trausch (1931-2018) est encore largement connu du public luxembourgeois. Pendant des décennies, ses incontournables interventions dans les médias ont contribué à faire découvrir l’histoire du Luxembourg à toute une génération.</p>
-                                <p>Ce n’est pourtant là qu’une des nombreuses facettes d’un historien prolifique de la seconde moitié du XXe siècle qui, en plus d’avoir renouvelé le paysage historiographique luxembourgeois, bénéficiait aussi d’une renommée solide en dehors des frontières du Grand-Duché.</p>
-                                <p>Formateur de toute une génération d’historiens, tour à tour directeur de la Bibliothèque nationale, du Centre Universitaire de Luxembourg (CUL – ancêtre de l’Université du Luxembourg) et du Centre d'études et de recherches européennes Robert Schuman (CERE), fréquentant les cercles ministériels et diplomatiques, Gilbert Trausch était une personnalité omniprésente de la société luxembourgeoise.</p>
+                                <div>
+                                    {formatRichText(t('bio_description'))}
+                                </div>
+
                             </div>
                         </div>
 

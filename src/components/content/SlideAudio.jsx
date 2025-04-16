@@ -1,10 +1,5 @@
-import { useEffect } from "react";
 import { formatRichText } from "../../lib/utils";
 import Slider from "./Slider";
-import PopupResource from "./PopupResource";
-import {AnimatePresence, motion } from "motion/react";
-import { useContext } from "react";
-import { PopupContext } from "../../contexts/PopupContext";
 import { useMediaQuery } from "react-responsive";
 import bgSmall from '../../assets/images/backgrounds/bg-1.webp';
 
@@ -14,15 +9,7 @@ export default function SlideAudio({ data, locale }) {
     const API_URL = import.meta.env.VITE_API_URL;
     const color = data?.slidable?.color_text;
     const imageUrl = `${API_URL}/storage/${data?.slidable?.background?.background}`;
-    const { isOpenPopup, setIsOpenPopup, dataPopup } = useContext(PopupContext);
     const isMobile = useMediaQuery({query: '(max-width: 768px)'});
-
-    useEffect(() => {
-        const swiperContainer = document.querySelector('.swiper');
-        if (swiperContainer) {
-            swiperContainer.style.zIndex = isOpenPopup ? "1000" : "0";
-        }
-    }, [isOpenPopup])
 
     return (
         <>
@@ -53,7 +40,7 @@ export default function SlideAudio({ data, locale }) {
         </div>
 
         {/** POPUP */}
-        <AnimatePresence>           
+        {/* <AnimatePresence>           
             {isOpenPopup &&
                 <motion.div 
                     className="w-full h-full absolute inset-0 z-[1000]"
@@ -66,7 +53,7 @@ export default function SlideAudio({ data, locale }) {
                     <PopupResource setIsOpenPopup={ setIsOpenPopup } data={ dataPopup } locale={ locale }/>
                 </motion.div>
             }
-        </AnimatePresence>
+        </AnimatePresence> */}
     </>
 )
 }

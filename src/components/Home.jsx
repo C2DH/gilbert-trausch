@@ -29,7 +29,7 @@ export default function Home() {
     const [showMenu, setShowMenu] = useState(false);
     const [showStartButton, setShowStartButton] = useState(false);
     const [animationActive, setAnimationActive] = useState(false);
-    const isMobile = useMediaQuery({query: '(max-width: 1024px)'});
+    const isMobile = useMediaQuery({query: '(max-width: 1023px)'});
     const [sharedState, setSharedState] = useSharedState();
     const navigate = useNavigate();
 
@@ -40,7 +40,6 @@ export default function Home() {
         }, 1000);
     }
     
-
     useEffect(() => {
         const storedHome = localStorage.getItem('home');
         const now = new Date().getTime();
@@ -79,10 +78,6 @@ export default function Home() {
         }
     }, [animationActive, isMobile]);
 
-    // useEffect(() => {
-    //     setSharedState({ ...sharedState, showCurtains: false }) 
-    //  }, [])
-
     return (
         <motion.div 
             className="relative h-[100svh] sm:h-screen w-full"
@@ -106,7 +101,7 @@ export default function Home() {
 
             {/* Bouton */}
             <AnimatePresence>
-                {showStartButton && (
+                {(!isMobile && showStartButton) && (
                     <motion.button
                         className="absolute top-[50%] left-[50%] -translate-x-[50%] -translate-y-[50%] px-[25px] py-[7px] rounded-[7px] border border-[#4100FC] text-[14px] uppercase font-medium text-[#4100FC] cursor-pointer hover:text-white hover:bg-[#4100FC] duration-500"
                         onClick={handleStart}
@@ -124,7 +119,7 @@ export default function Home() {
             <AnimatePresence>
                 {(!isMobile && showMenu) && (
                     <motion.div
-                        className="absolute bottom-[150px] 2xl:bottom-[80px] left-0 right-0 flex justify-between"
+                        className="absolute bottom-[120px] 2xl:bottom-[80px] left-0 right-0 flex justify-between"
                         initial={{ opacity: 0, y: 100 }}
                         animate={{ opacity: 1, y: 0 }}
                         exit={{ opacity: 0, y: 100 }}
@@ -132,7 +127,7 @@ export default function Home() {
                     >
 
                         <div className="menu w-full lg:container mx-auto">
-                            <ul className="font-normal text-[18px] 2xl:text-[20px] uppercase flex flex-col lg:flex-row justify-between items-center text-center">
+                            <ul className="font-normal text-[17px] 2xl:text-[20px] uppercase flex flex-col lg:flex-row justify-between items-center text-center">
                                 <hr className='lg:hidden w-3/4 border-black'/>
                                 <li className="leading-none border-black lg:border-t-2 lg:border-b-2 px-[10px] xl:px-[20px] 2xl:px-[40px] py-[10px] xl:py-[20px] hover:lg:text-blue hover:lg:py-[30px] hover:lg:border-blue duration-[450ms] my-[10px] lg:my-[20px] hover:lg:my-0 cursor-pointer"
                                     onClick={() => handleMenuClick('/biography')}
@@ -186,47 +181,47 @@ export default function Home() {
                     >
 
                         <div className='w-full flex justify-center'>
-                            <img src={logoMobile} alt="Logo Gilbert Trausch" className='w-full md:w-[80%]'/>
+                            <img src={logoMobile} alt="Logo Gilbert Trausch" className='w-full md:w-[58%]'/>
                         </div>
                     
-                        <div className="menu w-full lg:container mx-auto">
-                            <ul className="font-normal text-[18px] 2xl:text-[20px] uppercase flex flex-col lg:flex-row justify-between items-center text-center">
-                                <hr className='lg:hidden w-3/4 border-black'/>
-                                <li className="leading-none border-black lg:border-t-2 lg:border-b-2 px-[10px] xl:px-[20px] 2xl:px-[40px] py-[10px] xl:py-[20px] hover:lg:text-blue hover:lg:py-[30px] hover:lg:border-blue duration-[450ms] my-[10px] lg:my-[20px] hover:lg:my-0 cursor-pointer"
+                        <div className="menu w-full xl:container mx-auto">
+                            <ul className="font-normal text-[18px] 2xl:text-[20px] uppercase flex flex-col xl:flex-row justify-between items-center text-center">
+                                <hr className='xl:hidden w-3/4 md:w-1/2 border-black'/>
+                                <li className="leading-none border-black xl:border-t-2 xl:border-b-2 px-[10px] xl:px-[20px] 2xl:px-[40px] py-[10px] xl:py-[20px] hover:xl:text-blue hover:xl:py-[30px] hover:xl:border-blue duration-[450ms] my-[10px] xl:my-[20px] hover:xl:my-0 cursor-pointer"
                                     onClick={() => handleMenuClick('/biography')}
                                 >
                                     {t('biography')}
                                 </li>
 
-                                <hr className='lg:hidden w-3/4 border-black'/>
-                                <li className="leading-none border-black lg:border-t-2 lg:border-b-2 px-[10px] xl:px-[20px] 2xl:px-[40px] py-[10px] xl:py-[20px] hover:lg:text-blue hover:lg:py-[30px] hover:lg:border-blue duration-[450ms] my-[10px] lg:my-[20px] hover:lg:my-0 cursor-pointer"
+                                <hr className='xl:hidden w-3/4 md:w-1/2 border-black'/>
+                                <li className="leading-none border-black xl:border-t-2 xl:border-b-2 px-[10px] xl:px-[20px] 2xl:px-[40px] py-[10px] xl:py-[20px] hover:xl:text-blue hover:xl:py-[30px] hover:xl:border-blue duration-[450ms] my-[10px] xl:my-[20px] hover:xl:my-0 cursor-pointer"
                                     onClick={() => handleMenuClick('/professions')}
                                 >
                                     {t('professions')}
                                 </li>
 
-                                <hr className='lg:hidden w-3/4 border-black'/>
-                                <li className="leading-none border-black lg:border-t-2 lg:border-b-2 px-[10px] xl:px-[20px] 2xl:px-[40px] py-[10px] xl:py-[20px] hover:lg:text-blue hover:lg:py-[30px] hover:lg:border-blue duration-[450ms] my-[10px] lg:my-[20px] hover:lg:my-0 cursor-pointer"
+                                <hr className='xl:hidden w-3/4 md:w-1/2 border-black'/>
+                                <li className="leading-none border-black xl:border-t-2 xl:border-b-2 px-[10px] xl:px-[20px] 2xl:px-[40px] py-[10px] xl:py-[20px] hover:xl:text-blue hover:xl:py-[30px] hover:xl:border-blue duration-[450ms] my-[10px] xl:my-[20px] hover:xl:my-0 cursor-pointer"
                                     onClick={() => handleMenuClick('/magic-notebooks')}
                                 >
                                     {t('magicNotebooks')}
                                 </li>
 
-                                <hr className='lg:hidden w-3/4 border-black'/>
-                                <li className="leading-none border-black lg:border-t-2 lg:border-b-2 px-[10px] xl:px-[20px] 2xl:px-[40px] py-[10px] xl:py-[20px] hover:lg:text-blue hover:lg:py-[30px] hover:lg:border-blue duration-[450ms] my-[10px] lg:my-[20px] hover:lg:my-0 cursor-pointer"
+                                <hr className='xl:hidden w-3/4 md:w-1/2 border-black'/>
+                                <li className="leading-none border-black xl:border-t-2 xl:border-b-2 px-[10px] xl:px-[20px] 2xl:px-[40px] py-[10px] xl:py-[20px] hover:xl:text-blue hover:xl:py-[30px] hover:xl:border-blue duration-[450ms] my-[10px] xl:my-[20px] hover:xl:my-0 cursor-pointer"
                                     onClick={() => handleMenuClick('/virtual-tour')}
                                 >
                                     <span className="block leading-none">{ t('house') }</span>
                                 </li>
 
-                                <hr className='lg:hidden w-3/4 border-black'/>
-                                <li className="leading-none border-black lg:border-t-2 lg:border-b-2 px-[10px] xl:px-[20px] 2xl:px-[40px] py-[10px] xl:py-[20px] hover:lg:text-blue hover:lg:py-[30px] hover:lg:border-blue duration-[450ms] my-[10px] lg:my-[20px] hover:lg:my-0 cursor-pointer"
+                                <hr className='xl:hidden w-3/4 md:w-1/2 border-black'/>
+                                <li className="leading-none border-black xl:border-t-2 xl:border-b-2 px-[10px] xl:px-[20px] 2xl:px-[40px] py-[10px] xl:py-[20px] hover:xl:text-blue hover:xl:py-[30px] hover:xl:border-blue duration-[450ms] my-[10px] xl:my-[20px] hover:xl:my-0 cursor-pointer"
                                     onClick={() => handleMenuClick('/resources')}
                                 >
                                     {t('resources')}
                                 </li> 
 
-                                <hr className='lg:hidden w-3/4 border-black'/>
+                                <hr className='xl:hidden w-3/4 md:w-1/2 border-black'/>
                             </ul>
                         </div>
                     </motion.div>

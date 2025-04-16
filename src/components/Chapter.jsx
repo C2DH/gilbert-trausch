@@ -52,7 +52,6 @@ export default function Chapter() {
     const { slug, id } = useParams();
     const [data, setData] = useState();
     const [isLoading, setIsLoading] = useState(false);
-    const swiperRef = useRef();
     const [activeIndex, setActiveIndex] = useState(0);
     const [total, setTotal] = useState(null);
     const [colorElement, setColorElement] = useState("");
@@ -78,7 +77,6 @@ export default function Chapter() {
                 setShowSubtitle(false)
         } else {
             setShowSubtitle(true)
-
         }
     }, [searchParams]);
 

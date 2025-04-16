@@ -8,6 +8,7 @@ import PlayerAudio from '../content/PlayerAudio';
 import { PopupContext } from "../../contexts/PopupContext";
 import audioLogo from '../../assets/images/audio.svg'
 import videoLogo from '../../assets/images/video.svg'
+import { useNavigate } from 'react-router-dom';
 
 
 export default function Slider({ items, locale }) {
@@ -18,6 +19,7 @@ export default function Slider({ items, locale }) {
     const navigationPrevRef = useRef(null);
     const [index, setIndex] = useState(0);
     const { setIsOpenPopup, setDataPopup } = useContext(PopupContext);
+    const navigate = useNavigate();
 
     return (
         <>
@@ -37,7 +39,7 @@ export default function Slider({ items, locale }) {
                         <SwiperSlide key={item.id} className="">
                             {(item.type !== "audio" && item.optimized_url?.large) && (
                                 <img
-                                    onClick={() => { setIsOpenPopup(true); setDataPopup(items[index]); }} 
+                                    onClick={() => { navigate(`/resources/${item.id}`, { state: { modal: true } }) }}
                                     src={item.optimized_url?.large.url} alt={item.name[locale]} className="w-auto h-[300px] md:h-[350px] lg:h-[500px] xl:h-[70vh] object-contain" />
                             )}
 
@@ -45,11 +47,11 @@ export default function Slider({ items, locale }) {
                                 <div className="lg:h-full w-full flex flex-col justify-center">
                                     {item.cover ? (
                                         <img 
-                                            onClick={() => { setIsOpenPopup(true); setDataPopup(items[index]); }} 
+                                            onClick={() => { navigate(`/resources/${item.id}`, { state: { modal: true } }) }}
                                             src={item.cover} alt="cover" className="max-h-[60vh] rounded-[10px] mb-[20px] object-cover" />
                                     ) : (
                                         <div 
-                                            onClick={() => { setIsOpenPopup(true); setDataPopup(items[index]); }} 
+                                            onClick={() => { navigate(`/resources/${item.id}`, { state: { modal: true } }) }}
                                             className="bg-[#DBDBD0] w-full h-[150px] md:h-[200px] lg:h-[40vh] xl:h-[55vh] 2xl:h-[60vh] flex justify-center items-center relative mb-5 rounded-[10px]">
                                             <img src={ audioLogo } alt="Logo audio" className="h-[80px] lg:h-[140px]"/>
                                         </div>
@@ -62,10 +64,14 @@ export default function Slider({ items, locale }) {
                             {item.type === "video" && (
                                 <div className="lg:h-full w-full flex flex-col justify-center">
                                     {item.cover ? (
-                                        <img src={item.cover} alt="cover" className="max-h-[60vh] rounded-[10px] mb-[20px] object-cover" />
+                                        <img src={item.cover} alt="cover" className="max-h-[60vh] rounded-[10px] mb-[20px] object-cover" 
+                                            onClick={() => { navigate(`/resources/${item.id}`, { state: { modal: true } }) }}
+                                        />
                                     ) : (
                                         <div className="bg-[#DBDBD0] w-full h-[150px] md:h-[200px] lg:h-[40vh] xl:h-[55vh] 2xl:h-[60vh] flex justify-center items-center relative mb-5 rounded-[10px]">
-                                            <img src={ videoLogo } alt="Logo video" className="h-[50px] lg:h-[140px]"/>
+                                            <img src={ videoLogo } alt="Logo video" className="h-[50px] lg:h-[140px]"
+                                                onClick={() => { navigate(`/resources/${item.id}`, { state: { modal: true } }) }}
+                                            />
                                         </div>
                                     )}
                                 </div>
@@ -97,7 +103,7 @@ export default function Slider({ items, locale }) {
 
             {/** BUTTON POPUP RESOURCE */}
             <div className="absolute lg:bottom-[40px] xl:bottom-[20px] translate-y-[22px] md:translate-y-[24px] xl:translate-y-0 left-[75%] md:left-[60%] lg:left-[67%] lg:-translate-x-[50%] cursor-pointer" 
-                    onClick={() => { setIsOpenPopup(true); setDataPopup(items[index]); }} 
+                    onClick={() => { navigate(`/resources/${items[index].id}`, { state: { modal: true } }) }} 
                 >
                     <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <circle cx="15" cy="15" r="14.5" stroke="black"/>

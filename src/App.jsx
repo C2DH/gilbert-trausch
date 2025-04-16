@@ -15,7 +15,7 @@ import MagicNotebooks from "./components/MagicNotebooks";
 import { LanguageProvider } from './contexts/LanguageProvider';
 import '../i18n'
 import { NavbarProvider } from "./contexts/NavbarProvider";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import Resource from "./components/Resource";
 
 function usePrevious(value) {

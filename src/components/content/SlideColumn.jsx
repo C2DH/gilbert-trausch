@@ -1,11 +1,10 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { formatRichText } from "../../lib/utils";
 import PlayerPDF from "./PlayerPDF";
-import {AnimatePresence, motion } from "motion/react";
-import PopupResource from "./PopupResource";
 import classNames from "classnames";
 import bgSmall from '../../assets/images/backgrounds/bg-1.webp';
 import { useMediaQuery } from "react-responsive";
+import { useNavigate } from "react-router-dom";
 
 export default function SlideColumn({data, locale}) {
 
@@ -13,9 +12,8 @@ export default function SlideColumn({data, locale}) {
     const imageUrl = `${API_URL}/storage/${data?.slidable?.background?.background}`;
     const position = data?.slidable?.position;
     const color = data?.slidable?.color_text;
-    const [isOpenPopup, setIsOpenPopup] = useState(false);
-    const [dataPopup, setDataPopup] = useState();
     const isMobile = useMediaQuery({ query: '(max-width: 768px)'});
+    const navigate = useNavigate();
     let columns = [];
 
     const imageElement = (data?.slidable?.document?.url && locale) ? (
@@ -37,7 +35,7 @@ export default function SlideColumn({data, locale}) {
             {/** BUTTON POPUP RESOURCE */}
             <div 
                 className="mt-5 cursor-pointer" 
-                onClick={() => { setIsOpenPopup(true); setDataPopup(data.slidable?.document); }} 
+                onClick={() => { navigate(`/resources/${data.slidable?.document.id}`, { state: { modal: true } }) }} 
             >
                 <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <circle cx="15" cy="15" r="14.5" stroke="black"/>
@@ -63,16 +61,8 @@ export default function SlideColumn({data, locale}) {
         columns = [content1Element, content2Element, imageElement];
     }
 
-    useEffect(() => {
-        const swiperContainer = document.querySelector('.swiper');
-        if (swiperContainer) {
-            swiperContainer.style.zIndex = isOpenPopup ? "1000" : "0";
-        }
-    }, [isOpenPopup])
-
     return (
         <>
-        {/* initial={{ opacity: 0 }} animate={{ opacity: 1, transition: {delay: 0.7} }}  */}
             <div style={{ background: `url(${isMobile ? bgSmall : imageUrl}) right / cover no-repeat` }} className="h-screen slide_columns slide">
                 <div className="relative top-[40px]">
                     <div className="container mx-auto px-[20px] xl:px-0">
@@ -88,22 +78,6 @@ export default function SlideColumn({data, locale}) {
                     </div>
                 </div>
             </div>
-
-            {/** POPUP */}
-            <AnimatePresence>           
-                {isOpenPopup &&
-                    <motion.div 
-                        className="w-full h-full absolute inset-0 z-[1000] flex items-center justify-center bg-black/50"
-                        key="popupResourceChapter"
-                        initial={{ scale: 0.5, opacity: 0, y: "-50%" }}
-                        animate={{ scale: 1, opacity: 1, y: 0 }}
-                        exit={{ scale: 0.5, opacity: 0, y: "-50%" }}
-                        transition={{ duration: 0.5, ease: "easeInOut" }}
-                    >
-                        <PopupResource setIsOpenPopup={ setIsOpenPopup } data={ dataPopup } locale={ locale }/>
-                    </motion.div>
-                }
-            </AnimatePresence>
         </>
     );
 }

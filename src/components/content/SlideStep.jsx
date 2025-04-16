@@ -1,25 +1,12 @@
-import { useContext, useEffect } from "react";
 import { formatRichText } from "../../lib/utils";
 import PlayerPDF from "./PlayerPDF";
 import Slider from "./Slider";
-import PopupResource from "./PopupResource";
-import {AnimatePresence, motion } from "motion/react";
-import { PopupContext } from "../../contexts/PopupContext";
 
 export default function SlideStep({ data, locale }) {
 
     const API_URL = import.meta.env.VITE_API_URL;
     const imageUrl = `${API_URL}/storage/${data?.slidable?.background?.background}`;
     const color = data?.slidable?.color_text;
-
-    const { isOpenPopup, setIsOpenPopup, dataPopup } = useContext(PopupContext);
-    
-    useEffect(() => {
-        const swiperContainer = document.querySelector('.swiper');
-        if (swiperContainer) {
-            swiperContainer.style.zIndex = isOpenPopup ? "1000" : "0";
-        }
-    }, [isOpenPopup])
 
     return (
         <>
@@ -60,22 +47,6 @@ export default function SlideStep({ data, locale }) {
                     </div>
                 </div>
             </div>
-
-            {/** POPUP */}
-            <AnimatePresence>           
-                {isOpenPopup &&
-                    <motion.div 
-                        className="w-full h-full absolute inset-0 z-[1000]"
-                        key="popupResource"
-                        initial={{ scale: 0.5, opacity: 0, y: "-50%" }}
-                        animate={{ scale: 1, opacity: 1, y: 0 }}
-                        exit={{ scale: 0.5, opacity: 0, y: "-50%" }}
-                        transition={{ duration: 0.5, ease: "easeInOut" }}
-                    >
-                        <PopupResource setIsOpenPopup={ setIsOpenPopup } data={ dataPopup } locale={ locale }/>
-                    </motion.div>
-                }
-            </AnimatePresence>
         </>
     )
 }

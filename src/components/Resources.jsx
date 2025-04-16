@@ -36,7 +36,6 @@ export default function Resources() {
     const [dataPopup, setDataPopup] = useState();
     const [tags, setTags] = useState([]);
     const [isOpenFilters, setIsOpenFilters] = useState(false);
-    const [sharedState, setSharedState] = useSharedState();
     const navigate = useNavigate();
 
     const handleSelection = (e, type) => {
@@ -61,10 +60,7 @@ export default function Resources() {
         })
     }
 
-    // useEffect(() => {
-    //     setSharedState({ ...sharedState, showCurtains: false }) 
-    //  }, [])
-    
+
     // RESOURCES
     useEffect(() => {
         const params = new URLSearchParams();

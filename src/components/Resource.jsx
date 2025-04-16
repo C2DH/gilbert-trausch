@@ -28,6 +28,8 @@ export default function Resource() {
     const location = useLocation();
     const navigate = useNavigate();
 
+    console.log(location)
+
     useEffect(() => {
         setIsImageVisible(true);
 
@@ -40,13 +42,14 @@ export default function Resource() {
         fetchData();
     }, []);
 
+
     if(!data) return null;
 
     return (
         <div style={{ background: `url(${background}) center / cover no-repeat` }} className={classNames('popup_resource h-screen w-full', { "fixed inset-0 z-[102]": location.state.modal })}>
             
 			<div className='lg:hidden py-[10px] border-b border-black h-[40px]'>
-				<span className='block text-[14px] text-center cursor-pointer hover:text-[#4100FC] duration-500 uppercase font-light' onClick={() => navigate('/resources') }>{ t('close') }</span>
+				<span className='block text-[14px] text-center cursor-pointer hover:text-[#4100FC] duration-500 uppercase font-light' onClick={() => navigate(-1) }>{ t('close') }</span>
 			</div>
 
             <div className="grid grid-cols-12 h-full">
@@ -94,7 +97,7 @@ export default function Resource() {
 
                 <div className="col-span-12 lg:col-span-3 flex flex-col overflow-auto">
                     <div className='hidden border-b border-black pl-[20px] h-[40px] lg:flex items-center'>
-                        <span className='cursor-pointer text-[18px] font-light hover:text-[#4100FC] duration-500 uppercase' onClick={() => navigate('/resources') }>{ t('close') }</span>
+                        <span className='cursor-pointer text-[18px] font-light hover:text-[#4100FC] duration-500 uppercase' onClick={() => navigate(-1) }>{ t('close') }</span>
                     </div>
 
 					<div className='lg:h-[calc(100dvh-55px)] lg:overflow-auto'>
