@@ -15,11 +15,21 @@ import MagicNotebooks from "./components/MagicNotebooks";
 import { LanguageProvider } from './contexts/LanguageProvider';
 import '../i18n'
 import { NavbarProvider } from "./contexts/NavbarProvider";
-import { useEffect } from "react";
+import { useEffect, useRef, useState } from "react";
+import Resource from "./components/Resource";
+
+function usePrevious(value) {
+    const ref = useRef();
+    useEffect(() => {
+      ref.current = value;
+    });
+    return ref.current ?? null;
+}
 
 export default function App() {
     
     const location = useLocation();
+    const previousLocation = usePrevious(location);
 
     useEffect(() => {
         var _mtm = window._mtm = window._mtm || [];
@@ -27,12 +37,18 @@ export default function App() {
         var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
         g.async=true; g.src='https://cdn.matomo.cloud/journalofdigitalhistory.matomo.cloud/container_9xdyUNCi.js'; s.parentNode.insertBefore(g,s);
     }, [])
+
+    const isModal = (
+        location.state &&
+        location.state.modal &&
+        (previousLocation !== location && previousLocation != null)
+    );
     
     return (    
         <>            
             <LanguageProvider>
                 <NavbarProvider>
-                    <Routes location={location} key={location.pathname}>
+                    <Routes location={isModal ? previousLocation : location} key={isModal ? previousLocation.pathname : location.pathname}>
                         <Route path="/" element={<Layout />}>
                             <Route path='/' element={ <Home /> }/>
                             <Route path="/preview/chapter/slide/:id" element={<PreviewSlide />} />
@@ -44,10 +60,14 @@ export default function App() {
                             <Route path="/magic-notebooks" element={<MagicNotebooks />} />
                             <Route path="/virtual-tour" element={<VirtualTour />} />
                             <Route path="/resources" element={<Resources />} />
+                            <Route path="/resources/:id" element={<Resource />} />
                             <Route path="/about" element={<About />} />
                             <Route path="/terms-of-use" element={<Terms />} />
                         </Route>
                     </Routes>
+                    {isModal && <Routes location={location}>
+                        <Route path='/resources/:id' element={<Resource />} />
+                    </Routes>}
                 </NavbarProvider>
             </LanguageProvider>
         </>

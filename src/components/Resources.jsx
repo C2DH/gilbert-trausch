@@ -11,6 +11,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { easeInOut } from "motion";
 import { useTranslation } from "react-i18next";
 import { useSharedState } from "../contexts/ShareStateProvider";
+import { useNavigate } from "react-router-dom";
 
 export default function Resources() {
 
@@ -36,7 +37,7 @@ export default function Resources() {
     const [tags, setTags] = useState([]);
     const [isOpenFilters, setIsOpenFilters] = useState(false);
     const [sharedState, setSharedState] = useSharedState();
-    
+    const navigate = useNavigate();
 
     const handleSelection = (e, type) => {
         setSelectedFilters(prevFilters => {
@@ -203,7 +204,7 @@ export default function Resources() {
                                                             if (document.cover) {
                                                                 return (
                                                                     <div key={index} className="audio relative overflow-hidden cursor-pointer w-full aspect-square lg:h-[300px] xl:h-[400px]" style={{ paddingBottom: `${aspectRatio}%`}} 
-                                                                        onClick={() => { setIsOpenPopup(true); setDataPopup(document); }}  
+                                                                        onClick={() => { navigate(`/resources/${document.id}`, { state: { modal: true } }) }}  
                                                                     >
                                                                         <img loading="lazy" src={ document.cover } alt={document?.name[locale]} className="w-full hover:scale-[1.2] transition-all duration-[750ms]" 
                                                                             style={{position: 'absolute',top: 0,left: 0, width: '100%', height: '100%', objectFit: 'cover'}} 
@@ -220,7 +221,7 @@ export default function Resources() {
                                                                 )
                                                             } else {
                                                                 return (
-                                                                    <div key={index} className="relative overflow-hidden cursor-pointer w-full" onClick={() => { setIsOpenPopup(true); setDataPopup(document); }}>
+                                                                    <div key={index} className="relative overflow-hidden cursor-pointer w-full" onClick={() => { navigate(`/resources/${document.id}`, { state: { modal: true } }) }}>
                                                                         <div className="bg-[#DBDBD0] w-full aspect-square lg:h-[200px] flex justify-center items-center relative">
                                                                             { document.type === "audio" ? (
                                                                                 <img src={ audioLogo } alt="Logo audio" className="h-[50px] lg:h-[140px]"/>
@@ -246,7 +247,7 @@ export default function Resources() {
                                                                 <div 
                                                                     key={index} 
                                                                     className="cursor-pointer overflow-hidden relative" style={{ width: `${document?.optimized_url?.thumbnail?.width}%`, height: `${document?.optimized_url?.thumbnail?.height}`}} 
-                                                                    onClick={() => { setIsOpenPopup(true); setDataPopup(document);}}
+                                                                    onClick={() => { navigate(`/resources/${document.id}`, { state: { modal: true } }) }}
                                                                 >
                                                                     <img 
                                                                         loading="lazy" 
