@@ -12,9 +12,12 @@ import intro_8 from '../assets/images/intro/wallpaper_intro_8.jpg';
 import intro_9 from '../assets/images/intro/wallpaper_intro_9.jpg';
 import { useNavigate } from 'react-router-dom';
 import { useMediaQuery } from 'react-responsive';
-import bgSmall from '../assets/images/backgrounds/bg-home-small.webp'
+import bgSmall from '../assets/images/backgrounds/bg-1.webp';
+import logoMobile from "../assets/images/backgrounds/logo-home.png";
 import { useTranslation } from 'react-i18next';
 import { useSharedState } from '../contexts/ShareStateProvider';
+import Player from './content/PlayerVideo';
+import audio from "../assets/audio/audio-1.wav";
 
 const images = [intro_2, intro_3, intro_4, intro_5, intro_6, intro_7, intro_8, intro_9];
 const EXPIRE = 6 * 3600 * 1000;
@@ -119,14 +122,15 @@ export default function Home() {
 
 
             <AnimatePresence>
-                {showMenu && (
+                {(!isMobile && showMenu) && (
                     <motion.div
-                        className="absolute bottom-[20px] 2xl:bottom-[80px] left-0 right-0 flex justify-between"
+                        className="absolute bottom-[150px] 2xl:bottom-[80px] left-0 right-0 flex justify-between"
                         initial={{ opacity: 0, y: 100 }}
                         animate={{ opacity: 1, y: 0 }}
                         exit={{ opacity: 0, y: 100 }}
                         transition={{ duration: 1, ease: "easeOut" }}
                     >
+
                         <div className="menu w-full lg:container mx-auto">
                             <ul className="font-normal text-[18px] 2xl:text-[20px] uppercase flex flex-col lg:flex-row justify-between items-center text-center">
                                 <hr className='lg:hidden w-3/4 border-black'/>
@@ -170,6 +174,67 @@ export default function Home() {
                     </motion.div>
                 )}
             </AnimatePresence>
+
+            <AnimatePresence>
+                {isMobile && (
+                    <motion.div
+                        className="flex flex-col justify-center h-full"
+                        initial={{ opacity: 0, y: 100 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: 100 }}
+                        transition={{ duration: 1, ease: "easeOut" }}
+                    >
+
+                        <div className='w-full flex justify-center'>
+                            <img src={logoMobile} alt="Logo Gilbert Trausch" className='w-full md:w-[80%]'/>
+                        </div>
+                    
+                        <div className="menu w-full lg:container mx-auto">
+                            <ul className="font-normal text-[18px] 2xl:text-[20px] uppercase flex flex-col lg:flex-row justify-between items-center text-center">
+                                <hr className='lg:hidden w-3/4 border-black'/>
+                                <li className="leading-none border-black lg:border-t-2 lg:border-b-2 px-[10px] xl:px-[20px] 2xl:px-[40px] py-[10px] xl:py-[20px] hover:lg:text-blue hover:lg:py-[30px] hover:lg:border-blue duration-[450ms] my-[10px] lg:my-[20px] hover:lg:my-0 cursor-pointer"
+                                    onClick={() => handleMenuClick('/biography')}
+                                >
+                                    {t('biography')}
+                                </li>
+
+                                <hr className='lg:hidden w-3/4 border-black'/>
+                                <li className="leading-none border-black lg:border-t-2 lg:border-b-2 px-[10px] xl:px-[20px] 2xl:px-[40px] py-[10px] xl:py-[20px] hover:lg:text-blue hover:lg:py-[30px] hover:lg:border-blue duration-[450ms] my-[10px] lg:my-[20px] hover:lg:my-0 cursor-pointer"
+                                    onClick={() => handleMenuClick('/professions')}
+                                >
+                                    {t('professions')}
+                                </li>
+
+                                <hr className='lg:hidden w-3/4 border-black'/>
+                                <li className="leading-none border-black lg:border-t-2 lg:border-b-2 px-[10px] xl:px-[20px] 2xl:px-[40px] py-[10px] xl:py-[20px] hover:lg:text-blue hover:lg:py-[30px] hover:lg:border-blue duration-[450ms] my-[10px] lg:my-[20px] hover:lg:my-0 cursor-pointer"
+                                    onClick={() => handleMenuClick('/magic-notebooks')}
+                                >
+                                    {t('magicNotebooks')}
+                                </li>
+
+                                <hr className='lg:hidden w-3/4 border-black'/>
+                                <li className="leading-none border-black lg:border-t-2 lg:border-b-2 px-[10px] xl:px-[20px] 2xl:px-[40px] py-[10px] xl:py-[20px] hover:lg:text-blue hover:lg:py-[30px] hover:lg:border-blue duration-[450ms] my-[10px] lg:my-[20px] hover:lg:my-0 cursor-pointer"
+                                    onClick={() => handleMenuClick('/virtual-tour')}
+                                >
+                                    <span className="block leading-none">{ t('house') }</span>
+                                </li>
+
+                                <hr className='lg:hidden w-3/4 border-black'/>
+                                <li className="leading-none border-black lg:border-t-2 lg:border-b-2 px-[10px] xl:px-[20px] 2xl:px-[40px] py-[10px] xl:py-[20px] hover:lg:text-blue hover:lg:py-[30px] hover:lg:border-blue duration-[450ms] my-[10px] lg:my-[20px] hover:lg:my-0 cursor-pointer"
+                                    onClick={() => handleMenuClick('/resources')}
+                                >
+                                    {t('resources')}
+                                </li> 
+
+                                <hr className='lg:hidden w-3/4 border-black'/>
+                            </ul>
+                        </div>
+                    </motion.div>
+                )}
+            </AnimatePresence>
+
+            <Player url={ audio } />
+
         </motion.div>
     );
 }

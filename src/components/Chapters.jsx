@@ -11,6 +11,7 @@ import { useTranslation } from "react-i18next";
 import { useSharedState } from "../contexts/ShareStateProvider";
 import { motion } from "motion/react";
 import { easeInOut } from "motion";
+import logoMobile from '../assets/images/backgrounds/logo-professions-mobile.png';
 
 
 export default function Chapters() {
@@ -51,14 +52,9 @@ export default function Chapters() {
             .catch((error) => console.error("Erreur lors du chargement des chapitres :", error));
     }, [locale]);
 
-    // useEffect(() => {
-    //     setSharedState({ ...sharedState, showCurtains: false }) 
-    //  }, [])
 
     return (
         <>
-            {/* <Navbar color={'#000000'} /> */}
-
             <motion.div className="relative h-screen overflow-hidden"
                 style={{
                     backgroundImage: isMobile ? `url(${bg_empty})` : getBackgroundImage(),
@@ -71,12 +67,21 @@ export default function Chapters() {
                 animate={{ opacity: 1 }}
                 transition={{ easeInOut, duration: 0.5 }}   
             >
-                <div className="container mx-auto h-full px-[20px] xl:px-0">
-                    <div className="h-full flex flex-col justify-center">
-                        <h1 className="text-[30px] leading-[35px] lg:text-[40px] 2xl:text-[60px] 2xl:leading-[66px] text-[#4100FC] mb-[50px]">{t('professions')}</h1>
+                <div className="container mx-auto lg:px-[20px] xl:px-0 flex flex-col justify-center h-full">
+                   
+                   {isMobile &&
+                        <div className='w-full flex justify-center'>
+                            <img src={logoMobile} alt="Logo Gilbert Trausch" className='w-full md:w-[80%]'/>
+                        </div>
+                    }
+
+                    <div className="xl:h-full xl:flex flex-col justify-center">
+                        <div className="border-black border-t-2 border-b-2 xl:border-none mb-[50px] mt-[30px]">
+                            <h1 className="text-[18px] px-[20px] py-[10px] uppercase xl:normal-case text-center xl:text-left xl:border-t-0 xl:border-b-0 lg:text-[40px] 2xl:text-[60px] 2xl:leading-[66px] xl:text-[#4100FC]">{t('professions')}</h1>
+                        </div>
                         
                         { isLoading &&                        
-                            <ul className="text-[20px] lg:text-[30px] 2xl:text-[40px] 2xl:leading-[48px] pl-0 list-inside">
+                            <ul className="text-[20px] lg:text-[30px] 2xl:text-[40px] 2xl:leading-[48px] pl-0 list-inside flex xl:block flex-col items-center">
                                 {data?.map((item, index) => (
                                     <li
                                         key={item.id}
