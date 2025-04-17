@@ -9,6 +9,13 @@ import { useTranslation } from "react-i18next";
 import { useSharedState } from "../contexts/ShareStateProvider";
 import { motion } from "motion/react";
 import { easeInOut } from "motion";
+import ftcm from "../assets/images/FTCM.svg";
+import hist from "../assets/images/IHIST.svg";
+import llc from "../assets/images/LLC.svg";
+import losch from "../assets/images/losch.svg";
+import uni from "../assets/images/uni.svg";
+import gouv from "../assets/images/logo-gouv.svg";
+import { Link } from "react-scroll";
 
 
 export default function About() {
@@ -18,9 +25,7 @@ export default function About() {
     const locale = i18n.language;
     const [isLoading, setIsLoading] = useState(false)
     const [data, setData] = useState({});
-    const [sharedState, setSharedState] = useSharedState();
     
-
     useEffect(() => {
         fetch(`${API_URL}/api/about`)
             .then((response) => {
@@ -108,6 +113,35 @@ export default function About() {
                             <div className="col-span-12 xl:col-span-8 xl:col-start-3 richeditor text-center">
                                 { formatRichText(data.section_4[locale]) }
                             </div>
+                        </div>
+                    </div>
+
+                    {/** PARTNERS */}
+                    <div className="flex gap-5 w-full lg:justify-between pb-[100px] pt-[80px] flex-wrap justify-center">
+                        <div>
+                            <Link to={'https://www.c2dh.uni.lu/'} target="_blank">
+                                <img src={uni} alt="Logo Université Luxembourg et C2DH" className="h-[40px] lg:h-[60px]" />
+                            </Link>
+                        </div>
+                        <div>
+                            <Link to={'https://history.uni.lu/'} target="_blank">
+                                <img src={hist} alt="Logo Institute of History" className="h-[40px] lg:h-[60px]" />
+                            </Link>
+                        </div>
+                        <div>
+                            <Link to={'https://www.uni.lu/llc-fr/'} target="_blank">
+                                <img src={llc} alt="Logo Luxembourg Learning Center" className="h-[40px] lg:h-[60px]" />
+                            </Link>
+                        </div>
+                        <div>
+                            <Link to={'https://www.loschfondation.lu/'} target="_blank">
+                                <img src={losch} alt="Logo Fondation André Losch" className="h-[40px] lg:h-[60px]" />
+                            </Link>
+                        </div>
+                        <div>
+                            <Link to={'https://www.uni.lu/fstm-fr/'} target="_blank">
+                                <img src={ftcm} alt="Logo Faculté des Sciences, des Technologies et de Médecine" className="h-[40px] lg:h-[60px]" />
+                            </Link>
                         </div>
                     </div>
 

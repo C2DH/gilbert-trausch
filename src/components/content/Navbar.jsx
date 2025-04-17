@@ -5,7 +5,6 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useLanguageContext } from "../../contexts/LanguageProvider";
 import classNames from "classnames";
 import { t } from "i18next";
-import { useSharedState } from "../../contexts/ShareStateProvider";
 import ftcm from "../../assets/images/FTCM.svg";
 import hist from "../../assets/images/IHIST.svg";
 import llc from "../../assets/images/LLC.svg";
@@ -164,27 +163,22 @@ export default function Navbar({color}) {
 
                                 {/** PARTNERS */}
                                 <div className="absolute left-0 bottom-[60px] flex items-end gap-3 flex-wrap">
-                                    <div className="]">
+                                    <div>
                                         <Link to={'https://www.c2dh.uni.lu/'} target="_blank">
                                             <img src={uni} alt="Logo Université Luxembourg et C2DH" className="h-[40px] lg:h-[50px]" />
                                         </Link>
                                     </div>
-                                    <div className="">
+                                    <div>
                                         <Link to={'https://history.uni.lu/'} target="_blank">
                                             <img src={hist} alt="Logo Institute of History" className="h-[40px] lg:h-[50px]" />
                                         </Link>
                                     </div>
-                                    <div className="">
-                                        <Link to={'https://gouvernement.lu/fr.html'} target="_blank">
-                                            <img src={gouv} alt="Logo Gouvernement de Luxembourg" className="h-[40px] lg:h-[50px]" />
-                                        </Link>
-                                    </div>
-                                    <div className="">
+                                    <div>
                                         <Link to={'https://www.uni.lu/llc-fr/'} target="_blank">
                                             <img src={llc} alt="Logo Luxembourg Learning Center" className="h-[40px] lg:h-[50px]" />
                                         </Link>
                                     </div>
-                                    <div className="">
+                                    <div>
                                         <Link to={'https://www.loschfondation.lu/'} target="_blank">
                                             <img src={losch} alt="Logo Fondation André Losch" className="h-[40px] lg:h-[50px]" />
                                         </Link>
