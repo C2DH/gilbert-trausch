@@ -117,7 +117,7 @@ export default function About() {
                     </div>
 
                     {/** PARTNERS */}
-                    <div className="flex gap-5 w-full lg:justify-between pb-[100px] pt-[80px] flex-wrap justify-center">
+                    <div className="flex gap-5 w-full lg:justify-between pb-[50px] lg:pb-[100px] pt-[20px] lg:pt-[80px] flex-wrap justify-center">
                         <div>
                             <Link to={'https://www.c2dh.uni.lu/'} target="_blank">
                                 <img src={uni} alt="Logo Université Luxembourg et C2DH" className="h-[40px] lg:h-[60px]" />
