@@ -20,8 +20,8 @@ export default function SlideHeader({ data, showSubtitle, index, locale }) {
                                 </h1>
                             )}
 
-                            <div className="relative w-full xl:min-h-[350px] overflow-hidden">
-                                <div className="relative w-full min-h-[300px]">
+                            <div className="relative w-full xl:min-h-[500px] overflow-hidden">
+                                <div className="relative w-full min-h-[500px]">
                                     
                                     <AnimatePresence mode="wait">
                                         {(!showSubtitle || index !== 0) && (

@@ -12,7 +12,6 @@ import SlideStep from "./content/SlideStep";
 import SlideAudio from "./content/SlideAudio";
 import wallpaper_menu from '../assets/images/menu/menu-wallpaper-ch1.png';
 import classNames from "classnames";
-import { PopupProvider } from "../contexts/PopupContext";
 import { useMediaQuery } from "react-responsive";
 import { useTranslation } from "react-i18next";
 import { NavbarContext } from "../contexts/NavbarProvider";
@@ -414,7 +413,7 @@ export default function Chapter() {
                                                     }, 1000)
                                                 }}
                                             >
-                                                { header?.slide?.slidable.subtitle[locale].split('.')[1] }
+                                                { header?.slide?.slidable?.subtitle[locale] }
                                             </h3>
                                         )
                                     })}

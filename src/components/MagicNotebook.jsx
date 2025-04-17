@@ -1,4 +1,4 @@
-import { useContext, useEffect, useRef, useState } from "react";
+import { useContext, useEffect, useMemo, useRef, useState } from "react";
 import { Link, useLocation, useNavigate, useParams, useSearchParams } from "react-router-dom";
 import {AnimatePresence, motion } from "framer-motion";
 import SlideHeader from "./content/SlideHeader";
@@ -14,9 +14,7 @@ import SlideAudio from "./content/SlideAudio";
 import { useMediaQuery } from "react-responsive";
 import wallpaper_menu from '../assets/images/menu/menu-wallpaper-ch1.png';
 import classNames from "classnames";
-import { PopupProvider } from "../contexts/PopupContext";
 import { useTranslation } from "react-i18next";
-import { useSharedState } from "../contexts/ShareStateProvider";
 import { NavbarContext } from "../contexts/NavbarProvider";
 
 // Variants pour les animations
@@ -46,12 +44,11 @@ export default function MagicNotebook() {
     
     const API_URL = import.meta.env.VITE_API_URL;
     const [searchParams] = useSearchParams();
-    const { i18n } = useTranslation();
+    const { i18n, t } = useTranslation();
     const locale = i18n.language;    
     const { slug, id } = useParams();
     const [data, setData] = useState();
     const [isLoading, setIsLoading] = useState(false);
-    const swiperRef = useRef();
     const [activeIndex, setActiveIndex] = useState(0);
     const [total, setTotal] = useState(null);
     const [colorElement, setColorElement] = useState("");
@@ -60,7 +57,6 @@ export default function MagicNotebook() {
     const [isOpenMenu, setIsOpenMenu] = useState(false);
     const [firstClick, setFirstClick] = useState(true);
     const [showSubtitle, setShowSubtitle] = useState(false);
-    const [sharedState, setSharedState] = useSharedState();
     const isMobile = useMediaQuery({query: '(max-width: 768px)'});
     const {setColorNavbar} = useContext(NavbarContext);
     const [slideGroups, setSlideGroups] = useState([]);
@@ -69,10 +65,6 @@ export default function MagicNotebook() {
     const [direction, setDirection] = useState(0)
     const location = useLocation();
     const navigate = useNavigate();
-
-    // http://localhost/api/chapter/le-personnage-public
-    // http://localhost/api/magic-notebook/undefined
-
     
     useEffect(() => {
         setActiveIndex(parseInt(searchParams.get('index') ?? 0));
@@ -96,7 +88,7 @@ export default function MagicNotebook() {
                 setTitle(data.data.name);
                 setData(data.data);
                 setTotal(data.data.slides.length)
-                setSlideHeaders(data?.data?.slides?.filter(slide => slide.slidable.type === "SlideHeader") || []);
+                setSlideHeaders(data?.data?.slides?.map((slide, index) => ({ slide, index }))?.filter(({ slide }) => slide.slidable.type === "SlideHeader"));
                 setIsLoading(true);
             })
             .catch((error) => console.error("Erreur lors du chargement du chapitre :", error));
@@ -157,10 +149,27 @@ export default function MagicNotebook() {
         }
     }, [activeIndex, data]);
 
-    // useEffect(() => {
-    //     setSharedState({ ...sharedState, showCurtains: false }) 
-    //  }, [])
+    useEffect(() => {
+        setShowSubtitle(false)
+    }, [])
 
+    const activeHeaderIndex = useMemo(() => {
+        if (!slideHeaders || slideHeaders.length === 0) return -1;
+    
+        let lastValidIndex = 0;
+    
+        for (let i = 0; i < slideHeaders.length; i++) {
+            if (activeIndex >= slideHeaders[i].index) {
+                lastValidIndex = i;
+            } else {
+                break;
+            }
+        }
+
+        console.log('slideheaders', slideHeaders)
+    
+        return lastValidIndex;
+    }, [activeIndex, slideHeaders]);
 
     // Calcul circonférence et progression
     const radius = 30;
@@ -192,40 +201,39 @@ export default function MagicNotebook() {
         <div className="relative w-full h-screen">
             {isLoading &&
                 <>
-                    <PopupProvider>
-                        <AnimatePresence mode="wait" initial={false} custom={direction}>
-                            {data?.slides?.map((slide, index) => {
-                                return (
-                                    index === activeIndex && (
-                                        <motion.div key={`${slide.id}-${activeIndex}`}
-                                            custom={direction}
-                                            variants={variants}
-                                            initial="initial"
-                                            animate="animate"
-                                            exit="exit"
-                                            transition={{
-                                                y: { type: "spring", stiffness: 300, damping: 30 },
-                                                opacity: { duration: 0.2 }
-                                            }}
-                                        >
-                                            <>
-                                                {slide.slidable.type === "SlideHeader" && <SlideHeader data={slide} showSubtitle={showSubtitle} index={activeIndex} locale={locale} />}
-                                                {slide.slidable.type === "SlideMediaFull" && <SlideMediaFull data={slide} locale={locale} />}
-                                                {slide.slidable.type === "SlideCitation" && <SlideCitation data={slide} locale={locale} />}
-                                                {slide.slidable.type === "SlideCentralText" && <SlideCentralText data={slide} locale={locale} />}
-                                                {slide.slidable.type === "SlideColumn" && <SlideColumn data={slide} locale={locale} />}
-                                                {slide.slidable.type === "SlideSlider" && <SlideSlider data={slide} locale={locale} />}
-                                                {slide.slidable.type === "SlideMasonry" && <SlideMasonry data={slide} locale={locale} />}
-                                                {slide.slidable.type === "SlideImageText" && <SlideImageText data={slide} locale={locale} />}
-                                                {slide.slidable.type === "SlideStep" && <SlideStep data={slide} locale={locale} />}
-                                                {slide.slidable.type === "SlideAudio" && <SlideAudio data={slide} locale={locale} />}
-                                            </>
-                                        </motion.div>
-                                    )
-                                );
-                            })}
-                        </AnimatePresence>
-                    </PopupProvider>
+                    {/** SLIDES */}
+                    <AnimatePresence mode="popLayout" initial={false} custom={direction}>
+                        {data?.slides?.map((slide, index) => {
+                            return (
+                                index === activeIndex && (
+                                    <motion.div key={`${slide.id}-${activeIndex}`}
+                                        custom={direction}
+                                        variants={variants}
+                                        initial="initial"
+                                        animate="animate"
+                                        exit="exit"
+                                        transition={{
+                                            y: { type: "easeInOut", stiffness: 300, damping: 30 },
+                                            opacity: { duration: 0.5 }
+                                        }}
+                                    >
+                                        <>
+                                            {slide.slidable.type === "SlideHeader" && <SlideHeader data={slide} showSubtitle={showSubtitle} index={activeIndex} locale={locale} />}
+                                            {slide.slidable.type === "SlideMediaFull" && <SlideMediaFull data={slide} locale={locale} />}
+                                            {slide.slidable.type === "SlideCitation" && <SlideCitation data={slide} locale={locale} />}
+                                            {slide.slidable.type === "SlideCentralText" && <SlideCentralText data={slide} locale={locale} />}
+                                            {slide.slidable.type === "SlideColumn" && <SlideColumn data={slide} locale={locale} />}
+                                            {slide.slidable.type === "SlideSlider" && <SlideSlider data={slide} locale={locale} />}
+                                            {slide.slidable.type === "SlideMasonry" && <SlideMasonry data={slide} locale={locale} />}
+                                            {slide.slidable.type === "SlideImageText" && <SlideImageText data={slide} locale={locale} />}
+                                            {slide.slidable.type === "SlideStep" && <SlideStep data={slide} locale={locale} />}
+                                            {slide.slidable.type === "SlideAudio" && <SlideAudio data={slide} locale={locale} />}
+                                        </>
+                                    </motion.div>
+                                )
+                            );
+                        })}
+                    </AnimatePresence>
                     
                     {/** BUTTON MENU ASIDE */}
                     { slideHeaders?.length > 0 &&            
@@ -362,20 +370,31 @@ export default function MagicNotebook() {
                                         <svg width="19" height="12" viewBox="0 0 19 12" fill="none" xmlns="http://www.w3.org/2000/svg">
                                             <path d="M1.14062 5.86328L6.20312 0.800781C6.41406 0.589844 6.80078 0.589844 7.01172 0.800781C7.22266 1.01172 7.22266 1.39844 7.01172 1.60938L2.89844 5.6875H18.4375C18.7188 5.6875 19 5.96875 19 6.25C19 6.56641 18.7188 6.8125 18.4375 6.8125H2.89844L7.01172 10.9258C7.22266 11.1367 7.22266 11.5234 7.01172 11.7344C6.80078 11.9453 6.41406 11.9453 6.20312 11.7344L1.14062 6.67188C0.929688 6.46094 0.929688 6.07422 1.14062 5.86328Z" fill="white"/>
                                         </svg>
-                                        <Link to={"/professions"}>
-                                            <span className="uppercase text-white text-[16px] font-normal pl-[10px] cursor-pointer">Changer de chapitre</span>
+                                        <Link to={"/magic-notebooks"}>
+                                            <span className="uppercase text-white text-[16px] font-normal pl-[10px] cursor-pointer">{ t('change_chapter')}</span>
                                         </Link>
                                     </div>
                                     <img src={ wallpaper_menu } alt="Gilbert Trausch dans son bureau" className="w-full" />
-                                    <span className="absolute top-1/2 left-8 transform -translate-y-1/2 text-[24px] leading-[28px] md:text-[40px] md:leading-[48px] text-white">{ title }</span>
+                                    <span className="absolute top-1/2 left-8 transform -translate-y-1/2 text-[24px] leading-[28px] md:text-[28px] md:leading-[35px] text-white">{ title }</span>
                                 </div>
 
                                 <div className="p-[30px]">
-                                    { slideHeaders?.map((header) => {
-                                        const slideIndex = data?.slides?.findIndex(slide => slide.id === header.id)
+                                    { slideHeaders?.map((header, index) => {
                                         return (
-                                            <h3 key={header.slidable.id} className="text-white cursor-pointer hover:underline pb-[25px]" onClick={() => swiperRef?.current?.slideTo(slideIndex)}>
-                                                {header?.slidable.subtitle ? header?.slidable.subtitle[locale] : ""}
+                                            <h3 
+                                                key={header.slide.slidable.id} 
+                                                className={classNames("text-white cursor-pointer hover:opacity-100 w-[80%] relative flex items-center gap-3 pb-[25px]", {
+                                                    "before:content-[''] before:block before:w-[1px] before:h-[30px] before:bg-white": index === activeHeaderIndex,
+                                                }
+                                            )}
+                                                onClick={() => { 
+                                                    setIsOpenMenu(false);
+                                                    setTimeout(() => {
+                                                        navigate(location.pathname + '?index=' + Math.max(0, header.index ))
+                                                    }, 1000)
+                                                }}
+                                            >   
+                                                { header?.slide?.slidable?.subtitle?.[locale] || "" }
                                             </h3>
                                         )
                                     })}

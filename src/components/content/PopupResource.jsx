@@ -22,6 +22,9 @@ export default function PopupResource({ setIsOpenPopup, data, locale }) {
         setIsImageVisible(true);
     }, []);
 
+
+    console.log('data', data.name[locale])
+
     return (
         <div style={{ background: `url(${background}) center / cover no-repeat` }} className='popup_resource h-screen w-full'>
         

@@ -20,7 +20,7 @@ export default function SlideStep({ data, locale }) {
                                         {data?.slidable?.documents?.length > 0 ? (
                                             data.slidable.documents.length === 1 ? (
                                                 data.slidable.documents[0].url.endsWith('.pdf') ? (
-                                                    <PlayerPDF file={data.slidable.documents[0].url} />
+                                                    <PlayerPDF url={data.slidable.documents[0].url} optimized_url={data.slidable.documents[0].optimized_url} />
                                                 ) : (
                                                     <img src={data.slidable.documents[0].url} alt={data.slidable.documents[0].name[locale]} className="max-h-[80vh]"/>
                                                 )

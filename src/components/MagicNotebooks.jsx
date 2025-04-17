@@ -58,12 +58,12 @@ export default function MagicNotebooks() {
                         <div className="col-span-12 md:col-span-10 md:col-start-2 lg:col-span-6 flex flex-col items-center lg:items-start">
                             <h1 className="uppercase text-[24px] leading-[30px] lg:text-[32px] 2xl:text-[60px] 2xl:leading-[66px] text-[#4100FC] mb-[20px]">{t('magicNotebooks')}</h1>
                             
-                            <p className="text-[16px] md:text-center lg:text-left xl:text-[22px] text-blue mb-[30px] lg:mb-[120px]">{t('description_magicNotebooks')}</p>
+                            <p className="text-[16px] md:text-center lg:text-left xl:text-[22px] text-blue mb-[30px] lg:mb-[80px]">{t('description_magicNotebooks')}</p>
                             
                             {isLoaded &&                                
                                 <ul className="text-[20px] lg:text-[24px] 2xl:text-[40px] 2xl:leading-[48px] pl-0">
                                     {data?.map((item, index) => (
-                                        <li key={item.id} className="group mb-[20px] lg:mb-[50px] last:mb-0 flex gap-5 font-extralight">
+                                        <li key={item.id} className="group mb-[20px] lg:mb-[50px] last:mb-0 flex gap-5 font-extralight w-fit">
                                             <span className="transition-all duration-500 group-hover:text-[#4100FC]">{romanize(index)}.</span>
                                             <Link to={`/magic-notebook/${item.slug}`} className="transition-all duration-500 group-hover:text-[#4100FC] group-hover:pl-[30px]">{item.name[locale]}</Link>
                                         </li>

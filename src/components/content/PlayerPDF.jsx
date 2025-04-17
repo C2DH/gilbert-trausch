@@ -10,6 +10,9 @@ pdfjs.GlobalWorkerOptions.workerSrc = new URL(
 
 export default function PlayerPDF({ url, optimized_url }) {
 
+    console.log('url', url)
+
+
     const [numPages, setNumPages] = useState(null);
     const [pageNumber, setPageNumber] = useState(1);
     const [renderWidth, setRenderWidth] = useState(0);

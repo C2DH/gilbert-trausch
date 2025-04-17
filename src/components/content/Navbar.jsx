@@ -102,32 +102,32 @@ export default function Navbar({color}) {
                                 {/** MAIN MENU */}
                                 <div className="2xl:flex items-center h-auto lg:h-[calc(100dvh-40px)] mt-[50px] lg:mt-[100px] 2xl:mt-0">
                                     <ul className="font-light text-[24px] md:text-[36px] 2xl:text-[60px] uppercase">
-                                        <li className="hover:text-[#4100FC] duration-[450ms] hover:lg:pl-[50px] leading-none mb-6 cursor-pointer"
+                                        <li className="hover:text-[#4100FC] duration-[450ms] hover:lg:pl-[50px] leading-none mb-6 cursor-pointer w-fit"
                                             onClick={() => handleMenuClick('/biography')}
                                         >
                                             { t('biography')}
                                         </li>
 
-                                        <li className="hover:text-[#4100FC] duration-[450ms] hover:lg:pl-[50px] leading-none mb-6 cursor-pointer"
+                                        <li className="hover:text-[#4100FC] duration-[450ms] hover:lg:pl-[50px] leading-none mb-6 cursor-pointer w-fit"
                                             onClick={() => handleMenuClick('/professions')}
                                         >
                                             { t('professions')}
                                         </li>
 
-                                        <li className="hover:text-[#4100FC] duration-[450ms] hover:lg:pl-[50px] leading-none mb-6 cursor-pointer"
+                                        <li className="hover:text-[#4100FC] duration-[450ms] hover:lg:pl-[50px] leading-none mb-6 cursor-pointer w-fit"
                                             onClick={() => handleMenuClick('/magic-notebooks')}
                                         >
                                             { t('magicNotebooks')}
                                         </li>
 
-                                        <li className="hover:text-[#4100FC] duration-[450ms] hover:lg:pl-[50px] mb-6 cursor-pointer"
+                                        <li className="hover:text-[#4100FC] duration-[450ms] hover:lg:pl-[50px] mb-6 cursor-pointer w-fit"
                                             onClick={() => handleMenuClick('/virtual-tour')} 
                                         >
                                             <span className="block leading-none">{ t('house')}</span>
                                             <span className="text-[20px] md:text-[30px] 2xl:text-[40px] block leading-none">({ t('tour')})</span>   
                                         </li>
 
-                                        <li className="hover:text-[#4100FC] duration-[450ms] hover:lg:pl-[50px] leading-none cursor-pointer"
+                                        <li className="hover:text-[#4100FC] duration-[450ms] hover:lg:pl-[50px] leading-none cursor-pointer w-fit"
                                             onClick={() => handleMenuClick('/resources')}       
                                         >
                                             { t('resources')}
