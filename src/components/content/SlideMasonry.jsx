@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import { formatRichText } from "../../lib/utils";
 import audioLogo from '../../assets/images/audio.svg';
 import videoLogo from '../../assets/images/video.svg';

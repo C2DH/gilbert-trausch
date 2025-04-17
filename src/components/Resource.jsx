@@ -29,8 +29,6 @@ export default function Resource() {
     const location = useLocation();
     const navigate = useNavigate();
 
-    console.log(location)
-
     useEffect(() => {
         setIsImageVisible(true);
 
@@ -47,7 +45,7 @@ export default function Resource() {
     if(!data) return null;
 
     return (
-        <div style={{ background: `url(${background}) center / cover no-repeat` }} className={classNames('popup_resource h-[100dvh] flex flex-col overflow-hidden  ', { "fixed inset-0 z-[102]": location.state.modal })}>
+        <div style={{ background: `url(${background}) center / cover no-repeat` }} className={classNames('popup_resource h-[100dvh] flex flex-col overflow-hidden  ', { "fixed inset-0 z-[9999]": location.state.modal })}>
             
 			<div className='lg:hidden py-[10px] border-b border-black h-[40px]'>
 				<span className='block text-[14px] text-center cursor-pointer hover:text-[#4100FC] duration-500 uppercase font-light' onClick={() => navigate(-1) }>{ t('close') }</span>
@@ -57,6 +55,7 @@ export default function Resource() {
                 <div className="grid grid-cols-12 h-[calc(100dvh-40px])] overflow-scroll">
                     <div className="col-span-12 lg:col-span-9 border-r border-black pt-[20px] lg:pt-[60px] lg:py-[60px] h-full relative">
                         <div className='grid grid-cols-12 lg:grid-cols-9 h-full px-[20px]'>
+                            {/* <div className='col-span-12 lg:col-span-9 flex flex-col justify-center items-center overflow-hidden h-[50dvh] lg:h-[calc(100dvh-120px)]'> */}
                             <div className='col-span-12 lg:col-span-9 flex flex-col justify-center items-center overflow-hidden h-[50dvh] lg:h-[calc(100dvh-120px)]'>
 
                                 { (data.type === "image" && data.optimized_url) &&                            
@@ -161,8 +160,9 @@ const ImageZoom = ({ image, alt }) => {
         <TransformWrapper initialScale={1} initialPositionX={0} initialPositionY={0} onTransformed={(e) => handleTransform(e)}>
             {() => (
                 <>
-                    <TransformComponent wrapperStyle={{ overflow: 'visible'}}>
-                        <img src={ image } alt={ alt } className='max-h-[50dvh] lg:max-h-[calc(100dvh-120px)] object-contain'/>
+                    {/* <TransformComponent wrapperStyle={{ overflow: 'visible'}}> */}
+                    <TransformComponent>
+                        <img src={ image } alt={ alt } className='max-h-[36dvh] lg:max-h-[50dvh]  object-contain'/>
                     </TransformComponent>
                     <Controls zoom={stateZoom}/>
                 </>
@@ -174,7 +174,7 @@ const ImageZoom = ({ image, alt }) => {
 const Controls = ({ zoom }) => {
     const { zoomIn, zoomOut, resetTransform } = useControls()
     return (
-        <div className='absolute bottom-[10px] left-[50%] -translate-x-[50%]'>
+        <div className='relative xl:absolute bottom-0 xl:bottom-[10px] left-[50%] -translate-x-[50%] mt-[20px]'>
             <div className='flex justify-center'>
                 <div className="flex cursor-pointer">
                     <div className='border border-black' style={{ borderTopLeftRadius: '6px', borderBottomLeftRadius: '6px'}} onClick={() => zoomOut() }>

@@ -35,7 +35,7 @@ export default function SlideHeader({ data, showSubtitle, index, locale }) {
                                                 {data?.slidable?.content && locale && (
                                                     <div
                                                         className="pt-[40px] richeditor"
-                                                        style={{ color }}
+                                                        style={{ color: color }}
                                                     >
                                                         {formatRichText(data?.slidable?.content[locale])}
                                                     </div>

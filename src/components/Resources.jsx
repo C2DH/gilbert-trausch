@@ -104,7 +104,6 @@ export default function Resources() {
                 return response.json();
             })
             .then((data) => {
-                // console.log("Documents reçus:", data.resources)
                 setDocuments(data.resources.data);
                 setTypes(data.types);
                 setDatesCount(data.dates);
@@ -134,7 +133,6 @@ export default function Resources() {
                 return response.json();
             })
             .then((data) => {
-                // console.log("Tags:", data.data)
                 setTags(data.data)
             })
             .catch((error) => {

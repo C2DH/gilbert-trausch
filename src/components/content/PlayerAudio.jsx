@@ -54,18 +54,18 @@ export default function PlayerAudio( {url} ) {
     };
   
     return (
-        <div className="w-full border border-black rounded-[10px] px-[20px] lg:px-[30px] py-[10px] lg:py-[20px] player-audio">
+        <div className="w-[60%] border border-black rounded-[10px] px-[20px] lg:px-[30px] py-[10px] lg:py-[20px] player-audio">
             <div className='flex items-center justify-between'>
-                <div onClick={onPlayPause} className='w-[40px] lg:w-[60px] h-[40px] lg:h-[60px] bg-blue rounded-[50%] flex items-center justify-center'>
+                <div onClick={onPlayPause} className='w-[40px] xl:w-[60px] h-[40px] xl:h-[60px] bg-blue rounded-[50%] flex items-center justify-center'>
                     {isPlaying ? 
-                        <PauseIcon className='text-white w-[30px] lg:w-[40px]'/> 
+                        <PauseIcon className='text-white w-[30px] xl:w-[40px]'/> 
                         : 
-                        <PlayIcon  className='text-white w-[30px] lg:w-[40px]'/>
+                        <PlayIcon  className='text-white w-[30px] xl:w-[40px]'/>
                     }
                 </div>
 
                 {/* <div className='min-w-[300px] h-full'> */}
-                <div className='w-[calc(100%-70px)] md:w-[calc(100%-150px)]'>
+                <div className='w-[calc(100%-70px)] xl:w-[calc(100%-100px)]'>
                     <WavesurferPlayer
                         height={ isMobile ? 40 : 60 }
                         cursorWidth={3}

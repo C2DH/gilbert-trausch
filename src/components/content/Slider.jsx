@@ -42,7 +42,7 @@ export default function Slider({ items, locale }) {
                             )}
 
                             {item.type === "audio" && (
-                                <div className="lg:h-full w-full flex flex-col justify-center">
+                                <div className="lg:h-full w-full flex flex-col justify-center items-center">
                                     {item.cover ? (
                                         <img onClick={() => { navigate(`/resources/${item.id}`, { state: { modal: true } }) }}
                                             src={item.cover} alt="cover" className="max-h-[60vh] rounded-[10px] mb-[20px] object-cover" />
@@ -58,7 +58,7 @@ export default function Slider({ items, locale }) {
 
 
                             {item.type === "video" && (
-                                <div className="lg:h-full w-full flex flex-col justify-center">
+                                <div className="lg:h-full w-full flex flex-col justify-center items-center">
                                     {item.cover ? (
                                         <img src={item.cover} alt="cover" className="max-h-[60vh] rounded-[10px] mb-[20px] object-cover" 
                                             onClick={() => { navigate(`/resources/${item.id}`, { state: { modal: true } }) }}

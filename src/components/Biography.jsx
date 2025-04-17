@@ -3,10 +3,10 @@ import { getYear, formatRichText } from "../lib/utils";
 import bg from '../assets/images/backgrounds/biography.webp'
 import { Link, Element } from 'react-scroll';
 import classNames from "classnames";
-import { AnimatePresence, motion } from "motion/react";
+import { motion } from "motion/react";
 import { easeInOut } from "motion";
-import PopupResource from "./content/PopupResource";
 import { useTranslation } from "react-i18next";
+import { useNavigate } from "react-router-dom";
 
 export default function Biography() {
 
@@ -18,8 +18,7 @@ export default function Biography() {
     const [years, setYears] = useState([]);
     const [activeYear, setActiveYear] = useState(null);
     const [activeElement, setActiveElement] = useState(null); // Nouvel état pour l'élément actif
-    const [isOpenPopup, setIsOpenPopup] = useState(false);
-    const [dataPopup, setDataPopup] = useState();
+    const navigate = useNavigate();
 
     useEffect(() => {
         fetch(`${API_URL}/api/biography`)
@@ -195,7 +194,7 @@ export default function Biography() {
                                                 <div 
                                                     key={document.id} 
                                                     className="py-[10px] md:py-0 cursor-pointer flex justify-center md:block"
-                                                    onClick={() => { setIsOpenPopup(true); setDataPopup(document) }}
+                                                    onClick={() => { navigate(`/resources/${document.id}`, { state: { modal: true } }) }} 
                                                 >
                                                     <img className="h-[200px] md:h-[220px] md:max-h-auto max-h-[350px] object-contain" src={ document?.optimized_url?.thumbnail.url } alt={document?.name[locale]}/>
                                                 </div>
@@ -208,23 +207,6 @@ export default function Biography() {
                     </div>
                 </motion.div>
             }
-
-
-            {/** POPUP */}
-            <AnimatePresence>           
-                {isOpenPopup &&
-                    <motion.div 
-                        className="w-full h-full fixed inset-0 z-[103] flex items-center justify-center bg-black/50"
-                        key="popupResourceBiography"
-                        initial={{ scale: 0.5, opacity: 0, y: "-50%" }}
-                        animate={{ scale: 1, opacity: 1, y: 0 }}
-                        exit={{ scale: 0.5, opacity: 0, y: "-50%" }}
-                        transition={{ duration: 0.5, ease: "easeInOut" }}
-                    >
-                        <PopupResource setIsOpenPopup={ setIsOpenPopup } data={ dataPopup } locale={locale}/>
-                    </motion.div>
-                }
-            </AnimatePresence>
         </>
     )
 }

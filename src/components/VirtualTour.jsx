@@ -26,7 +26,6 @@ export default function VirtualTour() {
             .then((data) => {
                 setData(data.data);
                 setIsLoading(true)
-                console.log(data.data)
             })
             .catch((error) => console.error("Erreur lors du chargement des données de la page du tour virtuel :", error));
     }, [locale]);

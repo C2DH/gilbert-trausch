@@ -119,7 +119,7 @@ export default function Home() {
             <AnimatePresence>
                 {(!isMobile && showMenu) && (
                     <motion.div
-                        className="absolute bottom-[120px] 2xl:bottom-[80px] left-0 right-0 flex justify-between"
+                        className="absolute bottom-[60px] 2xl:bottom-[80px] left-0 right-0 flex justify-between"
                         initial={{ opacity: 0, y: 100 }}
                         animate={{ opacity: 1, y: 0 }}
                         exit={{ opacity: 0, y: 100 }}

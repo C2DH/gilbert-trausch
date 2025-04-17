@@ -165,8 +165,6 @@ export default function MagicNotebook() {
                 break;
             }
         }
-
-        console.log('slideheaders', slideHeaders)
     
         return lastValidIndex;
     }, [activeIndex, slideHeaders]);

@@ -25,7 +25,7 @@ export default function SlideSlider({data, locale}) {
 
                             <div className="col-span-12 lg:col-span-7 2xl:col-span-8 relative lg:pl-[30px]">
                                 <div className="grid grid-cols-8 lg:h-full">
-                                    <div className="col-span-8 pb-[70px] lg:pb-0">
+                                    <div className="col-span-8 pb-[70px] lg:pb-0 w-auto lg:h-[calc(100dvh-140px)]">
                                         { data?.slidable?.documents &&
                                             <Slider items={data.slidable.documents} locale={ locale }/>
                                         }
