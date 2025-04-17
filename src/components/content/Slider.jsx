@@ -19,6 +19,9 @@ export default function Slider({ items, locale }) {
     const [index, setIndex] = useState(0);
     const navigate = useNavigate();
 
+
+    console.log('data', items)
+
     return (
         <>
             <Swiper
@@ -45,7 +48,7 @@ export default function Slider({ items, locale }) {
                                 <div className="lg:h-full w-full flex flex-col justify-center items-center">
                                     {item.cover ? (
                                         <img onClick={() => { navigate(`/resources/${item.id}`, { state: { modal: true } }) }}
-                                            src={item.cover} alt="cover" className="max-h-[60vh] rounded-[10px] mb-[20px] object-cover" />
+                                            src={item.cover[locale]} alt="cover" className="max-h-[60vh] rounded-[10px] mb-[20px] object-cover" />
                                     ) : (
                                         <div onClick={() => { navigate(`/resources/${item.id}`, { state: { modal: true } }) }}
                                             className="bg-[#DBDBD0] w-[60%] aspect-square flex justify-center items-center relative mb-5 rounded-[10px] border border-black">
@@ -64,7 +67,7 @@ export default function Slider({ items, locale }) {
                                             onClick={() => { navigate(`/resources/${item.id}`, { state: { modal: true } }) }}
                                         />
                                     ) : (
-                                        <div className="bg-[#DBDBD0] w-full h-[150px] md:h-[200px] lg:h-[40vh] xl:h-[55vh] 2xl:h-[60vh] flex justify-center items-center relative mb-5 rounded-[10px]">
+                                        <div className="bg-[#DBDBD0] w-[60%] aspect-square flex justify-center items-center relative mb-5 rounded-[10px] border border-black">
                                             <img src={ videoLogo } alt="Logo video" className="h-[50px] lg:h-[140px]"
                                                 onClick={() => { navigate(`/resources/${item.id}`, { state: { modal: true } }) }}
                                             />

@@ -16,7 +16,7 @@ export default function SlideStep({ data, locale }) {
                         <div className="grid grid-cols-12 h-full overflow-y-scroll">
                             <div className="col-span-12 xl:col-span-7 2xl:col-span-8 relative order-2 lg:order-1 h-full">
                                 <div className="grid grid-cols-8 lg:h-full">
-                                    <div className="col-span-8 lg:py-[40px] xl:flex items-center lg:pr-[30px] relative h-full">
+                                    <div className="col-span-8 lg:py-[50px] xl:flex items-center lg:pr-[30px] relative h-full">
                                         {data?.slidable?.documents?.length > 0 ? (
                                             data.slidable.documents.length === 1 ? (
                                                 data.slidable.documents[0].url.endsWith('.pdf') ? (

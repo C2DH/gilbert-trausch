@@ -15,9 +15,9 @@ import { useMediaQuery } from 'react-responsive';
 import bgSmall from '../assets/images/backgrounds/bg-1.webp';
 import logoMobile from "../assets/images/backgrounds/logo-home.png";
 import { useTranslation } from 'react-i18next';
-import { useSharedState } from '../contexts/ShareStateProvider';
 import Player from './content/PlayerVideo';
 import audio from "../assets/audio/audio-1.wav";
+
 
 const images = [intro_2, intro_3, intro_4, intro_5, intro_6, intro_7, intro_8, intro_9];
 const EXPIRE = 6 * 3600 * 1000;
@@ -30,11 +30,10 @@ export default function Home() {
     const [showStartButton, setShowStartButton] = useState(false);
     const [animationActive, setAnimationActive] = useState(false);
     const isMobile = useMediaQuery({query: '(max-width: 1023px)'});
-    const [sharedState, setSharedState] = useSharedState();
     const navigate = useNavigate();
+    const [startAudio, setStartAudio] = useState(false);
 
     const handleMenuClick = (path) => {
-        setSharedState((prev) => {return { ...prev, showCurtains: true }}) 
         setTimeout(() => {
             navigate(path);
         }, 1000);
@@ -55,6 +54,7 @@ export default function Home() {
     const handleStart = () => {
         setShowStartButton(false);
         setAnimationActive(true);
+        setStartAudio(true);
         localStorage.setItem('home', new Date().getTime() + EXPIRE);
     };
 
@@ -228,7 +228,7 @@ export default function Home() {
                 )}
             </AnimatePresence>
 
-            <Player url={ audio } />
+            <Player url={ audio } startAudio={startAudio} setStartAudio={setStartAudio}/>
 
         </motion.div>
     );

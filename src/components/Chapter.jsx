@@ -249,8 +249,9 @@ export default function Chapter() {
                     {slideHeaders?.length > 0 && (
                         <div
                             className={classNames('fixed xl:absolute right-[20px] z-[9999] cursor-pointer transition-all duration-500', {
-                                'top-[20px]': isOpenMenu,
-                                'top-[80px]': !isOpenMenu
+                                'top-[4px]': !isLarge,
+                                'top-[80px]': !isOpenMenu && isLarge,
+                                'top-[5px]': isOpenMenu && isLarge
                             })}
                             onClick={() => setIsOpenMenu(!isOpenMenu)}
                         >
@@ -348,7 +349,7 @@ export default function Chapter() {
                                 className={classNames("cursor-pointer relative right-0", { "pointer-events-none opacity-30": !showSubtitle })}
                             >    
                                 <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <circle cx="15" cy="15" r="14.5" transform="rotate(-180 15 15)" stroke="white"/>
+                                    {/* <circle cx="15" cy="15" r="14.5" transform="rotate(-180 15 15)" stroke="white"/> */}
                                     <mask id="mask0_93_485" style={{maskType:"alpha"}} maskUnits="userSpaceOnUse" x="0" y="0" width="30" height="30">
                                     <circle cx="15" cy="15" r="15" transform="rotate(-180 15 15)" fill="#D9D9D9"/>
                                     </mask>
@@ -366,7 +367,7 @@ export default function Chapter() {
                                 })}
                             >
                                 <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <circle cx="15" cy="15" r="14.5" stroke="white"/>
+                                    {/* <circle cx="15" cy="15" r="14.5" stroke="white"/> */}
                                     <mask id="mask0_93_483" style={{ maskType:"alpha" }} maskUnits="userSpaceOnUse" x="0" y="0" width="30" height="30">
                                     <circle cx="15" cy="15" r="15" fill="#D9D9D9"/>
                                     </mask>
@@ -419,6 +420,7 @@ export default function Chapter() {
                                                 key={header.slide.slidable.id} 
                                                 className={classNames("text-white cursor-pointer hover:opacity-100 w-[80%] relative flex items-center gap-3 pb-[25px]", {
                                                     "before:content-[''] before:block before:w-[1px] before:h-[30px] before:bg-white": index === activeHeaderIndex,
+                                                    "font-thin": index !== activeHeaderIndex
                                                 }
                                             )}
                                                 onClick={() => { 

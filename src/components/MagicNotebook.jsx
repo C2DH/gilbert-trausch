@@ -54,10 +54,7 @@ export default function MagicNotebook() {
     const [colorElement, setColorElement] = useState("");
     const [slideHeaders, setSlideHeaders] = useState([]);
     const [title, setTitle] = useState("");
-    const [isOpenMenu, setIsOpenMenu] = useState(false);
-    const [firstClick, setFirstClick] = useState(true);
-    const [showSubtitle, setShowSubtitle] = useState(false);
-    const isMobile = useMediaQuery({query: '(max-width: 768px)'});
+    const isLarge = useMediaQuery({query: '(min-width: 1279px)'});
     const {setColorNavbar} = useContext(NavbarContext);
     const [slideGroups, setSlideGroups] = useState([]);
     const [currentInGroupIndex, setCurrentInGroupIndex] = useState(1);
@@ -68,12 +65,6 @@ export default function MagicNotebook() {
     
     useEffect(() => {
         setActiveIndex(parseInt(searchParams.get('index') ?? 0));
-        if (parseInt(searchParams.get('index')) === 0) {
-                setShowSubtitle(false)
-        } else {
-            setShowSubtitle(true)
-
-        }
     }, [searchParams]);
 
     useEffect(() => {
@@ -149,25 +140,6 @@ export default function MagicNotebook() {
         }
     }, [activeIndex, data]);
 
-    useEffect(() => {
-        setShowSubtitle(false)
-    }, [])
-
-    const activeHeaderIndex = useMemo(() => {
-        if (!slideHeaders || slideHeaders.length === 0) return -1;
-    
-        let lastValidIndex = 0;
-    
-        for (let i = 0; i < slideHeaders.length; i++) {
-            if (activeIndex >= slideHeaders[i].index) {
-                lastValidIndex = i;
-            } else {
-                break;
-            }
-        }
-    
-        return lastValidIndex;
-    }, [activeIndex, slideHeaders]);
 
     // Calcul circonférence et progression
     const radius = 30;
@@ -177,22 +149,12 @@ export default function MagicNotebook() {
     // Click Next
     const handleNextClick = () => {
         setDirection(1);
-        if (activeIndex === 0 && firstClick) {
-            setShowSubtitle(true)
-            setFirstClick(false)
-        } else {
-            navigate(location.pathname + '?index=' + Math.min(data.slides.length - 1, activeIndex + 1)); 
-        }
+        navigate(location.pathname + '?index=' + Math.min(data.slides.length - 1, activeIndex + 1)); 
     }
 
     const handlePrevClick = () => {
         setDirection(-1);
-        if (activeIndex === 0 && !firstClick) {
-            setShowSubtitle(false)
-            setFirstClick(true)
-        } else {
-            navigate(location.pathname + '?index=' + Math.max(0, activeIndex - 1));
-        }
+        navigate(location.pathname + '?index=' + Math.max(0, activeIndex - 1));
     }
 
     return (
@@ -216,7 +178,7 @@ export default function MagicNotebook() {
                                         }}
                                     >
                                         <>
-                                            {slide.slidable.type === "SlideHeader" && <SlideHeader data={slide} showSubtitle={showSubtitle} index={activeIndex} locale={locale} />}
+                                            {slide.slidable.type === "SlideHeader" && <SlideHeader data={slide} showSubtitle={false} index={activeIndex} locale={locale} />}
                                             {slide.slidable.type === "SlideMediaFull" && <SlideMediaFull data={slide} locale={locale} />}
                                             {slide.slidable.type === "SlideCitation" && <SlideCitation data={slide} locale={locale} />}
                                             {slide.slidable.type === "SlideCentralText" && <SlideCentralText data={slide} locale={locale} />}
@@ -233,15 +195,34 @@ export default function MagicNotebook() {
                         })}
                     </AnimatePresence>
                     
-                    {/** BUTTON MENU ASIDE */}
-                    { slideHeaders?.length > 0 &&            
-                        <div className='hidden xl:block absolute right-[20px] top-[80px] z-[100] cursor-pointer' onClick={() => setIsOpenMenu(true)}>
-                            <svg width="50" height="50" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <circle cx="25" cy="25" r="25" fill={colorElement}/>
-                                <path d="M17.125 19.0625C17.125 18.7812 17.3711 18.5 17.6875 18.5H32.3125C32.5938 18.5 32.875 18.7812 32.875 19.0625C32.875 19.3789 32.5938 19.625 32.3125 19.625H17.6875C17.3711 19.625 17.125 19.3789 17.125 19.0625ZM17.125 24.6875C17.125 24.4062 17.3711 24.125 17.6875 24.125H27.8125C28.0938 24.125 28.375 24.4062 28.375 24.6875C28.375 25.0039 28.0938 25.25 27.8125 25.25H17.6875C17.3711 25.25 17.125 25.0039 17.125 24.6875ZM23.875 30.3125C23.875 30.6289 23.5938 30.875 23.3125 30.875H17.6875C17.3711 30.875 17.125 30.6289 17.125 30.3125C17.125 30.0312 17.3711 29.75 17.6875 29.75H23.3125C23.5938 29.75 23.875 30.0312 23.875 30.3125Z" fill={colorElement === "#ffffff" ? "#4100FC" : "#ffffff"} style={{ transition: 'all 0.5s ease-in-out'}}/>
-                            </svg>
-                        </div>    
-                    }
+                    {/** BUTTON RETURN NOTEBOOKS */}
+                    <div
+                        className={classNames('fixed xl:absolute right-[20px] z-[100] cursor-pointer transition-all duration-500', {
+                            'top-[80px]': isLarge,
+                            'top-[4px]': !isLarge
+                        })}
+                        onClick={() => navigate('/magic-notebooks')}
+                    >
+                        <svg
+                            width={isLarge ? "50" : "30"}
+                            height={isLarge ? "50" : "30"}
+                            viewBox="0 0 50 50" // ✅ Toujours 50x50 pour centrer le path correctement
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                        >
+                            <circle
+                                cx="25"
+                                cy="25"
+                                r="25"
+                                fill={colorElement}
+                            />
+                            <path
+                                d="M21.2031 30.7344L16.1406 25.6719C16.0352 25.5664 16 25.4258 16 25.25C16 25.1094 16.0352 24.9688 16.1406 24.8633L21.2031 19.8008C21.4141 19.5898 21.8008 19.5898 22.0117 19.8008C22.2227 20.0117 22.2227 20.3984 22.0117 20.6094L17.8984 24.6875H33.4375C33.7188 24.6875 34 24.9688 34 25.25C34 25.5664 33.7188 25.8125 33.4375 25.8125H17.8984L22.0117 29.9258C22.2227 30.1367 22.2227 30.5234 22.0117 30.7344C21.8008 30.9453 21.4141 30.9453 21.2031 30.7344Z"
+                                fill={colorElement === "#ffffff" ? "#4100fc" : "#ffffff"}
+                                style={{ transition: 'all 0.5s ease-in-out' }}
+                            />
+                        </svg>
+                    </div>
 
                     {/** LOADER */}
                     <AnimatePresence>
@@ -272,7 +253,7 @@ export default function MagicNotebook() {
                     {/** BUTTONS SWIPER DESKTOP */}
                     <div className='hidden xl:block absolute right-[0] top-[50%] -translate-y-[50%] z-[100]'>
                         <button onClick={() => handlePrevClick() }
-                            className={classNames("cursor-pointer relative right-0 bottom-[5px]", { "pointer-events-none opacity-30": !showSubtitle })}
+                            className={classNames("cursor-pointer relative right-0 bottom-[5px]", { "pointer-events-none opacity-30": activeIndex === 0})}
                             aria-label="Previous button"
                         >    
                             <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -310,10 +291,10 @@ export default function MagicNotebook() {
                     <div className="absolute xl:hidden bottom-0 left-0 right-0 bg-blue h-[40px] flex border-t z-[100]">
                         <div className="w-1/2 flex items-center justify-center border-r border-white">
                             <button onClick={() => handlePrevClick() }
-                                className={classNames("cursor-pointer relative right-0", { "pointer-events-none opacity-30": !showSubtitle })}
+                                className={classNames("cursor-pointer relative right-0", { "pointer-events-none opacity-30": activeIndex >= data.slides.length })}
                             >    
                                 <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <circle cx="15" cy="15" r="14.5" transform="rotate(-180 15 15)" stroke="white"/>
+                                    {/* <circle cx="15" cy="15" r="14.5" transform="rotate(-180 15 15)" stroke="white"/> */}
                                     <mask id="mask0_93_485" style={{maskType:"alpha"}} maskUnits="userSpaceOnUse" x="0" y="0" width="30" height="30">
                                     <circle cx="15" cy="15" r="15" transform="rotate(-180 15 15)" fill="#D9D9D9"/>
                                     </mask>
@@ -331,7 +312,7 @@ export default function MagicNotebook() {
                                 })}
                             >
                                 <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <circle cx="15" cy="15" r="14.5" stroke="white"/>
+                                    {/* <circle cx="15" cy="15" r="14.5" stroke="white"/> */}
                                     <mask id="mask0_93_483" style={{ maskType:"alpha" }} maskUnits="userSpaceOnUse" x="0" y="0" width="30" height="30">
                                     <circle cx="15" cy="15" r="15" fill="#D9D9D9"/>
                                     </mask>
@@ -342,64 +323,6 @@ export default function MagicNotebook() {
                             </button>
                         </div>
                     </div>
-
-                    {/** MENU ASIDE */}
-                    <AnimatePresence>
-                        {isOpenMenu &&            
-                            <motion.div
-                                initial={{ x: '100%' }}
-                                animate={{ x: 0 }}
-                                exit={{ x: '100%' }}
-                                transition={{ duration: 0.6 }}
-                                className="fixed top-0 right-0 bottom-0 w-full md:w-1/2 lg:w-1/3 xl:w-1/4 bg-blue z-[101]"
-                            >
-                                {/* Bouton de fermeture */}
-                                <div className="absolute top-4 right-4 z-[102] cursor-pointer bg-white rounded-full" onClick={() => setIsOpenMenu(false)}
-                                >
-                                    <svg width="50" height="50" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <circle cx="25" cy="25" r="25" fill="#ffffff"/>
-                                        <path d="M17.125 19.0625C17.125 18.7812 17.3711 18.5 17.6875 18.5H32.3125C32.5938 18.5 32.875 18.7812 32.875 19.0625C32.875 19.3789 32.5938 19.625 32.3125 19.625H17.6875C17.3711 19.625 17.125 19.3789 17.125 19.0625ZM17.125 24.6875C17.125 24.4062 17.3711 24.125 17.6875 24.125H27.8125C28.0938 24.125 28.375 24.4062 28.375 24.6875C28.375 25.0039 28.0938 25.25 27.8125 25.25H17.6875C17.3711 25.25 17.125 25.0039 17.125 24.6875ZM23.875 30.3125C23.875 30.6289 23.5938 30.875 23.3125 30.875H17.6875C17.3711 30.875 17.125 30.6289 17.125 30.3125C17.125 30.0312 17.3711 29.75 17.6875 29.75H23.3125C23.5938 29.75 23.875 30.0312 23.875 30.3125Z" fill="#4100FC"/>
-                                    </svg>
-                                </div>
-
-                                {/* Contenu du menu */}
-                                <div className="relative">
-                                    <div className="absolute top-[12px] left-[30px] flex items-center">
-                                        <svg width="19" height="12" viewBox="0 0 19 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <path d="M1.14062 5.86328L6.20312 0.800781C6.41406 0.589844 6.80078 0.589844 7.01172 0.800781C7.22266 1.01172 7.22266 1.39844 7.01172 1.60938L2.89844 5.6875H18.4375C18.7188 5.6875 19 5.96875 19 6.25C19 6.56641 18.7188 6.8125 18.4375 6.8125H2.89844L7.01172 10.9258C7.22266 11.1367 7.22266 11.5234 7.01172 11.7344C6.80078 11.9453 6.41406 11.9453 6.20312 11.7344L1.14062 6.67188C0.929688 6.46094 0.929688 6.07422 1.14062 5.86328Z" fill="white"/>
-                                        </svg>
-                                        <Link to={"/magic-notebooks"}>
-                                            <span className="uppercase text-white text-[16px] font-normal pl-[10px] cursor-pointer">{ t('change_chapter')}</span>
-                                        </Link>
-                                    </div>
-                                    <img src={ wallpaper_menu } alt="Gilbert Trausch dans son bureau" className="w-full" />
-                                    <span className="absolute top-1/2 left-8 transform -translate-y-1/2 text-[24px] leading-[28px] md:text-[28px] md:leading-[35px] text-white">{ title }</span>
-                                </div>
-
-                                <div className="p-[30px]">
-                                    { slideHeaders?.map((header, index) => {
-                                        return (
-                                            <h3 
-                                                key={header.slide.slidable.id} 
-                                                className={classNames("text-white cursor-pointer hover:opacity-100 w-[80%] relative flex items-center gap-3 pb-[25px]", {
-                                                    "before:content-[''] before:block before:w-[1px] before:h-[30px] before:bg-white": index === activeHeaderIndex,
-                                                }
-                                            )}
-                                                onClick={() => { 
-                                                    setIsOpenMenu(false);
-                                                    setTimeout(() => {
-                                                        navigate(location.pathname + '?index=' + Math.max(0, header.index ))
-                                                    }, 1000)
-                                                }}
-                                            >   
-                                                { header?.slide?.slidable?.subtitle?.[locale] || "" }
-                                            </h3>
-                                        )
-                                    })}
-                                </div>
-                            </motion.div>
-                        }
-                    </AnimatePresence>
                 </>
             }
         </div>

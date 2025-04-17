@@ -65,7 +65,7 @@ export default function PlayerPDF({ url, optimized_url }) {
 
     return (
         <>
-            <div ref={containerRef} className="w-full h-full flex justify-center items-center overflow-hidden mb-[20px]">
+            <div ref={containerRef} className="w-full h-full flex justify-center items-center overflow-hidden mb-[20px] lg:mb-0">
                 <Document file={url} onLoadSuccess={({ numPages }) => setNumPages(numPages)}>
                     <Page
                     pageNumber={pageNumber}

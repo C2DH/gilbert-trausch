@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { getYear, formatRichText } from "../lib/utils";
-import bg from '../assets/images/backgrounds/biography.webp'
+import bg from '../assets/images/backgrounds/bg-1.webp'
 import { Link, Element } from 'react-scroll';
 import classNames from "classnames";
 import { motion } from "motion/react";

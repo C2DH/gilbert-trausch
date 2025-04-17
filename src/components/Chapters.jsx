@@ -73,13 +73,15 @@ export default function Chapters() {
                         </div>
                     }
 
+                    
+
                     <div className="xl:h-full flex flex-col justify-center items-center lg:items-start px-[20px] xl:px-0">
-                        <h1 className="uppercase text-[24px] leading-[30px] lg:text-[32px] 2xl:text-[60px] 2xl:leading-[66px] text-[#4100FC] mb-[30px] xl:mb-[50px]">
+                        <h1 className="font-extralight text-[24px] md:text-[36px] 2xl:text-[50px] uppercase tracking-[2px] text-[#4100FC] mb-[30px] xl:mb-[50px]">
                         {t('professions')}
                         </h1>
                        
                         { isLoaded &&                        
-                            <ul className="text-[22px] lg:text-[24px] 2xl:text-[40px] 2xl:leading-[48px] pl-0 list-inside">
+                            <ul className="text-[22px] lg:text-[24px] 2xl:text-[36px] 2xl:leading-[40px] pl-0 list-inside">
                                 {data?.map((item, index) => (
                                     <li
                                         key={item.id}

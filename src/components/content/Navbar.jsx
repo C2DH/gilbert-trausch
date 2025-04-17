@@ -1,13 +1,16 @@
 import { useEffect, useState } from "react";
 import bgMenu from '../../assets/images/backgrounds/bg-menu.webp';
-import logoUni from '../../assets/images/logo-uni.svg';
-import logoGouv from '../../assets/images/logo-gouv.svg';
 import { AnimatePresence, motion } from "framer-motion";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useLanguageContext } from "../../contexts/LanguageProvider";
 import classNames from "classnames";
 import { t } from "i18next";
 import { useSharedState } from "../../contexts/ShareStateProvider";
+import ftcm from "../../assets/images/FTCM.svg";
+import hist from "../../assets/images/IHIST.svg";
+import llc from "../../assets/images/LLC.svg";
+import losch from "../../assets/images/losch.svg";
+import uni from "../../assets/images/uni.svg";
 
 export default function Navbar({color}) {
 
@@ -16,7 +19,6 @@ export default function Navbar({color}) {
     const [ ,setSharedState] = useSharedState();
     const location = useLocation();
     const navigate = useNavigate();
-    const isChapterOrNotebook = location.pathname.includes('/chapter') || location.pathname.includes('/magic-notebooks');
 
     const handleMenuClick = (path) => {
         if (location.pathname === path) {
@@ -52,16 +54,6 @@ export default function Navbar({color}) {
                             </svg>
                         </li>
 
-                        {/** BUTTON MENU CHAPTER */}
-                        {/* {isChapterOrNotebook &&                        
-                            <li className='lg:hidden cursor-pointer order-3'>
-                                <svg width="30" height="30" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <circle cx="25" cy="25" r="25" fill={"white"}/>
-                                    <path d="M17.125 19.0625C17.125 18.7812 17.3711 18.5 17.6875 18.5H32.3125C32.5938 18.5 32.875 18.7812 32.875 19.0625C32.875 19.3789 32.5938 19.625 32.3125 19.625H17.6875C17.3711 19.625 17.125 19.3789 17.125 19.0625ZM17.125 24.6875C17.125 24.4062 17.3711 24.125 17.6875 24.125H27.8125C28.0938 24.125 28.375 24.4062 28.375 24.6875C28.375 25.0039 28.0938 25.25 27.8125 25.25H17.6875C17.3711 25.25 17.125 25.0039 17.125 24.6875ZM23.875 30.3125C23.875 30.6289 23.5938 30.875 23.3125 30.875H17.6875C17.3711 30.875 17.125 30.6289 17.125 30.3125C17.125 30.0312 17.3711 29.75 17.6875 29.75H23.3125C23.5938 29.75 23.875 30.0312 23.875 30.3125Z" fill="blue" style={{ transition: 'all 0.5s ease-in-out'}}/>
-                                </svg>
-                            </li>
-                        } */}
-                        
                         <li className="hidden lg:block uppercase cursor-pointer text-[14px] hover:text-[#4100FC] duration-500 lg:order-2" style={{ color: color }}>
                             <LanguageSwitcher switchLanguage={changeLanguage} lang={language}/>
                         </li>
@@ -100,31 +92,31 @@ export default function Navbar({color}) {
                                 </div>
 
                                 {/** MAIN MENU */}
-                                <div className="2xl:flex items-center h-auto lg:h-[calc(100dvh-40px)] mt-[50px] lg:mt-[100px] 2xl:mt-0">
-                                    <ul className="font-light text-[24px] md:text-[36px] 2xl:text-[60px] uppercase">
-                                        <li className="hover:text-[#4100FC] duration-[450ms] hover:lg:pl-[50px] leading-none mb-6 cursor-pointer w-fit"
+                                <div className="2xl:flex items-center h-auto lg:h-[calc(100dvh-40px)] mt-[40px] lg:mt-[100px] 2xl:mt-0">
+                                    <ul className="font-extralight text-[24px] md:text-[36px] 2xl:text-[50px] uppercase tracking-[2px]">
+                                        <li className="hover:text-[#4100FC] duration-[450ms] hover:lg:pl-[50px] leading-none mb-4 lg:mb-6 cursor-pointer w-fit"
                                             onClick={() => handleMenuClick('/biography')}
                                         >
                                             { t('biography')}
                                         </li>
 
-                                        <li className="hover:text-[#4100FC] duration-[450ms] hover:lg:pl-[50px] leading-none mb-6 cursor-pointer w-fit"
+                                        <li className="hover:text-[#4100FC] duration-[450ms] hover:lg:pl-[50px] leading-none mb-4 lg:mb-6 cursor-pointer w-fit"
                                             onClick={() => handleMenuClick('/professions')}
                                         >
                                             { t('professions')}
                                         </li>
 
-                                        <li className="hover:text-[#4100FC] duration-[450ms] hover:lg:pl-[50px] leading-none mb-6 cursor-pointer w-fit"
+                                        <li className="hover:text-[#4100FC] duration-[450ms] hover:lg:pl-[50px] leading-none mb-4 lg:mb-6 cursor-pointer w-fit"
                                             onClick={() => handleMenuClick('/magic-notebooks')}
                                         >
                                             { t('magicNotebooks')}
                                         </li>
 
-                                        <li className="hover:text-[#4100FC] duration-[450ms] hover:lg:pl-[50px] mb-6 cursor-pointer w-fit"
+                                        <li className="hover:text-[#4100FC] duration-[450ms] hover:lg:pl-[50px] mb-4 lg:mb-6 cursor-pointer w-fit"
                                             onClick={() => handleMenuClick('/virtual-tour')} 
                                         >
                                             <span className="block leading-none">{ t('house')}</span>
-                                            <span className="text-[20px] md:text-[30px] 2xl:text-[40px] block leading-none">({ t('tour')})</span>   
+                                            <span className="text-[20px] md:text-[30px] 2xl:text-[35px] block leading-none">({ t('tour')})</span>   
                                         </li>
 
                                         <li className="hover:text-[#4100FC] duration-[450ms] hover:lg:pl-[50px] leading-none cursor-pointer w-fit"
@@ -136,7 +128,7 @@ export default function Navbar({color}) {
                                 </div>
 
                                 {/** SUBMENU */}
-                                <div className="lg:absolute pt-[80px] lg:pt-0 bottom-[150px] left-0">
+                                <div className="lg:absolute pt-[70px] lg:pt-0 bottom-[150px] left-0">
                                     <ul className="uppercase text-[16px] 2xl:text-[18px] leading-[22px] font-light">
                                         <li className="hover:text-[#4100FC] w-fit cursor-pointer"
                                             onClick={() => handleMenuClick('/about')}
@@ -157,21 +149,36 @@ export default function Navbar({color}) {
                                 </div>
 
                                 {/** PARTNERS */}
-                                <div className="absolute left-0 bottom-[60px] flex items-end">
-                                    <div className="mr-[50px]">
+                                <div className="absolute left-0 bottom-[60px] flex items-end gap-3 flex-wrap">
+                                    <div className="]">
                                         <Link to={'https://www.c2dh.uni.lu/'} target="_blank">
-                                            <img src={logoUni} alt="Logo Université" className="h-[50px]" />
+                                            <img src={uni} alt="Logo Université" className="h-[40px] lg:h-[50px]" />
+                                        </Link>
+                                    </div>
+                                    <div className="">
+                                        <Link to={'https://mcult.gouvernement.lu/fr.html'} target="_blank">
+                                            <img src={hist} alt="Logo Gouvernement" className="h-[40px] lg:h-[50px]" />
+                                        </Link>
+                                    </div>
+                                    <div className="">
+                                        <Link to={'https://mcult.gouvernement.lu/fr.html'} target="_blank">
+                                            <img src={llc} alt="Logo Gouvernement" className="h-[40px] lg:h-[50px]" />
+                                        </Link>
+                                    </div>
+                                    <div className="">
+                                        <Link to={'https://mcult.gouvernement.lu/fr.html'} target="_blank">
+                                            <img src={losch} alt="Logo Gouvernement" className="h-[40px] lg:h-[50px]" />
                                         </Link>
                                     </div>
                                     <div>
                                         <Link to={'https://mcult.gouvernement.lu/fr.html'} target="_blank">
-                                            <img src={logoGouv} alt="Logo Gouvernement" className="h-[50px]" />
+                                            <img src={ftcm} alt="Logo Gouvernement" className="h-[40px] lg:h-[50px]" />
                                         </Link>
                                     </div>
                                 </div>
 
                                 <div className="text-[12px] leading-[12px] lg:text-[15px] lg:leading-[15px] absolute left-0 bottom-[10px] flex items-end">
-                                    <span>Copyright © Université du Luxembourg 2022. All rights reserved.</span>
+                                    <span>Copyright © Université du Luxembourg 2025. All rights reserved.</span>
                                 </div>
 
                             </div>

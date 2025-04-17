@@ -206,34 +206,20 @@ export default function Resources() {
                                                                             style={{position: 'absolute',top: 0,left: 0, width: '100%', height: '100%', objectFit: 'cover'}} 
                                                                             onLoad={() => setImagesLoaded(true)}
                                                                         />
-
-                                                                        {/* <div className="absolute top-0 left-0 bg-black text-[14px] ">
-                                                                            <span className="block text-amber-400">{ document.type }  - { document.name[locale] }</span>
-                                                                            {document.tags.map(tag =>
-                                                                                <span key={tag.id} className="block text-white">{ tag.name[locale] }</span>
-                                                                            )}
-                                                                        </div> */}
                                                                     </div> 
                                                                 )
                                                             } else {
                                                                 return (
                                                                     <div key={index} className="relative overflow-hidden cursor-pointer w-full" onClick={() => { navigate(`/resources/${document.id}`, { state: { modal: true } }) }}>
-                                                                        <div className="bg-[#DBDBD0] w-full aspect-square flex justify-center items-center relative">
+                                                                        <div className="bg-[#DBDBD0] w-full aspect-square flex justify-center items-center relative border border-black rounded-[6px]">
                                                                             { document.type === "audio" ? (
-                                                                                <img src={ bgAudio } alt="Logo audio" className="aspect-square"/>
+                                                                                <img src={ bgAudio } alt="Logo audio" className="aspect-square rounded-[6px]"/>
                                                                             ) : (
-                                                                                <img src={ videoLogo } alt="Logo video" className="h-[50px] lg:h-[120px]"/>
+                                                                                <img src={ videoLogo } alt="Logo video" className="h-[50px] lg:h-[120px] rounded-[6px]"/>
                                                                             )}
-                                                                            <div className="absolute inset-0 bg-black/60"></div>
-                                                                            <span className="text-white absolute w-[80%] top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] text-[14px] leading-none italic text-center">{ document.name[locale] }</span>
+                                                                            {/* <div className="absolute inset-0 bg-black/60"></div> */}
+                                                                            <span className="absolute w-[80%] top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] text-[14px] leading-[20px] italic text-center">{ document.name[locale] }</span>
                                                                         </div>
-    {/*                                                                                                                                         
-                                                                        <div className="absolute top-0 left-0 bg-black text-[14px] ">
-                                                                            <span className="block text-amber-400">{ document.type } - { document.name[locale] }</span>
-                                                                            {document.tags.map(tag =>
-                                                                                <span key={tag.id} className="block text-white">{ tag.name[locale] }</span>
-                                                                            )}
-                                                                        </div> */}
                                                                     </div>
                                                                 )
                                                             }
@@ -255,7 +241,7 @@ export default function Resources() {
                                                                     />
 
                                                                     {/* <div className="bg-[#DBDBD0] w-full aspect-square lg:h-[200px] flex justify-center items-center relative">
-                                                                        <span className="absolute w-[80%] top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] text-[14px] leading-none italic text-center">{ document.name[locale] }</span>
+                                                                        <span className="absolute w-[80%] top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] text-[14px] leading-[20px] italic text-center">{ document.name[locale] }</span>
                                                                     </div> */}
 
                                                                     {/* <div className="absolute top-0 left-0 bg-black text-[14px] ">

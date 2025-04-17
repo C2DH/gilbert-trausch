@@ -111,7 +111,7 @@ blockquote {
         left: 50%;
         transition: opacity 0.4s ease-in-out;
         pointer-events: none;
-        min-width: 200px;
+        min-width: 300px;
         max-width: 300px;
         word-wrap: break-word; /* Permet aux mots longs de se couper et aller à la ligne */
         white-space: normal;
@@ -257,7 +257,7 @@ blockquote {
         
         @media screen and (min-width: 1536px) {
             font-size: 60px;
-            line-height: 95px;
+            line-height: 70px;
         }
     }
 

@@ -38,22 +38,6 @@ export default function SlideAudio({ data, locale }) {
                 </div>
             </div>
         </div>
-
-        {/** POPUP */}
-        {/* <AnimatePresence>           
-            {isOpenPopup &&
-                <motion.div 
-                    className="w-full h-full absolute inset-0 z-[1000]"
-                    key="popupResource"
-                    initial={{ scale: 0.5, opacity: 0, y: "-50%" }}
-                    animate={{ scale: 1, opacity: 1, y: 0 }}
-                    exit={{ scale: 0.5, opacity: 0, y: "-50%" }}
-                    transition={{ duration: 0.5, ease: "easeInOut" }}
-                >
-                    <PopupResource setIsOpenPopup={ setIsOpenPopup } data={ dataPopup } locale={ locale }/>
-                </motion.div>
-            }
-        </AnimatePresence> */}
     </>
 )
 }
