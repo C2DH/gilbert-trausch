@@ -19,6 +19,19 @@ export default function Navbar({color}) {
     const [ ,setSharedState] = useSharedState();
     const location = useLocation();
     const navigate = useNavigate();
+    const path = location.pathname;
+
+    // Pas de backgrounds
+    const noBackgroundRoutes = [
+        /^\/$/,
+        /^\/chapter\/.+/,
+        /^\/resources(\/.*)?$/,
+        /^\/magic-notebooks$/,
+        /^\/magic-notebook\/.+/,
+        /^\/professions$/,
+    ];
+
+    const hasBackground = !noBackgroundRoutes.some((regex) => regex.test(path));
 
     const handleMenuClick = (path) => {
         if (location.pathname === path) {
@@ -40,7 +53,9 @@ export default function Navbar({color}) {
 
     return (
         <>
-            <div className="navbar h-[40px] absolute inset-0 border-b z-[101] px-[20px]" style={{ borderColor: color }}>
+            <div className={classNames("navbar h-[40px] fixed inset-0 border-b z-[101] px-[20px]", {
+                "bg-[#FAF8F7] opacity-90" : hasBackground
+            })} style={{ borderColor: color }}>
                 <div className="container mx-auto h-[40px]">
                     <ul className="flex justify-between items-center h-full relative">
                         <li className="uppercase cursor-pointer order-2 lg:order-1 absolute left-[50%] -translate-x-[50%] lg:static lg:translate-x-0" onClick={() => handleMenuClick('/') }>
@@ -64,7 +79,7 @@ export default function Navbar({color}) {
             <AnimatePresence>           
                 {isOpen && 
                     <motion.div 
-                        className="w-full absolute inset-0 z-[102]"
+                        className="w-full fixed inset-0 z-[102]"
                         key="menu"
                         initial={{ y: "-100%" }}
                         animate={{ y: 0 }}
