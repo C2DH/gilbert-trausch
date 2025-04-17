@@ -58,7 +58,7 @@ export default function VirtualTour() {
                                 </div>
                                 <div className="flex justify-center pt-[40px] lg:pt-[80px]">
                                     <button 
-                                        className="uppercase text-blue text-[14px] px-[10px] lg:px-[25px] py-[7px] border border-blue w-fit rounded-[7px] hover:bg-blue hover:text-white outline-none duration-500"
+                                        className="btn-tour relative uppercase text-blue text-[14px] px-[10px] lg:px-[25px] py-[7px] border border-blue w-fit rounded-[7px] hover:bg-blue hover:text-white outline-none duration-500"
                                         aria-label="Virtual tour button"    
                                     >
                                     {t('link_virtual_tour')}
