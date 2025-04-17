@@ -162,7 +162,7 @@ export default function Navbar({color}) {
                                 </div>
 
                                 {/** PARTNERS */}
-                                <div className="absolute left-0 bottom-[60px] flex items-end gap-3 flex-wrap">
+                                <div className="absolute left-0 bottom-[60px] flex items-end gap-3 lg:gap-8 flex-wrap">
                                     <div>
                                         <Link to={'https://www.c2dh.uni.lu/'} target="_blank">
                                             <img src={uni} alt="Logo Université Luxembourg et C2DH" className="h-[40px] lg:h-[50px]" />
@@ -179,13 +179,13 @@ export default function Navbar({color}) {
                                         </Link>
                                     </div>
                                     <div>
-                                        <Link to={'https://www.loschfondation.lu/'} target="_blank">
-                                            <img src={losch} alt="Logo Fondation André Losch" className="h-[40px] lg:h-[50px]" />
+                                        <Link to={'https://www.uni.lu/fstm-fr/'} target="_blank">
+                                            <img src={ftcm} alt="Logo Faculté des Sciences, des Technologies et de Médecine" className="h-[40px] lg:h-[50px]" />
                                         </Link>
                                     </div>
                                     <div>
-                                        <Link to={'https://www.uni.lu/fstm-fr/'} target="_blank">
-                                            <img src={ftcm} alt="Logo Faculté des Sciences, des Technologies et de Médecine" className="h-[40px] lg:h-[50px]" />
+                                        <Link to={'https://www.loschfondation.lu/'} target="_blank">
+                                            <img src={losch} alt="Logo Fondation André Losch" className="h-[40px] lg:h-[50px]" />
                                         </Link>
                                     </div>
                                 </div>

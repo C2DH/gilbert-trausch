@@ -134,17 +134,16 @@ export default function About() {
                             </Link>
                         </div>
                         <div>
-                            <Link to={'https://www.loschfondation.lu/'} target="_blank">
-                                <img src={losch} alt="Logo Fondation André Losch" className="h-[40px] lg:h-[60px]" />
-                            </Link>
-                        </div>
-                        <div>
                             <Link to={'https://www.uni.lu/fstm-fr/'} target="_blank">
                                 <img src={ftcm} alt="Logo Faculté des Sciences, des Technologies et de Médecine" className="h-[40px] lg:h-[60px]" />
                             </Link>
                         </div>
+                        <div>
+                            <Link to={'https://www.loschfondation.lu/'} target="_blank">
+                                <img src={losch} alt="Logo Fondation André Losch" className="h-[40px] lg:h-[60px]" />
+                            </Link>
+                        </div>
                     </div>
-
                 </div>
             }
         </motion.div>    
