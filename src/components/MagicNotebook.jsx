@@ -232,7 +232,7 @@ export default function MagicNotebook() {
                                 animate={{ opacity: 1, x: 0 }}
                                 exit={{ opacity: 0, x: '100%' }}
                                 transition={{ duration: 0.4 }}
-                                className='absolute right-[20px] top-[150px] z-[100]'
+                                className='hidden xl:block absolute right-[20px] top-[150px] z-[100]'
                             >
                                 <svg width="50" height="50" viewBox="0 0 80 80" className="rotate-90">
                                     <circle cx="40" cy="40" r="35" stroke={colorElement} strokeWidth="2" fill="none" />

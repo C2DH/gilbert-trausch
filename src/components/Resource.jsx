@@ -1,19 +1,18 @@
 import { useEffect, useState } from 'react';
 import background from '../assets/images/backgrounds/bg-1.webp';
 import { formatRichText, formatTypeName, formatDate, formatDateYear } from '../lib/utils';
-import { motion } from "framer-motion";
 import classNames from 'classnames';
 import { TransformWrapper, TransformComponent, useControls } from "react-zoom-pan-pinch";
 import { MagnifyingGlassMinusIcon, MagnifyingGlassPlusIcon } from '@heroicons/react/24/outline';
 import PlayerVideo from './content/PlayerVideo';
 import PlayerAudio from './content/PlayerAudio';
-import audioLogo from '../assets/images/audio.svg';
 import PlayerPDF from './content/PlayerPDF';
 import { useMediaQuery } from 'react-responsive';
 import { useTranslation } from 'react-i18next';
 import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import i18n from '../../i18n';
 import bgAudio from '../assets/images/backgrounds/bg-audio-default.webp';
+import { AnimatePresence, motion } from "motion/react"
 
 const API_URL = import.meta.env.VITE_API_URL;
 
@@ -36,6 +35,7 @@ export default function Resource() {
             const res = await fetch(`${API_URL}/api/resource/${id}`);
             const product = await res.json();
             setData(product.data);
+            console.log('data', product.data)
         }
 
         fetchData();
@@ -45,106 +45,111 @@ export default function Resource() {
     if(!data) return null;
 
     return (
-        <div style={{ background: `url(${background}) center / cover no-repeat` }} className={classNames('popup_resource h-[100dvh] flex flex-col overflow-hidden  ', { "fixed inset-0 z-[9999]": location.state.modal })}>
-            
-			<div className='lg:hidden py-[10px] border-b border-black h-[40px]'>
-				<span className='block text-[14px] text-center cursor-pointer hover:text-[#4100FC] duration-500 uppercase font-light' onClick={() => navigate(-1) }>{ t('close') }</span>
-			</div>
+        <AnimatePresence>
 
-            <div className='flex-1 overflow-y-auto'>
-                <div className="grid grid-cols-12 h-[calc(100dvh-40px])] overflow-scroll">
-                    <div className="col-span-12 lg:col-span-9 border-r border-black pt-[20px] lg:pt-[60px] lg:py-[60px] h-full relative">
-                        <div className='grid grid-cols-12 lg:grid-cols-9 h-full px-[20px]'>
-                            {/* <div className='col-span-12 lg:col-span-9 flex flex-col justify-center items-center overflow-hidden h-[50dvh] lg:h-[calc(100dvh-120px)]'> */}
-                            <div className='col-span-12 lg:col-span-9 flex flex-col justify-center items-center overflow-hidden h-[50dvh] lg:h-[calc(100dvh-120px)]'>
+            <motion.div
+                initial={{ opacity : 0, scale: 0.8 }}
+                animate={{ opacity : 1, scale: 1.0 }}
+                exit={{ opacity: 0, scale: 0.8 }}
+                transition={{ duration: 0.4 }}
+                style={{ background: `url(${background}) center / cover no-repeat` }} className={classNames('popup_resource h-[100dvh] flex flex-col overflow-hidden  ', { "fixed inset-0 z-[9999]": location.state.modal })}>
+                
+                <div className='lg:hidden py-[10px] border-b border-black h-[40px]'>
+                    <span className='block text-[14px] text-center cursor-pointer hover:text-[#4100FC] duration-500 uppercase font-light' onClick={() => navigate(-1) }>{ t('close') }</span>
+                </div>
 
-                                { (data.type === "image" && data.optimized_url) &&                            
-                                    <div>
-                                        <ImageZoom image={ isMobile ? data.optimized_url.thumbnail.url : data.optimized_url.large.url } alt={ data.name[locale] }/>
-                                    </div>
-                                }
+                <div className='flex-1 overflow-y-auto'>
+                    <div className="grid grid-cols-12">
+                        <div className="col-span-12 lg:col-span-8 2xl:col-span-9 border-r border-black h-full relative pt-[20px] lg:pt-0">
+                            <div className='grid grid-cols-12 lg:grid-cols-9 px-[20px]'>
+                                <div className='col-span-12 lg:col-span-9 flex flex-col justify-center items-center overflow-hidden h-[60dvh] md:h-[70vh] lg:h-[100dvh]'>
 
-                                { data.type === "video" &&
-                                    <PlayerVideo url={ data.url } />
-                                }
+                                    { (data.type === "image" && data.optimized_url) &&                            
+                                        <ImageZoom image={ isMobile ? data.optimized_url.thumbnail.url : data.optimized_url.large.url } alt={ data.name[locale] }/>  
+                                    }
 
-                                { data.type === "audio" && (
-                                    <div className='aspect-square w-2/3 md:w-1/3'>
-                                        { data.cover ? (
-                                            <img src={data.cover} alt={data.name[locale]} className='rounded-[6px] mb-[30px]'/>
-                                        ) : (
-                                            <div className="bg-[#DBDBD0] flex justify-center items-center relative mb-[30px] border border-black rounded-[6px]">
-                                                <img src={ bgAudio } alt="Logo audio" className="rounded-[6px]" />
-                                            </div>
-                                        )}
+                                    { data.type === "video" &&
+                                        <PlayerVideo url={ data.url } />
+                                    }
 
-                                        <PlayerAudio url={data.url}/>
-                                    </div>
-                                )}
+                                    { data.type === "audio" && (
+                                        <div className='aspect-square w-2/3 md:w-1/3'>
+                                            { data.cover ? (
+                                                <img src={data.cover} alt={data.name[locale]} className='rounded-[6px] mb-[30px]'/>
+                                            ) : (
+                                                <div className="bg-[#DBDBD0] flex justify-center items-center relative mb-[30px] border border-black rounded-[6px]">
+                                                    <img src={ bgAudio } alt="Logo audio" className="rounded-[6px]" />
+                                                </div>
+                                            )}
 
-                                { (data.type !== 'audio' && data.type !== 'video' && data.type !== 'image') && 
-                                    <PlayerPDF url={ data.url } optimized_url={data.optimized_url}/>
-                                }
-
-                            </div>
-                        </div>
-                    </div>
-
-                    <div className="col-span-12 lg:col-span-3 flex flex-col overflow-auto">
-                        <div className='hidden border-b border-black pl-[20px] h-[40px] lg:flex items-center'>
-                            <span className='cursor-pointer text-[18px] font-light hover:text-[#4100FC] duration-500 uppercase' onClick={() => navigate(-1) }>{ t('close') }</span>
-                        </div>
-
-                        <div className='lg:h-[calc(100dvh-55px)] lg:overflow-auto'>
-                            <div className="content py-[30px] px-[20px] border-b border-black">
-                                <div className='flex lg:block justify-between items-center'>
-                                    { data?.date && (
-                                        data.display_year ? (
-                                            <span className='block text-[15px] mb-[25px]'>{ formatDateYear(data.date, locale) }</span>
-                                        ) : (
-                                            <span className='block text-[15px] mb-[25px]'>{ formatDate(data.date, locale) }</span>
-                                        )
+                                            <PlayerAudio url={data.url}/>
+                                        </div>
                                     )}
 
-                                    { data?.type &&
-                                        <span className='inline-block py-[4px] px-[6px] text-[12px] leading-[12px] mb-[25px] bg-blue text-white rounded-[4px]'>{ formatTypeName(data.type , locale) }</span>
+                                    { (data.type !== 'audio' && data.type !== 'video' && data.type !== 'image') && 
+                                        <PlayerPDF url={ data.url } optimized_url={data.optimized_url}/>
+                                    }
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <div className="col-span-12 lg:col-span-4 2xl:col-span-3 flex flex-col overflow-auto">
+                            <div className='hidden border-b border-black pl-[20px] h-[40px] lg:flex items-center'>
+                                <span className='cursor-pointer text-[18px] font-light hover:text-[#4100FC] duration-500 uppercase' onClick={() => navigate(-1) }>{ t('close') }</span>
+                            </div>
+
+                            <div className='lg:h-[calc(100dvh-55px)] lg:overflow-auto'>
+                                <div className="content py-[30px] px-[20px] border-b border-black">
+                                    <div className='flex lg:block justify-between items-center'>
+                                        { data?.date && (
+                                            data.display_year ? (
+                                                <span className='block text-[15px] mb-[25px]'>{ formatDateYear(data.date, locale) }</span>
+                                            ) : (
+                                                <span className='block text-[15px] mb-[25px]'>{ formatDate(data.date, locale) }</span>
+                                            )
+                                        )}
+
+                                        { data?.type &&
+                                            <span className='inline-block py-[4px] px-[6px] text-[12px] leading-[12px] mb-[25px] bg-blue text-white rounded-[4px]'>{ formatTypeName(data.type , locale) }</span>
+                                        }
+                                    </div>
+
+                                    <h1 className="text-[22px] leading-[32px] font-normal mb-[15px]">{ data.name[locale] }</h1>
+                                    
+                                    { data?.description &&
+                                        <div className='mb-[30px] ]'>{ formatRichText(data.description[locale]) }</div>
+                                    }
+
+                                    { data?.source &&
+                                        <div className='text-[14px] leading-[18px]'>
+                                            <span className='font-semibold'>Source</span>
+                                            <div>{ formatRichText(data.source) }</div>
+                                        </div>
+                                    }
+
+                                    { data?.copyright &&
+                                        <div className='text-[14px] leading-[18px] mt-[20px]'>
+                                            <span className='font-semibold'>Copyright</span>
+                                            <div>{ formatRichText(data.copyright) }</div>
+                                        </div>
                                     }
                                 </div>
 
-                                <h1 className="text-[22px] leading-[32px] font-normal mb-[15px]">{ data.name[locale] }</h1>
-                                
-                                { data?.description &&
-                                    <div className='mb-[30px] ]'>{ formatRichText(data.description[locale]) }</div>
-                                }
-
-                                { data?.source &&
-                                    <div className='text-[14px] leading-[18px]'>
-                                        <span className='font-semibold'>Source</span>
-                                        <div>{ formatRichText(data.source) }</div>
+                                <div className="tags py-[30px] px-[20px] overflow auto">
+                                    <div className='flex flex-wrap gap-[15px]'>
+                                        { data?.tags?.map(tag =>
+                                            <div key={ tag.id } className='py-[7px] px-[14px] text-[12px] leading-none uppercase border border-black rounded-[6px]'>{ tag.name[locale] }</div>
+                                        )}
                                     </div>
-                                }
-
-                                { data?.copyright &&
-                                    <div className='text-[14px] leading-[18px] mt-[20px]'>
-                                        <span className='font-semibold'>Copyright</span>
-                                        <div>{ formatRichText(data.copyright) }</div>
-                                    </div>
-                                }
-                            </div>
-
-                            <div className="tags py-[30px] px-[20px] overflow auto">
-                                <div className='flex flex-wrap gap-[15px]'>
-                                    { data?.tags?.map(tag =>
-                                        <div key={ tag.id } className='py-[7px] px-[14px] text-[12px] leading-none uppercase border border-black rounded-[6px]'>{ tag.name[locale] }</div>
-                                    )}
                                 </div>
                             </div>
-                        </div>
 
+                        </div>
                     </div>
                 </div>
-            </div>
-        </div>
+            </motion.div>
+        </AnimatePresence>
     )
 }
 
@@ -162,7 +167,7 @@ const ImageZoom = ({ image, alt }) => {
                 <>
                     {/* <TransformComponent wrapperStyle={{ overflow: 'visible'}}> */}
                     <TransformComponent>
-                        <img src={ image } alt={ alt } className='max-h-[36dvh] lg:max-h-[50dvh]  object-contain'/>
+                        <img src={ image } alt={ alt } className='max-h-[calc(100dvh-120px)] object-contain'/>
                     </TransformComponent>
                     <Controls zoom={stateZoom}/>
                 </>
@@ -174,8 +179,26 @@ const ImageZoom = ({ image, alt }) => {
 const Controls = ({ zoom }) => {
     const { zoomIn, zoomOut, resetTransform } = useControls()
     return (
-        <div className='relative xl:absolute bottom-0 xl:bottom-[10px] left-[50%] -translate-x-[50%] mt-[20px]'>
-            <div className='flex justify-center'>
+        <>
+            {/* Controls Desktop */}
+            <div className='hidden lg:block absolute bottom-0 xl:bottom-[10px] left-[50%] -translate-x-[50%] mt-[20px]'>
+                <div className='flex justify-center'>
+                    <div className="flex cursor-pointer">
+                        <div className='border border-black' style={{ borderTopLeftRadius: '6px', borderBottomLeftRadius: '6px'}} onClick={() => zoomOut() }>
+                            <MagnifyingGlassMinusIcon style={{width: '50px'}} className={classNames('px-[15px] py-[8px]', { "pointer-events-none opacity-30": zoom === null || zoom === 1 })} />
+                        </div>
+                        <div className='uppercase text-[14px] flex items-center border-t border-b border-black px-[12px]' onClick={() => resetTransform()}>
+                            <span className={classNames({"pointer-events-none opacity-30": zoom === null || zoom === 1 })}>Reset</span>
+                        </div>
+                        <div className='border border-black' style={{ borderTopRightRadius: '6px', borderBottomRightRadius: '6px'}} onClick={() => zoomIn()}>
+                            <MagnifyingGlassPlusIcon style={{width: '50px'}} className={classNames('px-[15px] py-[8px]', { "pointer-events-none opacity-30": zoom === 8 })}/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            {/* Controls Mobile */}
+            <div className='lg:hidden flex justify-center mt-[20px]'>
                 <div className="flex cursor-pointer">
                     <div className='border border-black' style={{ borderTopLeftRadius: '6px', borderBottomLeftRadius: '6px'}} onClick={() => zoomOut() }>
                         <MagnifyingGlassMinusIcon style={{width: '50px'}} className={classNames('px-[15px] py-[8px]', { "pointer-events-none opacity-30": zoom === null || zoom === 1 })} />
@@ -188,6 +211,6 @@ const Controls = ({ zoom }) => {
                     </div>
                 </div>
             </div>
-        </div>
+        </>
     )
 }

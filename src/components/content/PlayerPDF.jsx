@@ -21,26 +21,25 @@ export default function PlayerPDF({ url, optimized_url }) {
     const calculateRenderDimensions = () => {
         const container = containerRef.current;
         if (!container) return;
-
+    
         const containerWidth = container.offsetWidth;
         const containerHeight = container.offsetHeight; 
-
-        // Calcul Ratio PDF 
+        console.log('containerWidth', containerWidth)
+        console.log('containerHeight', containerHeight)
+    
+        // Calcul du ratio unique
         const widthRatio = originalWidth / originalHeight;
-        const heightRatio = originalHeight / originalWidth;
-
+    
         // Détecte si c'est portrait ou paysage
         const isPortrait = originalHeight > originalWidth;
         const isLandscape = originalWidth > originalHeight;
-
+    
         if (isPortrait) {
             setRenderHeight(containerHeight);
-            const newWidth = widthRatio * containerHeight;
-            setRenderWidth(newWidth);
+            setRenderWidth(widthRatio * containerHeight); // Calcule la largeur basée sur la hauteur
         } else if (isLandscape) {
             setRenderWidth(containerWidth);
-            const newHeight = heightRatio * containerWidth;
-            setRenderHeight(newHeight);
+            setRenderHeight(containerWidth / widthRatio); // Calcule la hauteur basée sur la largeur
         }
     };
 
@@ -65,7 +64,7 @@ export default function PlayerPDF({ url, optimized_url }) {
 
     return (
         <>
-            <div ref={containerRef} className="w-full h-full flex justify-center items-center overflow-hidden mb-[20px] lg:mb-0">
+            <div ref={containerRef} className="w-full h-full lg:h-[calc(100dvh-120px)] flex justify-center items-center overflow-hidden mb-[20px] lg:mb-0">
                 <Document file={url} onLoadSuccess={({ numPages }) => setNumPages(numPages)}>
                     <Page
                     pageNumber={pageNumber}
@@ -76,8 +75,8 @@ export default function PlayerPDF({ url, optimized_url }) {
                     />
                 </Document>
 
-                {/* Contrôles */}
-                <div className="hidden xl:block absolute bottom-[10px] left-1/2 -translate-x-1/2">
+                {/* Controls Desktop */}
+                <div className="hidden lg:block absolute bottom-[10px] left-1/2 -translate-x-1/2">
                     <div className="flex">
                         <div className="border border-black rounded-l-md" onClick={prevPage}>
                             <ArrowLeftIcon
@@ -92,7 +91,7 @@ export default function PlayerPDF({ url, optimized_url }) {
                         </div>
 
                         <div className="border-y border-black text-sm flex items-center px-3 cursor-default">
-                            {`${pageNumber} / ${numPages || '?'}`}
+                            {`${pageNumber} / ${numPages || ''}`}
                         </div>
 
                         <div className="border-y border-l border-black" onClick={zoomIn}>
@@ -110,8 +109,8 @@ export default function PlayerPDF({ url, optimized_url }) {
                 </div>
             </div>
 
-            {/* Contrôles */}
-            <div className="xl:hidden flex">
+            {/* Controls Mobile */}
+            <div className="lg:hidden flex">
                 <div className="border border-black rounded-l-md" onClick={prevPage}>
                     <ArrowLeftIcon
                     className={classNames('px-4 py-2 w-[50px]', {

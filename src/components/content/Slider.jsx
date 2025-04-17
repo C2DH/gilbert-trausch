@@ -37,7 +37,7 @@ export default function Slider({ items, locale }) {
             >
                 {items?.map(item => {
                     return (
-                        <SwiperSlide key={item.id} className="">
+                        <SwiperSlide key={item.id} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
                             {(item.type !== "audio" && item.optimized_url?.large) && (
                                 <img
                                     onClick={() => { navigate(`/resources/${item.id}`, { state: { modal: true } }) }}
@@ -89,7 +89,7 @@ export default function Slider({ items, locale }) {
                             </svg>
                         </button>
                     
-                        <span ref={paginationRef} className="custom-pagination px-4"></span>
+                        <span ref={paginationRef} className="custom-pagination px-4 text-[14px]"></span>
                     
                         <button ref={navigationNextRef} className="cursor-pointer">
                             <svg width="14" height="12" viewBox="0 0 14 12" fill="none" xmlns="http://www.w3.org/2000/svg">
