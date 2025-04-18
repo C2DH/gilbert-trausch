@@ -42,14 +42,14 @@ export default function Slider({ items, locale }) {
                             )}
 
                             {item.type === "audio" && (
-                                <div className="lg:h-full w-full flex flex-col justify-center items-center">
+                                <div className="lg:h-full w-[60%] lg:w-[80%] xl:w-[60%] flex flex-col justify-center items-center">
                                     {item.cover ? (
                                         <img onClick={() => { navigate(`/resources/${item.id}`, { state: { modal: true } }) }}
-                                            src={item.cover[locale]} alt="cover" className="max-h-[60vh] rounded-[10px] mb-[20px] object-cover" />
+                                            src={item.cover[locale]} alt="cover" className="w-auto h-[300px] md:h-[350px] lg:h-[500px] xl:h-[50vh] object-contain rounded-[6px]" />
                                     ) : (
                                         <div onClick={() => { navigate(`/resources/${item.id}`, { state: { modal: true } }) }}
-                                            className="bg-[#DBDBD0] w-[60%] aspect-square flex justify-center items-center relative mb-5 rounded-[10px] border border-black">
-                                            <img src={ bgAudio } alt="Logo audio" className="rounded-[10px]"/>
+                                            className="bg-[#DBDBD0] aspect-square flex justify-center items-center relative mb-5 rounded-[6px] border border-black w-full">
+                                            <img src={ bgAudio } alt="Logo audio" className="object-contain rounded-[6px] w-full"/>
                                         </div>
                                     )}
                                     <PlayerAudio url={item.url} />

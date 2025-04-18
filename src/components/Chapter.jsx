@@ -73,15 +73,17 @@ export default function Chapter() {
         if (parseInt(searchParams.get('index')) === 0) {
             setShowSubtitle(false);
             setFirstClick(true)
-        } 
+        }
+        setFirstClick(true)
+        setShowSubtitle(true);
     }, [searchParams]);
 
-    useEffect(() => {
-        if (activeIndex !== 0) {
-            setShowSubtitle(false);
-            setFirstClick(true);
-        }
-    }, [activeIndex]);
+    // useEffect(() => {
+    //     if (activeIndex !== 0) {
+    //         setShowSubtitle(false);
+    //         setFirstClick(true);
+    //     }
+    // }, [activeIndex]);
 
     useEffect(() => {
         fetch(`${API_URL}/api/chapter/${slug}`)

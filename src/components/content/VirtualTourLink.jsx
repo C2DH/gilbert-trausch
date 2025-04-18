@@ -1,10 +1,12 @@
 import domToReact from "html-react-parser/lib/dom-to-react";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const VirtualTourLink = ({domNode}) => {
+
+  const location = useLocation();
+
   const navigate = useNavigate();
-  console.log('link', domNode);
-  return <button onClick={() => navigate(domNode.attribs.href, { state: { modal: true } })}>{domToReact(domNode.children)}</button>
+  return <button onClick={() => navigate(domNode.attribs.href, { state: { modal: true, previousLocation: location } })}>{domToReact(domNode.children)}</button>
 }
 
 export default VirtualTourLink;

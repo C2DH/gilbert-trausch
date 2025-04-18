@@ -43,17 +43,17 @@ export default function Home() {
     }
 
 
-    // useEffect(() => {
-    //     const storedHome = localStorage.getItem('home');
-    //     const now = new Date().getTime();
+    useEffect(() => {
+        const storedHome = localStorage.getItem('home');
+        const now = new Date().getTime();
 
-    //     if (!storedHome || Number(storedHome) < now) {
-    //         setShowStartButton(true); // Première visite -> bouton start affiché
-    //     } else {
-    //         setVisibleImages(images); // Seconde visite -> toutes les images visibles instantanément
-    //         setShowMenu(true);
-    //     }
-    // }, []);
+        if (!storedHome || Number(storedHome) < now) {
+            setShowStartButton(true); // Première visite -> bouton start affiché
+        } else {
+            setVisibleImages(images); // Seconde visite -> toutes les images visibles instantanément
+            setShowMenu(true);
+        }
+    }, []);
 
     const handleStart = () => {
         setShowStartButton(false);
@@ -103,7 +103,7 @@ export default function Home() {
                     style={{ background: `url(${img}) center / cover no-repeat` }}
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
-                    transition={{ duration: animationActive ? 1 : 0, ease: "easeOut" }}
+                    transition={{ duration: animationActive ? 3 : 0, ease: "easeOut" }}
                 />
             ))}
 
