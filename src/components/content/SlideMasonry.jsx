@@ -17,7 +17,7 @@ export default function SlideMasonry({ data, locale }) {
 
     return (
         <>
-            <div style={{ background: `url(${isMobile ? bgSmall : imageUrl}) right / cover no-repeat` }} className='h-screen slide slide_masonry slide'>
+            <div style={{ background: `url(${isMobile ? bgSmall : imageUrl}) right / cover no-repeat` }} className='h-[100dvh] slide slide_masonry slide'>
                 <div className="relative top-[40px]">
                     <div className="container mx-auto px-[20px] xl:px-0 h-[calc(100dvh-80px)] lg:h-[calc(100dvh-40px)] overflow-hidden">
                         <div className="grid grid-cols-12 h-full overflow-y-scroll">

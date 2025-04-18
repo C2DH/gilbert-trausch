@@ -64,7 +64,7 @@ export default function SlideColumn({data, locale}) {
 
     return (
         <>
-            <div style={{ background: `url(${isMobile ? bgSmall : imageUrl}) right / cover no-repeat` }} className="h-screen slide_columns slide">
+            <div style={{ background: `url(${isMobile ? bgSmall : imageUrl}) right / cover no-repeat` }} className="h-[100dvh] slide_columns slide">
                 <div className="relative top-[40px]">
                     <div className="container mx-auto px-[20px] xl:px-0">
                         <div className="grid grid-cols-12 h-[calc(100dvh-40px)] overflow-scroll">

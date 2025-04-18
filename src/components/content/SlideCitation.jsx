@@ -9,7 +9,7 @@ export default function SlideCitation( {data, locale} ) {
     const color = data?.slidable?.color_text;
 
     return (
-        <div className="h-screen w-full relative slide_citation z-1 slide">
+        <div className="h-[100dvh] w-full relative slide_citation z-1 slide">
             { imageUrl &&            
                 <div className="absolute inset-0 blur-sm" style={{ background: `url(${imageUrl}) right / cover no-repeat` }}></div>
             }

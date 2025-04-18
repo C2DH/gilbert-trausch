@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { formatRichText } from "../lib/utils";
 import bg from '../assets/images/backgrounds/bg-1.webp';
 import { useTranslation } from "react-i18next";
-import { useSharedState } from "../contexts/ShareStateProvider";
 import { motion } from "motion/react";
 import { easeInOut } from "motion";
 
@@ -12,9 +11,7 @@ export default function Terms() {
     const { i18n } = useTranslation();
     const locale = i18n.language;    
     const [isLoading, setIsLoading] = useState(false);
-    const [data, setData] = useState({});
-    const [sharedState, setSharedState] = useSharedState();
-    
+    const [data, setData] = useState({});    
 
     useEffect(() => {
         fetch(`${API_URL}/api/conditions`)
@@ -30,10 +27,6 @@ export default function Terms() {
             })
             .catch((error) => console.error("Erreur lors du chargement des données de la page à propos :", error));
     }, [locale]);
-
-    // useEffect(() => {
-    //     setSharedState({ ...sharedState, showCurtains: false }) 
-    //  }, [])
 
     return (
         <motion.div 

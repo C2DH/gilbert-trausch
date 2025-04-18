@@ -6,7 +6,6 @@ import about_2 from "../assets/images/about/about-2.webp";
 import about_3 from "../assets/images/about/about-3.webp";
 import about_4 from "../assets/images/about/about-4.webp";
 import { useTranslation } from "react-i18next";
-import { useSharedState } from "../contexts/ShareStateProvider";
 import { motion } from "motion/react";
 import { easeInOut } from "motion";
 import ftcm from "../assets/images/FTCM.svg";
@@ -14,7 +13,6 @@ import hist from "../assets/images/IHIST.svg";
 import llc from "../assets/images/LLC.svg";
 import losch from "../assets/images/losch.svg";
 import uni from "../assets/images/uni.svg";
-import gouv from "../assets/images/logo-gouv.svg";
 import { Link } from "react-scroll";
 
 
@@ -40,11 +38,6 @@ export default function About() {
             })
             .catch((error) => console.error("Erreur lors du chargement des données de la page à propos :", error));
     }, [locale]);
-
-    // useEffect(() => {
-    //     setSharedState({ ...sharedState, showCurtains: false }) 
-    //  }, [])
-
 
     return (
         <motion.div 

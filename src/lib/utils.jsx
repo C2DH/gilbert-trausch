@@ -15,21 +15,6 @@ function customParser(domNode) {
         }
     }
 
-    if (domNode.type === 'text') {
-        console.log(domNode.data)
-        const regex = /\[\[\s?(.*?)\s?\]\]/g;
-        
-        if (regex.test(domNode.data)) {
-            console.log('ici')
-        const newText = domNode.data.replace(regex, function(match, p1) {
-            return `<span class="tooltip-logo" title="${p1}">
-                    <img src="/path/to/logo.png" alt="logo" />
-                    </span>`;
-        });
-            return parse(newText);
-        }
-    }
-
   return domNode;
 }
 

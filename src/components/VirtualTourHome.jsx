@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { formatRichText } from "../lib/utils";
 import bg from '../assets/images/backgrounds/bg_360.webp';
 import { useTranslation } from "react-i18next";
-import { useSharedState } from "../contexts/ShareStateProvider";
 import { motion } from "motion/react";
 import { easeInOut } from "motion";
 import { useLocation, useNavigate } from "react-router-dom";
@@ -14,7 +13,6 @@ export default function VirtualTourHome() {
     const locale = i18n.language;
     const [isLoading, setIsLoading] = useState(false)
     const [data, setData] = useState({});
-    const [sharedState, setSharedState] = useSharedState();
     const navigate = useNavigate();
     const location = useLocation();
     
@@ -32,12 +30,6 @@ export default function VirtualTourHome() {
             })
             .catch((error) => console.error("Erreur lors du chargement des données de la page du tour virtuel :", error));
     }, [locale]);
-
-    // useEffect(() => {
-    //     setSharedState({ ...sharedState, showCurtains: false }) 
-    //  }, [])
-
-
 
     return (
         <motion.div 

@@ -13,7 +13,7 @@ export default function SlideAudio({ data, locale }) {
 
     return (
         <>
-        <div style={{ background: `url(${isMobile ? bgSmall : imageUrl}) right / cover no-repeat` }} className='slide_audio h-screen slide'>
+        <div style={{ background: `url(${isMobile ? bgSmall : imageUrl}) right / cover no-repeat` }} className='slide_audio h-[100dvh] slide'>
             <div className="relative top-[40px]">
                 <div className="container mx-auto px-[20px] xl:px-0">
                     <div className="grid grid-cols-12 lg:h-[calc(100dvh-40px)]">

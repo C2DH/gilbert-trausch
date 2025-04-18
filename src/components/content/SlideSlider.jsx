@@ -12,7 +12,7 @@ export default function SlideSlider({data, locale}) {
 
     return (
         <>
-            <div style={{ background: `url(${isMobile ? bgSmall : imageUrl}) right / cover no-repeat` }} className='slide_text_slider h-screen slide'>
+            <div style={{ background: `url(${isMobile ? bgSmall : imageUrl}) right / cover no-repeat` }} className='slide_text_slider h-[100dvh] slide'>
                 <div className="relative top-[40px]">
                     <div className="container mx-auto px-[20px] xl:px-0 h-[calc(100dvh-80px)] xl:h-[calc(100dvh-40px)] overflow-hidden">
                         <div className="grid grid-cols-12 h-full overflow-y-scroll">

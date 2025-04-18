@@ -10,7 +10,7 @@ export default function SlideMediaFull({ data }) {
             <div className="relative">
                 {/** VIDEO */}
                 { data?.slidable?.document?.type === "video" &&
-                    <div className="h-screen w-full flex items-center justify-center bg-black">
+                    <div className="h-[100dvh] w-full flex items-center justify-center bg-black">
                         <div className="w-full lg:w-[75%]">
                             <PlayerVideo url={data?.slidable?.document?.url} />
                         </div>
@@ -19,7 +19,7 @@ export default function SlideMediaFull({ data }) {
 
                 {/** IMAGES / PDF */}
                 { data?.slidable?.document?.type !== "video" &&
-                    <div className="h-screen w-full flex items-center justify-center" style={{ background: `url(${data?.slidable?.document?.optimized_url?.large?.url}) center / cover no-repeat` }}>
+                    <div className="h-[100dvh] w-full flex items-center justify-center" style={{ background: `url(${data?.slidable?.document?.optimized_url?.large?.url}) center / cover no-repeat` }}>
                     </div>
                 }
 
