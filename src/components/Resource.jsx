@@ -35,7 +35,6 @@ export default function Resource() {
             const res = await fetch(`${API_URL}/api/resource/${id}`);
             const product = await res.json();
             setData(product.data);
-            console.log('data', product.data)
         }
 
         fetchData();

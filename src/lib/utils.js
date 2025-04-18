@@ -5,26 +5,25 @@ import 'tippy.js/dist/tippy.css';
 function customParser(domNode) {
     // Gérer les liens
     if (domNode.type === 'tag' && domNode.name === 'a') {
-        if (domNode.attribs.href.indexOf('https://gilberttrausch.uni.lu') === 0) {
-        domNode.attribs.class = 'custom-link-class'; // Ajoute une classe personnalisée aux liens
-        domNode.attribs.target = '_blank'; // Ouvre les liens dans un nouvel onglet
+        if (domNode.attribs.href.indexOf('/virtual-tour') === 0) {
+            domNode.attribs.class = 'custom-link-class'; // Ajoute une classe personnalisée aux liens
+            domNode.attribs.target = '_blank'; // Ouvre les liens dans un nouvel onglet
         }
     }
 
-    if (domNode.type === 'text') {
-        console.log(domNode.data)
-        const regex = /\[\[\s?(.*?)\s?\]\]/g;
+    // if (domNode.type === 'text') {
+    //     const regex = /\[\[\s?(.*?)\s?\]\]/g;
         
-        if (regex.test(domNode.data)) {
-            console.log('ici')
-        const newText = domNode.data.replace(regex, function(match, p1) {
-            return `<span class="tooltip-logo" title="${p1}">
-                    <img src="/path/to/logo.png" alt="logo" />
-                    </span>`;
-        });
-            return parse(newText);
-        }
-    }
+    //     if (regex.test(domNode.data)) {
+    //         console.log('ici')
+    //     const newText = domNode.data.replace(regex, function(match, p1) {
+    //         return `<span class="tooltip-logo" title="${p1}">
+    //                 <img src="/path/to/logo.png" alt="logo" />
+    //                 </span>`;
+    //     });
+    //         return parse(newText);
+    //     }
+    // }
 
   return domNode;
 }

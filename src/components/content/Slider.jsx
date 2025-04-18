@@ -19,9 +19,6 @@ export default function Slider({ items, locale }) {
     const [index, setIndex] = useState(0);
     const navigate = useNavigate();
 
-
-    console.log('data', items)
-
     return (
         <>
             <Swiper

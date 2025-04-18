@@ -81,7 +81,6 @@ export default function Chapter() {
             setShowSubtitle(false);
             setFirstClick(true);
         }
-        console.log('activeindex', activeIndex)
     }, [activeIndex]);
 
     useEffect(() => {

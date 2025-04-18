@@ -24,9 +24,7 @@ export default function PlayerPDF({ url, optimized_url }) {
     
         const containerWidth = container.offsetWidth;
         const containerHeight = container.offsetHeight; 
-        console.log('containerWidth', containerWidth)
-        console.log('containerHeight', containerHeight)
-    
+
         // Calcul du ratio unique
         const widthRatio = originalWidth / originalHeight;
     
