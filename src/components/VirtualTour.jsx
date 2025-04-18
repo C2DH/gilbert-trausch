@@ -14,6 +14,7 @@ const VirtualTour = () => {
     console.info("event", event);
     if (event.origin !== "https://gilberttrausch.uni.lu") return;
     const { type } = event.data || {};
+
     if (type === "PDF") {
       console.log("PDF message received from iframe!", event.origin);
 
@@ -23,6 +24,27 @@ const VirtualTour = () => {
         navigate(`/resources/${data.id}`, { state: { modal: true, previousLocation: location.state?.modal ? location.state.previousLocation : location } });
       } catch (error) {
         console.error("Error fetching resource:", error);
+      }
+    }
+
+    if (type === "onTourLoaded") {
+      const match = location.pathname.match(/^\/virtual-tour\/room\/([^/]+)$/);
+      if (match && iframeRef.current) {
+        const roomId = match[1];
+        currentRoomIdRef.current = parseInt(roomId, 10);
+        console.info("roomId", roomId);
+        if (iframeRef.current) {
+          console.info("postMessage", currentRoomIdRef.current);
+          setTimeout(() => {
+            iframeRef.current?.contentWindow?.postMessage(
+              {
+                type: "navigate",
+                route: currentRoomIdRef.current,
+              },
+              "*"
+            ); 
+          }, 500);
+        }
       }
     }
   };
@@ -44,13 +66,16 @@ const VirtualTour = () => {
       const roomId = match[1];
       currentRoomIdRef.current = parseInt(roomId, 10);
       console.info("roomId", roomId);
-      iframeRef.current?.contentWindow?.postMessage(
-        {
-          type: "navigate",
-          route: currentRoomIdRef.current,
-        },
-        "*"
-      );
+      if (iframeRef.current) {
+        console.info("postMessage", currentRoomIdRef.current);
+        iframeRef.current?.contentWindow?.postMessage(
+          {
+            type: "navigate",
+            route: currentRoomIdRef.current,
+          },
+          "*"
+        ); 
+      }
     }
   }, [location.pathname]);
 
