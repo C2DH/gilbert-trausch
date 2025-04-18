@@ -4,12 +4,14 @@ import { Outlet, useLocation } from 'react-router-dom';
 import { NavbarContext } from '../../contexts/NavbarProvider';
 import { NavbarHomeContext } from '../../contexts/NavbarHomeProvider';
 import { AnimatePresence } from 'motion/react';
+import { useMediaQuery } from 'react-responsive';
 
 export default function Layout () {
     
     const {firstTime, setFirstTime} = useContext(NavbarHomeContext)
     const {colorNavbar, setColorNavbar} = useContext(NavbarContext);
     const location = useLocation();
+    const isMobile = useMediaQuery({ query: '(max-width: 1023px)'});
 
     useEffect(() => {
         const blackNavbarRoutes = [
@@ -31,7 +33,7 @@ export default function Layout () {
     return (
         <>
             <AnimatePresence>
-                {firstTime &&
+                {(!firstTime || location.pathname !== "/" || isMobile) &&
                     <Navbar color={colorNavbar} />
                 }
             </AnimatePresence>

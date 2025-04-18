@@ -42,8 +42,7 @@ export default function Home() {
         }, 1000);
     }
 
-    
-    
+
     // useEffect(() => {
     //     const storedHome = localStorage.getItem('home');
     //     const now = new Date().getTime();
@@ -77,11 +76,11 @@ export default function Home() {
                         if (index === images.length - 1) {
                             setTimeout(() => {
                                 setShowMenu(true)
-                                setFirstTime(true)
-                                , 6000}
-                            );
+                                setFirstTime(false)
+                            }, 1000)
+                              
                         }
-                    }, index * 2000);
+                    }, index * 3000);
                 });
             }, 2000); // Délai avant le début des images"
         }
@@ -104,7 +103,7 @@ export default function Home() {
                     style={{ background: `url(${img}) center / cover no-repeat` }}
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
-                    transition={{ duration: animationActive ? 0.2 : 0, ease: "easeOut" }}
+                    transition={{ duration: animationActive ? 1 : 0, ease: "easeOut" }}
                 />
             ))}
 
@@ -124,15 +123,14 @@ export default function Home() {
                 )}
             </AnimatePresence>
 
-
             <AnimatePresence>
                 {(!isMobile && showMenu) && (
                     <motion.div
-                        className="absolute bottom-[60px] 2xl:bottom-[80px] left-0 right-0 flex justify-between"
+                        className="absolute bottom-[30px] 2xl:bottom-[50px] left-0 right-0 flex justify-between"
                         initial={{ opacity: 0, y: 100 }}
                         animate={{ opacity: 1, y: 0 }}
                         exit={{ opacity: 0, y: 100 }}
-                        transition={{ duration: 1, ease: "easeOut" }}
+                        transition={{ duration: 1, ease: "easeOut", delay: 0.8 }}
                     >
 
                         <div className="menu w-full lg:container mx-auto">
@@ -236,8 +234,14 @@ export default function Home() {
                     </motion.div>
                 )}
             </AnimatePresence>
+            
+            <AnimatePresence>
+                <Player url={ audio } startAudio={startAudio} setStartAudio={setStartAudio} isVisible={animationActive && !showMenu} isMobile={false}/>
+            </AnimatePresence>
 
-            <Player url={ audio } startAudio={startAudio} setStartAudio={setStartAudio}/>
+            {isMobile &&
+                <Player url={ audio } isMobile={isMobile} startAudio={startAudio} setStartAudio={setStartAudio}/>
+            }
 
         </motion.div>
     );

@@ -10,7 +10,6 @@ import hist from "../../assets/images/IHIST.svg";
 import llc from "../../assets/images/LLC.svg";
 import losch from "../../assets/images/losch.svg";
 import uni from "../../assets/images/uni.svg";
-import gouv from "../../assets/images/logo-gouv.svg";
 
 export default function Navbar({color}) {
 
@@ -51,10 +50,15 @@ export default function Navbar({color}) {
 
     return (
         <>
-            <motion.div 
+            <motion.div
+                initial={{ opacity: 0, y: -100 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -100 }}
+                transition={{ duration: 1, ease: "easeOut" }}
                 className={classNames("navbar h-[40px] fixed inset-0 border-b z-[101] px-[20px]", {
-                "bg-[#FAF8F7] opacity-90" : hasBackground
-            })} style={{ borderColor: color }}>
+                    "bg-[#FAF8F7] opacity-90" : hasBackground
+                })} 
+                style={{ borderColor: color }}>
                 <div className="container mx-auto h-[40px]">
                     <ul className="flex justify-between items-center h-full relative">
                         <li className="uppercase cursor-pointer order-2 lg:order-1 absolute left-[50%] -translate-x-[50%] lg:static lg:translate-x-0" onClick={() => handleMenuClick('/') }>
