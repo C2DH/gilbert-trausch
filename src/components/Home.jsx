@@ -43,17 +43,17 @@ export default function Home() {
     }
 
 
-    useEffect(() => {
-        const storedHome = localStorage.getItem('home');
-        const now = new Date().getTime();
+    // useEffect(() => {
+    //     const storedHome = localStorage.getItem('home');
+    //     const now = new Date().getTime();
 
-        if (!storedHome || Number(storedHome) < now) {
-            setShowStartButton(true); // Première visite -> bouton start affiché
-        } else {
-            setVisibleImages(images); // Seconde visite -> toutes les images visibles instantanément
-            setShowMenu(true);
-        }
-    }, []);
+    //     if (!storedHome || Number(storedHome) < now) {
+    //         setShowStartButton(true); // Première visite -> bouton start affiché
+    //     } else {
+    //         setVisibleImages(images); // Seconde visite -> toutes les images visibles instantanément
+    //         setShowMenu(true);
+    //     }
+    // }, []);
 
     const handleStart = () => {
         setShowStartButton(false);
