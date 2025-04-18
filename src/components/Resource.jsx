@@ -55,7 +55,7 @@ export default function Resource() {
                 style={{ background: `url(${background}) center / cover no-repeat` }} className={classNames('popup_resource h-[100dvh] flex flex-col overflow-hidden  ', { "fixed inset-0 z-[9999]": location.state.modal })}>
                 
                 <div className='lg:hidden py-[10px] border-b border-black h-[40px]'>
-                    <span className='block text-[14px] text-center cursor-pointer hover:text-[#4100FC] duration-500 uppercase font-light' onClick={() => navigate(-1) }>{ t('close') }</span>
+                    <span className='block text-[14px] text-center cursor-pointer hover:text-[#4100FC] duration-500 uppercase font-light' onClick={() => location.state.modal ? navigate(-1) : navigate('/resources') }>{ t('close') }</span>
                 </div>
 
                 <div className='flex-1 overflow-y-auto'>
@@ -96,7 +96,7 @@ export default function Resource() {
 
                         <div className="col-span-12 lg:col-span-4 2xl:col-span-3 flex flex-col overflow-auto">
                             <div className='hidden border-b border-black pl-[20px] h-[40px] lg:flex items-center'>
-                                <span className='cursor-pointer text-[18px] font-light hover:text-[#4100FC] duration-500 uppercase' onClick={() => navigate(-1) }>{ t('close') }</span>
+                                <span className='cursor-pointer text-[18px] font-light hover:text-[#4100FC] duration-500 uppercase' onClick={() => location.state.modal ? navigate(-1) : navigate('/resources') }>{ t('close') }</span>
                             </div>
 
                             <div className='lg:h-[calc(100dvh-55px)] lg:overflow-auto'>

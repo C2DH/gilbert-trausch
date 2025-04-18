@@ -17,6 +17,7 @@ import '../i18n'
 import { NavbarProvider } from "./contexts/NavbarProvider";
 import { useEffect, useRef } from "react";
 import Resource from "./components/Resource";
+import { NavbarHomeContext, NavbarHomeProvider } from "./contexts/NavbarHomeProvider";
 
 function usePrevious(value) {
     const ref = useRef();
@@ -47,28 +48,30 @@ export default function App() {
     return (    
         <>            
             <LanguageProvider>
-                <NavbarProvider>
-                    <Routes location={isModal ? previousLocation : location} key={isModal ? previousLocation.pathname : location.pathname}>
-                        <Route path="/" element={<Layout />}>
-                            <Route path='/' element={ <Home /> }/>
-                            <Route path="/preview/chapter/slide/:id" element={<PreviewSlide />} />
-                            <Route path="/preview/magic-notebook/slide/:id" element={<PreviewSlideMagicNotebook />} />
-                            <Route path="/biography" element={<Biography />} />
-                            <Route path="/professions" element={<Chapters />} />
-                            <Route path="/chapter/:slug" element={<Chapter />} />
-                            <Route path="/magic-notebook/:slug" element={<MagicNotebook />} />
-                            <Route path="/magic-notebooks" element={<MagicNotebooks />} />
-                            <Route path="/virtual-tour" element={<VirtualTour />} />
-                            <Route path="/resources" element={<Resources />} />
-                            <Route path="/resources/:id" element={<Resource />} />
-                            <Route path="/about" element={<About />} />
-                            <Route path="/terms-of-use" element={<Terms />} />
-                        </Route>
-                    </Routes>
-                    {isModal && <Routes location={location}>
-                        <Route path='/resources/:id' element={<Resource />} />
-                    </Routes>}
-                </NavbarProvider>
+                <NavbarHomeProvider>
+                    <NavbarProvider>
+                        <Routes location={isModal ? previousLocation : location} key={isModal ? previousLocation.pathname : location.pathname}>
+                            <Route path="/" element={<Layout />}>
+                                <Route path='/' element={ <Home /> }/>
+                                <Route path="/preview/chapter/slide/:id" element={<PreviewSlide />} />
+                                <Route path="/preview/magic-notebook/slide/:id" element={<PreviewSlideMagicNotebook />} />
+                                <Route path="/biography" element={<Biography />} />
+                                <Route path="/professions" element={<Chapters />} />
+                                <Route path="/chapter/:slug" element={<Chapter />} />
+                                <Route path="/magic-notebook/:slug" element={<MagicNotebook />} />
+                                <Route path="/magic-notebooks" element={<MagicNotebooks />} />
+                                <Route path="/virtual-tour" element={<VirtualTour />} />
+                                <Route path="/resources" element={<Resources />} />
+                                <Route path="/resources/:id" element={<Resource />} />
+                                <Route path="/about" element={<About />} />
+                                <Route path="/terms-of-use" element={<Terms />} />
+                            </Route>
+                        </Routes>
+                        {isModal && <Routes location={location}>
+                            <Route path='/resources/:id' element={<Resource />} />
+                        </Routes>}
+                    </NavbarProvider>
+                </NavbarHomeProvider>
             </LanguageProvider>
         </>
     );

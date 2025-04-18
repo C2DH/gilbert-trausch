@@ -51,7 +51,8 @@ export default function Navbar({color}) {
 
     return (
         <>
-            <div className={classNames("navbar h-[40px] fixed inset-0 border-b z-[101] px-[20px]", {
+            <motion.div 
+                className={classNames("navbar h-[40px] fixed inset-0 border-b z-[101] px-[20px]", {
                 "bg-[#FAF8F7] opacity-90" : hasBackground
             })} style={{ borderColor: color }}>
                 <div className="container mx-auto h-[40px]">
@@ -72,7 +73,7 @@ export default function Navbar({color}) {
                         </li>
                     </ul>
                 </div>
-            </div>
+            </motion.div>
 
             <AnimatePresence>           
                 {isOpen && 

@@ -63,17 +63,26 @@ export default function Chapter() {
     const [currentGroupTotal, setCurrentGroupTotal] = useState(1);
     const [direction, setDirection] = useState(0)
     const menuRef = useRef();
-    const location = useLocation();
+    const buttonRef = useRef();
+    const location = useLocation(); 
     const navigate = useNavigate();
 
     useEffect(() => {
         setActiveIndex(parseInt(searchParams.get('index') ?? 0));
+
         if (parseInt(searchParams.get('index')) === 0) {
-                setShowSubtitle(false)
-        } else {
-            setShowSubtitle(true)
-        }
+            setShowSubtitle(false);
+            setFirstClick(true)
+        } 
     }, [searchParams]);
+
+    useEffect(() => {
+        if (activeIndex !== 0) {
+            setShowSubtitle(false);
+            setFirstClick(true);
+        }
+        console.log('activeindex', activeIndex)
+    }, [activeIndex]);
 
     useEffect(() => {
         fetch(`${API_URL}/api/chapter/${slug}`)
@@ -147,9 +156,6 @@ export default function Chapter() {
         }
     }, [activeIndex, data]);
 
-    useEffect(() => {
-        setShowSubtitle(false)
-     }, [])
 
 
     const activeHeaderIndex = useMemo(() => {
@@ -207,6 +213,30 @@ export default function Chapter() {
     };
 
 
+    useEffect(() => {
+        function handleClickOutside(event) {
+            const isClickInsideMenu = menuRef.current && menuRef.current.contains(event.target);
+            const isClickOnButton = buttonRef.current && buttonRef.current.contains(event.target);
+    
+            if (!isClickInsideMenu && !isClickOnButton) {
+                setIsOpenMenu(false);
+            }
+        }
+    
+        if (isOpenMenu) {
+            document.addEventListener('mousedown', handleClickOutside);
+        } else {
+            document.removeEventListener('mousedown', handleClickOutside);
+        }
+    
+        return () => {
+            document.removeEventListener('mousedown', handleClickOutside);
+        };
+    }, [isOpenMenu]);
+
+
+
+
     return (
         <div className="relative w-full h-screen">
             {isLoading &&
@@ -248,6 +278,7 @@ export default function Chapter() {
                     {/** BUTTON MENU ASIDE */}
                     {slideHeaders?.length > 0 && (
                         <div
+                            ref={buttonRef}
                             className={classNames('fixed xl:absolute right-[20px] z-[9999] cursor-pointer transition-all duration-500', {
                                 'top-[4px]': !isLarge,
                                 'top-[80px]': !isOpenMenu && isLarge,
@@ -308,7 +339,7 @@ export default function Chapter() {
                     {/** BUTTONS SWIPER DESKTOP */}
                     <div className='hidden xl:block absolute right-[0] top-[50%] -translate-y-[50%] z-[100]'>
                         <button onClick={() => handlePrevClick() }
-                            className={classNames("cursor-pointer relative right-0 bottom-[5px]", { "pointer-events-none opacity-30": !showSubtitle })}
+                            className={classNames("cursor-pointer relative right-0 bottom-[5px]", { "pointer-events-none opacity-30": activeIndex === 0 })}
                             aria-label="Previous button"
                         >    
                             <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -390,17 +421,6 @@ export default function Chapter() {
                                 transition={{ duration: 0.6 }}
                                 className="fixed top-0 right-0 bottom-0 w-full md:w-1/2 lg:w-[40%] xl:w-1/3 2xl:w-1/3 bg-blue z-[101]"
                             >
-                                {/* Bouton de fermeture */}
-                                {/* <div className="hidden xl:block absolute top-4 right-4 z-[102] cursor-pointer bg-white rounded-full" onClick={() => setIsOpenMenu(false)}
-                                    aria-label="Close menu button"
-                                    role="button"
-                                >
-                                    <svg width="50" height="50" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <circle cx="25" cy="25" r="25" fill="#ffffff"/>
-                                        <path d="M17.125 19.0625C17.125 18.7812 17.3711 18.5 17.6875 18.5H32.3125C32.5938 18.5 32.875 18.7812 32.875 19.0625C32.875 19.3789 32.5938 19.625 32.3125 19.625H17.6875C17.3711 19.625 17.125 19.3789 17.125 19.0625ZM17.125 24.6875C17.125 24.4062 17.3711 24.125 17.6875 24.125H27.8125C28.0938 24.125 28.375 24.4062 28.375 24.6875C28.375 25.0039 28.0938 25.25 27.8125 25.25H17.6875C17.3711 25.25 17.125 25.0039 17.125 24.6875ZM23.875 30.3125C23.875 30.6289 23.5938 30.875 23.3125 30.875H17.6875C17.3711 30.875 17.125 30.6289 17.125 30.3125C17.125 30.0312 17.3711 29.75 17.6875 29.75H23.3125C23.5938 29.75 23.875 30.0312 23.875 30.3125Z" fill="#4100FC"/>
-                                    </svg>
-                                </div> */}
-
                                 {/* Contenu du menu */}
                                 <div className="relative">
                                     <div className="absolute top-[12px] left-[30px] flex items-center cursor-pointer" onClick={() => handleMenuClick('/professions')}>

@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { easeInOut } from "motion";
 import intro_1 from '../assets/images/intro/wallpaper_intro_1.webp';
@@ -16,7 +16,8 @@ import bgSmall from '../assets/images/backgrounds/bg-1.webp';
 import logoMobile from "../assets/images/backgrounds/logo-home.png";
 import { useTranslation } from 'react-i18next';
 import Player from './content/PlayerVideo';
-import audio from "../assets/audio/audio-1.wav";
+import audio from "../assets/audio/short-audio.mp3";
+import { NavbarHomeContext } from '../contexts/NavbarHomeProvider';
 
 
 const images = [intro_2, intro_3, intro_4, intro_5, intro_6, intro_7, intro_8, intro_9];
@@ -27,29 +28,33 @@ export default function Home() {
     const { t } = useTranslation();
     const [visibleImages, setVisibleImages] = useState([]);
     const [showMenu, setShowMenu] = useState(false);
-    const [showStartButton, setShowStartButton] = useState(false);
+    const [showStartButton, setShowStartButton] = useState(true);
     const [animationActive, setAnimationActive] = useState(false);
     const isMobile = useMediaQuery({query: '(max-width: 1023px)'});
     const navigate = useNavigate();
     const [startAudio, setStartAudio] = useState(false);
+    const {firstTime, setFirstTime} = useContext(NavbarHomeContext)
+    
 
     const handleMenuClick = (path) => {
         setTimeout(() => {
             navigate(path);
         }, 1000);
     }
-    
-    useEffect(() => {
-        const storedHome = localStorage.getItem('home');
-        const now = new Date().getTime();
 
-        if (!storedHome || Number(storedHome) < now) {
-            setShowStartButton(true); // Première visite -> bouton start affiché
-        } else {
-            setVisibleImages(images); // Seconde visite -> toutes les images visibles instantanément
-            setShowMenu(true);
-        }
-    }, []);
+    
+    
+    // useEffect(() => {
+    //     const storedHome = localStorage.getItem('home');
+    //     const now = new Date().getTime();
+
+    //     if (!storedHome || Number(storedHome) < now) {
+    //         setShowStartButton(true); // Première visite -> bouton start affiché
+    //     } else {
+    //         setVisibleImages(images); // Seconde visite -> toutes les images visibles instantanément
+    //         setShowMenu(true);
+    //     }
+    // }, []);
 
     const handleStart = () => {
         setShowStartButton(false);
@@ -70,11 +75,15 @@ export default function Home() {
                         setVisibleImages((prev) => [...prev, img]);
     
                         if (index === images.length - 1) {
-                            setTimeout(() => setShowMenu(true), 1000);
+                            setTimeout(() => {
+                                setShowMenu(true)
+                                setFirstTime(true)
+                                , 6000}
+                            );
                         }
-                    }, index * 600);
+                    }, index * 2000);
                 });
-            }, 1000); // Délai avant le début des images"
+            }, 2000); // Délai avant le début des images"
         }
     }, [animationActive, isMobile]);
 
