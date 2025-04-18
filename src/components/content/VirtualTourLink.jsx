@@ -6,7 +6,7 @@ const VirtualTourLink = ({domNode}) => {
   const location = useLocation();
 
   const navigate = useNavigate();
-  return <button onClick={() => navigate(domNode.attribs.href, { state: { modal: true, previousLocation: location } })}>{domToReact(domNode.children)}</button>
+  return <button className="custom-link-class" onClick={() => navigate(domNode.attribs.href, { state: { modal: true, previousLocation: location } })}>{domToReact(domNode.children)}</button>
 }
 
 export default VirtualTourLink;
