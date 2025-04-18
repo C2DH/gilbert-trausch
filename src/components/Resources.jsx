@@ -188,76 +188,65 @@ export default function Resources() {
                             
                             {/** DOCUMENTS */}
                             {isLoading && documents.length > 0 ? (
-                                    <div className="col-span-12 lg:col-span-9 flex h-[calc(100dvh-160px)]">
-                                        <div className="flex-1 overflow-y-auto py-[30px]">
-                                            <ResponsiveMasonry columnsCountBreakPoints={{ 300: 3, 768: 3, 1024: 3, 1280: 4 }} gutterBreakpoints={{ 300: "12px", 768: "16px", 1024: "20px" }}>
-                                                <Masonry>
-                                                    {documents?.map((document, index) => {
-                                                        const aspectRatio = (document?.optimized_url?.thumbnail?.height / document?.optimized_url?.thumbnail?.width) * 100; // Ratio pour le padding-bottom
+                                <div className="col-span-12 lg:col-span-9 flex h-[calc(100dvh-160px)]">
+                                    <div className="flex-1 overflow-y-auto pt-[30px] py-[60px] lg:py-[30px]">
+                                        <ResponsiveMasonry columnsCountBreakPoints={{ 300: 3, 768: 3, 1024: 3, 1280: 4 }} gutterBreakpoints={{ 300: "12px", 768: "16px", 1024: "20px" }}>
+                                            <Masonry>
+                                                {documents?.map((document, index) => {
+                                                    const aspectRatio = (document?.optimized_url?.thumbnail?.height / document?.optimized_url?.thumbnail?.width) * 100; // Ratio pour le padding-bottom
 
-                                                        {/** AUDIO - VIDEO */}
-                                                        if (document.type === "audio" || document.type === "video") {
-                                                            if (document.cover) {
-                                                                return (
-                                                                    <div key={index} className="audio relative overflow-hidden cursor-pointer w-full aspect-square lg:h-[300px] xl:h-[400px]" style={{ paddingBottom: `${aspectRatio}%`}} 
-                                                                        onClick={() => { navigate(`/resources/${document.id}`, { state: { modal: true } }) }}  
-                                                                    >
-                                                                        <img loading="lazy" src={ document.cover } alt={document?.name[locale]} className="w-full hover:scale-[1.2] transition-all duration-[750ms]" 
-                                                                            style={{position: 'absolute',top: 0,left: 0, width: '100%', height: '100%', objectFit: 'cover'}} 
-                                                                            onLoad={() => setImagesLoaded(true)}
-                                                                        />
-                                                                    </div> 
-                                                                )
-                                                            } else {
-                                                                return (
-                                                                    <div key={index} className="relative overflow-hidden cursor-pointer w-full" onClick={() => { navigate(`/resources/${document.id}`, { state: { modal: true } }) }}>
-                                                                        <div className="bg-[#DBDBD0] w-full aspect-square flex justify-center items-center relative border border-black rounded-[6px]">
-                                                                            { document.type === "audio" ? (
-                                                                                <img src={ bgAudio } alt="Logo audio" className="aspect-square rounded-[6px]"/>
-                                                                            ) : (
-                                                                                <img src={ videoLogo } alt="Logo video" className="h-[50px] lg:h-[120px] rounded-[6px]"/>
-                                                                            )}
-                                                                            {/* <div className="absolute inset-0 bg-black/60"></div> */}
-                                                                            <span className="absolute w-[80%] top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] text-[14px] leading-[20px] italic text-center">{ document.name[locale] }</span>
-                                                                        </div>
-                                                                    </div>
-                                                                )
-                                                            }
-                                                        }
-
-                                                        if (document.type !== 'video' && document.type !== 'audio' && document.optimized_url ) {
+                                                    {/** AUDIO - VIDEO */}
+                                                    if (document.type === "audio" || document.type === "video") {
+                                                        console.log(document.cover)
+                                                        if (document.cover) {
                                                             return (
-                                                                <div 
-                                                                    key={index} 
-                                                                    className="cursor-pointer overflow-hidden relative" style={{ width: `${document?.optimized_url?.thumbnail?.width}%`, height: `${document?.optimized_url?.thumbnail?.height}`}} 
-                                                                    onClick={() => { navigate(`/resources/${document.id}`, { state: { modal: true } }) }}
+                                                                <div key={index} className="audio relative overflow-hidden cursor-pointer w-full aspect-square lg:h-[300px] xl:h-[400px]" style={{ paddingBottom: `${aspectRatio}%`}} 
+                                                                    onClick={() => { navigate(`/resources/${document.id}`, { state: { modal: true } }) }}  
                                                                 >
-                                                                    <img 
-                                                                        loading="lazy" 
-                                                                        src={document?.optimized_url?.thumbnail?.url }
-                                                                        alt={document?.name[locale]} 
-                                                                        className="w-full h-full hover:scale-[1.2] transition-all duration-[750ms]"
+                                                                    <img loading="lazy" src={ document.cover[locale] } alt={document?.name[locale]} className="w-full hover:scale-[1.2] transition-all duration-[750ms]" 
+                                                                        style={{position: 'absolute',top: 0,left: 0, width: '100%', height: '100%', objectFit: 'cover'}} 
                                                                         onLoad={() => setImagesLoaded(true)}
                                                                     />
-
-                                                                    {/* <div className="bg-[#DBDBD0] w-full aspect-square lg:h-[200px] flex justify-center items-center relative">
-                                                                        <span className="absolute w-[80%] top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] text-[14px] leading-[20px] italic text-center">{ document.name[locale] }</span>
-                                                                    </div> */}
-
-                                                                    {/* <div className="absolute top-0 left-0 bg-black text-[14px] ">
-                                                                            <span className="block text-amber-400">{ document.type } - { document.name[locale] }</span>
-                                                                            {document.tags.map(tag =>
-                                                                                <span key={tag.id} className="block text-white">{ tag.name[locale] }</span>
-                                                                            )}
-                                                                        </div> */}
+                                                                </div> 
+                                                            )
+                                                        } else {
+                                                            return (
+                                                                <div key={index} className="relative overflow-hidden cursor-pointer w-full" onClick={() => { navigate(`/resources/${document.id}`, { state: { modal: true } }) }}>
+                                                                    <div className="bg-[#DBDBD0] w-full aspect-square flex justify-center items-center relative border border-black rounded-[6px]">
+                                                                        { document.type === "audio" ? (
+                                                                            <img src={ bgAudio } alt="Logo audio" className="aspect-square rounded-[6px]"/>
+                                                                        ) : (
+                                                                            <img src={ videoLogo } alt="Logo video" className="h-[50px] lg:h-[120px] rounded-[6px]"/>
+                                                                        )}
+                                                                        <span className="absolute w-[80%] top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] text-[12px] leading-[15px] md:text-[14px] md:leading-[20px] italic text-center">{ document.name[locale] }</span>
+                                                                    </div>
                                                                 </div>
                                                             )
                                                         }
-                                                    })}
-                                                </Masonry>
-                                            </ResponsiveMasonry>
-                                        </div>
+                                                    }
+
+                                                    if (document.type !== 'video' && document.type !== 'audio' && document.optimized_url ) {
+                                                        return (
+                                                            <div 
+                                                                key={index} 
+                                                                className="cursor-pointer overflow-hidden relative" style={{ width: `${document?.optimized_url?.thumbnail?.width}%`, height: `${document?.optimized_url?.thumbnail?.height}`}} 
+                                                                onClick={() => { navigate(`/resources/${document.id}`, { state: { modal: true } }) }}
+                                                            >
+                                                                <img 
+                                                                    loading="lazy" 
+                                                                    src={document?.optimized_url?.thumbnail?.url }
+                                                                    alt={document?.name[locale]} 
+                                                                    className="w-full h-full hover:scale-[1.2] transition-all duration-[750ms]"
+                                                                    onLoad={() => setImagesLoaded(true)}
+                                                                />
+                                                            </div>
+                                                        )
+                                                    }
+                                                })}
+                                            </Masonry>
+                                        </ResponsiveMasonry>
                                     </div>
+                                </div>
                                 ) : (
                                     <div className="col-span-9 flex h-[calc(100dvh-160px)] justify-center items-center">{ t('no_resources') }</div>
                                 )}
@@ -266,62 +255,59 @@ export default function Resources() {
                             <div className="hidden lg:flex flex-col col-span-3 border-l border-black h-[calc(100dvh-160px)] overflow-hidden">
                                 <div className="flex-1 overflow-y-auto">
 
-                                {/** TYPES */}
-                                <div className="types-block border-b border-black px-[20px] pb-[10px]">
-                                    <div className="flex justify-between py-[20px] ">
-                                        <span className="text-[#4100FC] font-semibold text-[18px]">{ t('media_types') }</span>
-                                        <span className="text-[#4100FC] font-semibold text-[15px] cursor-pointer uppercase" onClick={() => setSelectedFilters(prev => ({ ...prev, types: [] }))}>Reset</span>
-                                    </div>
-
-                                    {types.length > 0 && types?.map(type =>
-                                        <div key={type.type} className={classNames("flex justify-between", {
-                                            'opacity-50':  !selectedFilters.types.includes(type.type),
-                                            'opacity-100': selectedFilters.types.length === 0
-                                        })}>
-                                            <span className="text-[18px] leading-[30px] capitalize cursor-pointer hover:text-[#4100FC] duration-300" data-type={ type.type } onClick={(e) => handleSelection(e, 'type')}>{formatTypeName(type.type, locale)}</span>
-                                            <span className="text-[18px] leading-[30px] cursor-pointer hover:text-[#4100FC] duration-300">{type.count}</span>
+                                    {/** TYPES */}
+                                    <div className="types-block border-b border-black px-[20px] pb-[10px]">
+                                        <div className="flex justify-between py-[20px] ">
+                                            <span className="text-[#4100FC] font-semibold text-[18px]">{ t('media_types') }</span>
+                                            <span className="text-[#4100FC] font-semibold text-[15px] cursor-pointer uppercase" onClick={() => setSelectedFilters(prev => ({ ...prev, types: [] }))}>Reset</span>
                                         </div>
-                                    )}
-                                </div>
 
-                                {/** PERIODS */}
-                                <div className="periods_block border-b border-black pb-[30px] px-[20px]">
-                                    <div className="flex justify-between pt-[10px]">
-                                        <span className="text-[#4100FC] font-semibold text-[18px]">{ t('period') }</span>
-                                        <span className="text-[#4100FC] font-semibold text-[15px] cursor-pointer uppercase" onClick={() => {setResetDates(true)}}>Reset</span>
-                                    </div>
-
-                                    <div>
-                                        <MultiRangeSelector dates={ datesCount } resetDates={ resetDates } setResetDates={ setResetDates } setMinDate={setMinDate} setMaxDate={setMaxDate}/>
-                                    </div>
-                                </div>
-
-                                {/** TAGS */}
-                                <div className="tags_block px-[20px] flex flex-col overflow-hidden">
-                                    <div className="flex justify-between py-[10px] ">
-                                        <span className="text-[#4100FC] font-semibold text-[18px]">Tags</span>
-                                        <span className="text-[#4100FC] font-semibold text-[15px] cursor-pointer uppercase" onClick={() => setSelectedFilters(prev => ({ ...prev, tags: [] }))}>Reset</span>
-                                    </div>
-                                    <div className="flex-auto overflow-y-auto pb-[20px] gap-y-[10px] gap-x-[5px] flex flex-wrap">
-                                        { tags?.map(tag => 
-                                            <span 
-                                                key={ tag.id } 
-                                                data-tag= { tag.id } 
-                                                onClick={(e) => handleSelection(e, 'tag')}
-                                                className={classNames('inline-block py-[4px] px-[6px] text-[11px] uppercase border border-black rounded-[4px] leading-none hover:bg-[#4100FC] hover:text-white hover:border-[#4100FC] cursor-pointer duration-500', {
-                                                    'bg-[#4100FC] text-white border border-black': selectedFilters.tags.includes(tag.id),
-                                                    'bg-none': !selectedFilters.tags.includes(tag.id),
-                                                })}
-                                            >{ tag?.name[locale]}</span>
-                                        
+                                        {types.length > 0 && types?.map(type =>
+                                            <div key={type.type} className={classNames("flex justify-between", {
+                                                'opacity-50':  !selectedFilters.types.includes(type.type),
+                                                'opacity-100': selectedFilters.types.length === 0
+                                            })}>
+                                                <span className="text-[18px] leading-[30px] capitalize cursor-pointer hover:text-[#4100FC] duration-300" data-type={ type.type } onClick={(e) => handleSelection(e, 'type')}>{formatTypeName(type.type, locale)}</span>
+                                                <span className="text-[18px] leading-[30px] cursor-pointer hover:text-[#4100FC] duration-300">{type.count}</span>
+                                            </div>
                                         )}
                                     </div>
-                                </div>
 
-                                </div>
+                                    {/** PERIODS */}
+                                    <div className="periods_block border-b border-black pb-[30px] px-[20px]">
+                                        <div className="flex justify-between pt-[10px]">
+                                            <span className="text-[#4100FC] font-semibold text-[18px]">{ t('period') }</span>
+                                            <span className="text-[#4100FC] font-semibold text-[15px] cursor-pointer uppercase" onClick={() => {setResetDates(true)}}>Reset</span>
+                                        </div>
 
+                                        <div>
+                                            <MultiRangeSelector dates={ datesCount } resetDates={ resetDates } setResetDates={ setResetDates } setMinDate={setMinDate} setMaxDate={setMaxDate}/>
+                                        </div>
+                                    </div>
+
+                                    {/** TAGS */}
+                                    <div className="tags_block px-[20px] flex flex-col overflow-hidden">
+                                        <div className="flex justify-between py-[10px] ">
+                                            <span className="text-[#4100FC] font-semibold text-[18px]">Tags</span>
+                                            <span className="text-[#4100FC] font-semibold text-[15px] cursor-pointer uppercase" onClick={() => setSelectedFilters(prev => ({ ...prev, tags: [] }))}>Reset</span>
+                                        </div>
+                                        <div className="flex-auto overflow-y-auto pb-[20px] gap-y-[10px] gap-x-[5px] flex flex-wrap">
+                                            { tags?.map(tag => 
+                                                <span 
+                                                    key={ tag.id } 
+                                                    data-tag= { tag.id } 
+                                                    onClick={(e) => handleSelection(e, 'tag')}
+                                                    className={classNames('inline-block py-[4px] px-[6px] text-[11px] uppercase border border-black rounded-[4px] leading-none hover:bg-[#4100FC] hover:text-white hover:border-[#4100FC] cursor-pointer duration-500', {
+                                                        'bg-[#4100FC] text-white border border-black': selectedFilters.tags.includes(tag.id),
+                                                        'bg-none': !selectedFilters.tags.includes(tag.id),
+                                                    })}
+                                                >{ tag?.name[locale]}</span>
+                                            
+                                            )}
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-
                         </div>
 
                         {/** BTN MOBILE FILTERS */}
@@ -390,29 +376,10 @@ export default function Resources() {
                                     )}
                                 </div>
                             </div>
-                            
-
                         </div>
                     </div>
                 </div>
-            </motion.div>
-
-
-            {/** POPUP */}
-            <AnimatePresence>           
-                {isOpenPopup &&
-                    <div
-                        className="w-full h-full fixed inset-0 z-[103] flex items-center justify-center bg-black/50"
-                        key="popupResource"
-                        // initial={{ scale: 0.5, opacity: 0, y: "-50%" }}
-                        // animate={{ scale: 1, opacity: 1, y: 0 }}
-                        // exit={{ scale: 0.5, opacity: 0, y: "-50%" }}
-                        // transition={{ duration: 0.5, ease: "easeInOut" }}
-                    >
-                        <PopupResource setIsOpenPopup={ setIsOpenPopup } data={ dataPopup } locale={locale}/>
-                    </div>
-                }
-            </AnimatePresence>           
+            </motion.div>     
         </>
     )
 }
