@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import background from "../assets/images/backgrounds/bg-1.webp";
 import MultiRangeSlider from "multi-range-slider-react";
 import Masonry, {ResponsiveMasonry} from "react-responsive-masonry";
@@ -6,21 +6,22 @@ import classNames from 'classnames';
 import { formatTypeName } from "../lib/utils";
 import audioLogo from '../assets/images/audio.svg'
 import videoLogo from '../assets/images/video.svg'
-import PopupResource from "./content/PopupResource";
-import { AnimatePresence, motion } from "framer-motion";
 import { easeInOut } from "motion";
 import { useTranslation } from "react-i18next";
-import { useSharedState } from "../contexts/ShareStateProvider";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import bgAudio from '../assets/images/backgrounds/bg-audio-default.webp';
+import { motion, useInView } from "motion/react";
 
+const PER_PAGE = 100;
 
 export default function Resources() {
 
     const API_URL = import.meta.env.VITE_API_URL;
     const { i18n, t } = useTranslation();
     const locale = i18n.language;
-    const [documents, setDocuments] = useState([]);
+    const [documents, setDocuments] = useState({});
+    const [page, setPage] = useState(1);
+    const [hasNextPage, setHasNextPage] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
     const [search, setSearch] = useState("");
     const [types, setTypes] = useState([]);
@@ -34,11 +35,14 @@ export default function Resources() {
     const [maxDate, setMaxDate] = useState("");
     const [imagesLoaded, setImagesLoaded] = useState(false);
     const [resetDates, setResetDates] = useState(false);
-    const [isOpenPopup, setIsOpenPopup] = useState(false);
-    const [dataPopup, setDataPopup] = useState();
     const [tags, setTags] = useState([]);
     const [isOpenFilters, setIsOpenFilters] = useState(false);
     const navigate = useNavigate();
+    const location = useLocation();
+
+    const loadMoreRef = useRef(null);
+    const containerRef = useRef(null);
+    const loadMoreRefInView = useInView(loadMoreRef, { root: containerRef, initial: false, margin: "0px 0px 0px 0px" });
 
     const handleSelection = (e, type) => {
         setSelectedFilters(prevFilters => {
@@ -62,9 +66,8 @@ export default function Resources() {
         })
     }
 
-
-    // RESOURCES
-    useEffect(() => {
+    const fetchResources = () => {
+        console.log('fetching resources');
         const params = new URLSearchParams();
 
         if (selectedFilters.types.length > 0) {
@@ -93,9 +96,12 @@ export default function Resources() {
             }
         }
 
+        params.append("page", page);
+        params.append("perPage", PER_PAGE);
+
         const url = `${API_URL}/api/resources?${params.toString()}`;
         console.log("URL :", url); 
-    
+
         fetch(url)
             .then((response) => {
                 if (!response.ok) {
@@ -104,7 +110,9 @@ export default function Resources() {
                 return response.json();
             })
             .then((data) => {
-                setDocuments(data.resources.data);
+                console.log(data);
+                setDocuments(documents => ({ ...documents, [page]: data.resources.data }));
+                setHasNextPage(data.resources.current_page < data.resources.last_page);
                 setTypes(data.types);
                 setDatesCount(data.dates);
                 setTotal(data.resources.total);
@@ -112,17 +120,31 @@ export default function Resources() {
             })
             .catch((error) => {
                 console.error("Erreur lors du chargement des données :", error)
-                setDocuments([]);
+                setDocuments({});
             });
+    }
 
-            console.log('selected', selectedFilters)
-
+    // RESOURCES
+    useEffect(() => {
+        setPage(1);
+        setDocuments({});
+        setIsLoading(false);
+        fetchResources();
     }, [search, minDate, maxDate, selectedFilters, locale]); 
 
+    useEffect(() => {
+        setIsLoading(false);
+        fetchResources();
+    }, [page]);
+
+    useEffect(() => {
+        if (loadMoreRefInView) {
+            setPage(page + 1);
+        }
+    }, [loadMoreRefInView]);
 
     // TAGS 
     useEffect(() => {
-
         const url = `${API_URL}/api/tags`;
     
         fetch(url)
@@ -139,9 +161,8 @@ export default function Resources() {
                 console.error("Erreur lors du chargement des tags :", error)
                 setTags([]);
             });
-
     }, []); 
-
+    
     useEffect(() => {
         if (imagesLoaded === documents.length) {
             setImagesLoaded(true);
@@ -149,15 +170,11 @@ export default function Resources() {
     }, [imagesLoaded, documents.length]);
 
     return (
-        <>
-            {/* <Navbar color={"#000000"}/> */}
-
-            <motion.div 
+            <motion.div
                 style={{ background: `url(${background}) right / cover no-repeat` }} className='h-screen'
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
-                transition={{ easeInOut, duration: 1.2 }}
-            >
+                transition={{ easeInOut, duration: 1.2 }}>
                 <div className="resources relative top-[40px]">
                     
                     {/** SEARCH */}
@@ -187,12 +204,12 @@ export default function Resources() {
                         <div className="grid grid-cols-12 px-[20px] xl:px-0 gap-x-[20px]">
                             
                             {/** DOCUMENTS */}
-                            {isLoading && documents.length > 0 ? (
-                                <div className="col-span-12 lg:col-span-9 flex h-[calc(100dvh-160px)]">
-                                    <div className="flex-1 overflow-y-auto pt-[30px] py-[60px] lg:py-[30px]">
-                                        <ResponsiveMasonry columnsCountBreakPoints={{ 300: 3, 768: 3, 1024: 3, 1280: 4 }} gutterBreakpoints={{ 300: "12px", 768: "16px", 1024: "20px" }}>
-                                            <Masonry>
-                                                {documents?.map((document, index) => {
+                            { Object.values(documents).flat().length > 0 ? (
+                                    <div className="col-span-12 lg:col-span-9 flex h-[calc(100dvh-160px)] overflow-y-auto" ref={containerRef}>
+                                        <div className="flex-1  py-[30px]">
+                                            <ResponsiveMasonry columnsCountBreakPoints={{ 300: 3, 768: 3, 1024: 3, 1280: 4 }} gutterBreakpoints={{ 300: "12px", 768: "16px", 1024: "20px" }}>
+                                                <Masonry>
+                                                {Object.values(documents).flat().map((document, index) => {
                                                     const aspectRatio = (document?.optimized_url?.thumbnail?.height / document?.optimized_url?.thumbnail?.width) * 100; // Ratio pour le padding-bottom
 
                                                     {/** AUDIO - VIDEO */}
@@ -201,7 +218,7 @@ export default function Resources() {
                                                         if (document.cover) {
                                                             return (
                                                                 <div key={index} className="audio relative overflow-hidden cursor-pointer w-full aspect-square lg:h-[300px] xl:h-[400px]" style={{ paddingBottom: `${aspectRatio}%`}} 
-                                                                    onClick={() => { navigate(`/resources/${document.id}`, { state: { modal: true } }) }}  
+                                                                    onClick={() => { navigate(`/resources/${document.id}`, { state: { modal: true, previousLocation: location } }) }}  
                                                                 >
                                                                     <img loading="lazy" src={ document.cover[locale] } alt={document?.name[locale]} className="w-full hover:scale-[1.2] transition-all duration-[750ms]" 
                                                                         style={{position: 'absolute',top: 0,left: 0, width: '100%', height: '100%', objectFit: 'cover'}} 
@@ -211,7 +228,7 @@ export default function Resources() {
                                                             )
                                                         } else {
                                                             return (
-                                                                <div key={index} className="relative overflow-hidden cursor-pointer w-full" onClick={() => { navigate(`/resources/${document.id}`, { state: { modal: true } }) }}>
+                                                                <div key={index} className="relative overflow-hidden cursor-pointer w-full" onClick={() => { navigate(`/resources/${document.id}`, { state: { modal: true, previousLocation: location } }) }}>
                                                                     <div className="bg-[#DBDBD0] w-full aspect-square flex justify-center items-center relative border border-black rounded-[6px]">
                                                                         { document.type === "audio" ? (
                                                                             <img src={ bgAudio } alt="Logo audio" className="aspect-square rounded-[6px]"/>
@@ -230,7 +247,7 @@ export default function Resources() {
                                                             <div 
                                                                 key={index} 
                                                                 className="cursor-pointer overflow-hidden relative" style={{ width: `${document?.optimized_url?.thumbnail?.width}%`, height: `${document?.optimized_url?.thumbnail?.height}`}} 
-                                                                onClick={() => { navigate(`/resources/${document.id}`, { state: { modal: true } }) }}
+                                                                onClick={() => { navigate(`/resources/${document.id}`, { state: { modal: true, previousLocation: location } }) }}
                                                             >
                                                                 <img 
                                                                     loading="lazy" 
@@ -242,9 +259,12 @@ export default function Resources() {
                                                             </div>
                                                         )
                                                     }
-                                                })}
+                                                    }
+                                                )}
                                             </Masonry>
                                         </ResponsiveMasonry>
+
+                                        {hasNextPage && <div ref={loadMoreRef} className="flex justify-center items-center h-[100px]"><button onClick={() => setPage(page + 1)} className="bg-[#4100FC] text-sm text-white px-[20px] py-[10px] rounded-[6px]">{t('load_more')}</button></div>}
                                     </div>
                                 </div>
                                 ) : (
@@ -379,9 +399,8 @@ export default function Resources() {
                         </div>
                     </div>
                 </div>
-            </motion.div>     
-        </>
-    )
+            </motion.div >      
+    )    
 }
 
 

@@ -4,6 +4,7 @@ import Biography from "./components/Biography";
 import Layout from "./components/layout/Layout";
 import Resources from "./components/Resources";
 import About from "./components/About";
+import VirtualTourHome from "./components/VirtualTourHome";
 import VirtualTour from "./components/VirtualTour";
 import Terms from "./components/Terms";
 import PreviewSlideMagicNotebook from "./components/preview/PreviewSlideMagicNotebook";
@@ -18,6 +19,7 @@ import { NavbarProvider } from "./contexts/NavbarProvider";
 import { useEffect, useRef } from "react";
 import Resource from "./components/Resource";
 import { NavbarHomeContext, NavbarHomeProvider } from "./contexts/NavbarHomeProvider";
+import { AnimatePresence } from "motion/react";
 
 function usePrevious(value) {
     const ref = useRef();
@@ -50,7 +52,7 @@ export default function App() {
             <LanguageProvider>
                 <NavbarHomeProvider>
                     <NavbarProvider>
-                        <Routes location={isModal ? previousLocation : location} key={isModal ? previousLocation.pathname : location.pathname}>
+                        <Routes location={isModal ? location.state.previousLocation : location} key={isModal ? location.state.previousLocation.pathname : location.pathname}>
                             <Route path="/" element={<Layout />}>
                                 <Route path='/' element={ <Home /> }/>
                                 <Route path="/preview/chapter/slide/:id" element={<PreviewSlide />} />
@@ -60,16 +62,24 @@ export default function App() {
                                 <Route path="/chapter/:slug" element={<Chapter />} />
                                 <Route path="/magic-notebook/:slug" element={<MagicNotebook />} />
                                 <Route path="/magic-notebooks" element={<MagicNotebooks />} />
-                                <Route path="/virtual-tour" element={<VirtualTour />} />
+                                <Route path="/virtual-tour" element={<VirtualTourHome />} />
+                                <Route path="/virtual-tour/room/:id" element={<VirtualTour />} />
                                 <Route path="/resources" element={<Resources />} />
                                 <Route path="/resources/:id" element={<Resource />} />
                                 <Route path="/about" element={<About />} />
                                 <Route path="/terms-of-use" element={<Terms />} />
                             </Route>
                         </Routes>
-                        {isModal && <Routes location={location}>
-                            <Route path='/resources/:id' element={<Resource />} />
-                        </Routes>}
+                        <AnimatePresence mode="wait">
+                            {isModal && <Routes location={location} key={location.pathname}>
+                                <Route path='/virtual-tour/room/:id' element={<VirtualTour />} />
+                            </Routes>}
+                        </AnimatePresence>
+                        <AnimatePresence mode="wait">
+                            {isModal && <Routes location={location} key={location.pathname}>
+                                <Route path='/resources/:id' element={<Resource />} />
+                            </Routes>}
+                        </AnimatePresence>
                     </NavbarProvider>
                 </NavbarHomeProvider>
             </LanguageProvider>
