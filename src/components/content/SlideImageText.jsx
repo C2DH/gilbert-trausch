@@ -36,7 +36,8 @@ export default function SlideImageText({ data, locale }) {
                                     <div className="col-span-8 flex flex-col items-center justify-center lg:pr-[30px] pt-[20px] lg:pt-0">
                                         {(data?.slidable?.document?.url && locale) && (
                                             <img src={data.slidable.document.optimized_url.large.url} 
-                                                alt={data.slidable.document.name[locale]} 
+                                                alt={data.slidable.document.name[locale]}
+                                                loading='lazy'
                                                 className="md:h-[400px] lg:h-[calc(100dvh-200px)] object-contain cursor-pointer"
                                                 onClick={() => { navigate(`/resources/${data?.slidable?.document.id}`, { state: { modal: true } }) }}    
                                             />

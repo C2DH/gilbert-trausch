@@ -29,6 +29,7 @@ export default function SlideColumn({data, locale}) {
                     src={data.slidable.document.url} 
                     alt={data.slidable.document.name[locale]} 
                     className="w-full"
+                    loading='lazy'
                 />
             )}
     
