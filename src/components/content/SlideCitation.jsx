@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { formatRichText } from "../../lib/utils";
 import { motion } from "motion/react";
 

@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import { formatRichText } from "../../lib/utils";
 import PlayerPDF from "./PlayerPDF";
 import Slider from "./Slider";
@@ -7,6 +8,7 @@ export default function SlideStep({ data, locale }) {
     const API_URL = import.meta.env.VITE_API_URL;
     const imageUrl = `${API_URL}/storage/${data?.slidable?.background?.background}`;
     const color = data?.slidable?.color_text;
+    const navigate = useNavigate();
 
     return (
         <>
@@ -20,9 +22,9 @@ export default function SlideStep({ data, locale }) {
                                         {data?.slidable?.documents?.length > 0 ? (
                                             data.slidable.documents.length === 1 ? (
                                                 data.slidable.documents[0].url.endsWith('.pdf') ? (
-                                                    <PlayerPDF url={data.slidable.documents[0].url} optimized_url={data.slidable.documents[0].optimized_url} className="max-h-[80vh]"/>
+                                                    <PlayerPDF url={data.slidable.documents[0].url} optimized_url={data.slidable.documents[0].optimized_url} id={data.slidable.documents[0].id} className="max-h-[80vh]"/>
                                                 ) : (
-                                                    <img src={data.slidable.documents[0].url} alt={data.slidable.documents[0].name[locale]} className="max-h-[80vh]"/>
+                                                    <img src={data.slidable.documents[0].url} alt={data.slidable.documents[0].name[locale]} className="max-h-[80vh]" onClick={() => { navigate(`/resources/${data?.slidable?.document.id}`, { state: { modal: true } }) }}/>
                                                 )
                                             ) : (
                                                 <Slider items={data.slidable.documents} locale={ locale }/>

@@ -71,11 +71,12 @@ export default function Chapter() {
         setActiveIndex(parseInt(searchParams.get('index') ?? 0));
 
         if (parseInt(searchParams.get('index')) === 0) {
+            console.log('ici')
             setShowSubtitle(false);
             setFirstClick(true)
         }
-        setFirstClick(true)
-        setShowSubtitle(true);
+        // setFirstClick(true)
+        // setShowSubtitle(true);
     }, [searchParams]);
 
     // useEffect(() => {
@@ -283,7 +284,7 @@ export default function Chapter() {
                             className={classNames('fixed xl:absolute right-[20px] z-[9999] cursor-pointer transition-all duration-500', {
                                 'top-[4px]': !isLarge,
                                 'top-[80px]': !isOpenMenu && isLarge,
-                                'top-[5px]': isOpenMenu && isLarge
+                                'top-[20px]': isOpenMenu && isLarge
                             })}
                             onClick={() => setIsOpenMenu(!isOpenMenu)}
                         >

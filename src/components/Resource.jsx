@@ -73,9 +73,9 @@ export default function Resource() {
                                     }
 
                                     { data.type === "audio" && (
-                                        <div className='aspect-square w-2/3 md:w-1/3'>
+                                        <div className='aspect-square w-2/3 md:w-1/3 flex flex-col items-center'>
                                             { data.cover ? (
-                                                <img src={data.cover} alt={data.name[locale]} className='rounded-[6px] mb-[30px]'/>
+                                                <img src={data.cover[locale]} alt={data.name[locale]} className='rounded-[6px] mb-[30px]'/>
                                             ) : (
                                                 <div className="bg-[#DBDBD0] flex justify-center items-center relative mb-[30px] border border-black rounded-[6px]">
                                                     <img src={ bgAudio } alt="Logo audio" className="rounded-[6px]" />

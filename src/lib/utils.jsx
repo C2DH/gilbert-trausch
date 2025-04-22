@@ -1,4 +1,4 @@
-import parse from 'html-react-parser';
+import parse, { domToReact } from 'html-react-parser';
 import Tippy from '@tippyjs/react';
 import 'tippy.js/dist/tippy.css'; 
 import VirtualTourLink from '../components/content/VirtualTourLink';
@@ -13,6 +13,33 @@ function customParser(domNode) {
             domNode.attribs.class = 'custom-link-class'; // Ajoute une classe personnalisée aux liens
             domNode.attribs.target = '_blank'; // Ouvre les liens dans un nouvel onglet
         }
+    }
+
+    // Traitement des tooltips
+    if (domNode.type === 'tag' && domNode.name === 'span' && domNode.attribs?.class === 'tooltip') {
+
+        console.log('domNode', domNode)
+
+        // Récupère le noeud tooltipText
+        const tooltipTextNode = domNode.children.find(
+            child => child.name === 'span' && child.attribs?.class === 'tooltipText'
+        );
+
+        // Extraire tout le texte ou le HTML du tooltipText
+        const tooltipText = tooltipTextNode?.children
+            ? domToReact(tooltipTextNode.children)  // Convertir les enfants en React Node
+            : tooltipTextNode?.children?.[0]?.data?.trim() || '';
+
+        // Filtrer les enfants qui NE sont PAS le tooltipText (ceux à afficher dans le Tippy)
+        const triggerContentNodes = domNode.children.filter(
+            child => !(child.name === 'span' && child.attribs?.class === 'tooltipText')
+        );
+
+        return (
+            <Tippy content={tooltipText} trigger="click" interactive={true}>
+                <span className="tooltip-trigger">{domToReact(triggerContentNodes)}</span>
+            </Tippy>
+        );
     }
 
   return domNode;

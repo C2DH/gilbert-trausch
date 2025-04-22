@@ -28,7 +28,6 @@ export default function Layout () {
         const isBlack = blackNavbarRoutes.includes(location.pathname);
         setColorNavbar(isBlack ? '#000000' : '#ffffff');
     }, [location.pathname]);
-
    
     return (
         <>

@@ -9,7 +9,7 @@ export default function SlideHeader({ data, showSubtitle, index, locale }) {
     const color = data?.slidable?.color_text;
 
     return (
-        <div style={{ background: `url(${imageUrl}) right / cover no-repeat` }} className="h-[100dvh] slide">
+        <div style={{ background: `url(${imageUrl}) right / cover no-repeat` }} className="h-[100dvh] slide slide_header">
             <div className="relative top-[40px]">
                 <div className="container mx-auto px-[30px] xl:px-0 h-[calc(100dvh-40px)] sm:h-[calc(100dvh-40px)]">
                     <div className="grid grid-cols-12 h-full">

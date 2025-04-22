@@ -47,8 +47,7 @@ export default function App() {
         (previousLocation !== location && previousLocation != null)
     );
 
-    console.log('location',location)
-    
+   
     return (    
         <>            
             <LanguageProvider>

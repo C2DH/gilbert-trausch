@@ -2,14 +2,23 @@ import { useState, useEffect, useRef } from 'react';
 import { Document, Page, pdfjs } from 'react-pdf';
 import { MagnifyingGlassMinusIcon, MagnifyingGlassPlusIcon, ArrowLeftIcon, ArrowRightIcon } from '@heroicons/react/24/outline';
 import classNames from 'classnames';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 pdfjs.GlobalWorkerOptions.workerSrc = new URL(
     'pdfjs-dist/build/pdf.worker.min.mjs',
     import.meta.url
 ).toString();
 
-export default function PlayerPDF({ url, optimized_url }) {
+export default function PlayerPDF({ url, optimized_url, id }) {
 
+    const navigate = useNavigate();
+    const location = useLocation();
+
+    const handleClick = () => {
+        if (!location.pathname.startsWith('/resources/')) {
+            navigate(`/resources/${id}`, { state: { modal: true } });
+        }
+    };
     const [numPages, setNumPages] = useState(null);
     const [pageNumber, setPageNumber] = useState(1);
     const [renderWidth, setRenderWidth] = useState(0);
@@ -62,9 +71,10 @@ export default function PlayerPDF({ url, optimized_url }) {
 
     return (
         <>
-            <div ref={containerRef} className="w-full h-full lg:h-[calc(100dvh-120px)] flex justify-center items-center overflow-hidden mb-[20px] lg:mb-0">
+            <div ref={containerRef} className="w-full h-full lg:h-[calc(100dvh-140px)] flex justify-center items-center overflow-hidden mb-[20px] lg:mb-0" onClick={() => { handleClick }}>
                 <Document file={url} onLoadSuccess={({ numPages }) => setNumPages(numPages)}>
                     <Page
+                    onClick={() => { handleClick() }}
                     pageNumber={pageNumber}
                     width={renderWidth}
                     height={renderHeight}

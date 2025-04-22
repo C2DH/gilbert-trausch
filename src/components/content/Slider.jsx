@@ -38,11 +38,11 @@ export default function Slider({ items, locale }) {
                             {(item.type !== "audio" && item.optimized_url?.large) && (
                                 <img loading='lazy'
                                     onClick={() => { navigate(`/resources/${item.id}`, { state: { modal: true } }) }}
-                                    src={item.optimized_url?.large.url} alt={item.name[locale]} className="w-auto h-[300px] md:h-[350px] lg:h-[500px] xl:h-[70vh] object-contain" />
+                                    src={item.optimized_url?.large.url} alt={item.name[locale]} className="w-auto h-[300px] md:h-[350px] lg:h-[550px] xl:h-[80vh] object-contain" />
                             )}
 
                             {item.type === "audio" && (
-                                <div className="lg:h-full w-[60%] lg:w-[80%] xl:w-[60%] flex flex-col justify-center items-center">
+                                <div className="lg:h-full w-[60%] lg:w-[80%] 2xl:w-[60%] flex flex-col justify-center items-center">
                                     {item.cover ? (
                                         <img loading='lazy' onClick={() => { navigate(`/resources/${item.id}`, { state: { modal: true } }) }}
                                             src={item.cover[locale]} alt="cover" className="w-auto h-[300px] md:h-[350px] lg:h-[500px] xl:h-[50vh] object-contain rounded-[6px]" />
