@@ -46,13 +46,17 @@ export default function App() {
         location.state.modal &&
         (previousLocation !== location && previousLocation != null)
     );
+
+    console.log('location',location)
     
     return (    
         <>            
             <LanguageProvider>
                 <NavbarHomeProvider>
                     <NavbarProvider>
-                        <Routes location={isModal ? location.state.previousLocation : location} key={isModal ? location.state.previousLocation.pathname : location.pathname}>
+                        {/* <Routes location={isModal ? location.state.previousLocation : location} key={isModal ? location.state.previousLocation.pathname : location.pathname}> */}
+                        <Routes location={isModal && location.state.previousLocation ? location.state.previousLocation : location} key={isModal && location.state.previousLocation ? location.state.previousLocation.pathname : location.pathname}
+>
                             <Route path="/" element={<Layout />}>
                                 <Route path='/' element={ <Home /> }/>
                                 <Route path="/preview/chapter/slide/:id" element={<PreviewSlide />} />
