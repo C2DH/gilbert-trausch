@@ -76,7 +76,7 @@ export default function Chapters() {
                     
 
                     <div className="xl:h-full flex flex-col justify-center items-center lg:items-start px-[20px] xl:px-0">
-                        <h1 className="font-extralight text-[24px] md:text-[36px] 2xl:text-[50px] uppercase tracking-[2px] text-[#4100FC] mb-[30px] xl:mb-[50px]">
+                        <h1 className="font-extralight text-[24px] md:text-[36px] 2xl:text-[50px] uppercase tracking-[2px] text-[#4100FC] mb-[30px] xl:mb-[50px] text-center lg:text-left">
                         {t('professions')}
                         </h1>
                        

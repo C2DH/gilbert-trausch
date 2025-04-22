@@ -56,9 +56,9 @@ export default function MagicNotebooks() {
 
                     <div className="grid grid-cols-12 px-[20px] xl:px-0">
                         <div className="col-span-12 md:col-span-10 md:col-start-2 lg:col-span-6 flex flex-col items-center lg:items-start">
-                            <h1 className="font-extralight text-[24px] md:text-[36px] 2xl:text-[50px] uppercase tracking-[2px] text-[#4100FC] mb-[20px]">{t('magicNotebooks')}</h1>
+                            <h1 className="font-extralight text-[24px] md:text-[36px] 2xl:text-[50px] uppercase tracking-[2px] text-[#4100FC] mb-[20px] text-center lg:text-left">{t('magicNotebooks')}</h1>
                             
-                            <p className="text-[16px] md:text-center lg:text-left xl:text-[22px] text-blue mb-[30px] lg:mb-[80px]">{t('description_magicNotebooks')}</p>
+                            <p className="text-[16px] xl:text-[22px] text-blue mb-[30px] lg:mb-[80px] text-center lg:text-left">{t('description_magicNotebooks')}</p>
                             
                             {isLoaded &&                                
                                 <ul className="text-[20px] lg:text-[24px] 2xl:text-[36px] 2xl:leading-[48px] pl-0">

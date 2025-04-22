@@ -158,7 +158,7 @@ export default function MagicNotebook() {
     }
 
     return (
-        <div className="relative w-full h-screen">
+        <div className="relative w-full">
             {isLoading &&
                 <>
                     {/** SLIDES */}
@@ -291,7 +291,7 @@ export default function MagicNotebook() {
                     <div className="absolute xl:hidden bottom-0 left-0 right-0 bg-blue h-[40px] flex border-t z-[100]">
                         <div className="w-1/2 flex items-center justify-center border-r border-white">
                             <button onClick={() => handlePrevClick() }
-                                className={classNames("cursor-pointer relative right-0", { "pointer-events-none opacity-30": activeIndex >= data.slides.length })}
+                                className={classNames("cursor-pointer relative right-0", { "pointer-events-none opacity-30": activeIndex === 0 })}
                             >    
                                 <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     {/* <circle cx="15" cy="15" r="14.5" transform="rotate(-180 15 15)" stroke="white"/> */}

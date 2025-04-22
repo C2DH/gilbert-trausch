@@ -240,7 +240,7 @@ export default function Chapter() {
 
 
     return (
-        <div className="relative w-full h-screen">
+        <div className="relative w-full">
             {isLoading &&
                 <>
                     {/** SLIDES */}
@@ -295,15 +295,11 @@ export default function Chapter() {
                                 fill="none"
                                 xmlns="http://www.w3.org/2000/svg"
                             >
-                                <circle cx="25" cy="25" r="25" fill={!isOpenMenu ? colorElement : "white"} />
+                                <circle cx="25" cy="25" r="25" fill={!isOpenMenu ? colorElement : "white"}/>
                                 <path
                                     d="M17.125 19.0625C17.125 18.7812 17.3711 18.5 17.6875 18.5H32.3125C32.5938 18.5 32.875 18.7812 32.875 19.0625C32.875 19.3789 32.5938 19.625 32.3125 19.625H17.6875C17.3711 19.625 17.125 19.3789 17.125 19.0625ZM17.125 24.6875C17.125 24.4062 17.3711 24.125 17.6875 24.125H27.8125C28.0938 24.125 28.375 24.4062 28.375 24.6875C28.375 25.0039 28.0938 25.25 27.8125 25.25H17.6875C17.3711 25.25 17.125 25.0039 17.125 24.6875ZM23.875 30.3125C23.875 30.6289 23.5938 30.875 23.3125 30.875H17.6875C17.3711 30.875 17.125 30.6289 17.125 30.3125C17.125 30.0312 17.3711 29.75 17.6875 29.75H23.3125C23.5938 29.75 23.875 30.0312 23.875 30.3125Z"
                                     fill={
-                                        isLarge
-                                            ? colorElement === "#ffffff"
-                                                ? "#4100FC"
-                                                : "#ffffff"
-                                            : "blue"
+                                        (isLarge && isOpenMenu) ? "#4100FC" : colorElement === "#ffffff" ? "#4100FC" : "#ffffff"
                                     }
                                     style={{ transition: 'all 0.5s ease-in-out' }}
                                 />
@@ -379,7 +375,7 @@ export default function Chapter() {
                     <div className="absolute xl:hidden bottom-0 left-0 right-0 bg-blue h-[40px] flex border-t z-[100]">
                         <div className="w-1/2 flex items-center justify-center border-r border-white">
                             <button onClick={() => handlePrevClick() }
-                                className={classNames("cursor-pointer relative right-0", { "pointer-events-none opacity-30": !showSubtitle })}
+                                className={classNames("cursor-pointer relative right-0", { "pointer-events-none opacity-30": activeIndex === 0  })}
                             >    
                                 <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     {/* <circle cx="15" cy="15" r="14.5" transform="rotate(-180 15 15)" stroke="white"/> */}
