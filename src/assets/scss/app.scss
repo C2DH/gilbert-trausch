@@ -74,7 +74,9 @@ blockquote {
 
 .tooltip-trigger {
     svg {
+        fill: white;
         cursor: pointer;
+        display: inline-block;
         animation: pulseBlink 1.2s infinite ease-in-out;    
         @keyframes pulseBlink {
             0%, 100% {
@@ -89,9 +91,9 @@ blockquote {
     }
 }
 
-.svg_tooltip_slideHeader {
-    fill: white;
-}
+// .svg_tooltip_slideHeader {
+    
+// }
 
 .tippy-box {
     background: white!important;
@@ -99,7 +101,7 @@ blockquote {
 }
 
 .tippy-arrow {
-    color: white;
+    color: white!important;
 }
 
 
