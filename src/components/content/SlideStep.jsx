@@ -14,27 +14,28 @@ export default function SlideStep({ data, locale }) {
         <>
             <div style={{ background: `url(${imageUrl}) right / cover no-repeat` }} className='h-[100dvh] slide slide_step'>
                 <div className="relative top-[40px]">
-                    <div className="container mx-auto px-[20px] xl:px-0 h-[calc(100dvh-80px)] xl:h-[calc(100dvh-40px)] overflow-hidden">
-                        <div className="grid grid-cols-12 h-full overflow-y-scroll">
-                            <div className="col-span-12 xl:col-span-7 2xl:col-span-8 relative order-2 lg:order-1 h-full">
-                                <div className="grid grid-cols-8 lg:h-full">
-                                    <div className="col-span-8 lg:py-[50px] xl:flex items-center lg:pr-[30px] relative h-full">
-                                        {data?.slidable?.documents?.length > 0 ? (
-                                            data.slidable.documents.length === 1 ? (
-                                                data.slidable.documents[0].url.endsWith('.pdf') ? (
-                                                    <PlayerPDF url={data.slidable.documents[0].url} optimized_url={data.slidable.documents[0].optimized_url} id={data.slidable.documents[0].id} className="max-h-[80vh]"/>
+                    <div className="container mx-auto px-[20px] xl:px-0 overflow-hidden">
+                        <div className="grid grid-cols-12 h-[calc(100dvh-80px)] xl:h-[calc(100dvh-40px)] overflow-y-scroll">
+
+                            <div className="col-span-12 lg:col-span-7 2xl:col-span-8 relative order-2 lg:order-1 h-full mt-[20px] lg:mt-0 md:pb-[70px] lg:pb-0">
+                                { data?.slidable?.documents?.length > 0 &&                            
+                                        <div className="grid grid-cols-8 lg:h-full">
+                                            <div className="col-span-8 pt-[20px] lg:pt-0 2xl:pt-[40px] lg:flex items-center lg:pr-[30px] relative h-full">   
+                                                {data.slidable.documents.length === 1 ? (
+                                                    data.slidable.documents[0].url.endsWith('.pdf') ? (
+                                                        <PlayerPDF url={data.slidable.documents[0].url} optimized_url={data.slidable.documents[0].optimized_url} id={data.slidable.documents[0].id} className="max-h-[80vh]"/>
+                                                    ) : (
+                                                        <img src={data.slidable.documents[0].url} alt={data.slidable.documents[0].name[locale]} className="max-h-[80vh]" onClick={() => { navigate(`/resources/${data?.slidable?.document.id}`, { state: { modal: true } }) }}/>
+                                                    )
                                                 ) : (
-                                                    <img src={data.slidable.documents[0].url} alt={data.slidable.documents[0].name[locale]} className="max-h-[80vh]" onClick={() => { navigate(`/resources/${data?.slidable?.document.id}`, { state: { modal: true } }) }}/>
-                                                )
-                                            ) : (
-                                                <Slider items={data.slidable.documents} locale={ locale }/>
-                                            )
-                                        ) : null}
-                                    </div>
-                                </div>
+                                                    <Slider items={data.slidable.documents} locale={ locale }/>
+                                                )}
+                                            </div>
+                                        </div>
+                                }
                             </div>
 
-                            <div className="col-span-12 xl:col-span-4 2xl:col-span-4 lg:border-l border-black flex flex-col justify-center items-center lg:items-start order-1 lg:order-2 pt-[20px]" style={{ color: color }}>
+                            <div className="col-span-12 lg:col-span-4 2xl:col-span-3 lg:border-l border-black flex flex-col justify-center items-center lg:items-start order-1 lg:order-2 pt-[20px]" style={{ color: color }}>
                                 <div className="w-full md:w-2/3 lg:w-full">
                                     { (data?.slidable?.title && locale) &&
                                         <span className={`block uppercase px-[10px] lg:px-[20px] py-[10px] 2xl:py-[40px] border-l lg:border-l-0 border-t border-r rounded-tl-xl rounded-tr-xl lg:rounded-tl-none border-black`}>{data.slidable.title[locale]}</span>

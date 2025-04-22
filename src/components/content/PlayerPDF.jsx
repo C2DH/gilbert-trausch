@@ -71,7 +71,8 @@ export default function PlayerPDF({ url, optimized_url, id }) {
 
     return (
         <>
-            <div ref={containerRef} className="w-full h-full lg:h-[calc(100dvh-140px)] flex justify-center items-center overflow-hidden mb-[20px] lg:mb-0" onClick={() => { handleClick }}>
+            {/* <div ref={containerRef} className="w-full h-full lg:h-[calc(100dvh-160px)] flex justify-center items-center overflow-hidden mb-[20px] lg:mb-0" onClick={() => { handleClick }}> */}
+            <div ref={containerRef} className="w-full h-[50vh] md:h-[70vh] flex justify-center items-center mb-[20px]" onClick={() => { handleClick }}>
                 <Document file={url} onLoadSuccess={({ numPages }) => setNumPages(numPages)}>
                     <Page
                     onClick={() => { handleClick() }}
@@ -118,7 +119,7 @@ export default function PlayerPDF({ url, optimized_url, id }) {
             </div>
 
             {/* Controls Mobile */}
-            <div className="lg:hidden flex">
+            <div className="lg:hidden flex justify-center pb-[20px]">
                 <div className="border border-black rounded-l-md" onClick={prevPage}>
                     <ArrowLeftIcon
                     className={classNames('px-4 py-2 w-[50px]', {

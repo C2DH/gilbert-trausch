@@ -54,7 +54,7 @@ export default function PlayerAudio( {url} ) {
     };
   
     return (
-        <div className="border border-black rounded-[10px] px-[20px] lg:px-[30px] py-[10px] 2xl:py-[20px] player-audio w-full">
+        <div className="border border-black rounded-[10px] px-[10px] md:px-[20px] lg:px-[30px] py-[5px] md:py-[10px] 2xl:py-[20px] player-audio w-full">
             <div className='flex items-center justify-between'>
                 <div onClick={onPlayPause} className='w-[40px] xl:w-[60px] h-[40px] xl:h-[60px] bg-blue rounded-[50%] flex items-center justify-center'>
                     {isPlaying ? 

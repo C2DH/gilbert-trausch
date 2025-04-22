@@ -56,7 +56,7 @@ export default function Chapter() {
     const [isOpenMenu, setIsOpenMenu] = useState(false);
     const [firstClick, setFirstClick] = useState(true);
     const [showSubtitle, setShowSubtitle] = useState(false);
-    const isLarge = useMediaQuery({query: '(min-width: 1279px)'});
+    const isLarge = useMediaQuery({query: '(min-width: 1023px)'});
     const {setColorNavbar} = useContext(NavbarContext);
     const [slideGroups, setSlideGroups] = useState([]);
     const [currentInGroupIndex, setCurrentInGroupIndex] = useState(1);
@@ -281,7 +281,7 @@ export default function Chapter() {
                     {slideHeaders?.length > 0 && (
                         <div
                             ref={buttonRef}
-                            className={classNames('fixed xl:absolute right-[20px] z-[9999] cursor-pointer transition-all duration-500', {
+                            className={classNames('fixed xl:absolute right-[20px] z-[900] cursor-pointer transition-all duration-500', {
                                 'top-[4px]': !isLarge,
                                 'top-[80px]': !isOpenMenu && isLarge,
                                 'top-[20px]': isOpenMenu && isLarge
@@ -299,7 +299,7 @@ export default function Chapter() {
                                 <path
                                     d="M17.125 19.0625C17.125 18.7812 17.3711 18.5 17.6875 18.5H32.3125C32.5938 18.5 32.875 18.7812 32.875 19.0625C32.875 19.3789 32.5938 19.625 32.3125 19.625H17.6875C17.3711 19.625 17.125 19.3789 17.125 19.0625ZM17.125 24.6875C17.125 24.4062 17.3711 24.125 17.6875 24.125H27.8125C28.0938 24.125 28.375 24.4062 28.375 24.6875C28.375 25.0039 28.0938 25.25 27.8125 25.25H17.6875C17.3711 25.25 17.125 25.0039 17.125 24.6875ZM23.875 30.3125C23.875 30.6289 23.5938 30.875 23.3125 30.875H17.6875C17.3711 30.875 17.125 30.6289 17.125 30.3125C17.125 30.0312 17.3711 29.75 17.6875 29.75H23.3125C23.5938 29.75 23.875 30.0312 23.875 30.3125Z"
                                     fill={
-                                        (isLarge && isOpenMenu) ? "#4100FC" : colorElement === "#ffffff" ? "#4100FC" : "#ffffff"
+                                        (isOpenMenu) ? "#4100FC" : colorElement === "#ffffff" ? "#4100FC" : "#ffffff"
                                     }
                                     style={{ transition: 'all 0.5s ease-in-out' }}
                                 />

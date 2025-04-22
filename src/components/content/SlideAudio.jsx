@@ -16,11 +16,11 @@ export default function SlideAudio({ data, locale }) {
         <div style={{ background: `url(${isMobile ? bgSmall : imageUrl}) right / cover no-repeat` }} className='slide_audio h-[100dvh] slide'>
             <div className="relative top-[40px]">
                 <div className="container mx-auto px-[20px] xl:px-0">
-                    <div className="grid grid-cols-12 lg:h-[calc(100dvh-40px)]">
+                    <div className="grid grid-cols-12 h-[calc(100dvh-80px)] lg:h-[calc(100dvh-40px)] overflow-scroll">
 
-                        <div className="col-span-12 lg:col-span-7 2xl:col-span-8 flex items-center relative pt-[20px] lg:pt-[40px] order-2 lg:order-1">
-                            <div className="grid grid-cols-8 h-full w-full overflow-hidden">
-                                <div className="col-span-8 lg:col-span-6 lg:col-start-2 max-h-[calc(100dvh-180px)]">
+                        <div className="col-span-12 lg:col-span-7 2xl:col-span-8 flex items-center relative pt-[20px] order-2 lg:order-1 pb-[70px] lg:pb-0">
+                            <div className="grid grid-cols-8">
+                                <div className="col-span-8 lg:col-span-6 lg:col-start-2">
                                     { data?.slidable?.documents &&
                                         <Slider items={data.slidable.documents} locale={ locale }/>
                                     }
@@ -28,7 +28,7 @@ export default function SlideAudio({ data, locale }) {
                             </div>
                         </div>
 
-                        <div className="col-span-12 lg:col-span-4 lg:border-l border-black py-[20px] lg:py-[40px] lg:pl-[30px] lg:flex lg:items-center overflow-y-scroll order-1 lg:order-2">
+                        <div className="col-span-12 lg:col-span-4 lg:border-l border-black py-[20px] lg:py-[40px] lg:pl-[30px] lg:flex lg:items-center lg:overflow-y-scroll order-1 lg:order-2">
                             { (data?.slidable?.content && locale) &&
                                 <div className="richeditor" style={{ color: color }}>{ formatRichText(data.slidable.content[locale])}</div>
                             }

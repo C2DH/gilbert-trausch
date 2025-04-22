@@ -38,11 +38,11 @@ export default function Slider({ items, locale }) {
                             {(item.type !== "audio" && item.optimized_url?.large) && (
                                 <img loading='lazy'
                                     onClick={() => { navigate(`/resources/${item.id}`, { state: { modal: true } }) }}
-                                    src={item.optimized_url?.large.url} alt={item.name[locale]} className="w-auto h-[300px] md:h-[350px] lg:h-[550px] xl:h-[80vh] object-contain" />
+                                    src={item.optimized_url?.large.url} alt={item.name[locale]} className="w-full md:w-[60%] xl:h-[70vh] object-contain" />
                             )}
 
                             {item.type === "audio" && (
-                                <div className="lg:h-full w-[60%] lg:w-[80%] 2xl:w-[70%] flex flex-col justify-center items-center">
+                                <div className="lg:h-full w-full md:w-[50%] lg:w-[80%] xl:w-[57%] 2xl:w-[70%] flex flex-col justify-center items-center">
                                     {item.cover ? (
                                         <img loading='lazy' onClick={() => { navigate(`/resources/${item.id}`, { state: { modal: true } }) }}
                                             // src={item.cover[locale]} alt="cover" className="w-auto h-[300px] md:h-[350px] lg:h-[500px] xl:h-[50vh] object-contain rounded-[6px]" />
@@ -61,7 +61,7 @@ export default function Slider({ items, locale }) {
                             {item.type === "video" && (
                                 <div className="lg:h-full w-full flex flex-col justify-center items-center">
                                     {item.cover ? (
-                                        <img loading='lazy' src={item.cover} alt="cover" className="max-h-[60vh] rounded-[10px] mb-[20px] object-cover" 
+                                        <img loading='lazy' src={item.cover[locale]} alt="cover" className="max-h-[60vh] rounded-[10px] mb-[20px] object-cover" 
                                             onClick={() => { navigate(`/resources/${item.id}`, { state: { modal: true } }) }}
                                         />
                                     ) : (

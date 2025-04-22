@@ -171,7 +171,7 @@ export default function Resources() {
 
     return (
             <motion.div
-                style={{ background: `url(${background}) right / cover no-repeat` }} className='h-screen'
+                style={{ background: `url(${background}) right / cover no-repeat` }} className='h-[100dvh]'
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ easeInOut, duration: 1.2 }}>

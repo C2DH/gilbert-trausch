@@ -88,7 +88,7 @@ export default function Home() {
 
     return (
         <motion.div 
-            className="relative h-[100dvh] sm:h-screen w-full"
+            className="relative top-[40px] h-[calc(100dvh-40px)] w-full"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ easeInOut, duration: 1.2 }}
@@ -99,7 +99,7 @@ export default function Home() {
             {!isMobile && visibleImages.map((img, index) => (
                 <motion.div
                     key={index}
-                    className="h-screen absolute inset-0"
+                    className="h-full absolute inset-0"
                     style={{ background: `url(${img}) center / cover no-repeat` }}
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}

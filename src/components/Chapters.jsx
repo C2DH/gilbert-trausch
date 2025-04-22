@@ -53,7 +53,7 @@ export default function Chapters() {
 
     return (
         <>
-            <motion.div className="h-screen overflow-hidden"
+            <motion.div className="h-[100dvh] overflow-hidden"
                 style={{
                     backgroundImage: isMobile ? `url(${bg_empty})` : getBackgroundImage(),
                     backgroundPosition: "right",

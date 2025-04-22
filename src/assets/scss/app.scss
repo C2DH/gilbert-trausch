@@ -32,7 +32,6 @@ body {
     }
 }
 
-
 /* html {
     scrollbar-width: none;
 } */
@@ -91,9 +90,6 @@ blockquote {
     }
 }
 
-// .svg_tooltip_slideHeader {
-    
-// }
 
 .tippy-box {
     background: white!important;
@@ -302,9 +298,9 @@ blockquote {
 
 .richeditor {
     h2, .custom-h2-class {
-        font-size: 50px;
+        font-size: 40px;
         font-weight: 300;
-        line-height: 60px;
+        line-height: 50px;
         margin-bottom: 25px;
     
         @media screen and (max-width: 768px) {

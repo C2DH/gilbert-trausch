@@ -35,7 +35,7 @@ export default function MagicNotebooks() {
 
     return (
         <>
-            <motion.div className="h-screen overflow-hidden"
+            <motion.div className="h-[100dvh] overflow-hidden"
                 style={{
                     backgroundImage: isMobile ? `url(${bg_empty})` : `url(${bg})`,
                     backgroundPosition: "center",

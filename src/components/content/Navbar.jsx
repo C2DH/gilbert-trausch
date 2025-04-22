@@ -82,7 +82,7 @@ export default function Navbar({color}) {
             <AnimatePresence>           
                 {isOpen && 
                     <motion.div 
-                        className="w-full fixed inset-0 z-[102]"
+                        className="w-full fixed inset-0 z-[1000]"
                         key="menu"
                         initial={{ y: "-100%" }}
                         animate={{ y: 0 }}

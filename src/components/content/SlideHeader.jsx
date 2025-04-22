@@ -12,7 +12,7 @@ export default function SlideHeader({ data, showSubtitle, index, locale }) {
     return (
         <div style={{ background: `url(${imageUrl}) right / cover no-repeat` }} className="h-[100dvh] slide slide_header">
             <div className="relative top-[40px]">
-                <div className="container mx-auto px-[30px] xl:px-0 h-[calc(100dvh-40px)] sm:h-[calc(100dvh-40px)]">
+                <div className="container mx-auto px-[30px] xl:px-0 h-[calc(100dvh-40px)]">
                     <div className="grid grid-cols-12 h-full">
                         <div className={classNames("col-span-12 lg:col-span-8 xl:col-span-5 flex flex-col justify-center h-full", {
                             "items-center": !data?.slidable?.content[locale]

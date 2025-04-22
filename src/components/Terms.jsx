@@ -31,7 +31,7 @@ export default function Terms() {
     return (
         <motion.div 
             style={{ background: `url(${bg}) center / contain repeat`}} 
-            className="min-h-screen"
+            className="min-h-[100dvh]"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ easeInOut, duration: 1.2 }}

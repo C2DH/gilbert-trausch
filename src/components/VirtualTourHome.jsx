@@ -34,7 +34,7 @@ export default function VirtualTourHome() {
     return (
         <motion.div 
             style={{ background: `url(${bg}) center / cover no-repeat`}} 
-            className="h-screen"
+            className="h-[100dvh]"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ easeInOut, duration: 1.2 }}
