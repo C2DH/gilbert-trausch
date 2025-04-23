@@ -43,7 +43,7 @@ export default function Slider({ items, locale }) {
 
                             {item.type === "audio" && (
                                 <div className="lg:h-full w-full md:w-[50%] lg:w-[80%] xl:w-[60%] 2xl:w-[55%] flex flex-col justify-center items-center">
-                                    {item.cover ? (
+                                    {item.cover?.[locale] ? (
                                         <img loading='lazy' onClick={() => { navigate(`/resources/${item.id}`, { state: { modal: true } }) }}
                                             // src={item.cover[locale]} alt="cover" className="w-auto h-[300px] md:h-[350px] lg:h-[500px] xl:h-[50vh] object-contain rounded-[6px]" />
                                             src={item.cover[locale]} alt="cover" className="w-full h-[300px] md:h-[350px] lg:h-[500px] xl:h-[calc(100%-160px)] lg:max-h-[calc(100dvh-350px)] rounded-[6px] mb-[20px] object-cover" />
@@ -60,7 +60,7 @@ export default function Slider({ items, locale }) {
 
                             {item.type === "video" && (
                                 <div className="lg:h-full w-full flex flex-col justify-center items-center">
-                                    {item.cover ? (
+                                    {item.cover?.[locale] ? (
                                         <img loading='lazy' src={item.cover[locale]} alt="cover" className="max-h-[60vh] rounded-[10px] mb-[20px] object-cover" 
                                             onClick={() => { navigate(`/resources/${item.id}`, { state: { modal: true } }) }}
                                         />

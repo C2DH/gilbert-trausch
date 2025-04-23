@@ -72,7 +72,7 @@ export default function PlayerPDF({ url, optimized_url, id }) {
     return (
         <>
             {/* <div ref={containerRef} className="w-full h-full lg:h-[calc(100dvh-160px)] flex justify-center items-center overflow-hidden mb-[20px] lg:mb-0" onClick={() => { handleClick }}> */}
-            <div ref={containerRef} className="w-full h-[50vh] md:h-[70vh] flex justify-center items-center mb-[20px] overflow-hidden" onClick={() => { handleClick }}>
+            <div ref={containerRef} className="w-full h-[50vh] md:h-[70vh] xl:h-[80vh] flex justify-center items-center mb-[20px] overflow-scroll" onClick={() => { handleClick }}>
                 <Document file={url} onLoadSuccess={({ numPages }) => setNumPages(numPages)}>
                     <Page
                     onClick={() => { handleClick() }}
@@ -89,27 +89,27 @@ export default function PlayerPDF({ url, optimized_url, id }) {
                     <div className="flex">
                         <div className="border border-black rounded-l-md" onClick={prevPage}>
                             <ArrowLeftIcon
-                            className={classNames('px-4 py-2 w-[50px]', {
+                            className={classNames('px-4 py-2 w-[50px] cursor-pointer', {
                                 'pointer-events-none opacity-30': pageNumber === 1,
                             })}
                             />
                         </div>
 
                         <div className="border-y border-r border-black" onClick={zoomOut}>
-                            <MagnifyingGlassMinusIcon className="px-4 py-2 w-[50px]" />
+                            <MagnifyingGlassMinusIcon className="px-4 py-2 w-[50px] cursor-pointer" />
                         </div>
 
-                        <div className="border-y border-black text-sm flex items-center px-3 cursor-default">
+                        <div className="border-y border-black text-sm flex items-center px-3 cursor-pointer">
                             {`${pageNumber} / ${numPages || ''}`}
                         </div>
 
                         <div className="border-y border-l border-black" onClick={zoomIn}>
-                            <MagnifyingGlassPlusIcon className="px-4 py-2 w-[50px]" />
+                            <MagnifyingGlassPlusIcon className="px-4 py-2 w-[50px] cursor-pointer" />
                         </div>
                         
                         <div className="border border-black rounded-r-md" onClick={nextPage}>
                             <ArrowRightIcon
-                            className={classNames('px-4 py-2 w-[50px]', {
+                            className={classNames('px-4 py-2 w-[50px] cursor-pointer', {
                                 'pointer-events-none opacity-30': pageNumber === numPages,
                             })}
                             />

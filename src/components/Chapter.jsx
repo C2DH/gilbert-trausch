@@ -95,7 +95,7 @@ export default function Chapter() {
                 return response.json();
             })
             .then((data) => {
-                setTitle(data.data.name);
+                setTitle(data.data.slides[0].slidable.title[locale].split('.')[1]);
                 setData(data.data);
                 setTotal(data.data.slides.length)   
                 setSlideHeaders(data?.data?.slides?.map((slide, index) => ({ slide, index }))?.filter(({ slide }) => slide.slidable.type === "SlideHeader"));

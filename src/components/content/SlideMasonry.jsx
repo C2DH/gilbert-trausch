@@ -37,7 +37,7 @@ export default function SlideMasonry({ data, locale }) {
                                                 // All types except Video and Audio
                                                 if (document.type !== "audio" && document.type !== "video" && document.optimized_url ) {
                                                     return (
-                                                        <div key={index} className="mb-4 break-inside-avoid cursor-pointer" onClick={() => { navigate(`/resources/${document.id}`, { state: { modal: true } }) }}>
+                                                        <div key={index} className="break-inside-avoid cursor-pointer" onClick={() => { navigate(`/resources/${document.id}`, { state: { modal: true } }) }}>
                                                             <img loading='lazy' src={document?.optimized_url?.thumbnail?.url} alt={document?.name[locale]} className="w-full" />
                                                         </div>
                                                     )
@@ -46,11 +46,11 @@ export default function SlideMasonry({ data, locale }) {
                                                 // Audio / Video
                                                 if (document.type === "audio" || document.type === "video") {
                                                     return document?.cover ? (
-                                                        <div key={index} className="mb-4 break-inside-avoid cursor-pointer" onClick={() => { navigate(`/resources/${document.id}`, { state: { modal: true } }) }}>
+                                                        <div key={index} className="break-inside-avoid cursor-pointer" onClick={() => { navigate(`/resources/${document.id}`, { state: { modal: true } }) }}>
                                                             <img loading='lazy' src={document.cover} alt={document?.name[locale]} className="w-full" />
                                                         </div>
                                                     ) : (
-                                                        <div className="mb-4 break-inside-avoid cursor-pointer bg-[#DBDBD0] flex justify-center items-center h-[200px]" onClick={() => { navigate(`/resources/${document.id}`, { state: { modal: true } }) }}>
+                                                        <div className="break-inside-avoid cursor-pointer bg-[#DBDBD0] flex justify-center items-center h-[200px]" onClick={() => { navigate(`/resources/${document.id}`, { state: { modal: true } }) }}>
                                                             <img loading='lazy' src={ document.type === "audio" ? audioLogo : videoLogo } alt={ document.name[locale]} className="h-[100px]"/>
                                                         </div>
                                                     )
