@@ -215,7 +215,7 @@ export default function Resources() {
                                                     {/** AUDIO - VIDEO */}
                                                     if (document.type === "audio" || document.type === "video") {
                                                         console.log(document.cover)
-                                                        if (document.cover) {
+                                                        if (document?.cover?.[locale]) {
                                                             return (
                                                                 <div key={index} className="audio relative overflow-hidden cursor-pointer w-full aspect-square lg:h-[300px] xl:h-[400px]" style={{ paddingBottom: `${aspectRatio}%`}} 
                                                                     onClick={() => { navigate(`/resources/${document.id}`, { state: { modal: true, previousLocation: location } }) }}  
