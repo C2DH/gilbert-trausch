@@ -263,14 +263,14 @@ blockquote {
     }
 }
 
-.slide_central_text {
-    h2 {
-        font-size: 50px;
-        line-height: 60px;
-        margin-bottom: 35px;
-        font-weight: 500;
-    }
-}
+// .slide_central_text {
+//     h2 {
+//         font-size: 50px;
+//         line-height: 60px;
+//         margin-bottom: 35px;
+//         font-weight: 500;
+//     }
+// }
 
 
 .slide_text_slider {
@@ -286,8 +286,8 @@ blockquote {
 .slide_citation {
     blockquote {
         padding: 30px 0;
-        font-size: 22px;
-        line-height: 34px;
+        font-size: 20px;
+        line-height: 30px;
 
         @media screen and (min-width: 768px) {
             font-size: 24px;
@@ -303,16 +303,21 @@ blockquote {
 
 .richeditor {
     h2, .custom-h2-class {
-        font-size: 40px;
+        font-size: 32px;
         font-weight: 300;
-        line-height: 50px;
-        margin-bottom: 25px;
-    
-        @media screen and (max-width: 768px) {
-            font-size: 40px;
-            line-height: 1;
-            margin-bottom: 20px
+        line-height: 34px;
+        margin-bottom: 20px;
+
+        @media screen and (min-width: 640px) {
+            font-size: 36px;
+            line-height: 42px;
         }
+
+        @media screen and (min-width: 1280px) {
+            font-size: 45px;
+            line-height: 60px;
+        }
+
     }
     
     h3, .custom-h3-class {

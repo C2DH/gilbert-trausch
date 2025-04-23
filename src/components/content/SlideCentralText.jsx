@@ -18,7 +18,7 @@ export default function SlideCentralText ({data, locale}) {
                     <div className="grid grid-cols-12 h-[calc(100dvh-80px)] lg:h-[calc(100dvh-40px)]">
                         { (data?.slidable?.content && locale) &&
                             <div className="overflow-hidden col-span-12 lg:col-span-8 lg:col-start-3 lg:border-r lg:border-l border-black lg:px-[30px] h-full flex items-center richeditor" style={{ color: color }}>
-                                <div className="py-[20px] lg:pt-[40px] lg:pb-[70px] h-full overflow-scroll richeditor">
+                                <div className="py-[20px] lg:pt-[40px] lg:pb-[70px] h-full overflow-scroll richeditor text-center lg:text-left">
                                     {formatRichText(data.slidable.content[locale])}
                                 </div>
                             </div>
