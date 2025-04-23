@@ -427,11 +427,11 @@ export default function Chapter() {
                                         </svg>
                                             <span className="uppercase text-white text-[16px] font-normal pl-[10px] cursor-pointer">{ t('change_chapter')}</span>
                                     </div>
-                                    <img src={ wallpaper_menu } alt="Gilbert Trausch dans son bureau" className="w-full" />
+                                    <img src={ wallpaper_menu } alt="Gilbert Trausch dans son bureau" className="w-full h-[200px] lg:h-[220px] xl:h-[250px]" />
                                     <span className="absolute top-1/2 left-8 transform -translate-y-1/2 text-[24px] md:text-[30px] xl:text-[40px] xl:leading-[42px] text-white">{ title }</span>
                                 </div>
 
-                                <div className="p-[30px]">
+                                <div className="p-[30px] h-[calc(100dvh-200px)] lg:h-[calc(100dvh-220px)] xl:h-[calc(100dvh-250px)] overflow-scroll">
                                     { slideHeaders?.map((header, index) => {
                                         return (
                                             <h3 
