@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import background from '../../assets/images/backgrounds/bg-1.webp';
 import { formatRichText, formatTypeName, formatDate, formatDateYear } from '../../lib/utils';
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
 import classNames from 'classnames';
 import { TransformWrapper, TransformComponent, useControls } from "react-zoom-pan-pinch";
 import { MagnifyingGlassMinusIcon, MagnifyingGlassPlusIcon } from '@heroicons/react/24/outline';

@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence } from 'motion/react';
 import { easeInOut } from "motion";
 import intro_1 from '../assets/images/intro/wallpaper_intro_1.webp';
 import intro_2 from '../assets/images/intro/wallpaper_intro_2.jpg';

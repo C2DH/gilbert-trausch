@@ -2,14 +2,15 @@ import { useRef, useState } from 'react';
 import ReactPlayer from 'react-player';
 import { useLocation } from 'react-router-dom';
 import { SpeakerWaveIcon, SpeakerXMarkIcon } from '@heroicons/react/24/outline';
-import { motion } from "motion/react";
-import { AnimatePresence } from 'motion/react';
+import { motion, AnimatePresence } from "motion/react";
 
 export default function PlayerVideo ({url, startAudio, setStartAudio, isVisible, isMobile }) {
 
     const location = useLocation();
     const playerRef = useRef(null);
-    const [isPlaying, setIsPlaying] = useState(false)
+    const [isPlaying, setIsPlaying] = useState(false);
+    const [ready, setReady] = useState(false);
+
 
     if (location.pathname === "/") {
         return (
@@ -78,17 +79,20 @@ export default function PlayerVideo ({url, startAudio, setStartAudio, isVisible,
         )
     } else {
         return (
-            <div className="flex items-center justify-center w-full h-full">
-                <div className="relative w-full" style={{ paddingBottom: "56.25%" }}>
-                    <ReactPlayer 
-                        url={url}  
-                        width="100%" 
-                        height="100%" 
+            <div className="flex items-center justify-center w-full h-full transition-all duration-700 ease-out">
+                <div className={`transition-all duration-700 ease-out ${ready ? 'w-full lg:w-[75%]' : 'w-[10%]'}`}>
+                    <div className="relative w-full" style={{ paddingBottom: "56.25%" }}>
+                        <ReactPlayer
+                        url={url}
+                        width="100%"
+                        height="100%"
                         className="absolute top-0 left-0"
-                        controls={true}
-                    />
+                        controls
+                        onReady={() => setReady(true)}
+                        />
+                    </div>
                 </div>
-            </div>
+          </div>
         )
     }
 }

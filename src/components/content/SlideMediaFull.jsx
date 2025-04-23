@@ -1,5 +1,6 @@
 import PlayerVideo from "./PlayerVideo";
 import { useLocation, useNavigate } from "react-router-dom";
+import { motion } from 'motion/react'
 
 export default function SlideMediaFull({ data }) {
 
@@ -12,9 +13,13 @@ export default function SlideMediaFull({ data }) {
                 {/** VIDEO */}
                 { data?.slidable?.document?.type === "video" &&
                     <div className="h-[100dvh] w-full flex items-center justify-center bg-black">
-                        <div className="w-full lg:w-[75%]">
-                            <PlayerVideo url={data?.slidable?.document?.url} />
-                        </div>
+                        <motion.div 
+                            initial={{ scale: 0.8, opacity: 0 }} 
+                            animate={{ scale: 1, opacity: 1 }} 
+                            transition={{ duration: 1, ease: 'easeOut' }}
+                            className="w-full lg:w-[75%]"
+    >                            <PlayerVideo url={data?.slidable?.document?.url} />
+                        </motion.div>
                     </div>
                 }
 
