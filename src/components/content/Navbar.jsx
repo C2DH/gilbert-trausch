@@ -72,7 +72,7 @@ export default function Navbar({color}) {
                             </svg>
                         </li>
 
-                        <li className="hidden lg:block uppercase cursor-pointer text-[14px] hover:text-[#4100FC] duration-500 lg:order-2" style={{ color: color }}>
+                        <li className="absolute top-[8px] right-0 lg:block lg:relative lg:top-auto lg:right-auto uppercase cursor-pointer text-[14px] hover:text-[#4100FC] duration-500 lg:order-2" style={{ color: color }}>
                             <LanguageSwitcher switchLanguage={changeLanguage} lang={language}/>
                         </li>
                     </ul>
@@ -212,8 +212,8 @@ export default function Navbar({color}) {
 const LanguageSwitcher = ({ switchLanguage, lang }) => {
     return (
         <div className='text-[14px]'>   
-            <span className={classNames('cursor-pointer mr-[5px]', {'text-blue': lang === 'fr'})}  onClick={() => switchLanguage('fr') }>FR</span>
-            <span className={classNames('cursor-pointer', {'text-blue': lang === 'de'})}  onClick={() => switchLanguage('de') }>DE</span>
+            <span className={classNames('cursor-pointer mr-[5px]', {'text-blue font-normal': lang === 'fr'})}  onClick={() => switchLanguage('fr') }>FR</span>
+            <span className={classNames('cursor-pointer', {'text-blue font-normal': lang === 'de'})}  onClick={() => switchLanguage('de') }>DE</span>
         </div>
     )
 }

@@ -46,7 +46,7 @@ export default function Slider({ items, locale }) {
                                     {item.cover ? (
                                         <img loading='lazy' onClick={() => { navigate(`/resources/${item.id}`, { state: { modal: true } }) }}
                                             // src={item.cover[locale]} alt="cover" className="w-auto h-[300px] md:h-[350px] lg:h-[500px] xl:h-[50vh] object-contain rounded-[6px]" />
-                                            src={item.cover[locale]} alt="cover" className="w-full h-[300px] md:h-[350px] lg:h-[500px] xl:h-[calc(100%-160px)] rounded-[6px] mb-[20px] object-cover" />
+                                            src={item.cover[locale]} alt="cover" className="w-full h-[300px] md:h-[350px] lg:h-[500px] xl:h-[calc(100%-160px)] lg:max-h-[calc(100dvh-350px)] rounded-[6px] mb-[20px] object-cover" />
                                     ) : (
                                         <div onClick={() => { navigate(`/resources/${item.id}`, { state: { modal: true } }) }}
                                             className="bg-[#DBDBD0] aspect-square flex justify-center items-center relative mb-5 rounded-[6px] border border-black w-full">

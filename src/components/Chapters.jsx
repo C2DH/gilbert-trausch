@@ -90,7 +90,7 @@ export default function Chapters() {
                                         onMouseLeave={() => setHoveredIndex(null)}
                                     >
                                         <span className="transition-all duration-500 group-hover:text-[#4100FC]">{romanize(index)}.</span>
-                                        <Link to={`/chapter/${item.slug}`} className="transition-all duration-500 group-hover:text-[#4100FC] group-hover:pl-[30px]">{item.name[locale]}</Link>
+                                        <Link to={`/chapter/${item.slug}`} className="transition-all duration-500 group-hover:text-[#4100FC] group-hover:lg:pl-[30px]">{item.name[locale]}</Link>
                                     </li>
                                 ))}
                             </ul>

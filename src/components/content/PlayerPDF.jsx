@@ -72,7 +72,7 @@ export default function PlayerPDF({ url, optimized_url, id }) {
     return (
         <>
             {/* <div ref={containerRef} className="w-full h-full lg:h-[calc(100dvh-160px)] flex justify-center items-center overflow-hidden mb-[20px] lg:mb-0" onClick={() => { handleClick }}> */}
-            <div ref={containerRef} className="w-full h-[50vh] md:h-[70vh] flex justify-center items-center mb-[20px]" onClick={() => { handleClick }}>
+            <div ref={containerRef} className="w-full h-[50vh] md:h-[70vh] flex justify-center items-center mb-[20px] overflow-hidden" onClick={() => { handleClick }}>
                 <Document file={url} onLoadSuccess={({ numPages }) => setNumPages(numPages)}>
                     <Page
                     onClick={() => { handleClick() }}

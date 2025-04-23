@@ -282,7 +282,7 @@ export default function Chapter() {
                         <div
                             ref={buttonRef}
                             className={classNames('fixed xl:absolute right-[20px] z-[900] cursor-pointer transition-all duration-500', {
-                                'top-[4px]': !isLarge,
+                                'top-[60px]': !isLarge,
                                 'top-[80px]': !isOpenMenu && isLarge,
                                 'top-[20px]': isOpenMenu && isLarge
                             })}

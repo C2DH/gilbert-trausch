@@ -65,7 +65,7 @@ export default function MagicNotebooks() {
                                     {data?.map((item, index) => (
                                         <li key={item.id} className="group mb-[20px] lg:mb-[50px] last:mb-0 flex gap-5 font-extralight w-fit">
                                             <span className="transition-all duration-500 group-hover:text-[#4100FC]">{romanize(index)}.</span>
-                                            <Link to={`/magic-notebook/${item.slug}`} className="transition-all duration-500 group-hover:text-[#4100FC] group-hover:pl-[30px]">{item.name[locale]}</Link>
+                                            <Link to={`/magic-notebook/${item.slug}`} className="transition-all duration-500 group-hover:text-[#4100FC] group-hover:lg:pl-[30px]">{item.name[locale]}</Link>
                                         </li>
                                     ))}
                                 </ul>

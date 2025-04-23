@@ -28,11 +28,13 @@ export default function SlideAudio({ data, locale }) {
                             </div>
                         </div>
 
-                        <div className="col-span-12 lg:col-span-4 lg:border-l border-black py-[20px] lg:py-[40px] lg:pl-[30px] lg:flex lg:items-center lg:overflow-y-scroll order-1 lg:order-2">
-                            { (data?.slidable?.content && locale) &&
-                                <div className="richeditor" style={{ color: color }}>{ formatRichText(data.slidable.content[locale])}</div>
-                            }
-                        </div>
+                        {data?.slidable?.content?.[locale] &&                        
+                            <div className="col-span-12 lg:col-span-4 lg:border-l border-black py-[20px] lg:py-[40px] lg:pl-[30px] lg:flex lg:items-center lg:overflow-y-scroll order-1 lg:order-2">
+                                { (data?.slidable?.content && locale) &&
+                                    <div className="richeditor" style={{ color: color }}>{ formatRichText(data.slidable.content[locale])}</div>
+                                }
+                            </div>
+                        }
 
                     </div>
                 </div>
