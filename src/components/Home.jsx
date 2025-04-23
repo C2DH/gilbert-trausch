@@ -18,6 +18,7 @@ import { useTranslation } from 'react-i18next';
 import Player from './content/PlayerVideo';
 import audio from "../assets/audio/short-audio.mp3";
 import { NavbarHomeContext } from '../contexts/NavbarHomeProvider';
+import { ForwardIcon } from '@heroicons/react/24/outline';
 
 
 const images = [intro_2, intro_3, intro_4, intro_5, intro_6, intro_7, intro_8, intro_9];
@@ -33,7 +34,8 @@ export default function Home() {
     const isMobile = useMediaQuery({query: '(max-width: 1023px)'});
     const navigate = useNavigate();
     const [startAudio, setStartAudio] = useState(false);
-    const {firstTime, setFirstTime} = useContext(NavbarHomeContext)
+    const {firstTime, setFirstTime} = useContext(NavbarHomeContext);
+    const [skip, setSkip] = useState(false)
     
 
     const handleMenuClick = (path) => {
@@ -55,6 +57,13 @@ export default function Home() {
     //     }
     // }, []);
 
+
+    const handleSkip = () => {
+        setSkip(true)
+        setShowStartButton(false);
+        setAnimationActive(true);
+    }
+
     const handleStart = () => {
         setShowStartButton(false);
         setAnimationActive(true);
@@ -72,30 +81,28 @@ export default function Home() {
                 images.forEach((img, index) => {
                     setTimeout(() => {
                         setVisibleImages((prev) => [...prev, img]);
-    
                         if (index === images.length - 1) {
                             setTimeout(() => {
                                 setShowMenu(true)
                                 setFirstTime(false)
-                            }, 1000)
-                              
+                            }, 1000) 
                         }
-                    }, index * 3000);
+                    }, skip ? 0 : index * 3000);
                 });
             }, 2000); // Délai avant le début des images"
         }
-    }, [animationActive, isMobile]);
+    }, [animationActive, isMobile, skip]);
 
     return (
         <motion.div 
-            className="relative top-[40px] h-[calc(100dvh-40px)] w-full"
+            className="relative h-[100dvh] w-full"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ easeInOut, duration: 1.2 }}
             style={{ background: `url(${isMobile ? bgSmall : intro_1}) center / cover no-repeat` }}
         >
 
-            {/* Images animées après le clic */}
+            {/* Desktop Animation */}
             {!isMobile && visibleImages.map((img, index) => (
                 <motion.div
                     key={index}
@@ -107,7 +114,7 @@ export default function Home() {
                 />
             ))}
 
-            {/* Bouton */}
+            {/* Start Button */}
             <AnimatePresence>
                 {(!isMobile && showStartButton) && (
                     <motion.button
@@ -123,6 +130,7 @@ export default function Home() {
                 )}
             </AnimatePresence>
 
+            {/* Desktop Menu */}
             <AnimatePresence>
                 {(!isMobile && showMenu) && (
                     <motion.div
@@ -177,6 +185,7 @@ export default function Home() {
                 )}
             </AnimatePresence>
 
+            {/* Mobile Menu */}
             <AnimatePresence>
                 {isMobile && (
                     <motion.div
@@ -235,13 +244,30 @@ export default function Home() {
                 )}
             </AnimatePresence>
             
+            {/* Player Audio */}
             <AnimatePresence>
-                <Player url={ audio } startAudio={startAudio} setStartAudio={setStartAudio} isVisible={animationActive && !showMenu} isMobile={false}/>
+                {!skip &&
+                    <Player url={ audio } startAudio={startAudio} setStartAudio={setStartAudio} isVisible={animationActive && !showMenu} isMobile={false}/>
+                }
             </AnimatePresence>
 
             {isMobile &&
                 <Player url={ audio } isMobile={isMobile} startAudio={startAudio} setStartAudio={setStartAudio}/>
             }
+
+            {/* Skip Button */}
+            {!animationActive && !isMobile && (
+                <motion.button
+                    onClick={() => handleSkip()}
+                    className="group fixed bottom-6 right-6 z-50 px-3 py-1 rounded-md bg-blue hover:bg-white border hover:border-[#4100FC]  text-white transition-all duration-[450ms]"
+                    initial={{ opacity: 0, scale: 0.8, x: 100 }}
+                    animate={{ opacity: 1, scale: 1, x: 0 }}
+                    exit={{ opacity: 0, scale: 0.8, x: 100 }}
+                    transition={{ duration: 0.6, ease: 'easeInOut'}}
+                >
+                    <ForwardIcon  className="w-[30px] group-hover:text-[#4100FC] duration-[450ms]" />
+                </motion.button>
+            )}
 
         </motion.div>
     );
