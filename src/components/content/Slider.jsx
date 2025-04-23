@@ -6,7 +6,7 @@ import 'swiper/css/navigation';
 import { useRef, useState } from "react";
 import PlayerAudio from '../content/PlayerAudio';
 import videoLogo from '../../assets/images/video.svg'
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import bgAudio from '../../assets/images/backgrounds/bg-audio-default.webp';
 
 
@@ -18,6 +18,7 @@ export default function Slider({ items, locale }) {
     const navigationPrevRef = useRef(null);
     const [index, setIndex] = useState(0);
     const navigate = useNavigate();
+    const location = useLocation();
 
     return (
         <>
@@ -37,18 +38,18 @@ export default function Slider({ items, locale }) {
                         <SwiperSlide key={item.id} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
                             {(item.type !== "audio" && item.optimized_url?.large) && (
                                 <img loading='lazy'
-                                    onClick={() => { navigate(`/resources/${item.id}`, { state: { modal: true } }) }}
+                                    onClick={() => { navigate(`/resources/${item.id}`, { state: { modal: true, previousLocation: location } }) }}
                                     src={item.optimized_url?.large.url} alt={item.name[locale]} className="w-full md:w-[50%] lg:w-auto lg:h-[calc(100dvh-250px)] object-contain" />
                             )}
 
                             {item.type === "audio" && (
                                 <div className="lg:h-full w-full md:w-[50%] lg:w-[80%] xl:w-[60%] 2xl:w-[55%] flex flex-col justify-center items-center">
                                     {item.cover?.[locale] ? (
-                                        <img loading='lazy' onClick={() => { navigate(`/resources/${item.id}`, { state: { modal: true } }) }}
+                                        <img loading='lazy' onClick={() => { navigate(`/resources/${item.id}`, { state: { modal: true, previousLocation: location } }) }}
                                             // src={item.cover[locale]} alt="cover" className="w-auto h-[300px] md:h-[350px] lg:h-[500px] xl:h-[50vh] object-contain rounded-[6px]" />
                                             src={item.cover[locale]} alt="cover" className="w-full h-[300px] md:h-[350px] lg:h-[500px] xl:h-[calc(100%-160px)] lg:max-h-[calc(100dvh-350px)] rounded-[6px] mb-[20px] object-cover" />
                                     ) : (
-                                        <div onClick={() => { navigate(`/resources/${item.id}`, { state: { modal: true } }) }}
+                                        <div onClick={() => { navigate(`/resources/${item.id}`, { state: { modal: true, previousLocation: location } }) }}
                                             className="bg-[#DBDBD0] aspect-square flex justify-center items-center relative mb-5 rounded-[6px] border border-black w-full">
                                             <img loading='lazy' src={ bgAudio } alt="Logo audio" className="object-contain rounded-[6px] w-full"/>
                                         </div>
@@ -62,10 +63,10 @@ export default function Slider({ items, locale }) {
                                 <div className="lg:h-full w-full flex flex-col justify-center items-center">
                                     {item.cover?.[locale] ? (
                                         <img loading='lazy' src={item.cover[locale]} alt="cover" className="max-h-[60vh] rounded-[10px] mb-[20px] object-cover" 
-                                            onClick={() => { navigate(`/resources/${item.id}`, { state: { modal: true } }) }}
+                                            onClick={() => { navigate(`/resources/${item.id}`, { state: { modal: true, previousLocation: location } }) }}
                                         />
                                     ) : (
-                                        <div className="bg-[#DBDBD0] w-[60%] aspect-square flex justify-center items-center relative mb-5 rounded-[10px] border border-black"  onClick={() => { navigate(`/resources/${item.id}`, { state: { modal: true } }) }}>
+                                        <div className="bg-[#DBDBD0] w-[60%] aspect-square flex justify-center items-center relative mb-5 rounded-[10px] border border-black"  onClick={() => { navigate(`/resources/${item.id}`, { state: { modal: true, previousLocation: location } }) }}>
                                             <img loading='lazy' src={ videoLogo } alt="Logo video" className="h-[50px] lg:h-[140px]"/>
                                         </div>
                                     )}
@@ -98,7 +99,7 @@ export default function Slider({ items, locale }) {
 
             {/** BUTTON POPUP RESOURCE */}
             <div className="absolute lg:bottom-[70px] xl:bottom-[20px] translate-y-[22px] md:translate-y-[24px] xl:translate-y-0 left-[75%] md:left-[60%] lg:left-[67%] lg:-translate-x-[50%] cursor-pointer" 
-                    onClick={() => { navigate(`/resources/${items[index].id}`, { state: { modal: true } }) }} 
+                    onClick={() => { navigate(`/resources/${items[index].id}`, { state: { modal: true, previousLocation: location } }) }} 
                 >
                     <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <circle cx="15" cy="15" r="14.5" stroke="black"/>

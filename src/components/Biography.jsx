@@ -6,7 +6,7 @@ import classNames from "classnames";
 import { motion } from "motion/react";
 import { easeInOut } from "motion";
 import { useTranslation } from "react-i18next";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 export default function Biography() {
     const API_URL = import.meta.env.VITE_API_URL;
@@ -18,6 +18,7 @@ export default function Biography() {
     const [activeYear, setActiveYear] = useState(null);
     const [activeElement, setActiveElement] = useState(null);
     const navigate = useNavigate();
+    const location = useLocation();
 
     useEffect(() => {
         fetch(`${API_URL}/api/biography`)
@@ -192,7 +193,7 @@ export default function Biography() {
                                                             className="py-[10px] md:py-0 cursor-pointer flex justify-center md:block"
                                                             onClick={() => {
                                                                 navigate(`/resources/${document.id}`, {
-                                                                    state: { modal: true }
+                                                                    state: { modal: true,  previousLocation: location }
                                                                 });
                                                             }}
                                                         >

@@ -4,7 +4,7 @@ import videoLogo from '../../assets/images/video.svg';
 import bgSmall from '../../assets/images/backgrounds/bg-1.webp';
 import { useMediaQuery } from "react-responsive";
 import Masonry, {ResponsiveMasonry} from "react-responsive-masonry";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 export default function SlideMasonry({ data, locale }) {
 
@@ -14,6 +14,7 @@ export default function SlideMasonry({ data, locale }) {
     const color = data?.slidable?.color_text;
     const isMobile = useMediaQuery({ query: '(max-width: 768px)'});
     const navigate = useNavigate();
+    const location = useLocation();
 
     return (
         <>
@@ -37,7 +38,7 @@ export default function SlideMasonry({ data, locale }) {
                                                 // All types except Video and Audio
                                                 if (document.type !== "audio" && document.type !== "video" && document.optimized_url ) {
                                                     return (
-                                                        <div key={index} className="break-inside-avoid cursor-pointer" onClick={() => { navigate(`/resources/${document.id}`, { state: { modal: true } }) }}>
+                                                        <div key={index} className="break-inside-avoid cursor-pointer" onClick={() => { navigate(`/resources/${document.id}`, { state: { modal: true, previousLocation: location} }) }}>
                                                             <img loading='lazy' src={document?.optimized_url?.thumbnail?.url} alt={document?.name[locale]} className="w-full" />
                                                         </div>
                                                     )
@@ -46,11 +47,11 @@ export default function SlideMasonry({ data, locale }) {
                                                 // Audio / Video
                                                 if (document.type === "audio" || document.type === "video") {
                                                     return document?.cover ? (
-                                                        <div key={index} className="break-inside-avoid cursor-pointer" onClick={() => { navigate(`/resources/${document.id}`, { state: { modal: true } }) }}>
+                                                        <div key={index} className="break-inside-avoid cursor-pointer" onClick={() => { navigate(`/resources/${document.id}`, { state: { modal: true, previousLocation: location } }) }}>
                                                             <img loading='lazy' src={document.cover} alt={document?.name[locale]} className="w-full" />
                                                         </div>
                                                     ) : (
-                                                        <div className="break-inside-avoid cursor-pointer bg-[#DBDBD0] flex justify-center items-center h-[200px]" onClick={() => { navigate(`/resources/${document.id}`, { state: { modal: true } }) }}>
+                                                        <div className="break-inside-avoid cursor-pointer bg-[#DBDBD0] flex justify-center items-center h-[200px]" onClick={() => { navigate(`/resources/${document.id}`, { state: { modal: true, previousLocation: location } }) }}>
                                                             <img loading='lazy' src={ document.type === "audio" ? audioLogo : videoLogo } alt={ document.name[locale]} className="h-[100px]"/>
                                                         </div>
                                                     )

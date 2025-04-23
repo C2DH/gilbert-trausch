@@ -4,7 +4,7 @@ import PlayerPDF from "./PlayerPDF";
 import classNames from "classnames";
 import bgSmall from '../../assets/images/backgrounds/bg-1.webp';
 import { useMediaQuery } from "react-responsive";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 export default function SlideColumn({data, locale}) {
 
@@ -14,6 +14,8 @@ export default function SlideColumn({data, locale}) {
     const color = data?.slidable?.color_text;
     const isMobile = useMediaQuery({ query: '(max-width: 768px)'});
     const navigate = useNavigate();
+    const location = useLocation();
+
     let columns = [];
 
     const imageElement = (data?.slidable?.document?.url && locale) ? (
@@ -36,7 +38,7 @@ export default function SlideColumn({data, locale}) {
             {/** BUTTON POPUP RESOURCE */}
             <div 
                 className="mt-5 cursor-pointer" 
-                onClick={() => { navigate(`/resources/${data.slidable?.document.id}`, { state: { modal: true } }) }} 
+                onClick={() => { navigate(`/resources/${data.slidable?.document.id}`, { state: { modal: true, previousLocation: location } }) }} 
             >
                 <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <circle cx="15" cy="15" r="14.5" stroke="black"/>

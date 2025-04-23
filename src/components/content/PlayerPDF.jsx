@@ -16,7 +16,7 @@ export default function PlayerPDF({ url, optimized_url, id }) {
 
     const handleClick = () => {
         if (!location.pathname.startsWith('/resources/')) {
-            navigate(`/resources/${id}`, { state: { modal: true } });
+            navigate(`/resources/${id}`, { state: { modal: true, previousLocation: location } });
         }
     };
     const [numPages, setNumPages] = useState(null);
