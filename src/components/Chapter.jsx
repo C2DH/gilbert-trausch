@@ -70,13 +70,13 @@ export default function Chapter() {
     useEffect(() => {
         setActiveIndex(parseInt(searchParams.get('index') ?? 0));
 
-        if (parseInt(searchParams.get('index')) === 0) {
-            console.log('ici')
+        if (parseInt(searchParams.get('index')) === 0 || !searchParams.get('index')) {
             setShowSubtitle(false);
             setFirstClick(true)
+        } else {
+            setShowSubtitle(true);
+            setFirstClick(false)
         }
-        // setFirstClick(true)
-        // setShowSubtitle(true);
     }, [searchParams]);
 
     // useEffect(() => {

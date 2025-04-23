@@ -18,8 +18,6 @@ function customParser(domNode) {
     // Traitement des tooltips
     if (domNode.type === 'tag' && domNode.name === 'span' && domNode.attribs?.class === 'tooltip') {
 
-        console.log('domNode', domNode)
-
         // Récupère le noeud tooltipText
         const tooltipTextNode = domNode.children.find(
             child => child.name === 'span' && child.attribs?.class === 'tooltipText'

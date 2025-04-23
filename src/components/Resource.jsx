@@ -28,8 +28,6 @@ export default function Resource() {
     const location = useLocation();
     const navigate = useNavigate();
 
-    console.log('location', location);
-
     useEffect(() => {
         setIsImageVisible(true);
 

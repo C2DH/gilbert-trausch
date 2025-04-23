@@ -67,21 +67,17 @@ export default function Resources() {
     }
 
     const fetchResources = () => {
-        console.log('fetching resources');
         const params = new URLSearchParams();
 
         if (selectedFilters.types.length > 0) {
-            console.log('types', selectedFilters.types)
             params.append("types", selectedFilters.types.join(","));
         }
 
         if (selectedFilters.tags.length > 0) {
-            console.log('tags', selectedFilters.tags)
             params.append("tags", selectedFilters.tags.join(","));
         }
 
         if (search !== "") {
-            console.log('q', search)
             params.append("q", search);
         }
 
@@ -100,7 +96,6 @@ export default function Resources() {
         params.append("perPage", PER_PAGE);
 
         const url = `${API_URL}/api/resources?${params.toString()}`;
-        console.log("URL :", url); 
 
         fetch(url)
             .then((response) => {
@@ -110,7 +105,6 @@ export default function Resources() {
                 return response.json();
             })
             .then((data) => {
-                console.log(data);
                 setDocuments(documents => ({ ...documents, [page]: data.resources.data }));
                 setHasNextPage(data.resources.current_page < data.resources.last_page);
                 setTypes(data.types);
