@@ -85,11 +85,11 @@ export default function Home() {
                             setTimeout(() => {
                                 setShowMenu(true)
                                 setFirstTime(false)
-                            }, 1000) 
+                            }, skip ? 0 : 1000) 
                         }
                     }, skip ? 0 : index * 3000);
                 });
-            }, 2000); // Délai avant le début des images"
+            }, skip ? 0 : 2000); // Délai avant le début des images"
         }
     }, [animationActive, isMobile, skip]);
 

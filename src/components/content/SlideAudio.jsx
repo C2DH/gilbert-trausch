@@ -16,7 +16,7 @@ export default function SlideAudio({ data, locale }) {
         <div style={{ background: `url(${isMobile ? bgSmall : imageUrl}) right / cover no-repeat` }} className='slide_audio h-[100dvh] slide'>
             <div className="relative top-[40px]">
                 <div className="container mx-auto px-[20px] xl:px-0">
-                    <div className="grid grid-cols-12 h-[calc(100dvh-80px)] lg:h-[calc(100dvh-40px)] overflow-scroll">
+                    <div className="grid grid-cols-12 h-[calc(100dvh-80px)] xl:h-[calc(100dvh-40px)] overflow-scroll">
 
                         <div className="col-span-12 lg:col-span-7 2xl:col-span-8 flex items-center relative pt-[20px] order-2 lg:order-1 pb-[70px] lg:pb-0">
                             <div className="grid grid-cols-8">

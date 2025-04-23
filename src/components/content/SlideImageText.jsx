@@ -29,8 +29,8 @@ export default function SlideImageText({ data, locale }) {
         <>
             <div style={{ background: `url(${isMobile ? bgSmall : imageUrl}) right / cover no-repeat` }} className='h-[100dvh] slide'>
                 <div className="relative top-[40px]">
-                    <div className="container mx-auto px-[20px] xl:px-0 h-[calc(100dvh-40px)] overflow-y-scroll">
-                        <div className="grid grid-cols-12 lg:h-full">
+                    <div className="container mx-auto px-[20px] xl:px-0">
+                        <div className="grid grid-cols-12 h-[calc(100dvh-80px)] xl:h-[calc(100dvh-40px)] overflow-y-scroll">
                             <div className="col-span-12 lg:col-span-7 2xl:col-span-8">
                                 <div className="grid grid-cols-8 h-full">
                                     <div className="col-span-8 flex flex-col items-center justify-center lg:pr-[30px] pt-[20px] lg:pt-0">

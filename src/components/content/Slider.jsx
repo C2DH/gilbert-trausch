@@ -38,11 +38,11 @@ export default function Slider({ items, locale }) {
                             {(item.type !== "audio" && item.optimized_url?.large) && (
                                 <img loading='lazy'
                                     onClick={() => { navigate(`/resources/${item.id}`, { state: { modal: true } }) }}
-                                    src={item.optimized_url?.large.url} alt={item.name[locale]} className="w-full md:w-[60%] xl:h-[70vh] object-contain" />
+                                    src={item.optimized_url?.large.url} alt={item.name[locale]} className="w-full md:w-[50%] lg:w-auto h-[calc(100dvh-250px)] object-contain" />
                             )}
 
                             {item.type === "audio" && (
-                                <div className="lg:h-full w-full md:w-[50%] lg:w-[80%] xl:w-[57%] 2xl:w-[70%] flex flex-col justify-center items-center">
+                                <div className="lg:h-full w-full md:w-[50%] lg:w-[80%] xl:w-[60%] 2xl:w-[55%] flex flex-col justify-center items-center">
                                     {item.cover ? (
                                         <img loading='lazy' onClick={() => { navigate(`/resources/${item.id}`, { state: { modal: true } }) }}
                                             // src={item.cover[locale]} alt="cover" className="w-auto h-[300px] md:h-[350px] lg:h-[500px] xl:h-[50vh] object-contain rounded-[6px]" />
@@ -78,7 +78,7 @@ export default function Slider({ items, locale }) {
 
             {items?.length > 1 &&  
                 <>          
-                    <div className="absolute min-w-[116px] lg:bottom-[40px] xl:bottom-[20px] translate-y-[24px] xl:translate-y-0 left-[50%] -translate-x-[50%] border border-black lg:flex px-3 rounded-[60px]">
+                    <div className="absolute min-w-[116px] lg:bottom-[70px] xl:bottom-[20px] translate-y-[24px] xl:translate-y-0 left-[50%] -translate-x-[50%] border border-black lg:flex px-3 rounded-[60px]">
                         <button ref={navigationPrevRef} className="cursor-pointer">
                             <svg width="14" height="12" viewBox="0 0 14 12" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path opacity={index === 0 ? '0.2' : '1'} d="M11 5.5C11.25 5.5 11.5 5.75 11.5 6C11.5 6.28125 11.25 6.5 11 6.5H1.6875L5.34375 10.1562C5.53125 10.3438 5.53125 10.6875 5.34375 10.875C5.15625 11.0625 4.8125 11.0625 4.625 10.875L0.125 6.375C0.03125 6.28125 0 6.15625 0 6C0 5.875 0.03125 5.75 0.125 5.65625L4.625 1.15625C4.8125 0.96875 5.15625 0.96875 5.34375 1.15625C5.53125 1.34375 5.53125 1.6875 5.34375 1.875L1.6875 5.5H11ZM13.5 0C13.75 0 14 0.25 14 0.5V11.5C14 11.7812 13.75 12 13.5 12C13.2188 12 13 11.7812 13 11.5V0.5C13 0.25 13.2188 0 13.5 0Z" fill="black"/>
@@ -97,7 +97,7 @@ export default function Slider({ items, locale }) {
             }
 
             {/** BUTTON POPUP RESOURCE */}
-            <div className="absolute lg:bottom-[40px] xl:bottom-[20px] translate-y-[22px] md:translate-y-[24px] xl:translate-y-0 left-[75%] md:left-[60%] lg:left-[67%] lg:-translate-x-[50%] cursor-pointer" 
+            <div className="absolute lg:bottom-[70px] xl:bottom-[20px] translate-y-[22px] md:translate-y-[24px] xl:translate-y-0 left-[75%] md:left-[60%] lg:left-[67%] lg:-translate-x-[50%] cursor-pointer" 
                     onClick={() => { navigate(`/resources/${items[index].id}`, { state: { modal: true } }) }} 
                 >
                     <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">

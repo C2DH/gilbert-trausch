@@ -196,7 +196,7 @@ export default function Navbar({color}) {
                                 </div>
 
                                 <div className="text-[12px] leading-[12px] lg:text-[15px] lg:leading-[15px] absolute left-0 bottom-[10px] flex items-end">
-                                    <span>Copyright © Université du Luxembourg 2025. All rights reserved.</span>
+                                    <span>Copyright © <Link to={"https://www.uni.lu/en/"} target="_blank">Université du Luxembourg 2025</Link>. All rights reserved.</span>
                                 </div>
 
                             </div>
