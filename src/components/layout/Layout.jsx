@@ -18,6 +18,7 @@ export default function Layout () {
     const isTabletPortrait = useMediaQuery({
         query: '(min-width: 600px) and (max-width: 1024px) and (orientation: portrait)',
     });
+    const isResourceDetailPage = location.pathname.startsWith('/resources/') && location.pathname !== '/resources';
 
     useEffect(() => {
         const blackNavbarRoutes = [
@@ -50,7 +51,7 @@ export default function Layout () {
     return (
         <>
             <AnimatePresence>
-                {(!firstTime || location.pathname !== "/" || isMobile) &&
+                {(!firstTime || location.pathname !== "/" || isMobile) && !isResourceDetailPage &&
                     <Navbar color={colorNavbar} />
                 }
             </AnimatePresence>
