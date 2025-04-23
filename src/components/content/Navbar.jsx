@@ -18,6 +18,7 @@ export default function Navbar({color}) {
     const location = useLocation();
     const navigate = useNavigate();
     const path = location.pathname;
+    const isChapterOrNotebookRoute = /\/(chapter|magic-notebook)\/[^/]+/.test(location.pathname);
 
     // Pas de backgrounds
     const noBackgroundRoutes = [
@@ -72,7 +73,10 @@ export default function Navbar({color}) {
                             </svg>
                         </li>
 
-                        <li className="absolute top-[8px] right-0 lg:block lg:relative lg:top-auto lg:right-auto uppercase cursor-pointer text-[14px] hover:text-[#4100FC] duration-500 lg:order-2" style={{ color: color }}>
+                        <li className={classNames("absolute top-[8px] lg:block lg:relative lg:top-auto lg:right-auto uppercase cursor-pointer text-[14px] hover:text-[#4100FC] duration-500 lg:order-2", {
+                            "right-[40px]": isChapterOrNotebookRoute,
+                            "right-0": !isChapterOrNotebookRoute
+                        })} style={{ color: color }}>
                             <LanguageSwitcher switchLanguage={changeLanguage} lang={language}/>
                         </li>
                     </ul>

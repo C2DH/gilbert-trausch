@@ -38,7 +38,7 @@ export default function Slider({ items, locale }) {
                             {(item.type !== "audio" && item.optimized_url?.large) && (
                                 <img loading='lazy'
                                     onClick={() => { navigate(`/resources/${item.id}`, { state: { modal: true } }) }}
-                                    src={item.optimized_url?.large.url} alt={item.name[locale]} className="w-full md:w-[50%] lg:w-auto h-[calc(100dvh-250px)] object-contain" />
+                                    src={item.optimized_url?.large.url} alt={item.name[locale]} className="w-full md:w-[50%] lg:w-auto lg:h-[calc(100dvh-250px)] object-contain" />
                             )}
 
                             {item.type === "audio" && (

@@ -228,7 +228,7 @@ export default function Resources() {
                                                                         ) : (
                                                                             <img src={ videoLogo } alt="Logo video" className="h-[50px] lg:h-[120px] rounded-[6px]"/>
                                                                         )}
-                                                                        <span className="absolute w-[80%] top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] text-[12px] leading-[15px] md:text-[14px] md:leading-[20px] italic text-center">{ document.name[locale] }</span>
+                                                                        <span className="line-clamp-6 absolute w-[80%] top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] text-[12px] leading-[15px] md:text-[14px] md:leading-[20px] italic text-center">{ document.name[locale] }</span>
                                                                     </div>
                                                                 </div>
                                                             )

@@ -15,7 +15,7 @@ export default function SlideHeader({ data, showSubtitle, index, locale }) {
                 <div className="container mx-auto px-[30px] xl:px-0 h-[calc(100dvh-40px)]">
                     <div className="grid grid-cols-12 h-full">
                         <div className={classNames("col-span-12 lg:col-span-8 xl:col-span-5 flex flex-col justify-center h-full", {
-                            "items-center": !data?.slidable?.content[locale]
+                            "": !data?.slidable?.content[locale]
                         })}>
                             {data?.slidable?.title && locale && (
                                 <h1 className="font-extralight mb-4 xl:mb-10" style={{ color }}>
@@ -62,7 +62,7 @@ export default function SlideHeader({ data, showSubtitle, index, locale }) {
                                                     >
                                                         {data?.slidable?.subtitle && locale && (
                                                             <h2
-                                                                className="pt-[40px] text-[30px] 2xl:text-[40px] leading-none font-extralight"
+                                                                className="pt-[40px] text-[25px] sm:text-[30px] 2xl:text-[40px] leading-none font-extralight"
                                                                 style={{ color }}
                                                             >
                                                                 {data?.slidable?.subtitle[locale]}
