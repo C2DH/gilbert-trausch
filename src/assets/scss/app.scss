@@ -37,11 +37,33 @@ body {
 } */
 
 ::-webkit-scrollbar {
-    display: none; 
+    width: 0px;
+    height: 0px;
 }
 
-.resources ::-webkit-scrollbar {
-    display: none; 
+.scrollbar_pdf {
+    overflow: auto;
+    scrollbar-width: thin; /* Firefox */
+    scrollbar-color: #888 #f1f1f1; /* Firefox */
+}
+
+.scrollbar_pdf::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+
+.scrollbar_pdf::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 5px;
+}
+
+.scrollbar_pdf::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 5px;
+}
+
+.scrollbar_pdf::-webkit-scrollbar-thumb:hover {
+    background: #555;
 }
 
 .popup_resource::-webkit-scrollbar {
@@ -70,6 +92,15 @@ blockquote {
     font-weight: 400;
 }
 
+.inputPage input::-webkit-outer-spin-button,
+.inputPage input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.inputPage input[type=number] {
+    -moz-appearance:textfield;
+}
 
 .tooltip-trigger {
     svg {

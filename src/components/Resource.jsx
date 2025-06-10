@@ -58,38 +58,40 @@ export default function Resource() {
 
                 <div className='flex-1 overflow-y-auto'>
                     <div className="grid grid-cols-12">
-                        <div className="col-span-12 lg:col-span-8 2xl:col-span-9 border-r border-black h-full relative pt-[20px] lg:pt-0">
-                            <div className='grid grid-cols-12 lg:grid-cols-9 px-[20px]'>
-                                <div className='col-span-12 lg:col-span-9 flex flex-col justify-center items-center overflow-hidden h-[60dvh] md:h-[70vh] lg:h-[100dvh]'>
+                        <div className="col-span-12 lg:col-span-8 2xl:col-span-9 border-r border-black lg:h-[100dvh] relative pt-[20px] lg:pt-0 lg:flex justify-center items-center">
+        
+                            { (data.type === "image" && data.optimized_url) &&
+                                <div className='px-[20px] w-full'>
+                                    <ImageZoom image={ isMobile ? data.optimized_url.thumbnail.url : data.optimized_url.large.url } alt={ data.name[locale] }/>  
+                                </div>                       
+                            }
 
-                                    { (data.type === "image" && data.optimized_url) &&                            
-                                        <ImageZoom image={ isMobile ? data.optimized_url.thumbnail.url : data.optimized_url.large.url } alt={ data.name[locale] }/>  
-                                    }
+                            { data.type === "video" &&
+                                <div className='w-full h-full bg-black py-[20px] lg:py-0'>
+                                    <PlayerVideo url={ data.url } />
+                                </div>
+                            }
 
-                                    { data.type === "video" &&
-                                        <PlayerVideo url={ data.url } />
-                                    }
-
-                                    { data.type === "audio" && (
-                                        <div className='aspect-square w-2/3 md:w-1/3 flex flex-col items-center'>
-                                            { data.cover ? (
-                                                <img src={data.cover[locale]} alt={data.name[locale]} className='rounded-[6px] mb-[30px]'/>
-                                            ) : (
-                                                <div className="bg-[#DBDBD0] flex justify-center items-center relative mb-[30px] border border-black rounded-[6px]">
-                                                    <img src={ bgAudio } alt="Logo audio" className="rounded-[6px]" />
-                                                </div>
-                                            )}
-
-                                            <PlayerAudio url={data.url}/>
+                            { data.type === "audio" && (
+                                <div className='aspect-square w-2/3 md:w-1/3 flex flex-col items-center'>
+                                    { data.cover[locale] ? (
+                                        <img src={data.cover[locale]} alt={data.name[locale]} className='rounded-[6px] mb-[30px] max-h-[250px] md:max-h-none'/>
+                                    ) : (
+                                        <div className="bg-[#DBDBD0] flex justify-center items-center relative mb-[30px] border border-black rounded-[6px]">
+                                            <img src={ bgAudio } alt="Logo audio" className="rounded-[6px] max-h-[250px] md:max-h-none" />
                                         </div>
                                     )}
 
-                                    { (data.type !== 'audio' && data.type !== 'video' && data.type !== 'image') && 
-                                        <PlayerPDF url={ data.url } optimized_url={data.optimized_url}/>
-                                    }
-
+                                    <PlayerAudio url={data.url}/>
                                 </div>
-                            </div>
+                            )}
+
+                            { (data.type !== 'audio' && data.type !== 'video' && data.type !== 'image') &&
+                                <div className='w-full px-[20px] lg:flex flex-col lg:flex-row items-center justify-center'>
+                                    <PlayerPDF url={ data.url } optimized_url={data.optimized_url}/>
+                                </div>
+                            }
+
                         </div>
 
                         <div className="col-span-12 lg:col-span-4 2xl:col-span-3 flex flex-col overflow-auto">
@@ -162,9 +164,8 @@ const ImageZoom = ({ image, alt }) => {
         <TransformWrapper initialScale={1} initialPositionX={0} initialPositionY={0} onTransformed={(e) => handleTransform(e)}>
             {() => (
                 <>
-                    {/* <TransformComponent wrapperStyle={{ overflow: 'visible'}}> */}
-                    <TransformComponent>
-                        <img src={ image } alt={ alt } className='max-h-[calc(100dvh-120px)] object-contain'/>
+                    <TransformComponent wrapperStyle={{ width: '100%'}}>
+                        <img src={ image } alt={ alt } className='lg:max-h-[calc(100dvh-120px)]'/>
                     </TransformComponent>
                     <Controls zoom={stateZoom}/>
                 </>
@@ -195,7 +196,7 @@ const Controls = ({ zoom }) => {
             </div>
 
             {/* Controls Mobile */}
-            <div className='lg:hidden flex justify-center mt-[20px]'>
+            <div className='lg:hidden flex justify-center mt-[20px] pb-[50px]'>
                 <div className="flex cursor-pointer">
                     <div className='border border-black' style={{ borderTopLeftRadius: '6px', borderBottomLeftRadius: '6px'}} onClick={() => zoomOut() }>
                         <MagnifyingGlassMinusIcon style={{width: '50px'}} className={classNames('px-[15px] py-[8px]', { "pointer-events-none opacity-30": zoom === null || zoom === 1 })} />

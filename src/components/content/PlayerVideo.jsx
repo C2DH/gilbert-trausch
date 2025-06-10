@@ -80,7 +80,8 @@ export default function PlayerVideo ({url, startAudio, setStartAudio, isVisible,
     } else {
         return (
             <div className="flex items-center justify-center w-full h-full transition-all duration-700 ease-out">
-                <div className={`transition-all duration-700 ease-out ${ready ? 'w-full lg:w-[75%]' : 'w-[10%]'}`}>
+                {/* <div className={`transition-all duration-700 ease-out ${ready ? 'w-full lg:w-[75%]' : 'w-[10%]'}`}> */}
+                <div className={`transition-all duration-700 ease-out ${ready ? 'w-full lg:w-[95%]' : 'w-[10%]'}`}>
                     <div className="relative w-full" style={{ paddingBottom: "56.25%" }}>
                         <ReactPlayer
                         url={url}

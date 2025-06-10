@@ -21,6 +21,7 @@ export default function PlayerPDF({ url, optimized_url, id }) {
     };
     const [numPages, setNumPages] = useState(null);
     const [pageNumber, setPageNumber] = useState(1);
+    const [inputPage, setInputPage] = useState('1')
     const [renderWidth, setRenderWidth] = useState(0);
     const [renderHeight, setRenderHeight] = useState(0);
     const containerRef = useRef(null);
@@ -32,7 +33,7 @@ export default function PlayerPDF({ url, optimized_url, id }) {
         if (!container) return;
     
         const containerWidth = container.offsetWidth;
-        const containerHeight = container.offsetHeight; 
+        const containerHeight = container.offsetHeight;
 
         // Calcul du ratio unique
         const widthRatio = originalWidth / originalHeight;
@@ -42,11 +43,13 @@ export default function PlayerPDF({ url, optimized_url, id }) {
         const isLandscape = originalWidth > originalHeight;
     
         if (isPortrait) {
-            setRenderHeight(containerHeight);
+            // setRenderHeight(containerHeight);
             setRenderWidth(widthRatio * containerHeight); // Calcule la largeur basée sur la hauteur
+            setRenderHeight(containerWidth / widthRatio); 
         } else if (isLandscape) {
-            setRenderWidth(containerWidth);
+            // setRenderWidth(containerWidth);
             setRenderHeight(containerWidth / widthRatio); // Calcule la hauteur basée sur la largeur
+            setRenderWidth(widthRatio * containerHeight)
         }
     };
 
@@ -54,7 +57,7 @@ export default function PlayerPDF({ url, optimized_url, id }) {
         calculateRenderDimensions();
         window.addEventListener('resize', calculateRenderDimensions);
         return () => window.removeEventListener('resize', calculateRenderDimensions);
-    }, [originalWidth, originalHeight]);
+    }, [originalWidth, originalHeight, numPages]);
 
     const zoomIn = () => {
         setRenderWidth((prev) => prev * 1.05); // Zoom 5% en plus
@@ -69,18 +72,40 @@ export default function PlayerPDF({ url, optimized_url, id }) {
     const nextPage = () => setPageNumber((prev) => Math.min(prev + 1, numPages));
     const prevPage = () => setPageNumber((prev) => Math.max(prev - 1, 1));
 
+    const handleInputChange = (e) => {
+        setInputPage(e.target.value);
+    };
+
+        const handleInputBlurOrEnter = () => {
+        let page = parseInt(inputPage, 10);
+        if (!page || page < 1) page = 1;
+        else if (page > numPages) page = numPages;
+        setPageNumber(page);
+        setInputPage(String(page));
+    };
+
+    const handleInputKeyDown = (e) => {
+        if (e.key === 'Enter') {
+            e.preventDefault();
+            handleInputBlurOrEnter();
+        }
+    };
+
+    useEffect(() => {
+        setInputPage(String(pageNumber));
+    }, [pageNumber]);
+
     return (
         <>
-            {/* <div ref={containerRef} className="w-full h-full lg:h-[calc(100dvh-160px)] flex justify-center items-center overflow-hidden mb-[20px] lg:mb-0" onClick={() => { handleClick }}> */}
-            <div ref={containerRef} className="w-full h-[50vh] md:h-[70vh] xl:h-[80vh] flex justify-center items-center mb-[20px] overflow-scroll" onClick={() => { handleClick }}>
+            <div ref={containerRef} className="h-[52vh] ] md:h-[calc(100vh-100px)] mb-[20px] overflow-scroll scrollbar_pdf flex lg:block justify-center inputPage" onClick={() => { handleClick }}>
                 <Document file={url} onLoadSuccess={({ numPages }) => setNumPages(numPages)}>
                     <Page
-                    onClick={() => { handleClick() }}
-                    pageNumber={pageNumber}
-                    width={renderWidth}
-                    height={renderHeight}
-                    renderAnnotationLayer={false}
-                    renderTextLayer={false}
+                        onClick={() => { handleClick() }}
+                        pageNumber={pageNumber}
+                        width={renderWidth}
+                        // height={renderHeight}
+                        renderAnnotationLayer={false}
+                        renderTextLayer={false}
                     />
                 </Document>
 
@@ -99,8 +124,19 @@ export default function PlayerPDF({ url, optimized_url, id }) {
                             <MagnifyingGlassMinusIcon className="px-4 py-2 w-[50px] cursor-pointer" />
                         </div>
 
-                        <div className="border-y border-black text-sm flex items-center px-3 cursor-pointer">
-                            {`${pageNumber} / ${numPages || ''}`}
+                        <input
+                            type="number"
+                            min={1}
+                            max={numPages || 1}
+                            value={inputPage}
+                            onChange={handleInputChange}
+                            onBlur={handleInputBlurOrEnter}
+                            onKeyDown={handleInputKeyDown}
+                            className="border-y border-black text-sm text-center pl-[5px] outline-none bg-transparent"
+                        />
+
+                        <div className="border-y border-black text-sm flex items-center pr-[10px] cursor-default">
+                            / {numPages || '?'}
                         </div>
 
                         <div className="border-y border-l border-black" onClick={zoomIn}>
@@ -119,7 +155,7 @@ export default function PlayerPDF({ url, optimized_url, id }) {
             </div>
 
             {/* Controls Mobile */}
-            <div className="lg:hidden flex justify-center pb-[20px]">
+            <div className="lg:hidden flex justify-center pb-[50px]">
                 <div className="border border-black rounded-l-md" onClick={prevPage}>
                     <ArrowLeftIcon
                     className={classNames('px-4 py-2 w-[50px]', {
