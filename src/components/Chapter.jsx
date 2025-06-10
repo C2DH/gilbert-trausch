@@ -436,9 +436,10 @@ export default function Chapter() {
                                         return (
                                             <h3 
                                                 key={header.slide.slidable.id} 
-                                                className={classNames("text-white cursor-pointer hover:opacity-100 w-[80%] relative flex items-center gap-3 pb-[25px]", {
+                                                className={classNames("text-white cursor-pointer hover:opacity-100 w-[85%] relative flex items-center gap-3 pb-[25px]", {
                                                     "before:content-[''] before:block before:w-[1px] before:h-[30px] before:bg-white": index === activeHeaderIndex,
-                                                    "font-thin": index !== activeHeaderIndex
+                                                    "font-light": index !== activeHeaderIndex,
+                                                    "font-bold": index === activeHeaderIndex
                                                 }
                                             )}
                                                 onClick={() => { 

@@ -139,7 +139,9 @@ export default function Resources() {
 
     // TAGS 
     useEffect(() => {
+        // const url = `${API_URL}/api/tags`;
         const url = `${API_URL}/api/tags`;
+        console.log('url', url)
     
         fetch(url)
             .then((response) => {
@@ -155,7 +157,7 @@ export default function Resources() {
                 console.error("Erreur lors du chargement des tags :", error)
                 setTags([]);
             });
-    }, []); 
+    }, [locale]); 
     
     useEffect(() => {
         if (imagesLoaded === documents.length) {
@@ -305,8 +307,10 @@ export default function Resources() {
                                             <span className="text-[#4100FC] font-semibold text-[15px] cursor-pointer uppercase" onClick={() => setSelectedFilters(prev => ({ ...prev, tags: [] }))}>Reset</span>
                                         </div>
                                         <div className="flex-auto overflow-y-auto pb-[20px] gap-y-[10px] gap-x-[5px] flex flex-wrap">
-                                            { tags?.map(tag =>
-                                                tag?.name?.[locale] && (
+                                            {tags
+                                                ?.filter(tag => tag?.name?.[locale])
+                                                ?.sort((a, b) => a.name[locale].localeCompare(b.name[locale], locale))
+                                                ?.map(tag => (
                                                     <span 
                                                         key={ tag.id } 
                                                         data-tag= { tag.id } 

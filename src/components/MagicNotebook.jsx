@@ -197,7 +197,7 @@ export default function MagicNotebook() {
                     
                     {/** BUTTON RETURN NOTEBOOKS */}
                     <div
-                        className={classNames('fixed xl:absolute right-[20px] z-[100] cursor-pointer transition-all duration-500', {
+                        className={classNames('fixed xl:absolute right-[20px] z-[101] cursor-pointer transition-all duration-500', {
                             'top-[80px]': isLarge,
                             'top-[4px]': !isLarge
                         })}

@@ -85,12 +85,12 @@ export default function Chapters() {
                                 {data?.map((item, index) => (
                                     <li
                                         key={item.id}
-                                        className="group mb-[20px] lg:mb-[50px] last:mb-0  hover:text-[#4100FC] transition-all duration-350 font-extralight w-fit flex gap-5"
+                                        className="group mb-[20px] lg:mb-[50px] last:mb-0 hover:text-[#4100FC] transition-all duration-350 font-extralight w-fit flex gap-5 relative"
                                         onMouseEnter={() => setHoveredIndex(index)}
                                         onMouseLeave={() => setHoveredIndex(null)}
                                     >
-                                        <span className="transition-all duration-500 group-hover:text-[#4100FC]">{romanize(index)}.</span>
-                                        <Link to={`/chapter/${item.slug}`} className="transition-all duration-500 group-hover:text-[#4100FC] group-hover:lg:pl-[30px]">{item.name[locale]}</Link>
+                                        <span className="transition-all duration-500 group-hover:text-[#4100FC] absolute left-0 top-0">{romanize(index)}.</span>
+                                        <Link to={`/chapter/${item.slug}`} className="pl-[40px] transition-all duration-500 group-hover:text-[#4100FC] group-hover:lg:pl-[60px]">{item.name[locale]}</Link>
                                     </li>
                                 ))}
                             </ul>

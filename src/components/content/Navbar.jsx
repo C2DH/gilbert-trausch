@@ -115,7 +115,7 @@ export default function Navbar({color}) {
 
                                 {/** MAIN MENU */}
                                 <div className="2xl:flex items-center h-auto lg:h-[calc(100dvh-40px)] mt-[40px] lg:mt-[100px] 2xl:mt-0">
-                                    <ul className="font-extralight text-[24px] md:text-[36px] 2xl:text-[50px] uppercase tracking-[2px]">
+                                    <ul className="font-extralight text-[22px] md:text-[36px] 2xl:text-[50px] uppercase tracking-[2px]">
                                         <li className="hover:text-[#4100FC] duration-[450ms] hover:lg:pl-[50px] leading-none mb-4 lg:mb-6 cursor-pointer w-fit"
                                             onClick={() => handleMenuClick('/biography')}
                                         >
@@ -150,7 +150,7 @@ export default function Navbar({color}) {
                                 </div>
 
                                 {/** SUBMENU */}
-                                <div className="lg:absolute pt-[70px] lg:pt-0 bottom-[150px] left-0">
+                                <div className="lg:absolute pt-[55px] lg:pt-0 bottom-[150px] left-0">
                                     <ul className="uppercase text-[16px] 2xl:text-[18px] leading-[22px] font-light">
                                         <li className="hover:text-[#4100FC] w-fit cursor-pointer"
                                             onClick={() => handleMenuClick('/about')}
@@ -174,27 +174,27 @@ export default function Navbar({color}) {
                                 <div className="absolute left-0 bottom-[60px] flex items-end gap-3 lg:gap-8 flex-wrap">
                                     <div>
                                         <Link to={'https://www.c2dh.uni.lu/'} target="_blank">
-                                            <img src={uni} alt="Logo Université Luxembourg et C2DH" className="h-[40px] lg:h-[50px]" />
+                                            <img src={uni} alt="Logo Université Luxembourg et C2DH" className="h-[38px] lg:h-[50px]" />
                                         </Link>
                                     </div>
                                     <div>
                                         <Link to={'https://history.uni.lu/'} target="_blank">
-                                            <img src={hist} alt="Logo Institute of History" className="h-[40px] lg:h-[50px]" />
+                                            <img src={hist} alt="Logo Institute of History" className="h-[38px] lg:h-[50px]" />
                                         </Link>
                                     </div>
                                     <div>
                                         <Link to={'https://www.uni.lu/llc-fr/'} target="_blank">
-                                            <img src={llc} alt="Logo Luxembourg Learning Center" className="h-[40px] lg:h-[50px]" />
+                                            <img src={llc} alt="Logo Luxembourg Learning Center" className="h-[38px] lg:h-[50px]" />
                                         </Link>
                                     </div>
                                     <div>
                                         <Link to={'https://www.uni.lu/fstm-fr/'} target="_blank">
-                                            <img src={ftcm} alt="Logo Faculté des Sciences, des Technologies et de Médecine" className="h-[40px] lg:h-[50px]" />
+                                            <img src={ftcm} alt="Logo Faculté des Sciences, des Technologies et de Médecine" className="h-[38px] lg:h-[50px]" />
                                         </Link>
                                     </div>
                                     <div>
                                         <Link to={'https://www.loschfondation.lu/'} target="_blank">
-                                            <img src={losch} alt="Logo Fondation André Losch" className="h-[40px] lg:h-[50px]" />
+                                            <img src={losch} alt="Logo Fondation André Losch" className="h-[38px] lg:h-[50px]" />
                                         </Link>
                                     </div>
                                 </div>
