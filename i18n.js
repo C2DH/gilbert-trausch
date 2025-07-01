@@ -38,7 +38,8 @@ i18n
 					"filters": "Filtres",
 					"bio_description": "<p>L’historien Gilbert Trausch (1931-2018) est encore largement connu du public luxembourgeois. Pendant des décennies, ses incontournables interventions dans les médias ont contribué à faire découvrir l’histoire du Luxembourg à toute une génération.</p><p>Ce n’est pourtant là qu’une des nombreuses facettes d’un historien prolifique de la seconde moitié du XXe siècle qui, en plus d’avoir renouvelé le paysage historiographique luxembourgeois, bénéficiait aussi d’une renommée solide en dehors des frontières du Grand-Duché.</p><p>Formateur de toute une génération d’historiens, tour à tour directeur de la Bibliothèque nationale, du Centre Universitaire de Luxembourg (CUL – ancêtre de l’Université du Luxembourg) et du Centre d'études et de recherches européennes Robert Schuman (CERE), fréquentant les cercles ministériels et diplomatiques, Gilbert Trausch était une personnalité omniprésente de la société luxembourgeoise.</p>",
 					"load_more": "Charger plus",
-					"tablet_message": "Veuillez tourner votre tablette en mode paysage pour continuer."
+					"tablet_message": "Veuillez tourner votre tablette en mode paysage pour continuer.",
+					"contact": "Contact"
 				}
 			},
 			de: {
@@ -63,7 +64,8 @@ i18n
 					"filters": "Filter",
 					"bio_description": "<p>Der Historiker Gilbert Trausch (1931-2018) ist der luxemburgischen Öffentlichkeit noch weitgehend bekannt. Jahrzehntelang trugen seine wichtigen Auftritte in den Medien dazu bei, dass eine ganze Generation die Geschichte Luxemburgs kennenlernte.</p><p>Dies ist nur eine der vielen Facetten eines fruchtbaren Historikers der zweiten Hälfte des 20. Jahrhunderts, der nicht nur die historiografische Landschaft Luxemburgs erneuerte, sondern auch außerhalb der Grenzen des Großherzogtums einen soliden Ruf genoss.</p><p>Als Ausbilder einer ganzen Generation von Historikern, Direktor der Nationalbibliothek, des Centre Universitaire de Luxembourg (CUL - Vorläufer der Universität Luxemburg) und des Centre d'Études et de Recherches Européennes Robert Schuman (CERE), der in ministeriellen und diplomatischen Kreisen verkehrte, war Gilbert Trausch eine allgegenwärtige Persönlichkeit in der luxemburgischen Gesellschaft.</p>",
 					"load_more": "Mehr laden",
-					"tablet_message": "Bitte drehen Sie Ihr Tablet in den Querformatmodus, um fortzufahren."
+					"tablet_message": "Bitte drehen Sie Ihr Tablet in den Querformatmodus, um fortzufahren.",
+					"contact": "Kontakt"
 				}
 			}
 		}

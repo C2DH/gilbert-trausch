@@ -1,25 +1,30 @@
 import { useEffect, useState } from "react";
 import bgMenu from '../../assets/images/backgrounds/bg-menu.webp';
+import bgMenuDe from '../../assets/images/backgrounds/bg-menu-de.webp';
 import { AnimatePresence, motion } from "framer-motion";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useLanguageContext } from "../../contexts/LanguageProvider";
 import classNames from "classnames";
-import { t } from "i18next";
 import ftcm from "../../assets/images/FTCM.svg";
 import hist from "../../assets/images/IHIST.svg";
 import llc from "../../assets/images/LLC.svg";
 import losch from "../../assets/images/losch.svg";
 import uni from "../../assets/images/uni.svg";
+import { useTranslation } from "react-i18next";
 
 export default function Navbar({color}) {
 
     const [isOpen, setIsOpen] = useState(false);
     const {language, changeLanguage } = useLanguageContext();
     const location = useLocation();
+    const { i18n, t } = useTranslation();
+    const locale = i18n.language;
     const navigate = useNavigate();
     const path = location.pathname;
     const isChapterOrNotebookRoute = /\/(chapter|magic-notebook)\/[^/]+/.test(location.pathname);
 
+
+    console.log('locale navaba', locale )
     // Pas de backgrounds
     const noBackgroundRoutes = [
         /^\/$/,
@@ -93,7 +98,7 @@ export default function Navbar({color}) {
                         exit={{ y: "-100%" }}
                         transition={{ duration: 0.8, ease: "easeInOut" }}
                     >
-                        <div className="h-[100svh] sm:h-[100dvh] px-[20px]" style={{ background: `url(${bgMenu}) center / cover no-repeat` }}>
+                        <div className="h-[100svh] sm:h-[100dvh] px-[20px]" style={{ background: `url(${locale === 'fr' ? bgMenu : bgMenuDe}) center / cover no-repeat` }}>
                             <div className="container mx-auto h-full relative">
                                 <div className="header h-[40px]">
                                     <ul className="flex justify-between h-full items-center">
@@ -165,7 +170,7 @@ export default function Navbar({color}) {
                                         </li>
 
                                         <li className="hover:text-[#4100FC] w-fit cursor-pointer">
-                                            <Link to={'mailto:c2dh@uni.lu'}>Contact</Link>
+                                            <Link to={'mailto:c2dh@uni.lu'}>{t('contact')}</Link>
                                         </li>
                                     </ul>
                                 </div>

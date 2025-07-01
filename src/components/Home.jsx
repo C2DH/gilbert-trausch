@@ -10,6 +10,15 @@ import intro_6 from '../assets/images/intro/wallpaper_intro_6.jpg';
 import intro_7 from '../assets/images/intro/wallpaper_intro_7.jpg';
 import intro_8 from '../assets/images/intro/wallpaper_intro_8.jpg';
 import intro_9 from '../assets/images/intro/wallpaper_intro_9.jpg';
+import intro_1_de from '../assets/images/intro/wallpaper_intro_1_de.webp';
+import intro_2_de from '../assets/images/intro/wallpaper_intro_2_de.webp';
+import intro_3_de from '../assets/images/intro/wallpaper_intro_3_de.webp';
+import intro_4_de from '../assets/images/intro/wallpaper_intro_4_de.webp';
+import intro_5_de from '../assets/images/intro/wallpaper_intro_5_de.webp';
+import intro_6_de from '../assets/images/intro/wallpaper_intro_6_de.webp';
+import intro_7_de from '../assets/images/intro/wallpaper_intro_7_de.webp';
+import intro_8_de from '../assets/images/intro/wallpaper_intro_8_de.webp';
+import intro_9_de from '../assets/images/intro/wallpaper_intro_9_de.webp';
 import { useNavigate } from 'react-router-dom';
 import { useMediaQuery } from 'react-responsive';
 import bgSmall from '../assets/images/backgrounds/bg-1.webp';
@@ -22,11 +31,13 @@ import { ForwardIcon } from '@heroicons/react/24/outline';
 
 
 const images = [intro_2, intro_3, intro_4, intro_5, intro_6, intro_7, intro_8, intro_9];
+const imagesDE = [intro_2_de, intro_3_de, intro_4_de, intro_5_de, intro_6_de, intro_7_de, intro_8_de, intro_9_de];
 const EXPIRE = 6 * 3600 * 1000;
 
 export default function Home() {
 
-    const { t } = useTranslation();
+    const { i18n, t } = useTranslation();
+    const locale = i18n.language;
     const [visibleImages, setVisibleImages] = useState([]);
     const [showMenu, setShowMenu] = useState(false);
     const [showStartButton, setShowStartButton] = useState(true);
@@ -36,7 +47,8 @@ export default function Home() {
     const [startAudio, setStartAudio] = useState(false);
     const {firstTime, setFirstTime} = useContext(NavbarHomeContext);
     const [skip, setSkip] = useState(false)
-    
+
+    const currentImages = locale === 'de' ? imagesDE : images;
 
     const handleMenuClick = (path) => {
         setTimeout(() => {
@@ -78,10 +90,10 @@ export default function Home() {
             setShowMenu(true);
         } else {
             setTimeout(() => {
-                images.forEach((img, index) => {
+                currentImages.forEach((img, index) => {
                     setTimeout(() => {
                         setVisibleImages((prev) => [...prev, img]);
-                        if (index === images.length - 1) {
+                        if (index === currentImages.length - 1) {
                             setTimeout(() => {
                                 setShowMenu(true)
                                 setFirstTime(false)
@@ -99,7 +111,7 @@ export default function Home() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ easeInOut, duration: 1.2 }}
-            style={{ background: `url(${isMobile ? bgSmall : intro_1}) center / cover no-repeat` }}
+            style={{ background: `url(${isMobile ? bgSmall : locale === 'fr' ? intro_1 : intro_1_de}) center / cover no-repeat` }}
         >
 
             {/* Desktop Animation */}
