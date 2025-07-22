@@ -24,7 +24,6 @@ export default function Navbar({color}) {
     const isChapterOrNotebookRoute = /\/(chapter|magic-notebook)\/[^/]+/.test(location.pathname);
 
 
-    console.log('locale navaba', locale )
     // Pas de backgrounds
     const noBackgroundRoutes = [
         /^\/$/,

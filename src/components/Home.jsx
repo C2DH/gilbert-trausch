@@ -84,26 +84,29 @@ export default function Home() {
     };
 
     useEffect(() => {
-        if (!animationActive) return;
-    
-        if (isMobile) {
-            setShowMenu(true);
+
+        if (!animationActive) {
+            return;
         } else {
-            setTimeout(() => {
-                currentImages.forEach((img, index) => {
-                    setTimeout(() => {
-                        setVisibleImages((prev) => [...prev, img]);
-                        if (index === currentImages.length - 1) {
-                            setTimeout(() => {
-                                setShowMenu(true)
-                                setFirstTime(false)
-                            }, skip ? 0 : 1000) 
-                        }
-                    }, skip ? 0 : index * 3000);
-                });
-            }, skip ? 0 : 2000); // Délai avant le début des images"
+            if (isMobile) {
+                setShowMenu(true);
+            } else {
+                setTimeout(() => {
+                    currentImages.forEach((img, index) => {
+                        setTimeout(() => {
+                            setVisibleImages((prev) => [...prev, img]);
+                            if (index === currentImages.length - 1) {
+                                setTimeout(() => {
+                                    setShowMenu(true)
+                                    setFirstTime(false)
+                                }, skip ? 0 : 1000) 
+                            }
+                        }, skip ? 0 : index * 3000);
+                    });
+                }, skip ? 0 : 2000); // Délai avant le début des images"
+            }
         }
-    }, [animationActive, isMobile, skip]);
+    }, [animationActive, isMobile, skip, locale]);
 
     return (
         <motion.div 

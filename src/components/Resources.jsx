@@ -141,7 +141,6 @@ export default function Resources() {
     useEffect(() => {
         // const url = `${API_URL}/api/tags`;
         const url = `${API_URL}/api/tags`;
-        console.log('url', url)
     
         fetch(url)
             .then((response) => {
@@ -202,8 +201,8 @@ export default function Resources() {
                             {/** DOCUMENTS */}
                             { Object.values(documents).flat().length > 0 ? (
                                     <div className="col-span-12 lg:col-span-9 flex h-[calc(100dvh-160px)] overflow-y-auto" ref={containerRef}>
-                                        <div className="flex-1  py-[30px]">
-                                            <ResponsiveMasonry columnsCountBreakPoints={{ 300: 3, 768: 3, 1024: 3, 1280: 4 }} gutterBreakpoints={{ 300: "12px", 768: "16px", 1024: "20px" }}>
+                                        <div className="flex-1 py-[30px]">
+                                            <ResponsiveMasonry columnsCountBreakPoints={{ 300: 3, 768: 3, 1024: 3, 1280: 4 }} gutterBreakpoints={{ 300: "12px", 768: "16px", 1024: "20px" }} className="pb-[30px]">
                                                 <Masonry>
                                                 {Object.values(documents).flat().map((document, index) => {
                                                     const aspectRatio = (document?.optimized_url?.thumbnail?.height / document?.optimized_url?.thumbnail?.width) * 100; // Ratio pour le padding-bottom

@@ -82,7 +82,7 @@ export default function Biography() {
                     <div className="biography container mx-auto pt-[80px] xl:pt-[100px] px-[20px] xl:px-0">
                         <div className="grid grid-cols-12 mb-[50px] xl:mb-[100px] 2xl:mb-[150px]">
                             <div className="col-span-12 md:col-span-10 lg:col-span-8 2xl:col-span-6 text-[#4100FC]">
-                                <h1 className="text-[40px] leading-none md:text-[60px] md:leading-[95px] text-center md:text-left mb-[30px] md:mb-[40px]">Biographie</h1>
+                                <h1 className="text-[40px] leading-none md:text-[60px] md:leading-[95px] text-center md:text-left mb-[30px] md:mb-[40px]">{t('biography')}</h1>
                                 <div>{formatRichText(t('bio_description'))}</div>
                             </div>
                         </div>
