@@ -16,7 +16,7 @@ const PER_PAGE = 100;
 
 export default function Resources() {
 
-    const API_URL = import.meta.env.VITE_API_URL;
+    
     const { i18n, t } = useTranslation();
     const locale = i18n.language;
     const [documents, setDocuments] = useState({});
@@ -95,7 +95,7 @@ export default function Resources() {
         params.append("page", page);
         params.append("perPage", PER_PAGE);
 
-        const url = `${API_URL}/api/resources?${params.toString()}`;
+        const url = `/api/resources?${params.toString()}`;
 
         fetch(url)
             .then((response) => {
@@ -139,8 +139,8 @@ export default function Resources() {
 
     // TAGS 
     useEffect(() => {
-        // const url = `${API_URL}/api/tags`;
-        const url = `${API_URL}/api/tags`;
+        // const url = `/api/tags`;
+        const url = `/api/tags`;
     
         fetch(url)
             .then((response) => {

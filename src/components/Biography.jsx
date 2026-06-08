@@ -9,7 +9,7 @@ import { useTranslation } from "react-i18next";
 import { useLocation, useNavigate } from "react-router-dom";
 
 export default function Biography() {
-    const API_URL = import.meta.env.VITE_API_URL;
+    
     const { i18n, t } = useTranslation();
     const locale = i18n.language;
     const [data, setData] = useState([]);
@@ -21,7 +21,7 @@ export default function Biography() {
     const location = useLocation();
 
     useEffect(() => {
-        fetch(`${API_URL}/api/biography`)
+        fetch(`/api/biography`)
             .then((response) => {
                 if (!response.ok) throw new Error(`Erreur HTTP : ${response.status}`);
                 return response.json();

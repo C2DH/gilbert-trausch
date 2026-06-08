@@ -1,0 +1,32 @@
+[
+  {
+    "id": 2,
+    "name": {
+      "fr": "Dans l\u2019atelier de l\u2019historien\u202f: la m\u00e9thode",
+      "de": "In der Werkstatt des Historikers: Die Methode"
+    },
+    "created_by": 1,
+    "created_at": "2025-04-02T07:54:49.000000Z",
+    "updated_at": "2025-04-17T12:56:52.000000Z",
+    "slug": "dans-latelier-de-lhistorien-la-methode"
+  },
+  {
+    "id": 3,
+    "name": { "fr": "Piste de recherche", "de": "Suchpfad" },
+    "created_by": 1,
+    "created_at": "2025-04-02T08:22:14.000000Z",
+    "updated_at": "2025-04-17T12:56:41.000000Z",
+    "slug": "piste-de-recherche"
+  },
+  {
+    "id": 4,
+    "name": {
+      "fr": "Acc\u00e8s aux \u00ab\u202fcahiers magiques\u202f\u00bb",
+      "de": "Zugang zu den \u201e Zauberheften\""
+    },
+    "created_by": 4,
+    "created_at": "2025-04-02T08:24:28.000000Z",
+    "updated_at": "2025-04-17T07:30:32.000000Z",
+    "slug": "acces-aux-cahiers-magiques"
+  }
+]

@@ -17,10 +17,10 @@ import { PopupProvider } from "../../contexts/PopupContext.jsx";
 export default function PreviewSlide() {
     const { id } = useParams();
     const [data, setData] = useState(null);
-    const API_URL = import.meta.env.VITE_API_URL;
+    
 
     useEffect(() => {
-        fetch(`${API_URL}/api/chapter/slide/${id}`)
+        fetch(`/api/chapter/slide/${id}`)
             .then((response) => {
                 if (!response.ok) {
                     throw new Error(`Erreur HTTP : ${response.status}`);

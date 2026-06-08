@@ -10,7 +10,8 @@
     "preview": "vite preview",
     "generate-sitemap-resources": "node scripts/generate-resources-sitemap.ts",
     "generate-sitemap-chapters": "node scripts/generate-chapters-sitemap.ts",
-    "generate-sitemap": "npm run generate-sitemap-resources && npm run generate-sitemap-chapters"
+    "generate-sitemap-magic-notebooks": "node scripts/generate-magic-notebooks-sitemap.ts",
+    "generate-sitemap": "npm run generate-sitemap-resources && npm run generate-sitemap-chapters && npm run generate-sitemap-magic-notebooks"
   },
   "dependencies": {
     "@heroicons/react": "^2.2.0",

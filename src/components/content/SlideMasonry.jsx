@@ -8,8 +8,8 @@ import { useLocation, useNavigate } from "react-router-dom";
 
 export default function SlideMasonry({ data, locale }) {
 
-    const API_URL = import.meta.env.VITE_API_URL;
-    const imageUrl = `${API_URL}/storage/${data?.slidable?.background?.background}`;
+    
+    const imageUrl = `/storage/${data?.slidable?.background?.background}`;
     const documents = data?.slidable?.documents;
     const color = data?.slidable?.color_text;
     const isMobile = useMediaQuery({ query: '(max-width: 768px)'});

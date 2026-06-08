@@ -45,7 +45,7 @@ const variants = {
 }
 
 export default function Chapter() {
-  const API_URL = import.meta.env.VITE_API_URL
+  
   const [searchParams] = useSearchParams()
   const { i18n, t } = useTranslation()
   const locale = i18n.language
@@ -94,7 +94,7 @@ export default function Chapter() {
   // }, [activeIndex]);
 
   useEffect(() => {
-    fetch(`${API_URL}/api/chapter/${slug}`)
+    fetch(`/api/chapter/${slug}`)
       .then((response) => {
         if (!response.ok) {
           throw new Error(`Erreur HTTP : ${response.status}`)

@@ -26,12 +26,11 @@ jobs:
           GIT_BRANCH: ${{ env.GIT_BRANCH }}
           GIT_COMMIT_SHA: ${{ env.GIT_COMMIT_SHA }}
           GIT_LAST_COMMIT_DATE: ${{ env.GIT_LAST_COMMIT_DATE }}
-          VITE_API_URL: ${{ secrets.VITE_API_URL }}
         with:
           name: c2dhunilu/gilbert-trausch
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
           buildoptions: '--compress --force-rm'
           buildargs: |
-            GIT_TAG,GIT_BRANCH,GIT_COMMIT_SHA,BUILD_DATE,GIT_LAST_COMMIT_DATE,VITE_API_URL
+            GIT_TAG,GIT_BRANCH,GIT_COMMIT_SHA,BUILD_DATE,GIT_LAST_COMMIT_DATE
           tags: 'latest'

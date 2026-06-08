@@ -1,7 +1,7 @@
 import { mkdir, readdir, readFile, writeFile } from 'fs/promises'
 import { basename, dirname, resolve } from 'path'
 
-type Chapter = {
+type MagicNotebook = {
   id?: number | string
   slug?: string
   updated_at?: string
@@ -81,16 +81,16 @@ function escapeXml(value: string): string {
     .replace(/'/g, '&apos;')
 }
 
-function matchesChapterJson(filePath: string): boolean {
+function matchesMagicNotebookJson(filePath: string): boolean {
   return (
-    /(^|\/)chapters?[^/]*\.json$/i.test(filePath) ||
-    /(^|\/)chapter[^/]*\.json$/i.test(filePath) ||
-    /\/chapter\/[^/]+\.json$/i.test(filePath)
+    /(^|\/)magic-notebooks?[^/]*\.json$/i.test(filePath) ||
+    /(^|\/)magic-notebook[^/]*\.json$/i.test(filePath) ||
+    /\/magic-notebook\/[^/]+\.json$/i.test(filePath)
   )
 }
 
-function isChapterDetailJson(filePath: string): boolean {
-  return /\/chapter\/[^/]+\.json$/i.test(filePath)
+function isMagicNotebookDetailJson(filePath: string): boolean {
+  return /\/magic-notebook\/[^/]+\.json$/i.test(filePath)
 }
 
 async function listFilesRecursively(rootDir: string): Promise<string[]> {
@@ -111,7 +111,7 @@ async function listFilesRecursively(rootDir: string): Promise<string[]> {
   return files
 }
 
-function chapterFromUnknown(item: unknown): Chapter | null {
+function notebookFromUnknown(item: unknown): MagicNotebook | null {
   if (!item || typeof item !== 'object') {
     return null
   }
@@ -136,11 +136,11 @@ function chapterFromUnknown(item: unknown): Chapter | null {
   }
 }
 
-function extractChapters(payload: unknown): Chapter[] {
+function extractMagicNotebooks(payload: unknown): MagicNotebook[] {
   if (Array.isArray(payload)) {
     return payload
-      .map(chapterFromUnknown)
-      .filter((chapter): chapter is Chapter => chapter !== null)
+      .map(notebookFromUnknown)
+      .filter((notebook): notebook is MagicNotebook => notebook !== null)
   }
 
   if (!payload || typeof payload !== 'object') {
@@ -151,44 +151,44 @@ function extractChapters(payload: unknown): Chapter[] {
 
   if (Array.isArray(root.data)) {
     return root.data
-      .map(chapterFromUnknown)
-      .filter((chapter): chapter is Chapter => chapter !== null)
+      .map(notebookFromUnknown)
+      .filter((notebook): notebook is MagicNotebook => notebook !== null)
   }
 
-  const chapters = root.chapters
-  if (chapters && typeof chapters === 'object') {
-    const nested = chapters as Record<string, unknown>
+  const notebooks = root.magic_notebooks
+  if (notebooks && typeof notebooks === 'object') {
+    const nested = notebooks as Record<string, unknown>
     if (Array.isArray(nested.data)) {
       return nested.data
-        .map(chapterFromUnknown)
-        .filter((chapter): chapter is Chapter => chapter !== null)
+        .map(notebookFromUnknown)
+        .filter((notebook): notebook is MagicNotebook => notebook !== null)
     }
   }
 
   return []
 }
 
-function chapterPath(chapter: Chapter): string | null {
-  if (chapter.slug) {
-    return `/chapter/${encodeURIComponent(chapter.slug)}`
+function notebookPath(notebook: MagicNotebook): string | null {
+  if (notebook.slug) {
+    return `/magic-notebook/${encodeURIComponent(notebook.slug)}`
   }
 
-  if (chapter.id !== undefined && chapter.id !== null) {
-    return `/chapter/${encodeURIComponent(String(chapter.id))}`
+  if (notebook.id !== undefined && notebook.id !== null) {
+    return `/magic-notebook/${encodeURIComponent(String(notebook.id))}`
   }
 
   return null
 }
 
-function chapterToEntry(chapter: Chapter): SitemapEntry | null {
-  const path = chapterPath(chapter)
+function notebookToEntry(notebook: MagicNotebook): SitemapEntry | null {
+  const path = notebookPath(notebook)
   if (!path) {
     return null
   }
 
   return {
     path,
-    updated_at: chapter.updated_at,
+    updated_at: notebook.updated_at,
     priority: 0.7,
   }
 }
@@ -221,7 +221,7 @@ function extractSlideEntries(
     return []
   }
 
-  const chapterUpdatedAt =
+  const notebookUpdatedAt =
     typeof data.updated_at === 'string' ? data.updated_at : undefined
 
   return data.slides
@@ -243,10 +243,10 @@ function extractSlideEntries(
       const slideUpdatedAt =
         typeof slideRecord.updated_at === 'string'
           ? slideRecord.updated_at
-          : chapterUpdatedAt
+          : notebookUpdatedAt
 
       return {
-        path: `/chapter/${encodeURIComponent(slug)}?index=${encodeURIComponent(String(slideIndex))}`,
+        path: `/magic-notebook/${encodeURIComponent(slug)}?index=${encodeURIComponent(String(slideIndex))}`,
         updated_at: slideUpdatedAt,
         priority: 0.6,
       }
@@ -282,7 +282,7 @@ async function main(): Promise<void> {
   const inputDir = resolve(root, process.argv[2] ?? 'public/api')
   const outputPath = resolve(
     root,
-    process.argv[3] ?? 'public/sitemap-chapters.xml',
+    process.argv[3] ?? 'public/sitemap-magic-notebooks.xml',
   )
   const envPath = resolve(root, '.env')
 
@@ -296,23 +296,23 @@ async function main(): Promise<void> {
   }
 
   const allFiles = await listFilesRecursively(inputDir)
-  const chapterFiles = allFiles.filter(matchesChapterJson)
+  const magicNotebookFiles = allFiles.filter(matchesMagicNotebookJson)
 
   const allEntries: SitemapEntry[] = []
 
-  for (const filePath of chapterFiles) {
+  for (const filePath of magicNotebookFiles) {
     const raw = await readFile(filePath, 'utf8')
     const payload = JSON.parse(raw) as unknown
 
-    const chapters = extractChapters(payload)
-    for (const chapter of chapters) {
-      const entry = chapterToEntry(chapter)
+    const notebooks = extractMagicNotebooks(payload)
+    for (const notebook of notebooks) {
+      const entry = notebookToEntry(notebook)
       if (entry) {
         allEntries.push(entry)
       }
     }
 
-    if (isChapterDetailJson(filePath)) {
+    if (isMagicNotebookDetailJson(filePath)) {
       allEntries.push(...extractSlideEntries(payload, filePath))
     }
   }
@@ -337,12 +337,12 @@ async function main(): Promise<void> {
   await writeFile(outputPath, sitemap, 'utf8')
 
   console.log(
-    `Generated ${outputPath} with ${dedupedEntries.length} chapter URLs from ${chapterFiles.length} chapter JSON files.`,
+    `Generated ${outputPath} with ${dedupedEntries.length} magic notebook URLs from ${magicNotebookFiles.length} magic notebook JSON files.`,
   )
 }
 
 main().catch((error: unknown) => {
   const message = error instanceof Error ? error.message : String(error)
-  console.error(`Failed to generate chapter sitemap: ${message}`)
+  console.error(`Failed to generate magic notebook sitemap: ${message}`)
   process.exitCode = 1
 })

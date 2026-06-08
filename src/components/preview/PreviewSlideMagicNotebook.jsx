@@ -14,13 +14,13 @@ import SlideAudio from "../content/SlideAudio.jsx";
 import { PopupProvider } from "../../contexts/PopupContext.jsx";
 
 export default function PreviewSlideMagicNotebook() {
-    const API_URL = import.meta.env.VITE_API_URL;
+    
 
     const { id } = useParams();
     const [data, setData] = useState(null);
 
     useEffect(() => {
-        fetch(`${API_URL}/api/magic-notebook/slide/${id}`)
+        fetch(`/api/magic-notebook/slide/${id}`)
             .then((response) => {
                 if (!response.ok) {
                     throw new Error(`Erreur HTTP : ${response.status}`);

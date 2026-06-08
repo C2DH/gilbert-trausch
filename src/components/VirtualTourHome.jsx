@@ -8,7 +8,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 
 export default function VirtualTourHome() {
 
-    const API_URL = import.meta.env.VITE_API_URL;
+    
     const { i18n, t } = useTranslation();
     const locale = i18n.language;
     const [isLoading, setIsLoading] = useState(false)
@@ -17,7 +17,7 @@ export default function VirtualTourHome() {
     const location = useLocation();
     
     useEffect(() => {
-        fetch(`${API_URL}/api/virtual-tour`)
+        fetch(`/api/virtual-tour`)
             .then((response) => {
                 if (!response.ok) {
                     throw new Error(`Erreur HTTP : ${response.status}`);

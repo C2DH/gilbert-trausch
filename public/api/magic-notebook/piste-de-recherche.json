@@ -1,0 +1,433 @@
+{
+  "data": {
+    "id": 3,
+    "name": "Piste de recherche",
+    "slides": [
+      {
+        "id": 10,
+        "magic_notebook_id": 3,
+        "order": 1,
+        "slidable_type": "App\\Models\\SlideHeader",
+        "slidable_id": 7,
+        "created_by": 4,
+        "created_at": "2025-04-02T08:39:28.000000Z",
+        "updated_at": "2025-04-02T08:39:28.000000Z",
+        "slidable": {
+          "id": 7,
+          "title": {
+            "fr": "II. Piste de recherche sur les Zauberhefte\u202f ",
+            "de": "II. Suchpfad zu den Zauberheften\u202f"
+          },
+          "color_menu": "#ffffff",
+          "color_text": "#ffffff",
+          "background_id": 12,
+          "content": [],
+          "subtitle": { "de": null },
+          "created_at": "2025-04-02T08:39:28.000000Z",
+          "updated_at": "2025-04-15T17:35:46.000000Z",
+          "type": "SlideHeader",
+          "background": {
+            "id": 12,
+            "title": "Header 5",
+            "background": "backgrounds\/01JR8CTWA78AZCQWCQJR4DQX8W.webp",
+            "created_at": "2025-04-07T15:10:21.000000Z",
+            "updated_at": "2025-04-07T15:10:21.000000Z"
+          }
+        }
+      },
+      {
+        "id": 25,
+        "magic_notebook_id": 3,
+        "order": 2,
+        "slidable_type": "App\\Models\\SlideMasonry",
+        "slidable_id": 16,
+        "created_by": 4,
+        "created_at": "2025-04-03T08:22:45.000000Z",
+        "updated_at": "2025-04-03T08:22:45.000000Z",
+        "slidable": {
+          "id": 16,
+          "content": {
+            "fr": "<p>La majorit\u00e9 des cahiers magiques de Gilbert Trausch \u00e9taient soigneusement rang\u00e9s sur les \u00e9tag\u00e8res de son bureau principal, au premier \u00e9tage. Il tenait \u00e0 les garder toujours \u00e0 port\u00e9e de main pour ses recherches. Une centaine de ces <em>Zauberhefte<\/em> sont aujourd\u2019hui conserv\u00e9s \u00e0 l\u2019Universit\u00e9 du Luxembourg et sont accessibles en format PDF dans le centre de ressources du pr\u00e9sent site.&nbsp;<\/p>",
+            "de": "<p>Die meisten von Gilbert Trauschs Zauberheften lagen fein s\u00e4uberlich auf den Regalen in seinem Hauptb\u00fcro im ersten Stock. Er legte Wert darauf, sie f\u00fcr seine Forschungen stets griffbereit zu haben. Etwa 100 dieser <em>Zauberhefte<\/em> werden heute an der Universit\u00e4t Luxemburg aufbewahrt und sind im PDF-Format im Ressourcenzentrum dieser Website zug\u00e4nglich. &nbsp;<\/p>"
+          },
+          "color_menu": "#000000",
+          "color_text": "#000000",
+          "background_id": 4,
+          "created_at": "2025-04-03T08:22:45.000000Z",
+          "updated_at": "2025-04-15T17:36:28.000000Z",
+          "type": "SlideMasonry",
+          "background": {
+            "id": 4,
+            "title": "Texture 1",
+            "background": "backgrounds\/F7pUqm3MQL99WZiszWEd3Gjm5Cia1RRzzsj2Nm0N.png",
+            "created_at": "2025-03-13T12:19:47.000000Z",
+            "updated_at": "2025-03-13T12:19:47.000000Z"
+          },
+          "documents": [
+            {
+              "id": 231,
+              "name": {
+                "fr": "Emplacement des cahiers magiques (1)",
+                "de": "Standort der Zauberhefte (1)"
+              },
+              "type": "image",
+              "date": "2020-01-01",
+              "display_year": 1,
+              "title": {
+                "fr": "<p>Emplacement des cahiers magiques (2020)<\/p>",
+                "de": "<p>Standort der Zauberhefte (2020)<\/p>"
+              },
+              "description": {
+                "fr": "<p> La plupart des cahiers magiques de Gilbert Trausch se trouvaient sur les \u00e9tag\u00e8res de son bureau principal, au premier \u00e9tage de sa maison. L\u2019historien tenait \u00e0 les garder toujours \u00e0 port\u00e9e de main. Sur cette photo, ils sont dispos\u00e9s sur l'\u00e9tag\u00e8re centrale, face au bureau, partie gauche.<\/p>",
+                "de": "<p>&nbsp;Die meisten von Gilbert Trauschs Zauberheften befanden sich in den Regalen seines Hauptb\u00fcros im ersten Stock seines Hauses. Dem Historiker war es wichtig, sie immer griffbereit zu haben. Auf diesem Foto sind sie auf dem mittleren Regal gegen\u00fcber dem Schreibtisch auf der linken Seite angeordnet.<\/p>"
+              },
+              "copyright": "<p>Universit\u00e9 du Luxembourg<\/p>",
+              "nomenclature": "zh-mga-01-bookshelf08-dsc-1907",
+              "url": "https:\/\/gilberttrausch.uni.lu\/image\/zh-mga-01-bookshelf08-dsc-1907.jpg",
+              "cover": null,
+              "optimized_url": {
+                "thumbnail": {
+                  "width": 400,
+                  "height": 267,
+                  "originalWidth": 7360,
+                  "originalHeight": 4912,
+                  "url": "https:\/\/gilberttrausch.uni.lu\/image\/zh-mga-01-bookshelf08-dsc-1907-thumbnail.png"
+                },
+                "large": {
+                  "width": 2000,
+                  "height": 1335,
+                  "originalWidth": 7360,
+                  "originalHeight": 4912,
+                  "url": "https:\/\/gilberttrausch.uni.lu\/image\/zh-mga-01-bookshelf08-dsc-1907-large.png"
+                }
+              },
+              "source": "<p>Photographe: Quentin Bebon<br>C\u00b2DH<\/p>",
+              "created_at": "2025-03-30T16:11:34.000000Z",
+              "updated_at": "2025-04-03T14:45:31.000000Z",
+              "pivot": {
+                "documentable_type": "App\\Models\\SlideMasonry",
+                "documentable_id": 16,
+                "document_id": 231,
+                "order": 1
+              }
+            },
+            {
+              "id": 232,
+              "name": {
+                "fr": "Emplacement des cahiers magiques (2)",
+                "de": "Standort der Zauberhefte (2)"
+              },
+              "type": "image",
+              "date": "2020-01-01",
+              "display_year": 1,
+              "title": {
+                "fr": "<p>Emplacement des cahiers magiques (2020)<\/p>",
+                "de": "<p>Standort der Zauberhefte (2020)<\/p>"
+              },
+              "description": {
+                "fr": "<p>La plupart des cahiers magiques de Gilbert Trausch se trouvaient sur les \u00e9tag\u00e8res de son bureau principal, au premier \u00e9tage de sa maison. L\u2019historien tenait \u00e0 les garder toujours \u00e0 port\u00e9e de main. Sur cette photo, ils sont dispos\u00e9s sur l'\u00e9tag\u00e8re centrale, face au bureau, partie droite.<\/p>",
+                "de": "<p>&nbsp;Die meisten von Gilbert Trauschs Zauberheften befanden sich in den Regalen seines Hauptb\u00fcros im ersten Stock seines Hauses. Dem Historiker war es wichtig, sie immer griffbereit zu haben. Auf diesem Foto stehen sie auf dem mittleren Regal, gegen\u00fcber dem Schreibtisch, rechte Seite.<\/p>"
+              },
+              "copyright": "<p>Universit\u00e9 du Luxembourg<\/p>",
+              "nomenclature": "zh-mga-02-bureau-right-part-dsc9868",
+              "url": "https:\/\/gilberttrausch.uni.lu\/image\/zh-mga-02-bureau-right-part-dsc9868.jpg",
+              "cover": null,
+              "optimized_url": {
+                "thumbnail": {
+                  "width": 400,
+                  "height": 267,
+                  "originalWidth": 7360,
+                  "originalHeight": 4912,
+                  "url": "https:\/\/gilberttrausch.uni.lu\/image\/zh-mga-02-bureau-right-part-dsc9868-thumbnail.png"
+                },
+                "large": {
+                  "width": 2000,
+                  "height": 1335,
+                  "originalWidth": 7360,
+                  "originalHeight": 4912,
+                  "url": "https:\/\/gilberttrausch.uni.lu\/image\/zh-mga-02-bureau-right-part-dsc9868-large.png"
+                }
+              },
+              "source": "<p> Photographe: Quentin Bebon<br>C\u00b2DH<\/p>",
+              "created_at": "2025-03-30T16:20:01.000000Z",
+              "updated_at": "2025-04-03T14:45:34.000000Z",
+              "pivot": {
+                "documentable_type": "App\\Models\\SlideMasonry",
+                "documentable_id": 16,
+                "document_id": 232,
+                "order": 2
+              }
+            },
+            {
+              "id": 233,
+              "name": {
+                "fr": "Emplacement des cahiers magiques (3)",
+                "de": "Standort der Zauberhefte (3)"
+              },
+              "type": "image",
+              "date": "2020-01-01",
+              "display_year": 1,
+              "title": {
+                "fr": "<p>Emplacement des cahiers magiques (2020)<\/p>",
+                "de": "<p>Standort der Zauberhefte (2020)<\/p>"
+              },
+              "description": {
+                "fr": "<p> La plupart des cahiers magiques de Gilbert Trausch se trouvaient sur les \u00e9tag\u00e8res de son bureau principal, au premier \u00e9tage de sa maison. L\u2019historien tenait \u00e0 les garder toujours \u00e0 port\u00e9e de main. Sur cette photo, ils sont dispos\u00e9s sur l'\u00e9tag\u00e8re centrale, face au bureau, partie gauche.<\/p>",
+                "de": "<p>&nbsp;Die meisten von Gilbert Trauschs Zauberheften befanden sich in den Regalen seines Hauptb\u00fcros im ersten Stock seines Hauses. Dem Historiker war es wichtig, sie immer griffbereit zu haben. Auf diesem Foto sind sie auf dem mittleren Regal gegen\u00fcber dem Schreibtisch auf der linken Seite angeordnet.<\/p>"
+              },
+              "copyright": "<p>Universit\u00e9 du Luxembourg<\/p>",
+              "nomenclature": "zh-mga-03-bookshelf-08-dsc1906",
+              "url": "https:\/\/gilberttrausch.uni.lu\/image\/zh-mga-03-bookshelf-08-dsc1906.jpg",
+              "cover": null,
+              "optimized_url": {
+                "thumbnail": {
+                  "width": 400,
+                  "height": 267,
+                  "originalWidth": 7360,
+                  "originalHeight": 4912,
+                  "url": "https:\/\/gilberttrausch.uni.lu\/image\/zh-mga-03-bookshelf-08-dsc1906-thumbnail.png"
+                },
+                "large": {
+                  "width": 2000,
+                  "height": 1335,
+                  "originalWidth": 7360,
+                  "originalHeight": 4912,
+                  "url": "https:\/\/gilberttrausch.uni.lu\/image\/zh-mga-03-bookshelf-08-dsc1906-large.png"
+                }
+              },
+              "source": "<p> Photographe: Quentin Bebon<br>C\u00b2DH<\/p>",
+              "created_at": "2025-03-30T16:23:57.000000Z",
+              "updated_at": "2025-04-03T14:45:38.000000Z",
+              "pivot": {
+                "documentable_type": "App\\Models\\SlideMasonry",
+                "documentable_id": 16,
+                "document_id": 233,
+                "order": 3
+              }
+            },
+            {
+              "id": 234,
+              "name": {
+                "fr": "Emplacement des cahiers magiques (4)",
+                "de": "Standort der Zauberhefte (4)"
+              },
+              "type": "image",
+              "date": "2020-01-01",
+              "display_year": 1,
+              "title": {
+                "fr": "<p>Emplacement des cahiers magiques (2020)<\/p>",
+                "de": "<p>Standort der Zauberhefte (2020)<\/p>"
+              },
+              "description": {
+                "fr": "<p> La plupart des cahiers magiques de Gilbert Trausch se trouvaient sur les \u00e9tag\u00e8res de son bureau principal, au premier \u00e9tage de sa maison. L\u2019historien tenait \u00e0 les garder toujours \u00e0 port\u00e9e de main. Sur cette photo, ils sont dispos\u00e9s sur l'\u00e9tag\u00e8re centrale, face au bureau.<\/p>",
+                "de": "<p>&nbsp;Die meisten von Gilbert Trauschs Zauberheften befanden sich in den Regalen seines Hauptb\u00fcros im ersten Stock seines Hauses. Dem Historiker war es wichtig, sie immer griffbereit zu haben. Auf diesem Foto stehen sie auf dem mittleren Regal gegen\u00fcber dem Schreibtisch.<\/p>"
+              },
+              "copyright": "<p>Universit\u00e9 du Luxembourg<\/p>",
+              "nomenclature": "zh-mga-04-bureau-middle-part-dsc9755",
+              "url": "https:\/\/gilberttrausch.uni.lu\/image\/zh-mga-04-bureau-middle-part-dsc9755.jpg",
+              "cover": null,
+              "optimized_url": {
+                "thumbnail": {
+                  "width": 400,
+                  "height": 267,
+                  "originalWidth": 7360,
+                  "originalHeight": 4912,
+                  "url": "https:\/\/gilberttrausch.uni.lu\/image\/zh-mga-04-bureau-middle-part-dsc9755-thumbnail.png"
+                },
+                "large": {
+                  "width": 2000,
+                  "height": 1335,
+                  "originalWidth": 7360,
+                  "originalHeight": 4912,
+                  "url": "https:\/\/gilberttrausch.uni.lu\/image\/zh-mga-04-bureau-middle-part-dsc9755-large.png"
+                }
+              },
+              "source": "<p> Photographe: Quentin Bebon<br>C\u00b2DH<\/p>",
+              "created_at": "2025-03-30T16:27:07.000000Z",
+              "updated_at": "2025-04-03T14:45:42.000000Z",
+              "pivot": {
+                "documentable_type": "App\\Models\\SlideMasonry",
+                "documentable_id": 16,
+                "document_id": 234,
+                "order": 4
+              }
+            },
+            {
+              "id": 235,
+              "name": {
+                "fr": "Emplacement des cahiers magiques (5)",
+                "de": "Standort der Zauberhefte (5)"
+              },
+              "type": "image",
+              "date": "2020-01-01",
+              "display_year": 1,
+              "title": {
+                "fr": "<p>Emplacement des cahiers magiques (2020)<\/p>",
+                "de": "<p>Standort der Zauberhefte (2020)<\/p>"
+              },
+              "description": {
+                "fr": "<p> La plupart des cahiers magiques de Gilbert Trausch se trouvaient sur les \u00e9tag\u00e8res de son bureau principal, au premier \u00e9tage de sa maison. L\u2019historien tenait \u00e0 les garder toujours \u00e0 port\u00e9e de main. Sur cette photo, ils sont dispos\u00e9s sur l'\u00e9tag\u00e8re centrale, face au bureau, partie droite.<\/p>",
+                "de": "<p>&nbsp;Die meisten von Gilbert Trauschs Zauberheften befanden sich in den Regalen seines Hauptb\u00fcros im ersten Stock seines Hauses. Dem Historiker war es wichtig, sie immer griffbereit zu haben. Auf diesem Foto stehen sie auf dem mittleren Regal, gegen\u00fcber dem Schreibtisch, rechte Seite.<\/p>"
+              },
+              "copyright": "<p>Universit\u00e9 du Luxembourg<\/p>",
+              "nomenclature": "zh-mga-06-bookshelf-08-classeurs-titres-dsc1802",
+              "url": "https:\/\/gilberttrausch.uni.lu\/image\/zh-mga-06-bookshelf-08-classeurs-titres-dsc1802.jpg",
+              "cover": null,
+              "optimized_url": {
+                "thumbnail": {
+                  "width": 400,
+                  "height": 267,
+                  "originalWidth": 7360,
+                  "originalHeight": 4912,
+                  "url": "https:\/\/gilberttrausch.uni.lu\/image\/zh-mga-06-bookshelf-08-classeurs-titres-dsc1802-thumbnail.png"
+                },
+                "large": {
+                  "width": 2000,
+                  "height": 1335,
+                  "originalWidth": 7360,
+                  "originalHeight": 4912,
+                  "url": "https:\/\/gilberttrausch.uni.lu\/image\/zh-mga-06-bookshelf-08-classeurs-titres-dsc1802-large.png"
+                }
+              },
+              "source": "<p> Photographe: Quentin Bebon&nbsp;<br>C2DH<\/p>",
+              "created_at": "2025-03-30T16:31:35.000000Z",
+              "updated_at": "2025-04-03T14:45:46.000000Z",
+              "pivot": {
+                "documentable_type": "App\\Models\\SlideMasonry",
+                "documentable_id": 16,
+                "document_id": 235,
+                "order": 5
+              }
+            }
+          ]
+        }
+      },
+      {
+        "id": 26,
+        "magic_notebook_id": 3,
+        "order": 3,
+        "slidable_type": "App\\Models\\SlideSlider",
+        "slidable_id": 14,
+        "created_by": 4,
+        "created_at": "2025-04-03T08:26:41.000000Z",
+        "updated_at": "2025-04-03T08:26:41.000000Z",
+        "slidable": {
+          "id": 14,
+          "content": {
+            "fr": "<p>Si l\u2019organisation th\u00e9matique, chronologique, et fonctionnelle de ces cahiers est assez bien comprise, ils n\u2019ont pas fait l\u2019objet d\u2019un tri, ni de transcriptions syst\u00e9matiques. &nbsp;<\/p><p>Une id\u00e9e pourrait \u00eatre de les comparer avec les publications de Gilbert Trausch, pour voir si, par exemple, il consigne des intuitions dans ses <em>Zauberhefte<\/em> qui n\u2019ont pas trouv\u00e9 leur place dans ses \u00e9crits officiels\u2026 Beaucoup de travail reste \u00e0 faire sur ces cahiers.&nbsp;<\/p><p>Avis aux amateurs !&nbsp;<\/p><p>Voici un exemple de notes tir\u00e9es du <em>Zauberheft<\/em> 02 05 03 05 ZH 14 avec, \u00e0 c\u00f4t\u00e9, la version publi\u00e9e : \u00ab Contributions \u00e0 l\u2019histoire sociale de la question du Luxembourg (1914-1922) \u00bb dans <em>H\u00e9mecht<\/em> 1\/1974, p. 7-118. On peut, \u00e0 travers le <em>Zauberheft<\/em>, comprendre le cheminement de la pens\u00e9e argumentative de l\u2019auteur.&nbsp;<\/p>",
+            "de": "<p>Obwohl die thematische, chronologische und funktionale Organisation dieser Hefte recht klar ist, wurden sie nicht systematisch sortiert oder transkribiert. &nbsp;<\/p><p>Eine Idee k\u00f6nnte sein, sie mit den Ver\u00f6ffentlichungen von Gilbert Trausch zu vergleichen, um zu sehen, ob er zum Beispiel in seinen <em>Zauberheften<\/em> Einsichten festh\u00e4lt, die keinen Platz in seinen offiziellen Schriften gefunden haben... Diese Hefte bieten noch ein weites Bet\u00e4tigungsfeld.&nbsp;<\/p><p>F\u00fcr Liebhaber:&nbsp; Hier ein Beispiel f\u00fcr Notizen aus dem <em>Zauberheft<\/em> 02 05 03 05 ZH 14, daneben die ver\u00f6ffentlichte Version: \u201eContributions \u00e0 l\u2019histoire sociale de la question du Luxembourg (1914-1922)\u201c in <em>H\u00e9mecht<\/em> 1\/1974, p. 7-118. Anhand des <em>Zauberhefts<\/em> kann man den argumentativen Gedankengang des Autors nachvollziehen.&nbsp;<\/p>"
+          },
+          "color_menu": "#000000",
+          "color_text": "#000000",
+          "background_id": 4,
+          "created_at": "2025-04-03T08:26:41.000000Z",
+          "updated_at": "2025-04-23T12:27:28.000000Z",
+          "type": "SlideSlider",
+          "background": {
+            "id": 4,
+            "title": "Texture 1",
+            "background": "backgrounds\/F7pUqm3MQL99WZiszWEd3Gjm5Cia1RRzzsj2Nm0N.png",
+            "created_at": "2025-03-13T12:19:47.000000Z",
+            "updated_at": "2025-03-13T12:19:47.000000Z"
+          },
+          "documents": [
+            {
+              "id": 148,
+              "name": {
+                "fr": "Cahier magique n\u00b0 73",
+                "de": "Zauberheft Nr. 73"
+              },
+              "type": "notebook",
+              "date": null,
+              "display_year": 0,
+              "title": {
+                "fr": "<p>Cahier magique n\u00b0 73<\/p>",
+                "de": "<p>Zauberheft Nr. 73<\/p>"
+              },
+              "description": {
+                "fr": "<p> Ce cahier magique contient une documentation d\u00e9taill\u00e9e sur les enjeux sociaux et \u00e9conomiques du Luxembourg durant la Premi\u00e8re Guerre mondiale. Gilbert Trausch y explore des th\u00e8mes tels que l\u2019union nationale, la paix sociale, les difficult\u00e9s \u00e9conomiques, l\u2019essor et les tensions dans la sid\u00e9rurgie, la condition du prol\u00e9tariat ainsi que la gr\u00e8ve de 1917.<\/p>",
+                "de": "<p> Dieses Zauberheft enth\u00e4lt eine detaillierte Dokumentation \u00fcber die sozialen und wirtschaftlichen Herausforderungen in Luxemburg w\u00e4hrend des Ersten Weltkriegs. Gilbert Trausch untersucht darin Themen wie die nationale Union, den sozialen Frieden, die wirtschaftlichen Schwierigkeiten, den Aufschwung und die Spannungen in der Stahlindustrie, die Lage des Proletariats sowie den Streik von 1917.<\/p>"
+              },
+              "copyright": "<p>Archives priv\u00e9es Gilbert Trausch<\/p>",
+              "nomenclature": "zh02-05-03-05-zh-14",
+              "url": "https:\/\/gilberttrausch.uni.lu\/pdf\/zh\/zh02-05-03-05-zh-14.pdf",
+              "cover": null,
+              "optimized_url": {
+                "thumbnail": {
+                  "width": 400,
+                  "height": 386,
+                  "originalWidth": 1053,
+                  "originalHeight": 1017,
+                  "url": "https:\/\/gilberttrausch.uni.lu\/pdf\/zh\/zh02-05-03-05-zh-14-thumbnail.png"
+                },
+                "large": {
+                  "width": 1053,
+                  "height": 1017,
+                  "originalWidth": 1053,
+                  "originalHeight": 1017,
+                  "url": "https:\/\/gilberttrausch.uni.lu\/pdf\/zh\/zh02-05-03-05-zh-14-large.png"
+                }
+              },
+              "source": "<p>Archives priv\u00e9es Gilbert Trausch<\/p>",
+              "created_at": "2025-03-29T14:26:15.000000Z",
+              "updated_at": "2025-04-07T14:14:42.000000Z",
+              "pivot": {
+                "documentable_type": "App\\Models\\SlideSlider",
+                "documentable_id": 14,
+                "document_id": 148,
+                "order": 1
+              }
+            },
+            {
+              "id": 236,
+              "name": {
+                "fr": "Article de Gilbert Trausch sur l\u2019histoire sociale de la question du Luxembourg dans H\u00e9mecht (1974)",
+                "de": "Artikel von Gilbert Trausch \u00fcber die Sozialgeschichte der Luxemburg-Frage in H\u00e9mecht (1974)"
+              },
+              "type": "scientific",
+              "date": "1974-01-01",
+              "display_year": 1,
+              "title": {
+                "fr": "<p>Article de Gilbert Trausch sur l\u2019histoire sociale de la question du Luxembourg dans H\u00e9mecht (1974)<\/p>",
+                "de": "<p>Artikel von Gilbert Trausch \u00fcber die Sozialgeschichte der Luxemburg-Frage in H\u00e9mecht (1974)<\/p>"
+              },
+              "description": {
+                "fr": "<p> En 1974, la revue d\u2019histoire luxembourgeoise&nbsp; H\u00e9mecht publie un article de Gilbert Trausch intitul\u00e9 \u201cContributions \u00e0 l\u2019histoire sociale de la question du Luxembourg. 1914-1922\u201d. Cette publication, qui offre une analyse approfondie du sujet, s'appuie sur les notes manuscrites d\u2019un des cahiers magiques o\u00f9 l\u2019historien a abondamment \u00e9crit sur ce th\u00e8me. Cela montre \u00e0 quel point ses notes \u00e9taient essentielles pour ses \u00e9crits publi\u00e9s.&nbsp;<\/p>",
+                "de": "<p> Im Jahr 1974 ver\u00f6ffentlichte die luxemburgische Geschichtszeitschrift H\u00e9mecht einen Artikel von Gilbert Trausch mit dem Titel \u201eContributions \u00e0 l'histoire sociale de la question du Luxembourg. 1914-1922\u201c. Diese Ver\u00f6ffentlichung, die eine gr\u00fcndliche Analyse des Themas bietet, st\u00fctzt sich auf die handschriftlichen Notizen aus einem der Zauberhefte, in denen der Historiker ausgiebig \u00fcber dieses Thema geschrieben hat. Dies zeigt, wie wesentlich seine Notizen f\u00fcr seine ver\u00f6ffentlichten Schriften waren.&nbsp;<\/p>"
+              },
+              "copyright": "<p>T'H\u00e9mecht<\/p>",
+              "nomenclature": "zh-lma-49-gthistsociale-hemecht-1974-01-01-p1-126",
+              "url": "https:\/\/gilberttrausch.uni.lu\/pdf\/zhchapitre\/zh-lma-49-gthistsociale-hemecht-1974-01-01-p1-126.pdf",
+              "cover": null,
+              "optimized_url": {
+                "thumbnail": {
+                  "width": 270,
+                  "height": 400,
+                  "originalWidth": 1236,
+                  "originalHeight": 1829,
+                  "url": "https:\/\/gilberttrausch.uni.lu\/pdf\/zhchapitre\/zh-lma-49-gthistsociale-hemecht-1974-01-01-p1-126-thumbnail.png"
+                },
+                "large": {
+                  "width": 1236,
+                  "height": 1829,
+                  "originalWidth": 1236,
+                  "originalHeight": 1829,
+                  "url": "https:\/\/gilberttrausch.uni.lu\/pdf\/zhchapitre\/zh-lma-49-gthistsociale-hemecht-1974-01-01-p1-126-large.png"
+                }
+              },
+              "source": "<p>\"Contributions \u00e0 l'histoire sociale de la question du Luxembourg 1914-1922\". In: H\u00e9mecht, 26. Jg., n\u00ba Heft 1 (01.01.1974), p. 7.<br>[Digitised by the National Library of Luxembourg, https:\/\/persist.lu\/ark:70795\/j60ckcw58\/pages\/7\/articles\/DTL1107]&nbsp;<\/p>",
+              "created_at": "2025-03-30T16:38:47.000000Z",
+              "updated_at": "2025-04-07T14:14:57.000000Z",
+              "pivot": {
+                "documentable_type": "App\\Models\\SlideSlider",
+                "documentable_id": 14,
+                "document_id": 236,
+                "order": 2
+              }
+            }
+          ]
+        }
+      }
+    ]
+  }
+}

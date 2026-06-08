@@ -26,7 +26,7 @@ import i18n from '../../i18n'
 import bgAudio from '../assets/images/backgrounds/bg-audio-default.webp'
 import { AnimatePresence, motion } from 'motion/react'
 
-const API_URL = import.meta.env.VITE_API_URL
+
 
 export default function Resource() {
   const locale = i18n.language
@@ -42,7 +42,7 @@ export default function Resource() {
     setIsImageVisible(true)
 
     const fetchData = async () => {
-      const res = await fetch(`${API_URL}/api/resource/${id}`)
+      const res = await fetch(`/api/resource/${id}`)
       const product = await res.json()
       setData(product.data)
     }

@@ -7,7 +7,7 @@ import { useTranslation } from "react-i18next";
 
 const VirtualTour = () => {
   const iframeRef = useRef(null);
-  const API_URL = import.meta.env.VITE_API_URL;
+  
   const currentRoomIdRef = useRef(0);
 
   const onMessage = async (event) => {
@@ -19,7 +19,7 @@ const VirtualTour = () => {
       console.log("PDF message received from iframe!", event.origin);
 
       try {
-        const response = await fetch(`${API_URL}/api/resource?url=${event.data.url}`);
+        const response = await fetch(`/api/resource?url=${event.data.url}`);
         const { data } = await response.json();
         navigate(`/resources/${data.id}`, { state: { modal: true, previousLocation: location.state?.modal ? location.state.previousLocation : location } });
       } catch (error) {

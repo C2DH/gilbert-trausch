@@ -19,7 +19,7 @@ export default function Chapters() {
     const [hoveredIndex, setHoveredIndex] = useState(null);
     const { i18n, t } = useTranslation();
     const locale = i18n.language;
-    const API_URL = import.meta.env.VITE_API_URL;
+    
     const isMobile = useMediaQuery({ query: '(max-width: 1023px)'});
     
     const getBackgroundImage = () => {
@@ -36,7 +36,7 @@ export default function Chapters() {
     };
 
     useEffect(() => {
-        fetch(`${API_URL}/api/chapters`)
+        fetch(`/api/chapters`)
             .then((response) => {
                 if (!response.ok) {
                     throw new Error(`Erreur HTTP : ${response.status}`);

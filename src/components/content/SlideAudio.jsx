@@ -6,9 +6,9 @@ import bgSmall from '../../assets/images/backgrounds/bg-1.webp';
 
 export default function SlideAudio({ data, locale }) {
 
-    const API_URL = import.meta.env.VITE_API_URL;
+    
     const color = data?.slidable?.color_text;
-    const imageUrl = `${API_URL}/storage/${data?.slidable?.background?.background}`;
+    const imageUrl = `/storage/${data?.slidable?.background?.background}`;
     const isMobile = useMediaQuery({query: '(max-width: 768px)'});
 
     return (

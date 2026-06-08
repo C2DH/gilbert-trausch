@@ -18,14 +18,14 @@ import { Link } from "react-scroll";
 
 export default function About() {
 
-    const API_URL = import.meta.env.VITE_API_URL;
+    
     const { i18n } = useTranslation();
     const locale = i18n.language;
     const [isLoading, setIsLoading] = useState(false)
     const [data, setData] = useState({});
     
     useEffect(() => {
-        fetch(`${API_URL}/api/about`)
+        fetch(`/api/about`)
             .then((response) => {
                 if (!response.ok) {
                     throw new Error(`Erreur HTTP : ${response.status}`);
