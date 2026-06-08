@@ -7,7 +7,10 @@
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "generate-sitemap-resources": "node scripts/generate-resources-sitemap.ts",
+    "generate-sitemap-chapters": "node scripts/generate-chapters-sitemap.ts",
+    "generate-sitemap": "npm run generate-sitemap-resources && npm run generate-sitemap-chapters"
   },
   "dependencies": {
     "@heroicons/react": "^2.2.0",
@@ -35,6 +38,7 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.19.0",
+    "@types/node": "^25.9.2",
     "@types/react": "^19.0.8",
     "@types/react-dom": "^19.0.3",
     "@vitejs/plugin-react": "^4.3.4",
