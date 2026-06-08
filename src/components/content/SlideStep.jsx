@@ -5,8 +5,8 @@ import Slider from "./Slider";
 
 export default function SlideStep({ data, locale }) {
 
-    const API_URL = import.meta.env.VITE_API_URL;
-    const imageUrl = `${API_URL}/storage/${data?.slidable?.background?.background}`;
+    
+    const imageUrl = `/storage/${data?.slidable?.background?.background}`;
     const color = data?.slidable?.color_text;
     const navigate = useNavigate();
     const location = useLocation();

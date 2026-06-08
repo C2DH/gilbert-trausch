@@ -42,7 +42,7 @@ const variants = {
 
 export default function MagicNotebook() {
     
-    const API_URL = import.meta.env.VITE_API_URL;
+    
     const [searchParams] = useSearchParams();
     const { i18n, t } = useTranslation();
     const locale = i18n.language;    
@@ -68,7 +68,7 @@ export default function MagicNotebook() {
     }, [searchParams]);
 
     useEffect(() => {
-        fetch(`${API_URL}/api/magic-notebook/${slug}`)
+        fetch(`/api/magic-notebook/${slug}`)
             .then((response) => {
                 if (!response.ok) {
                     throw new Error(`Erreur HTTP : ${response.status}`);

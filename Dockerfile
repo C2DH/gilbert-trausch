@@ -1,11 +1,10 @@
-FROM node:23-alpine AS builder
+FROM node:24-alpine AS builder
 
 ARG BUILD_DATE
 ARG GIT_TAG
 ARG GIT_BRANCH
 ARG GIT_COMMIT_SHA
 ARG GIT_LAST_COMMIT_DATE
-ARG VITE_API_URL
 
 WORKDIR /app
 
@@ -31,12 +30,11 @@ ENV VITE_GIT_BRANCH=${GIT_BRANCH}
 ENV VITE_GIT_COMMIT_SHA=${GIT_COMMIT_SHA}
 ENV VITE_GIT_LAST_COMMIT_DATE=${GIT_LAST_COMMIT_DATE}
 ENV VITE_BUILD_DATE=${BUILD_DATE}
-ENV VITE_API_URL=${VITE_API_URL}
 
 RUN npm run build
 
 # print out these env values to a info.json file
-RUN echo "{\"BUILD_DATE\": \"${BUILD_DATE}\", \"GIT_TAG\": \"${GIT_TAG}\", \"GIT_BRANCH\": \"${GIT_BRANCH}\", \"GIT_COMMIT_SHA\": \"${GIT_COMMIT_SHA}\", \"GIT_LAST_COMMIT_DATE\": \"${GIT_LAST_COMMIT_DATE}\", \"VITE_API_URL\": \"${VITE_API_URL}\"}" > dist/info.json
+RUN echo "{\"BUILD_DATE\": \"${BUILD_DATE}\", \"GIT_TAG\": \"${GIT_TAG}\", \"GIT_BRANCH\": \"${GIT_BRANCH}\", \"GIT_COMMIT_SHA\": \"${GIT_COMMIT_SHA}\", \"GIT_LAST_COMMIT_DATE\": \"${GIT_LAST_COMMIT_DATE}\"}" > dist/info.json
 
 FROM busybox:stable
 WORKDIR /app

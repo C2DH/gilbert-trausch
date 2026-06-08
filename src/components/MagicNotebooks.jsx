@@ -15,11 +15,11 @@ export default function MagicNotebooks() {
     const [data, setData] = useState();
     const [isLoaded, setIsLoaded] = useState(false);
     const { i18n, t } = useTranslation();
-    const locale = i18n.language;    const API_URL = import.meta.env.VITE_API_URL;
+    const locale = i18n.language;    
     const isMobile = useMediaQuery({query: '(max-width: 1023px)'});
 
     useEffect(() => {
-        fetch(`${API_URL}/api/magic-notebooks`)
+        fetch(`/api/magic-notebooks`)
             .then((response) => {
                 if (!response.ok) {
                     throw new Error(`Erreur HTTP : ${response.status}`);

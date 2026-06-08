@@ -1,0 +1,2458 @@
+{
+  "data": {
+    "id": 2,
+    "name": "Dans l\u2019atelier de l\u2019historien\u202f: la m\u00e9thode",
+    "slides": [
+      {
+        "id": 2,
+        "magic_notebook_id": 2,
+        "order": 1,
+        "slidable_type": "App\\Models\\SlideHeader",
+        "slidable_id": 5,
+        "created_by": 4,
+        "created_at": "2025-04-02T08:04:54.000000Z",
+        "updated_at": "2025-04-02T08:04:54.000000Z",
+        "slidable": {
+          "id": 5,
+          "title": {
+            "fr": "I. Dans l\u2019atelier de l\u2019historien\u202f: la m\u00e9thode des \u00ab\u202fcahiers magiques\u202f\u00bb",
+            "de": "I. In der Werkstatt des Historikers: Die Methode der \u201eZauberhefte\u201c\u202f "
+          },
+          "color_menu": "#ffffff",
+          "color_text": "#ffffff",
+          "background_id": 12,
+          "content": [],
+          "subtitle": { "fr": null },
+          "created_at": "2025-04-02T08:04:54.000000Z",
+          "updated_at": "2025-04-17T12:53:52.000000Z",
+          "type": "SlideHeader",
+          "background": {
+            "id": 12,
+            "title": "Header 5",
+            "background": "backgrounds\/01JR8CTWA78AZCQWCQJR4DQX8W.webp",
+            "created_at": "2025-04-07T15:10:21.000000Z",
+            "updated_at": "2025-04-07T15:10:21.000000Z"
+          }
+        }
+      },
+      {
+        "id": 14,
+        "magic_notebook_id": 2,
+        "order": 2,
+        "slidable_type": "App\\Models\\SlideMasonry",
+        "slidable_id": 8,
+        "created_by": 4,
+        "created_at": "2025-04-02T11:13:37.000000Z",
+        "updated_at": "2025-04-02T11:13:37.000000Z",
+        "slidable": {
+          "id": 8,
+          "content": {
+            "fr": "<p>Ces classeurs color\u00e9s, rarement dot\u00e9s d'un intitul\u00e9, \u00e9taient parfois marqu\u00e9s avec des autocollants color\u00e9s ou des \u0153illets de renfort pour perforations.&nbsp;<\/p>",
+            "de": "<p>Diese bunten Ordner, die selten mit einem Titel versehen waren, wurden manchmal mit bunten Aufklebern oder Verst\u00e4rkungs\u00f6sen f\u00fcr Lochungen markiert.&nbsp;<\/p>"
+          },
+          "color_menu": "#000000",
+          "color_text": "#000000",
+          "background_id": 4,
+          "created_at": "2025-04-02T11:13:37.000000Z",
+          "updated_at": "2025-04-15T17:29:18.000000Z",
+          "type": "SlideMasonry",
+          "background": {
+            "id": 4,
+            "title": "Texture 1",
+            "background": "backgrounds\/F7pUqm3MQL99WZiszWEd3Gjm5Cia1RRzzsj2Nm0N.png",
+            "created_at": "2025-03-13T12:19:47.000000Z",
+            "updated_at": "2025-03-13T12:19:47.000000Z"
+          },
+          "documents": [
+            {
+              "id": 181,
+              "name": {
+                "fr": "Couverture de cahier magique bleue avec motifs diagonaux",
+                "de": "Blauer Zauberheftumschlag mit diagonalen Mustern"
+              },
+              "type": "image",
+              "date": null,
+              "display_year": 0,
+              "title": {
+                "fr": "<p>Couverture de cahier magique bleue avec motifs diagonaux<\/p>",
+                "de": "<p> Blauer Zauberheftumschlag mit diagonalen Mustern<\/p>"
+              },
+              "description": {
+                "fr": "<p> D\u00e8s ses \u00e9tudes universitaires, Gilbert Trausch utilise des classeurs au format A5 pour consigner ses notes, \u00e9crire des commentaires, r\u00e9diger des notices ou encore rassembler ses r\u00e9sultats de recherche. Bien que les couleurs et motifs de ses cahiers varient consid\u00e9rablement, leur format reste constant.<\/p>",
+                "de": "<p> Bereits w\u00e4hrend seines Universit\u00e4tsstudiums verwendet Gilbert Trausch A5-Ordner, um seine Notizen festzuhalten, Kommentare zu schreiben, Merkbl\u00e4tter zu verfassen oder seine Forschungsergebnisse zusammenzustellen. Obwohl die Farben und Muster seiner Hefte stark variieren, bleibt ihr Format konstant.<\/p>"
+              },
+              "copyright": "<p>Archives priv\u00e9es Gilbert Trausch<\/p>",
+              "nomenclature": "zh-lma-01-zh02-05-02-05-zh-13-p1couverture-bleue",
+              "url": "https:\/\/gilberttrausch.uni.lu\/image\/zh-lma-01-zh02-05-02-05-zh-13-p1couverture-bleue.jpg",
+              "cover": null,
+              "optimized_url": {
+                "thumbnail": {
+                  "width": 400,
+                  "height": 368,
+                  "originalWidth": 4147,
+                  "originalHeight": 3816,
+                  "url": "https:\/\/gilberttrausch.uni.lu\/image\/zh-lma-01-zh02-05-02-05-zh-13-p1couverture-bleue-thumbnail.png"
+                },
+                "large": {
+                  "width": 2000,
+                  "height": 1840,
+                  "originalWidth": 4147,
+                  "originalHeight": 3816,
+                  "url": "https:\/\/gilberttrausch.uni.lu\/image\/zh-lma-01-zh02-05-02-05-zh-13-p1couverture-bleue-large.png"
+                }
+              },
+              "source": "<p>Archives priv\u00e9es Gilbert Trausch<\/p>",
+              "created_at": "2025-03-29T23:06:42.000000Z",
+              "updated_at": "2025-04-03T14:41:30.000000Z",
+              "pivot": {
+                "documentable_type": "App\\Models\\SlideMasonry",
+                "documentable_id": 8,
+                "document_id": 181,
+                "order": 1
+              }
+            },
+            {
+              "id": 182,
+              "name": {
+                "fr": "Couverture de cahier magique rouge \u00e0 texture granuleuse avec encadr\u00e9 grav\u00e9",
+                "de": "Roter Zauberheftumschlag mit k\u00f6rniger Textur und gravierter Umrahmung"
+              },
+              "type": "image",
+              "date": null,
+              "display_year": 0,
+              "title": {
+                "fr": "<p> Couverture de cahier magique rouge \u00e0 texture granuleuse avec encadr\u00e9 grav\u00e9<\/p>",
+                "de": "<p> Roter Zauberheftumschlag mit k\u00f6rniger Textur und gravierter Umrahmung<\/p>"
+              },
+              "description": {
+                "fr": "<p> D\u00e8s ses \u00e9tudes universitaires, Gilbert Trausch utilise des classeurs au format A5 pour consigner ses notes, \u00e9crire des commentaires, r\u00e9diger des notices ou encore rassembler ses r\u00e9sultats de recherche. Bien que les couleurs et motifs de ses cahiers varient consid\u00e9rablement, leur format reste constant.<\/p>",
+                "de": "<p> Bereits w\u00e4hrend seines Universit\u00e4tsstudiums verwendet Gilbert Trausch A5-Ordner, um seine Notizen festzuhalten, Kommentare zu schreiben, Merkbl\u00e4tter zu verfassen oder seine Forschungsergebnisse zusammenzustellen. Obwohl die Farben und Muster seiner Hefte stark variieren, bleibt ihr Format konstant.<\/p>"
+              },
+              "copyright": "<p>Archives priv\u00e9es Gilbert Trausch<\/p>",
+              "nomenclature": "zh-lma-02-zh02-05-02-05-zh-15-p1couverture-bordeaux",
+              "url": "https:\/\/gilberttrausch.uni.lu\/image\/zh-lma-02-zh02-05-02-05-zh-15-p1couverture-bordeaux.jpg",
+              "cover": null,
+              "optimized_url": {
+                "thumbnail": {
+                  "width": 400,
+                  "height": 380,
+                  "originalWidth": 3873,
+                  "originalHeight": 3682,
+                  "url": "https:\/\/gilberttrausch.uni.lu\/image\/zh-lma-02-zh02-05-02-05-zh-15-p1couverture-bordeaux-thumbnail.png"
+                },
+                "large": {
+                  "width": 2000,
+                  "height": 1901,
+                  "originalWidth": 3873,
+                  "originalHeight": 3682,
+                  "url": "https:\/\/gilberttrausch.uni.lu\/image\/zh-lma-02-zh02-05-02-05-zh-15-p1couverture-bordeaux-large.png"
+                }
+              },
+              "source": "<p>Archives priv\u00e9es Gilbert Trausch<\/p>",
+              "created_at": "2025-03-29T23:11:00.000000Z",
+              "updated_at": "2025-04-03T14:41:34.000000Z",
+              "pivot": {
+                "documentable_type": "App\\Models\\SlideMasonry",
+                "documentable_id": 8,
+                "document_id": 182,
+                "order": 2
+              }
+            },
+            {
+              "id": 183,
+              "name": {
+                "fr": "Couverture de cahier magique avec motif m\u00e9di\u00e9val",
+                "de": "Zauberheftumschlag mit mittelalterlichem Motiv"
+              },
+              "type": "image",
+              "date": null,
+              "display_year": 0,
+              "title": {
+                "fr": "<p> Couverture de cahier magique avec motif m\u00e9di\u00e9val<\/p>",
+                "de": "<p> Zauberheftumschlag mit mittelalterlichem Motiv<\/p>"
+              },
+              "description": {
+                "fr": "<p>D\u00e8s ses \u00e9tudes universitaires, Gilbert Trausch utilise des classeurs au format A5 pour consigner ses notes, \u00e9crire des commentaires, r\u00e9diger des notices ou encore rassembler ses r\u00e9sultats de recherche. Bien que les couleurs et motifs de ses cahiers varient consid\u00e9rablement, leur format reste constant.<\/p>",
+                "de": "<p> Bereits w\u00e4hrend seines Universit\u00e4tsstudiums verwendet Gilbert Trausch A5-Ordner, um seine Notizen festzuhalten, Kommentare zu schreiben, Merkbl\u00e4tter zu verfassen oder seine Forschungsergebnisse zusammenzustellen. Obwohl die Farben und Muster seiner Hefte stark variieren, bleibt ihr Format konstant.<\/p>"
+              },
+              "copyright": "<p>Archives priv\u00e9es Gilbert Trausch<\/p>",
+              "nomenclature": "zh-lma-zh03-03-08-03-05-p1couverture-eglise",
+              "url": "https:\/\/gilberttrausch.uni.lu\/image\/zh-lma-zh03-03-08-03-05-p1couverture-eglise.jpg",
+              "cover": null,
+              "optimized_url": {
+                "thumbnail": {
+                  "width": 396,
+                  "height": 400,
+                  "originalWidth": 3668,
+                  "originalHeight": 3703,
+                  "url": "https:\/\/gilberttrausch.uni.lu\/image\/zh-lma-zh03-03-08-03-05-p1couverture-eglise-thumbnail.png"
+                },
+                "large": {
+                  "width": 1981,
+                  "height": 2000,
+                  "originalWidth": 3668,
+                  "originalHeight": 3703,
+                  "url": "https:\/\/gilberttrausch.uni.lu\/image\/zh-lma-zh03-03-08-03-05-p1couverture-eglise-large.png"
+                }
+              },
+              "source": "<p>Archives priv\u00e9es Gilbert Trausch<\/p>",
+              "created_at": "2025-03-29T23:15:29.000000Z",
+              "updated_at": "2025-04-03T14:41:37.000000Z",
+              "pivot": {
+                "documentable_type": "App\\Models\\SlideMasonry",
+                "documentable_id": 8,
+                "document_id": 183,
+                "order": 3
+              }
+            },
+            {
+              "id": 184,
+              "name": {
+                "fr": "Couverture de cahier magique \u00e0 motif floral",
+                "de": "Zauberheftumschlag mit Blumenmuster"
+              },
+              "type": "image",
+              "date": null,
+              "display_year": 0,
+              "title": {
+                "fr": "<p>Couverture de cahier magique \u00e0 motif floral<\/p>",
+                "de": "<p> Zauberheftumschlag mit Blumenmuster<\/p>"
+              },
+              "description": {
+                "fr": "<p> D\u00e8s ses \u00e9tudes universitaires, Gilbert Trausch utilise des classeurs au format A5 pour consigner ses notes, \u00e9crire des commentaires, r\u00e9diger des notices ou encore rassembler ses r\u00e9sultats de recherche. Bien que les couleurs et motifs de ses cahiers varient consid\u00e9rablement, leur format reste constant.<\/p>",
+                "de": "<p> Bereits w\u00e4hrend seines Universit\u00e4tsstudiums verwendet Gilbert Trausch A5-Ordner, um seine Notizen festzuhalten, Kommentare zu schreiben, Merkbl\u00e4tter zu verfassen oder seine Forschungsergebnisse zusammenzustellen. Obwohl die Farben und Muster seiner Hefte stark variieren, bleibt ihr Format konstant.<\/p>"
+              },
+              "copyright": "<p>Archives priv\u00e9es Gilbert Trausch<\/p>",
+              "nomenclature": "zh-lma-04-zh01-15-02-2-p1couverturefleurs",
+              "url": "https:\/\/gilberttrausch.uni.lu\/image\/zh-lma-04-zh01-15-02-2-p1couverturefleurs.jpg",
+              "cover": null,
+              "optimized_url": {
+                "thumbnail": {
+                  "width": 391,
+                  "height": 400,
+                  "originalWidth": 3502,
+                  "originalHeight": 3583,
+                  "url": "https:\/\/gilberttrausch.uni.lu\/image\/zh-lma-04-zh01-15-02-2-p1couverturefleurs-thumbnail.png"
+                },
+                "large": {
+                  "width": 1955,
+                  "height": 2000,
+                  "originalWidth": 3502,
+                  "originalHeight": 3583,
+                  "url": "https:\/\/gilberttrausch.uni.lu\/image\/zh-lma-04-zh01-15-02-2-p1couverturefleurs-large.png"
+                }
+              },
+              "source": "<p>Archives priv\u00e9es Gilbert Trausch<\/p>",
+              "created_at": "2025-03-29T23:21:47.000000Z",
+              "updated_at": "2025-04-03T14:41:41.000000Z",
+              "pivot": {
+                "documentable_type": "App\\Models\\SlideMasonry",
+                "documentable_id": 8,
+                "document_id": 184,
+                "order": 4
+              }
+            },
+            {
+              "id": 185,
+              "name": {
+                "fr": "Couverture de cahier magique \u00e0 rayures bleues",
+                "de": "Blau gestreifter Zauberheftumschlag"
+              },
+              "type": "image",
+              "date": null,
+              "display_year": 0,
+              "title": {
+                "fr": "<p>Couverture de cahier magique \u00e0 rayures bleues<\/p>",
+                "de": "<p> Blau gestreifter Zauberheftumschlag<\/p>"
+              },
+              "description": {
+                "fr": "<p>D\u00e8s ses \u00e9tudes universitaires, Gilbert Trausch utilise des classeurs au format A5 pour consigner ses notes, \u00e9crire des commentaires, r\u00e9diger des notices ou encore rassembler ses r\u00e9sultats de recherche. Bien que les couleurs et motifs de ses cahiers varient consid\u00e9rablement, leur format reste constant.<\/p>",
+                "de": "<p> Bereits w\u00e4hrend seines Universit\u00e4tsstudiums verwendet Gilbert Trausch A5-Ordner, um seine Notizen festzuhalten, Kommentare zu schreiben, Merkbl\u00e4tter zu verfassen oder seine Forschungsergebnisse zusammenzustellen. Obwohl die Farben und Muster seiner Hefte stark variieren, bleibt ihr Format konstant.<\/p>"
+              },
+              "copyright": "<p>Archives priv\u00e9es Gilbert Trausch<\/p>",
+              "nomenclature": "zh-lma-05-zh02-05-03-05-zh-01-p1-couverturelignee",
+              "url": "https:\/\/gilberttrausch.uni.lu\/image\/zh-lma-05-zh02-05-03-05-zh-01-p1-couverturelignee.jpg",
+              "cover": null,
+              "optimized_url": {
+                "thumbnail": {
+                  "width": 400,
+                  "height": 310,
+                  "originalWidth": 4264,
+                  "originalHeight": 3306,
+                  "url": "https:\/\/gilberttrausch.uni.lu\/image\/zh-lma-05-zh02-05-03-05-zh-01-p1-couverturelignee-thumbnail.png"
+                },
+                "large": {
+                  "width": 2000,
+                  "height": 1551,
+                  "originalWidth": 4264,
+                  "originalHeight": 3306,
+                  "url": "https:\/\/gilberttrausch.uni.lu\/image\/zh-lma-05-zh02-05-03-05-zh-01-p1-couverturelignee-large.png"
+                }
+              },
+              "source": "<p>Archives priv\u00e9es Gilbert Trausch<\/p>",
+              "created_at": "2025-03-29T23:26:06.000000Z",
+              "updated_at": "2025-04-03T14:41:44.000000Z",
+              "pivot": {
+                "documentable_type": "App\\Models\\SlideMasonry",
+                "documentable_id": 8,
+                "document_id": 185,
+                "order": 5
+              }
+            },
+            {
+              "id": 186,
+              "name": {
+                "fr": "Couverture de cahier magique avec motifs de tapisserie vintage",
+                "de": "Zauberheftumschlag mit Vintage-Tapetenmuster"
+              },
+              "type": "image",
+              "date": null,
+              "display_year": 0,
+              "title": {
+                "fr": "<p> Couverture de cahier magique avec motifs de tapisserie vintage<\/p>",
+                "de": "<p>Zauberheftumschlag mit Vintage-Tapetenmuster<\/p>"
+              },
+              "description": {
+                "fr": "<p>D\u00e8s ses \u00e9tudes universitaires, Gilbert Trausch utilise des classeurs au format A5 pour consigner ses notes, \u00e9crire des commentaires, r\u00e9diger des notices ou encore rassembler ses r\u00e9sultats de recherche. Bien que les couleurs et motifs de ses cahiers varient consid\u00e9rablement, leur format reste constant.<\/p>",
+                "de": "<p> Bereits w\u00e4hrend seines Universit\u00e4tsstudiums verwendet Gilbert Trausch A5-Ordner, um seine Notizen festzuhalten, Kommentare zu schreiben, Merkbl\u00e4tter zu verfassen oder seine Forschungsergebnisse zusammenzustellen. Obwohl die Farben und Muster seiner Hefte stark variieren, bleibt ihr Format konstant.<\/p>"
+              },
+              "copyright": "<p>Archives priv\u00e9es Gilbert Trausch<\/p>",
+              "nomenclature": "zh-lma-06-zh02-05-01-06-zh-17-p1couverture-medaillons",
+              "url": "https:\/\/gilberttrausch.uni.lu\/image\/zh-lma-06-zh02-05-01-06-zh-17-p1couverture-medaillons.jpg",
+              "cover": null,
+              "optimized_url": {
+                "thumbnail": {
+                  "width": 400,
+                  "height": 353,
+                  "originalWidth": 2218,
+                  "originalHeight": 1959,
+                  "url": "https:\/\/gilberttrausch.uni.lu\/image\/zh-lma-06-zh02-05-01-06-zh-17-p1couverture-medaillons-thumbnail.png"
+                },
+                "large": {
+                  "width": 2000,
+                  "height": 1766,
+                  "originalWidth": 2218,
+                  "originalHeight": 1959,
+                  "url": "https:\/\/gilberttrausch.uni.lu\/image\/zh-lma-06-zh02-05-01-06-zh-17-p1couverture-medaillons-large.png"
+                }
+              },
+              "source": "<p>Archives priv\u00e9es Gilbert Trausch<\/p>",
+              "created_at": "2025-03-29T23:30:15.000000Z",
+              "updated_at": "2025-04-03T14:41:51.000000Z",
+              "pivot": {
+                "documentable_type": "App\\Models\\SlideMasonry",
+                "documentable_id": 8,
+                "document_id": 186,
+                "order": 6
+              }
+            },
+            {
+              "id": 187,
+              "name": {
+                "fr": "Couverture de cahier magique rouge effet cuir",
+                "de": "Zauberheftumschlag in Rot mit Ledereffekt"
+              },
+              "type": "image",
+              "date": null,
+              "display_year": 0,
+              "title": {
+                "fr": "<p> Couverture de cahier magique rouge effet cuir<\/p>",
+                "de": "<p> Zauberheftumschlag in Rot mit Ledereffekt<\/p>"
+              },
+              "description": {
+                "fr": "<p> D\u00e8s ses \u00e9tudes universitaires, Gilbert Trausch utilise des classeurs au format A5 pour consigner ses notes, \u00e9crire des commentaires, r\u00e9diger des notices ou encore rassembler ses r\u00e9sultats de recherche. Bien que les couleurs et motifs de ses cahiers varient consid\u00e9rablement, leur format reste constant.<\/p>",
+                "de": "<p> Bereits w\u00e4hrend seines Universit\u00e4tsstudiums verwendet Gilbert Trausch A5-Ordner, um seine Notizen festzuhalten, Kommentare zu schreiben, Merkbl\u00e4tter zu verfassen oder seine Forschungsergebnisse zusammenzustellen. Obwohl die Farben und Muster seiner Hefte stark variieren, bleibt ihr Format konstant.<\/p>"
+              },
+              "copyright": "<p>Archives priv\u00e9es Gilbert Trausch<\/p>",
+              "nomenclature": "zh-lma-08-zh03-12-01-05-zh-03-p1-couverturerouge",
+              "url": "https:\/\/gilberttrausch.uni.lu\/image\/zh-lma-08-zh03-12-01-05-zh-03-p1-couverturerouge.jpg",
+              "cover": null,
+              "optimized_url": {
+                "thumbnail": {
+                  "width": 400,
+                  "height": 394,
+                  "originalWidth": 2421,
+                  "originalHeight": 2385,
+                  "url": "https:\/\/gilberttrausch.uni.lu\/image\/zh-lma-08-zh03-12-01-05-zh-03-p1-couverturerouge-thumbnail.png"
+                },
+                "large": {
+                  "width": 2000,
+                  "height": 1970,
+                  "originalWidth": 2421,
+                  "originalHeight": 2385,
+                  "url": "https:\/\/gilberttrausch.uni.lu\/image\/zh-lma-08-zh03-12-01-05-zh-03-p1-couverturerouge-large.png"
+                }
+              },
+              "source": "<p>Archives priv\u00e9es Gilbert Trausch<\/p>",
+              "created_at": "2025-03-29T23:34:43.000000Z",
+              "updated_at": "2025-04-03T14:41:55.000000Z",
+              "pivot": {
+                "documentable_type": "App\\Models\\SlideMasonry",
+                "documentable_id": 8,
+                "document_id": 187,
+                "order": 7
+              }
+            },
+            {
+              "id": 188,
+              "name": {
+                "fr": "Couverture de cahier magique noire effet cuir avec pochette pour \u00e9tiquette",
+                "de": "Schwarzer Zauberheftumschlag in Lederoptik mit Etikettentasche"
+              },
+              "type": "image",
+              "date": null,
+              "display_year": 0,
+              "title": {
+                "fr": "<p> Couverture de cahier magique noire effet cuir avec pochette pour \u00e9tiquette<\/p>",
+                "de": "<p> Schwarzer Zauberheftumschlag in Lederoptik mit Etikettentasche<\/p>"
+              },
+              "description": {
+                "fr": "<p> D\u00e8s ses \u00e9tudes universitaires, Gilbert Trausch utilise des classeurs au format A5 pour consigner ses notes, \u00e9crire des commentaires, r\u00e9diger des notices ou encore rassembler ses r\u00e9sultats de recherche. Bien que les couleurs et motifs de ses cahiers varient consid\u00e9rablement, leur format reste constant.<\/p>",
+                "de": "<p> Bereits w\u00e4hrend seines Universit\u00e4tsstudiums verwendet Gilbert Trausch A5-Ordner, um seine Notizen festzuhalten, Kommentare zu schreiben, Merkbl\u00e4tter zu verfassen oder seine Forschungsergebnisse zusammenzustellen. Obwohl die Farben und Muster seiner Hefte stark variieren, bleibt ihr Format konstant.<\/p>"
+              },
+              "copyright": "<p>Archives priv\u00e9es Gilbert Trausch<\/p>",
+              "nomenclature": "zh-lma-09-zh02-05-01-04-zh-02-p1couvertureouverte",
+              "url": "https:\/\/gilberttrausch.uni.lu\/image\/zh-lma-09-zh02-05-01-04-zh-02-p1couvertureouverte.jpg",
+              "cover": null,
+              "optimized_url": {
+                "thumbnail": {
+                  "width": 400,
+                  "height": 283,
+                  "originalWidth": 1170,
+                  "originalHeight": 827,
+                  "url": "https:\/\/gilberttrausch.uni.lu\/image\/zh-lma-09-zh02-05-01-04-zh-02-p1couvertureouverte-thumbnail.png"
+                },
+                "large": {
+                  "width": 1170,
+                  "height": 827,
+                  "originalWidth": 1170,
+                  "originalHeight": 827,
+                  "url": "https:\/\/gilberttrausch.uni.lu\/image\/zh-lma-09-zh02-05-01-04-zh-02-p1couvertureouverte-large.png"
+                }
+              },
+              "source": "<p>Archives priv\u00e9es Gilbert Trausch<\/p>",
+              "created_at": "2025-03-29T23:37:30.000000Z",
+              "updated_at": "2025-04-03T14:41:58.000000Z",
+              "pivot": {
+                "documentable_type": "App\\Models\\SlideMasonry",
+                "documentable_id": 8,
+                "document_id": 188,
+                "order": 8
+              }
+            },
+            {
+              "id": 189,
+              "name": {
+                "fr": "Couverture de cahier magique orange \u00e0 texture granuleuse tiss\u00e9e",
+                "de": "Orangefarbener Zauberheftumschlag mit gewebter k\u00f6rniger Textur"
+              },
+              "type": "image",
+              "date": null,
+              "display_year": 0,
+              "title": {
+                "fr": "<p>Couverture de cahier magique orange \u00e0 texture granuleuse tiss\u00e9e<\/p>",
+                "de": "<p>Orangefarbener Zauberheftumschlag mit gewebter k\u00f6rniger Textur<\/p>"
+              },
+              "description": {
+                "fr": "<p> D\u00e8s ses \u00e9tudes universitaires, Gilbert Trausch utilise des classeurs au format A5 pour consigner ses notes, \u00e9crire des commentaires, r\u00e9diger des notices ou encore rassembler ses r\u00e9sultats de recherche. Bien que les couleurs et motifs de ses cahiers varient consid\u00e9rablement, leur format reste constant.&nbsp;<\/p>",
+                "de": "<p> Bereits w\u00e4hrend seines Universit\u00e4tsstudiums verwendet Gilbert Trausch A5-Ordner, um seine Notizen festzuhalten, Kommentare zu schreiben, Merkbl\u00e4tter zu verfassen oder seine Forschungsergebnisse zusammenzustellen. Obwohl die Farben und Muster seiner Hefte stark variieren, bleibt das Format konstant.&nbsp;<\/p>"
+              },
+              "copyright": "<p>Archives priv\u00e9es Gilbert Trausch<\/p>",
+              "nomenclature": "zh-lma-10-zh03-12-01-05-zh-01-p1couvertureorange",
+              "url": "https:\/\/gilberttrausch.uni.lu\/image\/zh-lma-10-zh03-12-01-05-zh-01-p1couvertureorange.jpg",
+              "cover": null,
+              "optimized_url": {
+                "thumbnail": {
+                  "width": 400,
+                  "height": 365,
+                  "originalWidth": 2562,
+                  "originalHeight": 2338,
+                  "url": "https:\/\/gilberttrausch.uni.lu\/image\/zh-lma-10-zh03-12-01-05-zh-01-p1couvertureorange-thumbnail.png"
+                },
+                "large": {
+                  "width": 2000,
+                  "height": 1825,
+                  "originalWidth": 2562,
+                  "originalHeight": 2338,
+                  "url": "https:\/\/gilberttrausch.uni.lu\/image\/zh-lma-10-zh03-12-01-05-zh-01-p1couvertureorange-large.png"
+                }
+              },
+              "source": "<p>Archives priv\u00e9es Gilbert Trausch<\/p>",
+              "created_at": "2025-03-29T23:41:16.000000Z",
+              "updated_at": "2025-04-03T14:42:02.000000Z",
+              "pivot": {
+                "documentable_type": "App\\Models\\SlideMasonry",
+                "documentable_id": 8,
+                "document_id": 189,
+                "order": 9
+              }
+            },
+            {
+              "id": 190,
+              "name": {
+                "fr": "Couverture de cahier magique bordeaux \u00e0 texture granuleuse tiss\u00e9e",
+                "de": "Bordeauxroter Zauberheftumschlag mit gewebter k\u00f6rniger Textur"
+              },
+              "type": "image",
+              "date": null,
+              "display_year": 0,
+              "title": {
+                "fr": "<p> Couverture de cahier magique bordeaux \u00e0 texture granuleuse tiss\u00e9e<\/p>",
+                "de": "<p>Bordeauxroter Zauberheftumschlag mit gewebter k\u00f6rniger Textur<\/p>"
+              },
+              "description": {
+                "fr": "<p> D\u00e8s ses \u00e9tudes universitaires, Gilbert Trausch utilise des classeurs au format A5 pour consigner ses notes, \u00e9crire des commentaires, r\u00e9diger des notices ou encore rassembler ses r\u00e9sultats de recherche. Bien que les couleurs et motifs de ses cahiers varient consid\u00e9rablement, leur format reste constant. Parmi ces cahiers, seuls cinq portent un titre sur le dos, dont celui-ci fait partie.<\/p>",
+                "de": "<p> Bereits w\u00e4hrend seines Universit\u00e4tsstudiums verwendet Gilbert Trausch A5-Ordner, um seine Notizen festzuhalten, Kommentare zu schreiben, Merkbl\u00e4tter zu verfassen oder seine Forschungsergebnisse zusammenzustellen. Obwohl die Farben und Muster seiner Hefte stark variieren, bleibt ihr Format konstant. Von diesen Heften tragen nur f\u00fcnf einen Titel auf dem R\u00fccken, zu denen auch dieses Heft geh\u00f6rt.<\/p>"
+              },
+              "copyright": "<p>Archives priv\u00e9es Gilbert Trausch<\/p>",
+              "nomenclature": "zh-lma-11-zh02-05-01-04-zh-17-p1couvertureavectitre",
+              "url": "https:\/\/gilberttrausch.uni.lu\/image\/zh-lma-11-zh02-05-01-04-zh-17-p1couvertureavectitre.jpg",
+              "cover": null,
+              "optimized_url": {
+                "thumbnail": {
+                  "width": 387,
+                  "height": 400,
+                  "originalWidth": 3426,
+                  "originalHeight": 3538,
+                  "url": "https:\/\/gilberttrausch.uni.lu\/image\/zh-lma-11-zh02-05-01-04-zh-17-p1couvertureavectitre-thumbnail.png"
+                },
+                "large": {
+                  "width": 1937,
+                  "height": 2000,
+                  "originalWidth": 3426,
+                  "originalHeight": 3538,
+                  "url": "https:\/\/gilberttrausch.uni.lu\/image\/zh-lma-11-zh02-05-01-04-zh-17-p1couvertureavectitre-large.png"
+                }
+              },
+              "source": "<p>Archives priv\u00e9es Gilbert Trausch<\/p>",
+              "created_at": "2025-03-29T23:47:24.000000Z",
+              "updated_at": "2025-04-03T14:42:08.000000Z",
+              "pivot": {
+                "documentable_type": "App\\Models\\SlideMasonry",
+                "documentable_id": 8,
+                "document_id": 190,
+                "order": 10
+              }
+            },
+            {
+              "id": 191,
+              "name": {
+                "fr": "Origine des cahiers magiques de Gilbert Trausch (1)",
+                "de": "Ursprung der Zauberhefte von Gilbert Trausch (1)"
+              },
+              "type": "notebook",
+              "date": null,
+              "display_year": 0,
+              "title": {
+                "fr": "<p>Origine des cahiers magiques de Gilbert Trausch<\/p>",
+                "de": "<p>&nbsp;Ursprung der Zauberhefte von Gilbert Trausch<\/p>"
+              },
+              "description": {
+                "fr": "<p> Gilbert Trausch achetait la majorit\u00e9 de ses cahiers \u00e0 feuillets mobiles perfor\u00e9s \u00e0 la Papeterie Joseph Gibert \u00e0 Paris. Ces cahiers, essentiels \u00e0 ses recherches et \u00e0 ses \u00e9crits, proviennent principalement de cette boutique parisienne. Au fil du temps, les feuillets de pr\u00e9sentation de la papeterie ont \u00e9volu\u00e9 et chang\u00e9 de graphisme, mais l\u2019historien est toujours rest\u00e9 fid\u00e8le \u00e0 ce mod\u00e8le.<\/p>",
+                "de": "<p>&nbsp;Gilbert Trausch kaufte die meisten seiner perforierten Loseblatthefte bei der Papeterie Joseph Gibert in Paris. Diese Hefte, die f\u00fcr seine Forschungen und Schriften unerl\u00e4sslich waren, stammten haupts\u00e4chlich aus diesem Pariser Gesch\u00e4ft. Im Laufe der Zeit entwickelten sich die Pr\u00e4sentationsbl\u00e4tter der Papeterie weiter und \u00e4nderten ihre grafische Gestaltung, doch der Historiker blieb diesem Modell immer treu.<\/p>"
+              },
+              "copyright": "<p>Archives priv\u00e9es Gilbert Trausch<\/p>",
+              "nomenclature": "zh-lma-07-zh01-10-03-06-zh-l-p-2papeterie-gibert",
+              "url": "https:\/\/gilberttrausch.uni.lu\/pdf\/zhchapitre\/zh-lma-07-zh01-10-03-06-zh-l-p-2papeterie-gibert.pdf",
+              "cover": null,
+              "optimized_url": {
+                "thumbnail": {
+                  "width": 384,
+                  "height": 400,
+                  "originalWidth": 1732,
+                  "originalHeight": 1806,
+                  "url": "https:\/\/gilberttrausch.uni.lu\/pdf\/zhchapitre\/zh-lma-07-zh01-10-03-06-zh-l-p-2papeterie-gibert-thumbnail.png"
+                },
+                "large": {
+                  "width": 1732,
+                  "height": 1806,
+                  "originalWidth": 1732,
+                  "originalHeight": 1806,
+                  "url": "https:\/\/gilberttrausch.uni.lu\/pdf\/zhchapitre\/zh-lma-07-zh01-10-03-06-zh-l-p-2papeterie-gibert-large.png"
+                }
+              },
+              "source": "<p>Archives priv\u00e9es Gilbert Trausch<\/p>",
+              "created_at": "2025-03-29T23:54:53.000000Z",
+              "updated_at": "2025-04-07T14:14:49.000000Z",
+              "pivot": {
+                "documentable_type": "App\\Models\\SlideMasonry",
+                "documentable_id": 8,
+                "document_id": 191,
+                "order": 11
+              }
+            },
+            {
+              "id": 195,
+              "name": {
+                "fr": "Origine des cahiers magiques de Gilbert Trausch (2)",
+                "de": "Ursprung der Zauberhefte von Gilbert Trausch (2)"
+              },
+              "type": "notebook",
+              "date": null,
+              "display_year": 0,
+              "title": {
+                "fr": "<p> Origine des cahiers magiques de Gilbert Trausch<\/p>",
+                "de": "<p>&nbsp;Ursprung der Zauberhefte von Gilbert Trausch<\/p>"
+              },
+              "description": {
+                "fr": "<p> Gilbert Trausch achetait la majorit\u00e9 de ses cahiers \u00e0 feuillets mobiles perfor\u00e9s \u00e0 la Papeterie Joseph Gibert \u00e0 Paris. Ces cahiers, essentiels \u00e0 ses recherches et \u00e0 ses \u00e9crits, proviennent principalement de cette boutique parisienne. Au fil du temps, les feuillets de pr\u00e9sentation de la papeterie ont \u00e9volu\u00e9 et chang\u00e9 de graphisme, mais l\u2019historien est toujours rest\u00e9 fid\u00e8le \u00e0 ce mod\u00e8le.<\/p>",
+                "de": "<p>&nbsp;Gilbert Trausch kaufte die meisten seiner perforierten Loseblatthefte bei der Papeterie Joseph Gibert in Paris. Diese Hefte, die f\u00fcr seine Forschungen und Schriften unerl\u00e4sslich waren, stammten haupts\u00e4chlich aus diesem Pariser Gesch\u00e4ft. Im Laufe der Zeit entwickelten sich die Pr\u00e4sentationsbl\u00e4tter der Papeterie weiter und \u00e4nderten ihre grafische Gestaltung, doch der Historiker blieb diesem Modell immer treu.<\/p>"
+              },
+              "copyright": "<p>Archives priv\u00e9es Gilbert Trausch<\/p>",
+              "nomenclature": "zh-lma-12-zh03-08-01-02-p31papeteriegibert",
+              "url": "https:\/\/gilberttrausch.uni.lu\/pdf\/zhchapitre\/zh-lma-12-zh03-08-01-02-p31papeteriegibert.pdf",
+              "cover": null,
+              "optimized_url": {
+                "thumbnail": {
+                  "width": 311,
+                  "height": 400,
+                  "originalWidth": 1398,
+                  "originalHeight": 1796,
+                  "url": "https:\/\/gilberttrausch.uni.lu\/pdf\/zhchapitre\/zh-lma-12-zh03-08-01-02-p31papeteriegibert-thumbnail.png"
+                },
+                "large": {
+                  "width": 1398,
+                  "height": 1796,
+                  "originalWidth": 1398,
+                  "originalHeight": 1796,
+                  "url": "https:\/\/gilberttrausch.uni.lu\/pdf\/zhchapitre\/zh-lma-12-zh03-08-01-02-p31papeteriegibert-large.png"
+                }
+              },
+              "source": "<p>Archives priv\u00e9es Gilbert Trausch<\/p>",
+              "created_at": "2025-03-30T13:35:44.000000Z",
+              "updated_at": "2025-04-07T14:14:50.000000Z",
+              "pivot": {
+                "documentable_type": "App\\Models\\SlideMasonry",
+                "documentable_id": 8,
+                "document_id": 195,
+                "order": 12
+              }
+            }
+          ]
+        }
+      },
+      {
+        "id": 17,
+        "magic_notebook_id": 2,
+        "order": 3,
+        "slidable_type": "App\\Models\\SlideMasonry",
+        "slidable_id": 10,
+        "created_by": 4,
+        "created_at": "2025-04-02T11:26:42.000000Z",
+        "updated_at": "2025-04-02T11:26:42.000000Z",
+        "slidable": {
+          "id": 10,
+          "content": {
+            "fr": "<p>Les fonctions des <em>Zauberhefte<\/em> se sont \u00e9largies au fil du temps. Dans les ann\u00e9es 1960 et 1970, il utilise les cahiers pour pr\u00e9parer ses le\u00e7ons et ses cours, d\u2019abord dans l\u2019enseignement secondaire, puis au Centre universitaire, et peut-\u00eatre aussi encore \u00e0 l\u2019Universit\u00e9 de Li\u00e8ge. Il conserve dans un m\u00eame classeur les diff\u00e9rentes \u00e9tapes de sa pr\u00e9paration, depuis des esquisses de structure, des notes \u00e9crites au crayon, jusqu\u2019\u00e0 une version tr\u00e8s \u00e9labor\u00e9e du cours, r\u00e9dig\u00e9e de mani\u00e8re beaucoup plus soigneuse au stylo bleu, avec des soulignements en bleu ou en rouge.&nbsp;<\/p>",
+            "de": "<p>Die Funktionen der <em>Zauberhefte<\/em> wurden im Laufe der Zeit immer weiter ausgedehnt. In den 1960er und 1970er Jahren nutzte er die Hefte zur Vorbereitung von Unterricht und Vorlesungen, zun\u00e4chst in der Sekundarstufe, sp\u00e4ter am Centre Universitaire und vielleicht noch an der Universit\u00e4t L\u00fcttich. Er bewahrt die verschiedenen Phasen seiner Vorbereitung in einem einzigen Ordner auf, von Gliederungsskizzen, mit Bleistift geschriebenen Notizen bis hin zu einer sehr ausgearbeiteten Version der Vorlesung, die viel sorgf\u00e4ltiger mit blauem Stift und blauen oder roten Unterstreichungen verfasst wird.&nbsp;<\/p>"
+          },
+          "color_menu": "#000000",
+          "color_text": "#000000",
+          "background_id": 4,
+          "created_at": "2025-04-02T11:26:42.000000Z",
+          "updated_at": "2025-04-15T17:29:51.000000Z",
+          "type": "SlideMasonry",
+          "background": {
+            "id": 4,
+            "title": "Texture 1",
+            "background": "backgrounds\/F7pUqm3MQL99WZiszWEd3Gjm5Cia1RRzzsj2Nm0N.png",
+            "created_at": "2025-03-13T12:19:47.000000Z",
+            "updated_at": "2025-03-13T12:19:47.000000Z"
+          },
+          "documents": [
+            {
+              "id": 197,
+              "name": {
+                "fr": "Extrait d\u2019un cahier magique de Gilbert Trausch, notes de cours (1)",
+                "de": "Auszug aus einem Zauberheft von Gilbert Trausch, Unterrichtsnotizen (1)"
+              },
+              "type": "notebook",
+              "date": null,
+              "display_year": 0,
+              "title": {
+                "fr": "<p>Extrait d\u2019un cahier magique de Gilbert Trausch, notes de cours<\/p>",
+                "de": "<p>&nbsp;Auszug aus einem Zauberheft von Gilbert Trausch, Unterrichtsnotizen<\/p>"
+              },
+              "description": {
+                "fr": "<p> Cet extrait provient d'un cahier magique (n\u00b0 4) de Gilbert Trausch, utilis\u00e9 pour pr\u00e9parer ses cours et ses le\u00e7ons dans les ann\u00e9es 1960 et 1970. Ce document montre un exemple de son travail de pr\u00e9paration en tant que professeur.<\/p>",
+                "de": "<p>&nbsp;Dieser Auszug stammt aus einem Zauberheft (Nr. 4) von Gilbert Trausch, das er in den 1960er und 1970er Jahren zur Vorbereitung seiner Kurse und Lektionen verwendete. Das Dokument zeigt ein Beispiel seiner Vorbereitungsarbeit als Lehrer.<\/p>"
+              },
+              "copyright": "<p>Archives priv\u00e9es Gilbert Trausch<\/p>",
+              "nomenclature": "zh-lma-14-zh02-05-01-04-zh-16-p18notesdecours",
+              "url": "https:\/\/gilberttrausch.uni.lu\/pdf\/zhchapitre\/zh-lma-14-zh02-05-01-04-zh-16-p18notesdecours.pdf",
+              "cover": null,
+              "optimized_url": {
+                "thumbnail": {
+                  "width": 309,
+                  "height": 400,
+                  "originalWidth": 1336,
+                  "originalHeight": 1729,
+                  "url": "https:\/\/gilberttrausch.uni.lu\/pdf\/zhchapitre\/zh-lma-14-zh02-05-01-04-zh-16-p18notesdecours-thumbnail.png"
+                },
+                "large": {
+                  "width": 1336,
+                  "height": 1729,
+                  "originalWidth": 1336,
+                  "originalHeight": 1729,
+                  "url": "https:\/\/gilberttrausch.uni.lu\/pdf\/zhchapitre\/zh-lma-14-zh02-05-01-04-zh-16-p18notesdecours-large.png"
+                }
+              },
+              "source": "<p>Archives priv\u00e9es Gilbert Trausch<\/p>",
+              "created_at": "2025-03-30T13:43:17.000000Z",
+              "updated_at": "2025-04-07T14:14:51.000000Z",
+              "pivot": {
+                "documentable_type": "App\\Models\\SlideMasonry",
+                "documentable_id": 10,
+                "document_id": 197,
+                "order": 1
+              }
+            },
+            {
+              "id": 198,
+              "name": {
+                "fr": "Extrait d\u2019un cahier magique de Gilbert Trausch (1966-1967)",
+                "de": "Auszug aus einem Zauberheft von Gilbert Trausch (1966-1967)"
+              },
+              "type": "notebook",
+              "date": "1966-01-01",
+              "display_year": 1,
+              "title": {
+                "fr": "<p> Extrait d\u2019un cahier magique de Gilbert Trausch (1966-1967)<\/p>",
+                "de": "<p> Auszug aus einem Zauberheft von Gilbert Trausch (1966-1967)<\/p>"
+              },
+              "description": {
+                "fr": "<p> Cet extrait d'un cahier magique (n\u00b0 2) de Gilbert Trausch, qui contient les questions d'examens pour le cours d'histoire luxembourgeoise de la p\u00e9riode 1966-1967, montre un exemple de l'utilisation de ses cahiers par l'historien pour la pr\u00e9paration de ses cours.<\/p>",
+                "de": "<p> Dieser Auszug aus einem Zauberheft (Nr. 2) von Gilbert Trausch, das die Pr\u00fcfungsfragen f\u00fcr den Kurs \u00fcber luxemburgische Geschichte im Zeitraum 1966-1967 enth\u00e4lt, zeigt ein Beispiel daf\u00fcr, wie der Historiker seine Hefte zur Vorbereitung seiner Vorlesungen verwendet hat.<\/p>"
+              },
+              "copyright": "<p>Archives priv\u00e9es Gilbert Trausch<\/p>",
+              "nomenclature": "zh-lma-15-zh02-05-01-04-zh-10-p158questionsexamens1966",
+              "url": "https:\/\/gilberttrausch.uni.lu\/pdf\/zhchapitre\/zh-lma-15-zh02-05-01-04-zh-10-p158questionsexamens1966.pdf",
+              "cover": null,
+              "optimized_url": {
+                "thumbnail": {
+                  "width": 293,
+                  "height": 400,
+                  "originalWidth": 1226,
+                  "originalHeight": 1671,
+                  "url": "https:\/\/gilberttrausch.uni.lu\/pdf\/zhchapitre\/zh-lma-15-zh02-05-01-04-zh-10-p158questionsexamens1966-thumbnail.png"
+                },
+                "large": {
+                  "width": 1226,
+                  "height": 1671,
+                  "originalWidth": 1226,
+                  "originalHeight": 1671,
+                  "url": "https:\/\/gilberttrausch.uni.lu\/pdf\/zhchapitre\/zh-lma-15-zh02-05-01-04-zh-10-p158questionsexamens1966-large.png"
+                }
+              },
+              "source": "<p>Archives priv\u00e9es Gilbert Trausch<\/p>",
+              "created_at": "2025-03-30T13:46:47.000000Z",
+              "updated_at": "2025-04-07T14:14:51.000000Z",
+              "pivot": {
+                "documentable_type": "App\\Models\\SlideMasonry",
+                "documentable_id": 10,
+                "document_id": 198,
+                "order": 2
+              }
+            },
+            {
+              "id": 199,
+              "name": {
+                "fr": "Extrait d\u2019un cahier magique de Gilbert Trausch, notes de cours (2)",
+                "de": "Auszug aus einem Zauberheft von Gilbert Trausch, Unterrichtsnotizen (2)"
+              },
+              "type": "notebook",
+              "date": null,
+              "display_year": 0,
+              "title": {
+                "fr": "<p>Extrait d\u2019un cahier magique de Gilbert Trausch, notes de cours<\/p>",
+                "de": "<p>&nbsp;Auszug aus einem Zauberheft von Gilbert Trausch, Unterrichtsnotizen<\/p>"
+              },
+              "description": {
+                "fr": "<p> Cet extrait provient d'un cahier magique (n\u00b0 2) de Gilbert Trausch, utilis\u00e9 pour pr\u00e9parer ses cours et ses le\u00e7ons dans les ann\u00e9es 1960 et 1970. Ce document montre un exemple de son travail de pr\u00e9paration en tant que professeur.<\/p>",
+                "de": "<p>&nbsp;Dieser Auszug stammt aus einem Zauberheft (Nr. 2) von Gilbert Trausch, das er in den 1960er und 1970er Jahren zur Vorbereitung seiner Kurse und Lektionen verwendete. Das Dokument zeigt ein Beispiel seiner Vorbereitungsarbeit als Lehrer.<\/p>"
+              },
+              "copyright": "<p>Archives priv\u00e9es Gilbert Trausch<\/p>",
+              "nomenclature": "zh-lma-16-zh02-05-01-04-zh-10-p140notes-de-cours",
+              "url": "https:\/\/gilberttrausch.uni.lu\/pdf\/zhchapitre\/zh-lma-16-zh02-05-01-04-zh-10-p140notes-de-cours.pdf",
+              "cover": null,
+              "optimized_url": {
+                "thumbnail": {
+                  "width": 317,
+                  "height": 400,
+                  "originalWidth": 1301,
+                  "originalHeight": 1640,
+                  "url": "https:\/\/gilberttrausch.uni.lu\/pdf\/zhchapitre\/zh-lma-16-zh02-05-01-04-zh-10-p140notes-de-cours-thumbnail.png"
+                },
+                "large": {
+                  "width": 1301,
+                  "height": 1640,
+                  "originalWidth": 1301,
+                  "originalHeight": 1640,
+                  "url": "https:\/\/gilberttrausch.uni.lu\/pdf\/zhchapitre\/zh-lma-16-zh02-05-01-04-zh-10-p140notes-de-cours-large.png"
+                }
+              },
+              "source": "<p>Archives priv\u00e9es Gilbert Trausch<\/p>",
+              "created_at": "2025-03-30T13:50:50.000000Z",
+              "updated_at": "2025-04-07T14:14:51.000000Z",
+              "pivot": {
+                "documentable_type": "App\\Models\\SlideMasonry",
+                "documentable_id": 10,
+                "document_id": 199,
+                "order": 3
+              }
+            },
+            {
+              "id": 200,
+              "name": {
+                "fr": "Extrait d\u2019un cahier magique de Gilbert Trausch, notes de cours (3)",
+                "de": "Auszug aus einem Zauberheft von Gilbert Trausch, Unterrichtsnotizen (3)"
+              },
+              "type": "notebook",
+              "date": null,
+              "display_year": 0,
+              "title": {
+                "fr": "<p> Extrait d\u2019un cahier magique de Gilbert Trausch, notes de cours<\/p>",
+                "de": "<p>&nbsp;Auszug aus einem Zauberheft von Gilbert Trausch, Unterrichtsnotizen<\/p>"
+              },
+              "description": {
+                "fr": "<p> Cet extrait provient d'un cahier magique (n\u00b0 3) de Gilbert Trausch, utilis\u00e9 pour pr\u00e9parer ses cours et ses le\u00e7ons dans les ann\u00e9es 1960 et 1970. Ce document qui montre la structure des points que l\u2019historien souhaite aborder dans son cours, est un bel exemple de son travail de pr\u00e9paration.<\/p>",
+                "de": "<p>&nbsp;Dieser Auszug stammt aus einem Zauberheft (Nr. 3) von Gilbert Trausch, das er in den 1960er und 1970er Jahren zur Vorbereitung seiner Kurse und Lektionen verwendete. Dieses Dokument, das die Struktur der Punkte zeigt, die der Historiker in seinem Unterricht behandeln m\u00f6chte, ist ein sch\u00f6nes Beispiel f\u00fcr seine Vorbereitungsarbeit.<\/p>"
+              },
+              "copyright": "<p>Archives priv\u00e9es Gilbert Trausch<\/p>",
+              "nomenclature": "zh-lma-17-zh02-05-01-04-zh-11-p-21plannotescours",
+              "url": "https:\/\/gilberttrausch.uni.lu\/pdf\/zhchapitre\/zh-lma-17-zh02-05-01-04-zh-11-p-21plannotescours.pdf",
+              "cover": null,
+              "optimized_url": {
+                "thumbnail": {
+                  "width": 277,
+                  "height": 400,
+                  "originalWidth": 1161,
+                  "originalHeight": 1679,
+                  "url": "https:\/\/gilberttrausch.uni.lu\/pdf\/zhchapitre\/zh-lma-17-zh02-05-01-04-zh-11-p-21plannotescours-thumbnail.png"
+                },
+                "large": {
+                  "width": 1161,
+                  "height": 1679,
+                  "originalWidth": 1161,
+                  "originalHeight": 1679,
+                  "url": "https:\/\/gilberttrausch.uni.lu\/pdf\/zhchapitre\/zh-lma-17-zh02-05-01-04-zh-11-p-21plannotescours-large.png"
+                }
+              },
+              "source": "<p>Archives priv\u00e9es Gilbert Trausch<\/p>",
+              "created_at": "2025-03-30T13:53:41.000000Z",
+              "updated_at": "2025-04-07T14:14:51.000000Z",
+              "pivot": {
+                "documentable_type": "App\\Models\\SlideMasonry",
+                "documentable_id": 10,
+                "document_id": 200,
+                "order": 4
+              }
+            },
+            {
+              "id": 201,
+              "name": {
+                "fr": "Extrait d\u2019un cahier magique de Gilbert Trausch, notes de cours (4)",
+                "de": "Auszug aus einem Zauberheft von Gilbert Trausch, Unterrichtsnotizen (4)"
+              },
+              "type": "notebook",
+              "date": null,
+              "display_year": 0,
+              "title": {
+                "fr": "<p> Extrait d\u2019un cahier magique de Gilbert Trausch, notes de cours<\/p>",
+                "de": "<p>&nbsp;Auszug aus einem Zauberheft von Gilbert Trausch, Unterrichtsnotizen<\/p>"
+              },
+              "description": {
+                "fr": "<p> Cet extrait provient d'un cahier magique (n\u00b0 3) de Gilbert Trausch, utilis\u00e9 pour pr\u00e9parer ses cours et ses le\u00e7ons dans les ann\u00e9es 1960 et 1970. Ce document montre les notes de cours pr\u00e9paratoires, r\u00e9dig\u00e9es au crayon, dont il se servait pour ses enseignements. Les nombreuses ratures r\u00e9v\u00e8lent le temps et l'attention que l\u2019historien consacrait \u00e0 peaufiner son texte.<\/p>",
+                "de": "<p>&nbsp;Dieser Auszug stammt aus einem Zauberheft (Nr. 3) von Gilbert Trausch, das er in den 1960er und 1970er Jahren zur Vorbereitung seiner Kurse und Lektionen verwendete. Das Dokument zeigt die mit Bleistift geschriebenen, vorbereitenden Notizen, die er f\u00fcr seine Lehrveranstaltungen verwendete. Die zahlreichen Streichungen verraten, wie viel Zeit und Aufmerksamkeit der Historiker auf die Feinabstimmung seines Textes verwendete.<\/p>"
+              },
+              "copyright": "<p>Archives priv\u00e9es Gilbert Trausch<\/p>",
+              "nomenclature": "zh-lma-19-zh02-05-01-04-zh-11-p-27-31notesdecoursbrouillon",
+              "url": "https:\/\/gilberttrausch.uni.lu\/pdf\/zhchapitre\/zh-lma-19-zh02-05-01-04-zh-11-p-27-31notesdecoursbrouillon.pdf",
+              "cover": null,
+              "optimized_url": {
+                "thumbnail": {
+                  "width": 300,
+                  "height": 400,
+                  "originalWidth": 1236,
+                  "originalHeight": 1648,
+                  "url": "https:\/\/gilberttrausch.uni.lu\/pdf\/zhchapitre\/zh-lma-19-zh02-05-01-04-zh-11-p-27-31notesdecoursbrouillon-thumbnail.png"
+                },
+                "large": {
+                  "width": 1236,
+                  "height": 1648,
+                  "originalWidth": 1236,
+                  "originalHeight": 1648,
+                  "url": "https:\/\/gilberttrausch.uni.lu\/pdf\/zhchapitre\/zh-lma-19-zh02-05-01-04-zh-11-p-27-31notesdecoursbrouillon-large.png"
+                }
+              },
+              "source": "<p>Archives priv\u00e9es Gilbert Trausch<\/p>",
+              "created_at": "2025-03-30T13:58:10.000000Z",
+              "updated_at": "2025-04-07T14:14:51.000000Z",
+              "pivot": {
+                "documentable_type": "App\\Models\\SlideMasonry",
+                "documentable_id": 10,
+                "document_id": 201,
+                "order": 5
+              }
+            },
+            {
+              "id": 202,
+              "name": {
+                "fr": "Extrait d\u2019un cahier magique de Gilbert Trausch, notes de cours (5)",
+                "de": "Auszug aus einem Zauberheft von Gilbert Trausch, Unterrichtsnotizen (5)"
+              },
+              "type": "notebook",
+              "date": null,
+              "display_year": 0,
+              "title": {
+                "fr": "<p>Extrait d\u2019un cahier magique de Gilbert Trausch, notes de cours<\/p>",
+                "de": "<p>Auszug aus einem Zauberheft von Gilbert Trausch, Unterrichtsnotizen<\/p>"
+              },
+              "description": {
+                "fr": "<p> Cet extrait provient d'un cahier magique (n\u00b0 3) de Gilbert Trausch, utilis\u00e9 pour pr\u00e9parer ses cours et ses le\u00e7ons dans les ann\u00e9es 1960 et 1970. Ce document montre les notes de cours pr\u00e9paratoires, r\u00e9dig\u00e9es au crayon, dont il se servait pour ses enseignements. Les nombreuses ratures r\u00e9v\u00e8lent le temps et l'attention que l\u2019historien consacrait \u00e0 peaufiner son texte.<\/p>",
+                "de": "<p>&nbsp;Dieser Auszug stammt aus einem Zauberheft (Nr. 3) von Gilbert Trausch, das er in den 1960er und 1970er Jahren zur Vorbereitung seiner Kurse und Lektionen verwendete. Das Dokument zeigt die mit Bleistift geschriebenen, vorbereitenden Notizen, die er f\u00fcr seine Lehrveranstaltungen verwendete. Die zahlreichen Streichungen verraten, wie viel Zeit und Aufmerksamkeit der Historiker auf die Feinabstimmung seines Textes verwendete.<\/p>"
+              },
+              "copyright": "<p>Archives priv\u00e9es Gilbert Trausch<\/p>",
+              "nomenclature": "zh-lma-20-zh02-05-01-04-zh-11-p-20notescoursbrouillon",
+              "url": "https:\/\/gilberttrausch.uni.lu\/pdf\/zhchapitre\/zh-lma-20-zh02-05-01-04-zh-11-p-20notescoursbrouillon.pdf",
+              "cover": null,
+              "optimized_url": {
+                "thumbnail": {
+                  "width": 284,
+                  "height": 400,
+                  "originalWidth": 1184,
+                  "originalHeight": 1666,
+                  "url": "https:\/\/gilberttrausch.uni.lu\/pdf\/zhchapitre\/zh-lma-20-zh02-05-01-04-zh-11-p-20notescoursbrouillon-thumbnail.png"
+                },
+                "large": {
+                  "width": 1184,
+                  "height": 1666,
+                  "originalWidth": 1184,
+                  "originalHeight": 1666,
+                  "url": "https:\/\/gilberttrausch.uni.lu\/pdf\/zhchapitre\/zh-lma-20-zh02-05-01-04-zh-11-p-20notescoursbrouillon-large.png"
+                }
+              },
+              "source": "<p>Archives priv\u00e9es Gilbert Trausch<\/p>",
+              "created_at": "2025-03-30T14:01:13.000000Z",
+              "updated_at": "2025-04-07T14:14:51.000000Z",
+              "pivot": {
+                "documentable_type": "App\\Models\\SlideMasonry",
+                "documentable_id": 10,
+                "document_id": 202,
+                "order": 6
+              }
+            },
+            {
+              "id": 203,
+              "name": {
+                "fr": "Extrait d\u2019un cahier magique de Gilbert Trausch, notes de cours (6)",
+                "de": "Auszug aus einem Zauberheft von Gilbert Trausch, Unterrichtsnotizen (6)"
+              },
+              "type": "notebook",
+              "date": null,
+              "display_year": 0,
+              "title": {
+                "fr": "<p>Extrait d\u2019un cahier magique de Gilbert Trausch, notes de cours<\/p>",
+                "de": "<p>&nbsp;Auszug aus einem Zauberheft von Gilbert Trausch, Unterrichtsnotizen<\/p>"
+              },
+              "description": {
+                "fr": "<p> Cet extrait provient d'un cahier magique (n\u00b0 3) de Gilbert Trausch, utilis\u00e9 pour pr\u00e9parer ses cours et ses le\u00e7ons dans les ann\u00e9es 1960 et 1970. Ce document montre les notes de cours pr\u00e9paratoires, r\u00e9dig\u00e9es au crayon, dont il se servait pour ses enseignements.<\/p>",
+                "de": "<p>&nbsp;Dieser Auszug stammt aus einem Zauberheft (Nr. 3) von Gilbert Trausch, das er in den 1960er und 1970er Jahren zur Vorbereitung seiner Kurse und Lektionen verwendete. Es zeigt die mit Bleistift geschriebenen Notizen aus den Vorbereitungskursen, die er f\u00fcr seinen Unterricht benutzte.<\/p>"
+              },
+              "copyright": "<p>Archives priv\u00e9es Gilbert Trausch<\/p>",
+              "nomenclature": "zh-lma-18-zh02-05-01-04-zh-11-p-22-23notescourspropres",
+              "url": "https:\/\/gilberttrausch.uni.lu\/pdf\/zhchapitre\/zh-lma-18-zh02-05-01-04-zh-11-p-22-23notescourspropres.pdf",
+              "cover": null,
+              "optimized_url": {
+                "thumbnail": {
+                  "width": 299,
+                  "height": 400,
+                  "originalWidth": 1240,
+                  "originalHeight": 1658,
+                  "url": "https:\/\/gilberttrausch.uni.lu\/pdf\/zhchapitre\/zh-lma-18-zh02-05-01-04-zh-11-p-22-23notescourspropres-thumbnail.png"
+                },
+                "large": {
+                  "width": 1240,
+                  "height": 1658,
+                  "originalWidth": 1240,
+                  "originalHeight": 1658,
+                  "url": "https:\/\/gilberttrausch.uni.lu\/pdf\/zhchapitre\/zh-lma-18-zh02-05-01-04-zh-11-p-22-23notescourspropres-large.png"
+                }
+              },
+              "source": "<p>Archives priv\u00e9es Gilbert Trausch<\/p>",
+              "created_at": "2025-03-30T14:04:23.000000Z",
+              "updated_at": "2025-04-07T14:14:52.000000Z",
+              "pivot": {
+                "documentable_type": "App\\Models\\SlideMasonry",
+                "documentable_id": 10,
+                "document_id": 203,
+                "order": 7
+              }
+            },
+            {
+              "id": 204,
+              "name": {
+                "fr": "Extrait d\u2019un cahier magique de Gilbert Trausch, notes de cours (7)",
+                "de": "Auszug aus einem Zauberheft von Gilbert Trausch, Unterrichtsnotizen (7)"
+              },
+              "type": "notebook",
+              "date": null,
+              "display_year": 0,
+              "title": {
+                "fr": "<p>Extrait d\u2019un cahier magique de Gilbert Trausch, notes de cours<\/p>",
+                "de": "<p>&nbsp;Auszug aus einem Zauberheft von Gilbert Trausch, Unterrichtsnotizen<\/p>"
+              },
+              "description": {
+                "fr": "<p> Cet extrait provient d'un cahier magique (n\u00b0 2) de Gilbert Trausch, utilis\u00e9 pour pr\u00e9parer ses cours et ses le\u00e7ons dans les ann\u00e9es 1960 et 1970. Ce document montre un exemple de son travail de pr\u00e9paration en tant que professeur: apr\u00e8s avoir peaufin\u00e9 son texte, il le recopiait de mani\u00e8re plus soigneuse, en ajoutant des encadrements de titre color\u00e9s.<\/p>",
+                "de": "<p>&nbsp;Dieser Auszug stammt aus einem Zauberheft (Nr. 2) von Gilbert Trausch, das er in den 1960er und 1970er Jahren zur Vorbereitung seiner Kurse und Lektionen verwendete. Das Dokument zeigt ein Beispiel f\u00fcr seine Vorbereitungsarbeit als Lehrer: Nachdem er seinen Text verfeinert hatte, kopierte er ihn noch sorgf\u00e4ltiger und f\u00fcgte farbige Titelrahmen hinzu.<\/p>"
+              },
+              "copyright": "<p>Archives priv\u00e9es Gilbert Trausch<\/p>",
+              "nomenclature": "zh-lma-21-pages-27-34-from-zh02-05-01-04-zh-10notesdecourspropres",
+              "url": "https:\/\/gilberttrausch.uni.lu\/pdf\/zhchapitre\/zh-lma-21-pages-27-34-from-zh02-05-01-04-zh-10notesdecourspropres.pdf",
+              "cover": null,
+              "optimized_url": {
+                "thumbnail": {
+                  "width": 310,
+                  "height": 400,
+                  "originalWidth": 1302,
+                  "originalHeight": 1679,
+                  "url": "https:\/\/gilberttrausch.uni.lu\/pdf\/zhchapitre\/zh-lma-21-pages-27-34-from-zh02-05-01-04-zh-10notesdecourspropres-thumbnail.png"
+                },
+                "large": {
+                  "width": 1302,
+                  "height": 1679,
+                  "originalWidth": 1302,
+                  "originalHeight": 1679,
+                  "url": "https:\/\/gilberttrausch.uni.lu\/pdf\/zhchapitre\/zh-lma-21-pages-27-34-from-zh02-05-01-04-zh-10notesdecourspropres-large.png"
+                }
+              },
+              "source": "<p>Archives priv\u00e9es Gilbert Trausch<\/p>",
+              "created_at": "2025-03-30T14:09:12.000000Z",
+              "updated_at": "2025-04-07T14:14:52.000000Z",
+              "pivot": {
+                "documentable_type": "App\\Models\\SlideMasonry",
+                "documentable_id": 10,
+                "document_id": 204,
+                "order": 8
+              }
+            },
+            {
+              "id": 205,
+              "name": {
+                "fr": "Extrait d\u2019un cahier magique de Gilbert Trausch, notes de cours (8)",
+                "de": "Auszug aus einem Zauberheft von Gilbert Trausch, Unterrichtsnotizen (8)"
+              },
+              "type": "notebook",
+              "date": null,
+              "display_year": 0,
+              "title": {
+                "fr": "<p> Extrait d\u2019un cahier magique de Gilbert Trausch, notes de cours<\/p>",
+                "de": "<p>&nbsp;Auszug aus einem Zauberheft von Gilbert Trausch, Unterrichtsnotizen<\/p>"
+              },
+              "description": {
+                "fr": "<p> Cet extrait provient d'un cahier magique (n\u00b0 9) de Gilbert Trausch, utilis\u00e9 pour pr\u00e9parer ses cours et ses le\u00e7ons dans les ann\u00e9es 1960 et 1970. Ce document montre un exemple de son travail de pr\u00e9paration en tant que professeur: apr\u00e8s avoir peaufin\u00e9 son texte, il le recopiait au bic de mani\u00e8re plus soigneuse.<\/p>",
+                "de": "<p>&nbsp;Dieser Auszug stammt aus einem Zauberheft (Nr. 9) von Gilbert Trausch, das er in den 1960er und 1970er Jahren zur Vorbereitung seiner Kurse und Lektionen verwendete. Das Dokument zeigt ein Beispiel f\u00fcr seine Vorbereitungsarbeit als Lehrer: Nachdem er seinen Text ausgearbeitet hatte, schrieb er ihn noch sorgf\u00e4ltiger auf das Schreibpapier ab.<\/p>"
+              },
+              "copyright": "<p>Archives priv\u00e9es Gilbert Trausch<\/p>",
+              "nomenclature": "zh-lma-22-zh02-05-01-04-zh-12-p32notescoursbic",
+              "url": "https:\/\/gilberttrausch.uni.lu\/pdf\/zhchapitre\/zh-lma-22-zh02-05-01-04-zh-12-p32notescoursbic.pdf",
+              "cover": null,
+              "optimized_url": {
+                "thumbnail": {
+                  "width": 309,
+                  "height": 400,
+                  "originalWidth": 1356,
+                  "originalHeight": 1756,
+                  "url": "https:\/\/gilberttrausch.uni.lu\/pdf\/zhchapitre\/zh-lma-22-zh02-05-01-04-zh-12-p32notescoursbic-thumbnail.png"
+                },
+                "large": {
+                  "width": 1356,
+                  "height": 1756,
+                  "originalWidth": 1356,
+                  "originalHeight": 1756,
+                  "url": "https:\/\/gilberttrausch.uni.lu\/pdf\/zhchapitre\/zh-lma-22-zh02-05-01-04-zh-12-p32notescoursbic-large.png"
+                }
+              },
+              "source": "<p>Archives priv\u00e9es Gilbert Trausch<\/p>",
+              "created_at": "2025-03-30T14:14:08.000000Z",
+              "updated_at": "2025-04-07T14:14:52.000000Z",
+              "pivot": {
+                "documentable_type": "App\\Models\\SlideMasonry",
+                "documentable_id": 10,
+                "document_id": 205,
+                "order": 9
+              }
+            }
+          ]
+        }
+      },
+      {
+        "id": 18,
+        "magic_notebook_id": 2,
+        "order": 4,
+        "slidable_type": "App\\Models\\SlideSlider",
+        "slidable_id": 6,
+        "created_by": 4,
+        "created_at": "2025-04-02T11:35:38.000000Z",
+        "updated_at": "2025-04-02T11:35:38.000000Z",
+        "slidable": {
+          "id": 6,
+          "content": {
+            "fr": "<p>Outre les classeurs contenant ses notes pour les cours scolaires, certains des premiers <em>Zauberhefte<\/em> contiennent des notes biographiques sur des personnalit\u00e9s historiques. Une pratique qu\u2019il semble avoir abandonn\u00e9e par la suite. Dans ces cahiers, il r\u00e9sume les informations sur les personnes concern\u00e9es en quelques phrases et mentionne la source d\u2019o\u00f9 elles proviennent. Les feuilles sont class\u00e9es par ordre alphab\u00e9tique selon les noms de famille.<\/p>",
+            "de": "<p>Neben den Ordnern mit seinen Notizen f\u00fcr den Schulunterricht enthalten einige der fr\u00fchen <em>Zauberhefte<\/em> auch biografische Notizen zu historischen Pers\u00f6nlichkeiten. Eine Praxis, die er sp\u00e4ter offenbar aufgibt. In diesen Heften fasst er die Informationen \u00fcber die betreffenden Personen in wenigen S\u00e4tzen zusammen und nennt die Quelle, aus der sie stammen. Die Bl\u00e4tter sind alphabetisch nach Familiennamen geordnet.&nbsp;<\/p>"
+          },
+          "color_menu": "#000000",
+          "color_text": "#000000",
+          "background_id": 4,
+          "created_at": "2025-04-02T11:35:38.000000Z",
+          "updated_at": "2025-04-15T17:30:18.000000Z",
+          "type": "SlideSlider",
+          "background": {
+            "id": 4,
+            "title": "Texture 1",
+            "background": "backgrounds\/F7pUqm3MQL99WZiszWEd3Gjm5Cia1RRzzsj2Nm0N.png",
+            "created_at": "2025-03-13T12:19:47.000000Z",
+            "updated_at": "2025-03-13T12:19:47.000000Z"
+          },
+          "documents": [
+            {
+              "id": 206,
+              "name": {
+                "fr": "Extrait d\u2019un cahier magique de Gilbert Trausch, notes biographiques (1)",
+                "de": "Auszug aus einem Zauberheft von Gilbert Trausch biografische Notizen (1)"
+              },
+              "type": "notebook",
+              "date": null,
+              "display_year": 1,
+              "title": {
+                "fr": "<p>Extrait d\u2019un cahier magique de Gilbert Trausch, notes biographiques<\/p>",
+                "de": "<p>&nbsp;Auszug aus einem Zauberheft von Gilbert Trausch biografische Notizen<\/p>"
+              },
+              "description": {
+                "fr": "<p> Cet extrait provient d'un cahier magique (n\u00b0 1) de Gilbert Trausch, utilis\u00e9 pour consigner des notes biographiques sur des personnalit\u00e9s historiques. Ce document montre comment l\u2019historien rassemblait et organisait des informations pour ses recherches et ses cours.<\/p>",
+                "de": "<p>&nbsp;Dieser Auszug stammt aus einem Zauberheft (Nr. 1) von Gilbert Trausch, das dazu diente, biografische Notizen zu historischen Pers\u00f6nlichkeiten festzuhalten. Das Dokument zeigt, wie der Historiker Informationen f\u00fcr seine Forschung und seinen Unterricht sammelte und organisierte.<\/p>"
+              },
+              "copyright": "<p>Archives priv\u00e9es Gilbert Trausch<\/p>",
+              "nomenclature": "zh-lma-23-pages-23-29from-zh01-10-03-06-zh-l-nomsauteurs",
+              "url": "https:\/\/gilberttrausch.uni.lu\/pdf\/zhchapitre\/zh-lma-23-pages-23-29from-zh01-10-03-06-zh-l-nomsauteurs.pdf",
+              "cover": null,
+              "optimized_url": {
+                "thumbnail": {
+                  "width": 306,
+                  "height": 400,
+                  "originalWidth": 1321,
+                  "originalHeight": 1725,
+                  "url": "https:\/\/gilberttrausch.uni.lu\/pdf\/zhchapitre\/zh-lma-23-pages-23-29from-zh01-10-03-06-zh-l-nomsauteurs-thumbnail.png"
+                },
+                "large": {
+                  "width": 1321,
+                  "height": 1725,
+                  "originalWidth": 1321,
+                  "originalHeight": 1725,
+                  "url": "https:\/\/gilberttrausch.uni.lu\/pdf\/zhchapitre\/zh-lma-23-pages-23-29from-zh01-10-03-06-zh-l-nomsauteurs-large.png"
+                }
+              },
+              "source": "<p>Archives priv\u00e9es Gilbert Trausch<\/p>",
+              "created_at": "2025-03-30T14:18:57.000000Z",
+              "updated_at": "2025-04-07T14:14:52.000000Z",
+              "pivot": {
+                "documentable_type": "App\\Models\\SlideSlider",
+                "documentable_id": 6,
+                "document_id": 206,
+                "order": 1
+              }
+            },
+            {
+              "id": 207,
+              "name": {
+                "fr": "Extrait d\u2019un cahier magique de Gilbert Trausch, notes biographiques (2)",
+                "de": "Auszug aus einem Zauberheft von Gilbert Trausch biografische Notizen (2)"
+              },
+              "type": "notebook",
+              "date": null,
+              "display_year": 0,
+              "title": {
+                "fr": "<p>Extrait d\u2019un cahier magique de Gilbert Trausch, notes biographiques<\/p>",
+                "de": "<p>&nbsp;Auszug aus einem Zauberheft von Gilbert Trausch biografische Notizen<\/p>"
+              },
+              "description": {
+                "fr": "<p> Cet extrait provient d'un cahier magique (n\u00b0 1) de Gilbert Trausch, utilis\u00e9 pour consigner des notes biographiques sur des personnalit\u00e9s historiques. Ce document montre comment l\u2019historien rassemblait et organisait des informations pour ses recherches et ses cours.<\/p>",
+                "de": "<p>&nbsp;Dieser Auszug stammt aus einem Zauberheft (Nr. 1) von Gilbert Trausch, das dazu diente, biografische Notizen zu historischen Pers\u00f6nlichkeiten festzuhalten. Das Dokument zeigt, wie der Historiker Informationen f\u00fcr seine Forschung und seinen Unterricht sammelte und organisierte.<\/p>"
+              },
+              "copyright": "<p>Archives priv\u00e9es Gilbert Trausch<\/p>",
+              "nomenclature": "zh-lma-24-pagesfrom-zh01-10-03-06-zh-l-notessurauteurs",
+              "url": "https:\/\/gilberttrausch.uni.lu\/pdf\/zhchapitre\/zh-lma-24-pagesfrom-zh01-10-03-06-zh-l-notessurauteurs.pdf",
+              "cover": null,
+              "optimized_url": {
+                "thumbnail": {
+                  "width": 310,
+                  "height": 400,
+                  "originalWidth": 1344,
+                  "originalHeight": 1736,
+                  "url": "https:\/\/gilberttrausch.uni.lu\/pdf\/zhchapitre\/zh-lma-24-pagesfrom-zh01-10-03-06-zh-l-notessurauteurs-thumbnail.png"
+                },
+                "large": {
+                  "width": 1344,
+                  "height": 1736,
+                  "originalWidth": 1344,
+                  "originalHeight": 1736,
+                  "url": "https:\/\/gilberttrausch.uni.lu\/pdf\/zhchapitre\/zh-lma-24-pagesfrom-zh01-10-03-06-zh-l-notessurauteurs-large.png"
+                }
+              },
+              "source": "<p>Archives priv\u00e9es Gilbert Trausch<\/p>",
+              "created_at": "2025-03-30T14:21:43.000000Z",
+              "updated_at": "2025-04-07T14:14:52.000000Z",
+              "pivot": {
+                "documentable_type": "App\\Models\\SlideSlider",
+                "documentable_id": 6,
+                "document_id": 207,
+                "order": 2
+              }
+            }
+          ]
+        }
+      },
+      {
+        "id": 19,
+        "magic_notebook_id": 2,
+        "order": 5,
+        "slidable_type": "App\\Models\\SlideMasonry",
+        "slidable_id": 12,
+        "created_by": 4,
+        "created_at": "2025-04-02T11:39:52.000000Z",
+        "updated_at": "2025-04-02T11:39:52.000000Z",
+        "slidable": {
+          "id": 12,
+          "content": {
+            "fr": "<p>Certaines sp\u00e9cificit\u00e9s des <em>Zauberhefte<\/em> sont d\u00e9j\u00e0 visibles d\u00e8s les premiers cahiers. En effet, il note, par exemple, les noms dans le coin sup\u00e9rieur droit, o\u00f9 il placera plus tard les mots-cl\u00e9s th\u00e9matiques. Il souligne \u00e9galement les noms au crayon rouge ou les encadre \u00e0 l'aide d\u2019une r\u00e8gle, une pratique qu\u2019il applique \u00e9galement aux titres de chapitres.&nbsp;<\/p>",
+            "de": "<p>Einige Besonderheiten der <em>Zauberhefte<\/em> sind bereits in den ersten Heften erkennbar. Denn er notiert z. B. die Namen in der oberen rechten Ecke, wo er sp\u00e4ter die thematischen Schl\u00fcsselw\u00f6rter platziert. Au\u00dferdem unterstreicht er Namen mit einem Rotstift oder rahmt sie mit einem Lineal ein - eine Praxis, die er auch bei Kapitel\u00fcberschriften anwendet.&nbsp;<\/p>"
+          },
+          "color_menu": "#000000",
+          "color_text": "#000000",
+          "background_id": 4,
+          "created_at": "2025-04-02T11:39:52.000000Z",
+          "updated_at": "2025-04-15T17:30:48.000000Z",
+          "type": "SlideMasonry",
+          "background": {
+            "id": 4,
+            "title": "Texture 1",
+            "background": "backgrounds\/F7pUqm3MQL99WZiszWEd3Gjm5Cia1RRzzsj2Nm0N.png",
+            "created_at": "2025-03-13T12:19:47.000000Z",
+            "updated_at": "2025-03-13T12:19:47.000000Z"
+          },
+          "documents": [
+            {
+              "id": 209,
+              "name": {
+                "fr": "Extrait d\u2019un cahier magique de Gilbert Trausch, notes biographiques (3)",
+                "de": "Auszug aus einem Zauberheft von Gilbert Trausch biografische Notizen (3)"
+              },
+              "type": "notebook",
+              "date": null,
+              "display_year": 0,
+              "title": {
+                "fr": "<p>Extrait d\u2019un cahier magique de Gilbert Trausch, notes biographiques<\/p>",
+                "de": "<p>Auszug aus einem Zauberheft von Gilbert Trausch biografische Notizen<\/p>"
+              },
+              "description": {
+                "fr": "<p> Cet extrait provient d'un cahier magique (n\u00b0 1) de Gilbert Trausch, utilis\u00e9 pour consigner des notes biographiques sur des personnalit\u00e9s historiques. Ce document montre comment l\u2019historien rassemblait et organisait des informations pour ses recherches et ses cours.<\/p>",
+                "de": "<p>&nbsp;Dieser Auszug stammt aus einem Zauberheft (Nr. 1) von Gilbert Trausch, das dazu diente, biografische Notizen zu historischen Pers\u00f6nlichkeiten festzuhalten. Das Dokument zeigt, wie der Historiker Informationen f\u00fcr seine Forschung und seinen Unterricht sammelte und organisierte.<\/p>"
+              },
+              "copyright": "<p>Archives priv\u00e9es Gilbert Trausch<\/p>",
+              "nomenclature": "zh-lma-26-zh01-10-03-06-zh-l-p89auteurcoinsupdroit",
+              "url": "https:\/\/gilberttrausch.uni.lu\/pdf\/zhchapitre\/zh-lma-26-zh01-10-03-06-zh-l-p89auteurcoinsupdroit.pdf",
+              "cover": null,
+              "optimized_url": {
+                "thumbnail": {
+                  "width": 306,
+                  "height": 400,
+                  "originalWidth": 1317,
+                  "originalHeight": 1721,
+                  "url": "https:\/\/gilberttrausch.uni.lu\/pdf\/zhchapitre\/zh-lma-26-zh01-10-03-06-zh-l-p89auteurcoinsupdroit-thumbnail.png"
+                },
+                "large": {
+                  "width": 1317,
+                  "height": 1721,
+                  "originalWidth": 1317,
+                  "originalHeight": 1721,
+                  "url": "https:\/\/gilberttrausch.uni.lu\/pdf\/zhchapitre\/zh-lma-26-zh01-10-03-06-zh-l-p89auteurcoinsupdroit-large.png"
+                }
+              },
+              "source": "<p>Archives priv\u00e9es Gilbert Trausch<\/p>",
+              "created_at": "2025-03-30T14:27:29.000000Z",
+              "updated_at": "2025-04-07T14:14:53.000000Z",
+              "pivot": {
+                "documentable_type": "App\\Models\\SlideMasonry",
+                "documentable_id": 12,
+                "document_id": 209,
+                "order": 1
+              }
+            },
+            {
+              "id": 208,
+              "name": {
+                "fr": "Extrait d\u2019un cahier magique de Gilbert Trausch, mot-cl\u00e9 (1)",
+                "de": "Auszug aus einem Zauberheft von Gilbert Trausch biografische Notizen, Stichwort (1)"
+              },
+              "type": "notebook",
+              "date": null,
+              "display_year": 0,
+              "title": {
+                "fr": "<p> Extrait d\u2019un cahier magique de Gilbert Trausch, mot-cl\u00e9<\/p>",
+                "de": "<p>Auszug aus einem Zauberheft von Gilbert Trausch biografische Notizen, Stichwort<\/p>"
+              },
+              "description": {
+                "fr": "<p> Cet extrait provient d'un cahier magique (n\u00b0 7) de Gilbert Trausch, utilis\u00e9 pour consigner des notes sur ses recherches. On y voit comment l\u2019historien organisait ses cahiers, pla\u00e7ant le nom d'une personnalit\u00e9 en haut \u00e0 droite comme un mot-cl\u00e9.<\/p>",
+                "de": "<p>&nbsp;Dieser Ausschnitt stammt aus einem Zauberheft (Nr. 7) von Gilbert Trausch, das er benutzte, um Notizen zu seinen Forschungen festzuhalten. Es zeigt, wie der Historiker seine Notizb\u00fccher organisierte, indem er den Namen einer Pers\u00f6nlichkeit oben rechts wie ein Stichwort platzierte.<\/p>"
+              },
+              "copyright": "<p>Archives priv\u00e9es Gilbert Trausch<\/p>",
+              "nomenclature": "zh-lma-25-zh02-05-03-06-zh-16-p65-inscriptionauteurcoinsupdroit",
+              "url": "https:\/\/gilberttrausch.uni.lu\/pdf\/zhchapitre\/zh-lma-25-zh02-05-03-06-zh-16-p65-inscriptionauteurcoinsupdroit.pdf",
+              "cover": null,
+              "optimized_url": {
+                "thumbnail": {
+                  "width": 311,
+                  "height": 400,
+                  "originalWidth": 1343,
+                  "originalHeight": 1729,
+                  "url": "https:\/\/gilberttrausch.uni.lu\/pdf\/zhchapitre\/zh-lma-25-zh02-05-03-06-zh-16-p65-inscriptionauteurcoinsupdroit-thumbnail.png"
+                },
+                "large": {
+                  "width": 1343,
+                  "height": 1729,
+                  "originalWidth": 1343,
+                  "originalHeight": 1729,
+                  "url": "https:\/\/gilberttrausch.uni.lu\/pdf\/zhchapitre\/zh-lma-25-zh02-05-03-06-zh-16-p65-inscriptionauteurcoinsupdroit-large.png"
+                }
+              },
+              "source": "<p>Archives priv\u00e9es Gilbert Trausch<\/p>",
+              "created_at": "2025-03-30T14:24:49.000000Z",
+              "updated_at": "2025-04-07T14:14:52.000000Z",
+              "pivot": {
+                "documentable_type": "App\\Models\\SlideMasonry",
+                "documentable_id": 12,
+                "document_id": 208,
+                "order": 2
+              }
+            },
+            {
+              "id": 210,
+              "name": {
+                "fr": "Extrait d\u2019un cahier magique de Gilbert Trausch, mot-cl\u00e9 (2)",
+                "de": "Auszug aus einem Zauberheft von Gilbert Trausch biografische Notizen, Stichwort (2)"
+              },
+              "type": "notebook",
+              "date": null,
+              "display_year": 0,
+              "title": {
+                "fr": "<p>Extrait d\u2019un cahier magique de Gilbert Trausch, mot-cl\u00e9<\/p>",
+                "de": "<p>&nbsp;Auszug aus einem Zauberheft von Gilbert Trausch biografische Notizen, Stichwort<\/p>"
+              },
+              "description": {
+                "fr": "<p>Cet extrait provient d'un cahier magique (n\u00b0 7) de Gilbert Trausch, utilis\u00e9 pour consigner des notes sur ses recherches. On y voit comment l\u2019historien organisait ses cahiers, pla\u00e7ant le nom de la th\u00e9matique abord\u00e9e en haut \u00e0 droite, comme un mot-cl\u00e9.<\/p>",
+                "de": "<p>&nbsp;Dieser Auszug stammt aus einem Zauberheft (Nr. 7) von Gilbert Trausch, das er benutzte, um Notizen zu seinen Forschungen festzuhalten. Es zeigt, wie der Historiker seine Hefte organisierte, indem er den Namen des behandelten Themas wie ein Stichwort in der oberen rechten Ecke platzierte.<\/p>"
+              },
+              "copyright": "<p>Archives priv\u00e9es Gilbert Trausch<\/p>",
+              "nomenclature": "zh-lma-27-zh02-05-03-06-zh-16-p59themescoinsupdroit",
+              "url": "https:\/\/gilberttrausch.uni.lu\/pdf\/zhchapitre\/zh-lma-27-zh02-05-03-06-zh-16-p59themescoinsupdroit.pdf",
+              "cover": null,
+              "optimized_url": {
+                "thumbnail": {
+                  "width": 311,
+                  "height": 400,
+                  "originalWidth": 1346,
+                  "originalHeight": 1733,
+                  "url": "https:\/\/gilberttrausch.uni.lu\/pdf\/zhchapitre\/zh-lma-27-zh02-05-03-06-zh-16-p59themescoinsupdroit-thumbnail.png"
+                },
+                "large": {
+                  "width": 1346,
+                  "height": 1733,
+                  "originalWidth": 1346,
+                  "originalHeight": 1733,
+                  "url": "https:\/\/gilberttrausch.uni.lu\/pdf\/zhchapitre\/zh-lma-27-zh02-05-03-06-zh-16-p59themescoinsupdroit-large.png"
+                }
+              },
+              "source": "<p>Archives priv\u00e9es Gilbert Trausch<\/p>",
+              "created_at": "2025-03-30T14:32:48.000000Z",
+              "updated_at": "2025-04-07T14:14:53.000000Z",
+              "pivot": {
+                "documentable_type": "App\\Models\\SlideMasonry",
+                "documentable_id": 12,
+                "document_id": 210,
+                "order": 3
+              }
+            },
+            {
+              "id": 211,
+              "name": {
+                "fr": "Extrait d\u2019un cahier magique de Gilbert Trausch, mot-cl\u00e9 (3)",
+                "de": "Auszug aus einem Zauberheft von Gilbert Trausch biografische Notizen, Stichwort (3)"
+              },
+              "type": "notebook",
+              "date": null,
+              "display_year": 0,
+              "title": {
+                "fr": "<p>Extrait d\u2019un cahier magique de Gilbert Trausch, mot-cl\u00e9<\/p>",
+                "de": "<p>&nbsp;Auszug aus einem Zauberheft von Gilbert Trausch biografische Notizen, Stichwort<\/p>"
+              },
+              "description": {
+                "fr": "<p> Cet extrait provient d'un cahier magique (n\u00b0 77) de Gilbert Trausch, utilis\u00e9 pour consigner des notes sur ses recherches. On y voit comment l\u2019historien organisait ses cahiers, pla\u00e7ant le nom de la th\u00e9matique abord\u00e9e en haut \u00e0 droite, comme un mot-cl\u00e9.<\/p>",
+                "de": "<p>&nbsp;Dieser Auszug stammt aus einem Zauberheft (Nr. 77) von Gilbert Trausch, das er benutzte, um Notizen zu seinen Forschungen festzuhalten. Es zeigt, wie der Historiker seine Hefte organisierte, indem er den Namen des behandelten Themas wie ein Stichwort in der oberen rechten Ecke platzierte.<\/p>"
+              },
+              "copyright": "<p>Archives priv\u00e9es Gilbert Trausch<\/p>",
+              "nomenclature": "zh-lma-30-zh02-05-03-05-zh-15-p26themehautdroit",
+              "url": "https:\/\/gilberttrausch.uni.lu\/pdf\/zhchapitre\/zh-lma-30-zh02-05-03-05-zh-15-p26themehautdroit.pdf",
+              "cover": null,
+              "optimized_url": {
+                "thumbnail": {
+                  "width": 314,
+                  "height": 400,
+                  "originalWidth": 1345,
+                  "originalHeight": 1715,
+                  "url": "https:\/\/gilberttrausch.uni.lu\/pdf\/zhchapitre\/zh-lma-30-zh02-05-03-05-zh-15-p26themehautdroit-thumbnail.png"
+                },
+                "large": {
+                  "width": 1345,
+                  "height": 1715,
+                  "originalWidth": 1345,
+                  "originalHeight": 1715,
+                  "url": "https:\/\/gilberttrausch.uni.lu\/pdf\/zhchapitre\/zh-lma-30-zh02-05-03-05-zh-15-p26themehautdroit-large.png"
+                }
+              },
+              "source": "<p>Archives priv\u00e9es Gilbert Trausch<\/p>",
+              "created_at": "2025-03-30T14:37:45.000000Z",
+              "updated_at": "2025-04-07T14:14:53.000000Z",
+              "pivot": {
+                "documentable_type": "App\\Models\\SlideMasonry",
+                "documentable_id": 12,
+                "document_id": 211,
+                "order": 4
+              }
+            },
+            {
+              "id": 212,
+              "name": {
+                "fr": "Extrait d\u2019un cahier magique de Gilbert Trausch, notes de cours (9)",
+                "de": "Auszug aus einem Zauberheft von Gilbert Trausch, Unterrichtsnotizen (9)"
+              },
+              "type": "notebook",
+              "date": null,
+              "display_year": 0,
+              "title": {
+                "fr": "<p>Extrait d\u2019un cahier magique de Gilbert Trausch, notes de cours<\/p>",
+                "de": "<p>Auszug aus einem Zauberheft von Gilbert Trausch, Unterrichtsnotizen<\/p>"
+              },
+              "description": {
+                "fr": "<p> Cet extrait provient d'un cahier magique (n\u00b0 8) de Gilbert Trausch, utilis\u00e9 pour pr\u00e9parer ses cours et ses le\u00e7ons dans les ann\u00e9es 1960 et 1970. Ce document montre un exemple de son travail de pr\u00e9paration en tant que professeur: apr\u00e8s avoir peaufin\u00e9 son texte, il le recopiait de mani\u00e8re plus soigneuse, en ajoutant des encadrements de titre color\u00e9s en rouge.<\/p>",
+                "de": "<p>&nbsp;Dieser Auszug stammt aus einem Zauberheft (Nr. 8) von Gilbert Trausch, das er in den 1960er und 1970er Jahren zur Vorbereitung seiner Kurse und Lektionen verwendete. Das Dokument zeigt ein Beispiel f\u00fcr seine Vorbereitungsarbeit als Lehrer: Nachdem er seinen Text verfeinert hatte, kopierte er ihn noch sorgf\u00e4ltiger und f\u00fcgte rot gef\u00e4rbte Titelrahmen hinzu.<\/p>"
+              },
+              "copyright": "<p>Archives priv\u00e9es Gilbert Trausch<\/p>",
+              "nomenclature": "zh-lma-28-zh-02-05-01-04-zh-14p2titreencadrerouge",
+              "url": "https:\/\/gilberttrausch.uni.lu\/pdf\/zhchapitre\/zh-lma-28-zh-02-05-01-04-zh-14p2titreencadrerouge.pdf",
+              "cover": null,
+              "optimized_url": {
+                "thumbnail": {
+                  "width": 283,
+                  "height": 400,
+                  "originalWidth": 1654,
+                  "originalHeight": 2339,
+                  "url": "https:\/\/gilberttrausch.uni.lu\/pdf\/zhchapitre\/zh-lma-28-zh-02-05-01-04-zh-14p2titreencadrerouge-thumbnail.png"
+                },
+                "large": {
+                  "width": 1414,
+                  "height": 2000,
+                  "originalWidth": 1654,
+                  "originalHeight": 2339,
+                  "url": "https:\/\/gilberttrausch.uni.lu\/pdf\/zhchapitre\/zh-lma-28-zh-02-05-01-04-zh-14p2titreencadrerouge-large.png"
+                }
+              },
+              "source": "<p>Archives priv\u00e9es Gilbert Trausch<\/p>",
+              "created_at": "2025-03-30T14:41:26.000000Z",
+              "updated_at": "2025-04-07T14:14:53.000000Z",
+              "pivot": {
+                "documentable_type": "App\\Models\\SlideMasonry",
+                "documentable_id": 12,
+                "document_id": 212,
+                "order": 5
+              }
+            },
+            {
+              "id": 213,
+              "name": {
+                "fr": "Extrait d\u2019un cahier magique de Gilbert Trausch (1)",
+                "de": "Auszug aus einem Zauberheft von Gilbert Trausch (1)"
+              },
+              "type": "other",
+              "date": null,
+              "display_year": 0,
+              "title": {
+                "fr": "<p> Extrait d\u2019un cahier magique de Gilbert Trausch<\/p>",
+                "de": "<p>Auszug aus einem Zauberheft von Gilbert Trausch<\/p>"
+              },
+              "description": {
+                "fr": "<p> Cet extrait provient d'un cahier magique (n\u00b0 77)&nbsp; de Gilbert Trausch, utilis\u00e9 pour consigner des notes sur ses recherches. On y voit comment l\u2019historien organisait ses cahiers, notamment en soulignant et en encadrant ses titres.<\/p>",
+                "de": "<p>&nbsp;Dieser Auszug stammt aus einem Zauberheft (Nr. 77) von Gilbert Trausch, das er benutzte, um Notizen zu seinen Forschungen festzuhalten. Es zeigt, wie der Historiker seine Hefte organisierte, insbesondere durch Unterstreichung und Einrahmung seiner Titel.<\/p>"
+              },
+              "copyright": "<p>Archives priv\u00e9es Gilbert Trausch<\/p>",
+              "nomenclature": "zh-lma-29-zh02-05-03-05-zh-15-p10titreencadre",
+              "url": "https:\/\/gilberttrausch.uni.lu\/pdf\/zhchapitre\/zh-lma-29-zh02-05-03-05-zh-15-p10titreencadre.pdf",
+              "cover": null,
+              "optimized_url": {
+                "thumbnail": {
+                  "width": 307,
+                  "height": 400,
+                  "originalWidth": 1334,
+                  "originalHeight": 1738,
+                  "url": "https:\/\/gilberttrausch.uni.lu\/pdf\/zhchapitre\/zh-lma-29-zh02-05-03-05-zh-15-p10titreencadre-thumbnail.png"
+                },
+                "large": {
+                  "width": 1334,
+                  "height": 1738,
+                  "originalWidth": 1334,
+                  "originalHeight": 1738,
+                  "url": "https:\/\/gilberttrausch.uni.lu\/pdf\/zhchapitre\/zh-lma-29-zh02-05-03-05-zh-15-p10titreencadre-large.png"
+                }
+              },
+              "source": "<p>Archives priv\u00e9es Gilbert Trausch<\/p>",
+              "created_at": "2025-03-30T14:44:17.000000Z",
+              "updated_at": "2025-04-07T14:14:53.000000Z",
+              "pivot": {
+                "documentable_type": "App\\Models\\SlideMasonry",
+                "documentable_id": 12,
+                "document_id": 213,
+                "order": 6
+              }
+            },
+            {
+              "id": 214,
+              "name": {
+                "fr": "Extrait d\u2019un cahier magique de Gilbert Trausch (2)",
+                "de": "Auszug aus einem Zauberheft von Gilbert Trausch (2)"
+              },
+              "type": "notebook",
+              "date": null,
+              "display_year": 0,
+              "title": {
+                "fr": "<p> Extrait d\u2019un cahier magique de Gilbert Trausch<\/p>",
+                "de": "<p>Auszug aus einem Zauberheft von Gilbert Trausch<\/p>"
+              },
+              "description": {
+                "fr": "<p> Cet extrait provient d'un cahier magique (n\u00b0 36) de Gilbert Trausch, utilis\u00e9 pour consigner des notes sur ses recherches. On y voit comment l\u2019historien organisait ses cahiers, notamment en soulignant et en encadrant ses titres au crayon rouge.<\/p>",
+                "de": "<p>&nbsp;Dieser Auszug stammt aus einem Zauberheft (Nr. 36) von Gilbert Trausch, das er benutzte, um Notizen zu seinen Forschungen festzuhalten. Es zeigt, wie der Historiker seine Hefte organisierte, insbesondere durch Unterstreichung und Einrahmung seiner Titel mit Rotstift.<\/p>"
+              },
+              "copyright": "<p>Archives priv\u00e9es Gilbert Trausch<\/p>",
+              "nomenclature": "zh-lma-31-zh02-05-01-04-zh-05-p2",
+              "url": "https:\/\/gilberttrausch.uni.lu\/pdf\/zhchapitre\/zh-lma-31-zh02-05-01-04-zh-05-p2.pdf",
+              "cover": null,
+              "optimized_url": {
+                "thumbnail": {
+                  "width": 301,
+                  "height": 400,
+                  "originalWidth": 1246,
+                  "originalHeight": 1655,
+                  "url": "https:\/\/gilberttrausch.uni.lu\/pdf\/zhchapitre\/zh-lma-31-zh02-05-01-04-zh-05-p2-thumbnail.png"
+                },
+                "large": {
+                  "width": 1246,
+                  "height": 1655,
+                  "originalWidth": 1246,
+                  "originalHeight": 1655,
+                  "url": "https:\/\/gilberttrausch.uni.lu\/pdf\/zhchapitre\/zh-lma-31-zh02-05-01-04-zh-05-p2-large.png"
+                }
+              },
+              "source": "<p>Archives priv\u00e9es Gilbert Trausch<\/p>",
+              "created_at": "2025-03-30T14:47:42.000000Z",
+              "updated_at": "2025-04-07T14:14:53.000000Z",
+              "pivot": {
+                "documentable_type": "App\\Models\\SlideMasonry",
+                "documentable_id": 12,
+                "document_id": 214,
+                "order": 7
+              }
+            }
+          ]
+        }
+      },
+      {
+        "id": 20,
+        "magic_notebook_id": 2,
+        "order": 6,
+        "slidable_type": "App\\Models\\SlideSlider",
+        "slidable_id": 8,
+        "created_by": 4,
+        "created_at": "2025-04-02T11:47:26.000000Z",
+        "updated_at": "2025-04-02T11:47:26.000000Z",
+        "slidable": {
+          "id": 8,
+          "content": {
+            "fr": "<p>Jusqu\u2019au milieu des ann\u00e9es 1970 \u2013 et de nouveau \u00e0 partir de la fin des ann\u00e9es 1980 \u2013, certains de ces <em>Zauberhefte<\/em> servent \u00e0 rassembler des bibliographies.<\/p>",
+            "de": "<p>Bis Mitte der 1970er Jahre - und wieder ab Ende der 1980er Jahre - dienen einige dieser <em>Zauberhefte<\/em> dazu, Bibliografien zusammenzustellen.&nbsp;<\/p>"
+          },
+          "color_menu": "#000000",
+          "color_text": "#000000",
+          "background_id": 4,
+          "created_at": "2025-04-02T11:47:26.000000Z",
+          "updated_at": "2025-04-15T17:31:20.000000Z",
+          "type": "SlideSlider",
+          "background": {
+            "id": 4,
+            "title": "Texture 1",
+            "background": "backgrounds\/F7pUqm3MQL99WZiszWEd3Gjm5Cia1RRzzsj2Nm0N.png",
+            "created_at": "2025-03-13T12:19:47.000000Z",
+            "updated_at": "2025-03-13T12:19:47.000000Z"
+          },
+          "documents": [
+            {
+              "id": 215,
+              "name": {
+                "fr": "Extrait d\u2019un cahier magique de Gilbert Trausch, note bibliographique (1)",
+                "de": "Auszug aus einem Zauberheft von Gilbert Trausch, bibliografische Notiz (1)"
+              },
+              "type": "notebook",
+              "date": null,
+              "display_year": 0,
+              "title": {
+                "fr": "<p>Extrait d\u2019un cahier magique de Gilbert Trausch, note bibliographique<\/p>",
+                "de": "<p>Auszug aus einem Zauberheft von Gilbert Trausch, bibliografische Notiz<\/p>"
+              },
+              "description": {
+                "fr": "<p> Cet extrait provient d'un cahier magique (n\u00b0 36) de Gilbert Trausch, utilis\u00e9 pour consigner des notes bibliographiques. Ce document montre comment l\u2019historien rassemblait et organisait des informations pour ses recherches et ses cours.&nbsp;<\/p>",
+                "de": "<p>&nbsp;Dieser Auszug stammt aus einem Zauberheft (Nr. 36) von Gilbert Trausch, das er zum Festhalten von bibliografischen Notizen benutzte. Das Dokument zeigt, wie der Historiker Informationen f\u00fcr seine Forschung und seinen Unterricht sammelte und organisierte.&nbsp;<\/p>"
+              },
+              "copyright": "<p>Archives priv\u00e9es Gilbert Trausch<\/p>",
+              "nomenclature": "zh-lma-32-zh02-05-01-04-zh-05-p4bibliographie",
+              "url": "https:\/\/gilberttrausch.uni.lu\/pdf\/zhchapitre\/zh-lma-32-zh02-05-01-04-zh-05-p4bibliographie.pdf",
+              "cover": null,
+              "optimized_url": {
+                "thumbnail": {
+                  "width": 308,
+                  "height": 400,
+                  "originalWidth": 1288,
+                  "originalHeight": 1675,
+                  "url": "https:\/\/gilberttrausch.uni.lu\/pdf\/zhchapitre\/zh-lma-32-zh02-05-01-04-zh-05-p4bibliographie-thumbnail.png"
+                },
+                "large": {
+                  "width": 1288,
+                  "height": 1675,
+                  "originalWidth": 1288,
+                  "originalHeight": 1675,
+                  "url": "https:\/\/gilberttrausch.uni.lu\/pdf\/zhchapitre\/zh-lma-32-zh02-05-01-04-zh-05-p4bibliographie-large.png"
+                }
+              },
+              "source": "<p>Archives priv\u00e9es Gilbert Trausch<\/p>",
+              "created_at": "2025-03-30T14:49:53.000000Z",
+              "updated_at": "2025-04-07T14:14:54.000000Z",
+              "pivot": {
+                "documentable_type": "App\\Models\\SlideSlider",
+                "documentable_id": 8,
+                "document_id": 215,
+                "order": 1
+              }
+            },
+            {
+              "id": 216,
+              "name": {
+                "fr": "Extrait d\u2019un cahier magique de Gilbert Trausch, note bibliographique (2)",
+                "de": "Auszug aus einem Zauberheft von Gilbert Trausch, bibliografische Notiz (2)"
+              },
+              "type": "notebook",
+              "date": null,
+              "display_year": 0,
+              "title": {
+                "fr": "<p>Extrait d\u2019un cahier magique de Gilbert Trausch, note bibliographique<\/p>",
+                "de": "<p>Auszug aus einem Zauberheft von Gilbert Trausch, bibliografische Notiz<\/p>"
+              },
+              "description": {
+                "fr": "<p> Cet extrait provient d'un cahier magique (n\u00b0 46) de Gilbert Trausch, utilis\u00e9 pour consigner des notes bibliographiques. Ce document montre comment l\u2019historien rassemblait et organisait des informations pour ses recherches et ses cours.&nbsp;<\/p>",
+                "de": "<p>&nbsp;Dieser Auszug stammt aus einem Zauberheft (Nr. 46) von Gilbert Trausch, das er zum Festhalten von bibliografischen Notizen benutzte. Das Dokument zeigt, wie der Historiker Informationen f\u00fcr seine Forschung und seinen Unterricht sammelte und organisierte.&nbsp;<\/p>"
+              },
+              "copyright": "<p>Archives priv\u00e9es Gilbert Trausch<\/p>",
+              "nomenclature": "zh-lma-33-zh02-05-01-04-zh-07-p14-20bibliographie",
+              "url": "https:\/\/gilberttrausch.uni.lu\/pdf\/zhchapitre\/zh-lma-33-zh02-05-01-04-zh-07-p14-20bibliographie.pdf",
+              "cover": null,
+              "optimized_url": {
+                "thumbnail": {
+                  "width": 298,
+                  "height": 400,
+                  "originalWidth": 1239,
+                  "originalHeight": 1661,
+                  "url": "https:\/\/gilberttrausch.uni.lu\/pdf\/zhchapitre\/zh-lma-33-zh02-05-01-04-zh-07-p14-20bibliographie-thumbnail.png"
+                },
+                "large": {
+                  "width": 1239,
+                  "height": 1661,
+                  "originalWidth": 1239,
+                  "originalHeight": 1661,
+                  "url": "https:\/\/gilberttrausch.uni.lu\/pdf\/zhchapitre\/zh-lma-33-zh02-05-01-04-zh-07-p14-20bibliographie-large.png"
+                }
+              },
+              "source": "<p>Archives priv\u00e9es Gilbert Trausch<\/p>",
+              "created_at": "2025-03-30T14:54:38.000000Z",
+              "updated_at": "2025-04-07T14:14:54.000000Z",
+              "pivot": {
+                "documentable_type": "App\\Models\\SlideSlider",
+                "documentable_id": 8,
+                "document_id": 216,
+                "order": 2
+              }
+            }
+          ]
+        }
+      },
+      {
+        "id": 21,
+        "magic_notebook_id": 2,
+        "order": 7,
+        "slidable_type": "App\\Models\\SlideSlider",
+        "slidable_id": 10,
+        "created_by": 4,
+        "created_at": "2025-04-02T11:49:35.000000Z",
+        "updated_at": "2025-04-02T11:49:35.000000Z",
+        "slidable": {
+          "id": 10,
+          "content": {
+            "fr": "<p>Bient\u00f4t les premiers livrets commencent \u00e0 inclure des notes plus g\u00e9n\u00e9rales, ainsi que des r\u00e9flexions et des commentaires de textes. Les \u00ab cahiers magiques \u00bb contiennent aussi des citations et des extraits de textes que Gilbert Trausch a lus. M\u00eame si un <em>Zauberheft<\/em> a \u00e9t\u00e9 con\u00e7u pour un sujet ou un projet scientifique sp\u00e9cifique, les livrets restent \u00ab vivants \u00bb parce que l\u2019historien continue \u00e0 y ajouter des notes par la suite.&nbsp;<\/p>",
+            "de": "<p>Bald entstehen erste Hefte, die allgemeinere Notizen sowie Reflexionen und Kommentare zu Texten enthalten. Die \u201eZauberhefte\u201c enthalten auch Zitate und Ausz\u00fcge aus Texten, die Gilbert Trausch gelesen hat. Auch wenn ein <em>Zauberheft<\/em> f\u00fcr ein bestimmtes Thema oder ein wissenschaftliches Projekt konzipiert wurde, bleiben die Hefte \u201elebendig\u201c, weil der Historiker auch sp\u00e4ter noch Notizen hinzuf\u00fcgt. &nbsp;<\/p>"
+          },
+          "color_menu": "#000000",
+          "color_text": "#000000",
+          "background_id": 4,
+          "created_at": "2025-04-02T11:49:35.000000Z",
+          "updated_at": "2025-04-15T17:31:54.000000Z",
+          "type": "SlideSlider",
+          "background": {
+            "id": 4,
+            "title": "Texture 1",
+            "background": "backgrounds\/F7pUqm3MQL99WZiszWEd3Gjm5Cia1RRzzsj2Nm0N.png",
+            "created_at": "2025-03-13T12:19:47.000000Z",
+            "updated_at": "2025-03-13T12:19:47.000000Z"
+          },
+          "documents": [
+            {
+              "id": 217,
+              "name": {
+                "fr": "Extrait d\u2019un cahier magique de Gilbert Trausch, citations (1)",
+                "de": "Auszug aus einem Zauberheft von Gilbert Trausch, Zitate (1)"
+              },
+              "type": "notebook",
+              "date": null,
+              "display_year": 0,
+              "title": {
+                "fr": "<p>Extrait d\u2019un cahier magique de Gilbert Trausch, citations<\/p>",
+                "de": "<p>Auszug aus einem Zauberheft von Gilbert Trausch, Zitate<\/p>"
+              },
+              "description": {
+                "fr": "<p> Cet extrait provient d'un cahier magique (n\u00b0 85) de Gilbert Trausch, utilis\u00e9 pour consigner des passages de texte ainsi que des citations d\u2019auteurs ou de personnalit\u00e9s historiques. Ce document montre comment l\u2019historien rassemblait et organisait des informations pour ses recherches.&nbsp;<\/p>",
+                "de": "<p>&nbsp;Dieser Auszug stammt aus einem Zauberheft (Nr. 85) von Gilbert Trausch, das dazu diente, Textpassagen sowie Zitate von Autoren oder historischen Pers\u00f6nlichkeiten festzuhalten. Das Dokument zeigt, wie der Historiker Informationen f\u00fcr seine Forschungen sammelte und organisierte.&nbsp;<\/p>"
+              },
+              "copyright": "<p>Archives priv\u00e9es Gilbert Trausch<\/p>",
+              "nomenclature": "zh-lma-34-zh02-05-01-04-zh-18-p17extraitdetexte",
+              "url": "https:\/\/gilberttrausch.uni.lu\/pdf\/zhchapitre\/zh-lma-34-zh02-05-01-04-zh-18-p17extraitdetexte.pdf",
+              "cover": null,
+              "optimized_url": {
+                "thumbnail": {
+                  "width": 307,
+                  "height": 400,
+                  "originalWidth": 1329,
+                  "originalHeight": 1733,
+                  "url": "https:\/\/gilberttrausch.uni.lu\/pdf\/zhchapitre\/zh-lma-34-zh02-05-01-04-zh-18-p17extraitdetexte-thumbnail.png"
+                },
+                "large": {
+                  "width": 1329,
+                  "height": 1733,
+                  "originalWidth": 1329,
+                  "originalHeight": 1733,
+                  "url": "https:\/\/gilberttrausch.uni.lu\/pdf\/zhchapitre\/zh-lma-34-zh02-05-01-04-zh-18-p17extraitdetexte-large.png"
+                }
+              },
+              "source": "<p>Archives priv\u00e9es Gilbert Trausch<\/p>",
+              "created_at": "2025-03-30T14:58:33.000000Z",
+              "updated_at": "2025-04-07T14:14:54.000000Z",
+              "pivot": {
+                "documentable_type": "App\\Models\\SlideSlider",
+                "documentable_id": 10,
+                "document_id": 217,
+                "order": 1
+              }
+            },
+            {
+              "id": 218,
+              "name": {
+                "fr": "Extrait d\u2019un cahier magique de Gilbert Trausch, citations (2)",
+                "de": "Auszug aus einem Zauberheft von Gilbert Trausch, Zitate (2)"
+              },
+              "type": "notebook",
+              "date": null,
+              "display_year": 0,
+              "title": {
+                "fr": "<p>Extrait d\u2019un cahier magique de Gilbert Trausch, citations<\/p>",
+                "de": "<p>Auszug aus einem Zauberheft von Gilbert Trausch, Zitate<\/p>"
+              },
+              "description": {
+                "fr": "<p> Cet extrait provient d'un cahier magique (n\u00b0 4) de Gilbert Trausch, utilis\u00e9 pour consigner des passages de texte ainsi que des citations d\u2019auteurs ou de personnalit\u00e9s historiques. Ce document montre comment l\u2019historien rassemblait et organisait des informations pour ses recherches.&nbsp;<\/p>",
+                "de": "<p>&nbsp;Dieser Auszug stammt aus einem Zauberheft (Nr. 4) von Gilbert Trausch, das dazu diente, Textpassagen sowie Zitate von Autoren oder historischen Pers\u00f6nlichkeiten festzuhalten. Das Dokument zeigt, wie der Historiker Informationen f\u00fcr seine Forschungen sammelte und organisierte.&nbsp;<\/p>"
+              },
+              "copyright": "<p>Archives priv\u00e9es Gilbert Trausch<\/p>",
+              "nomenclature": "zh-lma-35-pages29-30-from-zh02-05-01-04-zh-16-citations",
+              "url": "https:\/\/gilberttrausch.uni.lu\/pdf\/zhchapitre\/zh-lma-35-pages29-30-from-zh02-05-01-04-zh-16-citations.pdf",
+              "cover": null,
+              "optimized_url": {
+                "thumbnail": {
+                  "width": 310,
+                  "height": 400,
+                  "originalWidth": 1336,
+                  "originalHeight": 1723,
+                  "url": "https:\/\/gilberttrausch.uni.lu\/pdf\/zhchapitre\/zh-lma-35-pages29-30-from-zh02-05-01-04-zh-16-citations-thumbnail.png"
+                },
+                "large": {
+                  "width": 1336,
+                  "height": 1723,
+                  "originalWidth": 1336,
+                  "originalHeight": 1723,
+                  "url": "https:\/\/gilberttrausch.uni.lu\/pdf\/zhchapitre\/zh-lma-35-pages29-30-from-zh02-05-01-04-zh-16-citations-large.png"
+                }
+              },
+              "source": "<p>Archives priv\u00e9es Gilbert Trausch<\/p>",
+              "created_at": "2025-03-30T15:01:43.000000Z",
+              "updated_at": "2025-04-07T14:14:54.000000Z",
+              "pivot": {
+                "documentable_type": "App\\Models\\SlideSlider",
+                "documentable_id": 10,
+                "document_id": 218,
+                "order": 2
+              }
+            },
+            {
+              "id": 219,
+              "name": {
+                "fr": "Extrait d\u2019un cahier magique de Gilbert Trausch, citations (3)",
+                "de": "Auszug aus einem Zauberheft von Gilbert Trausch, Zitate (3)"
+              },
+              "type": "notebook",
+              "date": null,
+              "display_year": 0,
+              "title": {
+                "fr": "<p>Extrait d\u2019un cahier magique de Gilbert Trausch, citations<\/p>",
+                "de": "<p>Auszug aus einem Zauberheft von Gilbert Trausch, Zitate<\/p>"
+              },
+              "description": {
+                "fr": "<p> Cet extrait provient d'un cahier magique (n\u00b0 7) de Gilbert Trausch, utilis\u00e9 pour consigner des passages de texte ainsi que des citations d\u2019auteurs ou de personnalit\u00e9s historiques. Ce document montre comment l\u2019historien rassemblait et organisait des informations pour ses recherches.&nbsp;<\/p>",
+                "de": "<p>&nbsp;Dieser Auszug stammt aus einem Zauberheft (Nr. 7) von Gilbert Trausch, das dazu diente, Textpassagen sowie Zitate von Autoren oder historischen Pers\u00f6nlichkeiten festzuhalten. Das Dokument zeigt, wie der Historiker Informationen f\u00fcr seine Forschungen sammelte und organisierte.&nbsp;<\/p>"
+              },
+              "copyright": "<p>Archives priv\u00e9es Gilbert Trausch<\/p>",
+              "nomenclature": "zh-lma-36-pages-59-60-from-zh02-05-03-06-zh-16-commentaires",
+              "url": "https:\/\/gilberttrausch.uni.lu\/pdf\/zhchapitre\/zh-lma-36-pages-59-60-from-zh02-05-03-06-zh-16-commentaires.pdf",
+              "cover": null,
+              "optimized_url": {
+                "thumbnail": {
+                  "width": 311,
+                  "height": 400,
+                  "originalWidth": 1346,
+                  "originalHeight": 1733,
+                  "url": "https:\/\/gilberttrausch.uni.lu\/pdf\/zhchapitre\/zh-lma-36-pages-59-60-from-zh02-05-03-06-zh-16-commentaires-thumbnail.png"
+                },
+                "large": {
+                  "width": 1346,
+                  "height": 1733,
+                  "originalWidth": 1346,
+                  "originalHeight": 1733,
+                  "url": "https:\/\/gilberttrausch.uni.lu\/pdf\/zhchapitre\/zh-lma-36-pages-59-60-from-zh02-05-03-06-zh-16-commentaires-large.png"
+                }
+              },
+              "source": "<p>Archives priv\u00e9es Gilbert Trausch<\/p>",
+              "created_at": "2025-03-30T15:06:14.000000Z",
+              "updated_at": "2025-04-07T14:14:54.000000Z",
+              "pivot": {
+                "documentable_type": "App\\Models\\SlideSlider",
+                "documentable_id": 10,
+                "document_id": 219,
+                "order": 3
+              }
+            }
+          ]
+        }
+      },
+      {
+        "id": 22,
+        "magic_notebook_id": 2,
+        "order": 8,
+        "slidable_type": "App\\Models\\SlideSlider",
+        "slidable_id": 12,
+        "created_by": 4,
+        "created_at": "2025-04-02T11:51:11.000000Z",
+        "updated_at": "2025-04-02T11:51:11.000000Z",
+        "slidable": {
+          "id": 12,
+          "content": {
+            "fr": "<p>L\u2019avantage de ce syst\u00e8me, c\u2019est que l\u2019historien peut positionner les pages mobiles \u00e0 sa convenance, r\u00e9organiser l\u2019ordre des sujets ou en ajouter de nouveaux si n\u00e9cessaire. Il donne \u00e0 l\u2019ensemble des notes qu'il rassemble des titres th\u00e9matiques Par exemple \u00ab M\u00e9contentement public \u00e0 la fin de l'ancien r\u00e9gime \u00bb ou \u00ab La sid\u00e9rurgie au 19e si\u00e8cle \u00bb. Plus tard, il utilise des mots-cl\u00e9s plus courts, plac\u00e9s dans le coin sup\u00e9rieur droit de la feuille.<\/p>",
+            "de": "<p>Der Vorteil dieses Systems besteht darin, dass der Historiker die Seiten nach Belieben positionieren, die Reihenfolge der Themen neu ordnen oder bei Bedarf neue Themen hinzuf\u00fcgen kann. Er gibt den von ihm gesammelten Aufzeichnungen thematische Titel. Zum Beispiel \u201eM\u00e9contentement public \u00e0 la fin de l'ancien r\u00e9gime\u201c (\u00d6ffentliche Unzufriedenheit am Ende des ancien r\u00e9gime) oder \u201eLa sid\u00e9rurgie au 19e si\u00e8cle\u201c (Das H\u00fcttenwesen im 19. Jahrhundert). Sp\u00e4ter verwendet er k\u00fcrzere Stichw\u00f6rter, die in der oberen rechten Ecke des Blattes platziert werden. &nbsp;<\/p>"
+          },
+          "color_menu": "#000000",
+          "color_text": "#000000",
+          "background_id": 4,
+          "created_at": "2025-04-02T11:51:11.000000Z",
+          "updated_at": "2025-04-15T17:32:27.000000Z",
+          "type": "SlideSlider",
+          "background": {
+            "id": 4,
+            "title": "Texture 1",
+            "background": "backgrounds\/F7pUqm3MQL99WZiszWEd3Gjm5Cia1RRzzsj2Nm0N.png",
+            "created_at": "2025-03-13T12:19:47.000000Z",
+            "updated_at": "2025-03-13T12:19:47.000000Z"
+          },
+          "documents": [
+            {
+              "id": 220,
+              "name": {
+                "fr": "Extrait d\u2019un cahier magique de Gilbert Trausch (3)",
+                "de": "Auszug aus einem Zauberheft von Gilbert Trausch (3)"
+              },
+              "type": "notebook",
+              "date": null,
+              "display_year": 0,
+              "title": {
+                "fr": "<p>Extrait d\u2019un cahier magique de Gilbert Trausch<\/p>",
+                "de": "<p>Auszug aus einem Zauberheft von Gilbert Trausch<\/p>"
+              },
+              "description": {
+                "fr": "<p> Cet extrait provient d'un cahier magique (n\u00b0 89) de Gilbert Trausch, utilis\u00e9 pour consigner les r\u00e9sultats de ses recherches. Ce document montre comment l\u2019historien rassemblait et organisait des informations, tout en continuant d'ajouter des notes \u00e0 ses observations.<\/p>",
+                "de": "<p>&nbsp;Dieser Auszug stammt aus einem Zauberheft (Nr. 89) von Gilbert Trausch, das er benutzte, um seine Forschungsergebnisse festzuhalten. Das Dokument zeigt, wie der Historiker Informationen sammelte und organisierte, w\u00e4hrend er seine Beobachtungen weiterhin mit Notizen versah.<\/p>"
+              },
+              "copyright": "<p>Archives priv\u00e9es Gilbert Trausch<\/p>",
+              "nomenclature": "zh-lma-37-zh02-05-02-04-zh-19-p3textevivant",
+              "url": "https:\/\/gilberttrausch.uni.lu\/pdf\/zhchapitre\/zh-lma-37-zh02-05-02-04-zh-19-p3textevivant.pdf",
+              "cover": null,
+              "optimized_url": {
+                "thumbnail": {
+                  "width": 309,
+                  "height": 400,
+                  "originalWidth": 1343,
+                  "originalHeight": 1738,
+                  "url": "https:\/\/gilberttrausch.uni.lu\/pdf\/zhchapitre\/zh-lma-37-zh02-05-02-04-zh-19-p3textevivant-thumbnail.png"
+                },
+                "large": {
+                  "width": 1343,
+                  "height": 1738,
+                  "originalWidth": 1343,
+                  "originalHeight": 1738,
+                  "url": "https:\/\/gilberttrausch.uni.lu\/pdf\/zhchapitre\/zh-lma-37-zh02-05-02-04-zh-19-p3textevivant-large.png"
+                }
+              },
+              "source": "<p>Archives priv\u00e9es Gilbert Trausch<\/p>",
+              "created_at": "2025-03-30T15:11:14.000000Z",
+              "updated_at": "2025-04-07T14:14:55.000000Z",
+              "pivot": {
+                "documentable_type": "App\\Models\\SlideSlider",
+                "documentable_id": 12,
+                "document_id": 220,
+                "order": 1
+              }
+            },
+            {
+              "id": 221,
+              "name": {
+                "fr": "Extrait d\u2019un cahier magique de Gilbert Trausch, mot-cl\u00e9 (4)",
+                "de": "Auszug aus einem Zauberheft von Gilbert Trausch biografische Notizen, Stichwort (4)"
+              },
+              "type": "notebook",
+              "date": null,
+              "display_year": 0,
+              "title": {
+                "fr": "<p>Extrait d\u2019un cahier magique de Gilbert Trausch, mot-cl\u00e9<\/p>",
+                "de": "<p>Auszug aus einem Zauberheft von Gilbert Trausch biografische Notizen, Stichwort<\/p>"
+              },
+              "description": {
+                "fr": "<p> Cet extrait provient d'un cahier magique (n\u00b0 46) de Gilbert Trausch, utilis\u00e9 pour consigner les r\u00e9sultats de ses recherches. Ce document montre comment l\u2019historien rassemblait et organisait des informations. Il attribuait \u00e9galement des titres th\u00e9matiques \u00e0 ses notes, comme c'est le cas ici avec le \u201cM\u00e9contentement public \u00e0 la fin de l'Ancien R\u00e9gime\u201d.<\/p>",
+                "de": "<p>&nbsp;Dieser Auszug stammt aus einem Zauberheft (Nr. 46) von Gilbert Trausch, das er benutzte, um seine Forschungsergebnisse festzuhalten. Das Dokument zeigt, wie der Historiker Informationen sammelte und organisierte. Er vergab auch thematische Titel f\u00fcr seine Notizen, wie hier mit \u201eM\u00e9contentement public \u00e0 la fin de l'Ancien R\u00e9gime\u201c (\u00d6ffentliche Unzufriedenheit am Ende des Ancien R\u00e9gime).<\/p>"
+              },
+              "copyright": "<p>Archives priv\u00e9es Gilbert Trausch<\/p>",
+              "nomenclature": "zh-lma-39-zh02-05-01-04-zh-07-p6mecontentement",
+              "url": "https:\/\/gilberttrausch.uni.lu\/pdf\/zhchapitre\/zh-lma-39-zh02-05-01-04-zh-07-p6mecontentement.pdf",
+              "cover": null,
+              "optimized_url": {
+                "thumbnail": {
+                  "width": 313,
+                  "height": 400,
+                  "originalWidth": 1298,
+                  "originalHeight": 1661,
+                  "url": "https:\/\/gilberttrausch.uni.lu\/pdf\/zhchapitre\/zh-lma-39-zh02-05-01-04-zh-07-p6mecontentement-thumbnail.png"
+                },
+                "large": {
+                  "width": 1298,
+                  "height": 1661,
+                  "originalWidth": 1298,
+                  "originalHeight": 1661,
+                  "url": "https:\/\/gilberttrausch.uni.lu\/pdf\/zhchapitre\/zh-lma-39-zh02-05-01-04-zh-07-p6mecontentement-large.png"
+                }
+              },
+              "source": "<p>Archives priv\u00e9es Gilbert Trausch<\/p>",
+              "created_at": "2025-03-30T15:14:57.000000Z",
+              "updated_at": "2025-04-07T14:14:55.000000Z",
+              "pivot": {
+                "documentable_type": "App\\Models\\SlideSlider",
+                "documentable_id": 12,
+                "document_id": 221,
+                "order": 2
+              }
+            },
+            {
+              "id": 222,
+              "name": {
+                "fr": "Extrait d\u2019un cahier magique de Gilbert Trausch, mot-cl\u00e9 (5)",
+                "de": "Auszug aus einem Zauberheft von Gilbert Trausch biografische Notizen, Stichwort (5)"
+              },
+              "type": "notebook",
+              "date": null,
+              "display_year": 0,
+              "title": {
+                "fr": "<p>Extrait d\u2019un cahier magique de Gilbert Trausch, mot-cl\u00e9<\/p>",
+                "de": "<p>Auszug aus einem Zauberheft von Gilbert Trausch biografische Notizen, Stichwort<\/p>"
+              },
+              "description": {
+                "fr": "<p> Cet extrait provient d'un cahier magique (n\u00b0 80) de Gilbert Trausch, utilis\u00e9 pour consigner les r\u00e9sultats de ses recherches. Ce document montre comment l\u2019historien rassemblait et organisait des informations. Il attribuait \u00e9galement des titres th\u00e9matiques \u00e0 ses notes, comme c'est le cas ici avec \u201cla sid\u00e9rurgie\u201d.<\/p>",
+                "de": "<p>&nbsp;Dieser Auszug stammt aus einem Zauberheft (Nr. 80) von Gilbert Trausch, das er benutzte, um seine Forschungsergebnisse festzuhalten. Das Dokument zeigt, wie der Historiker Informationen sammelte und organisierte. Er vergab auch thematische Titel f\u00fcr seine Notizen, wie hier mit \u201eDie Stahlindustrie\u201c.<\/p>"
+              },
+              "copyright": "<p>Archives priv\u00e9es Gilbert Trausch<\/p>",
+              "nomenclature": "zh-lma-40-pages-22-28from-zh02-05-01-04-zh-17-lasiderurgie",
+              "url": "https:\/\/gilberttrausch.uni.lu\/pdf\/zhchapitre\/zh-lma-40-pages-22-28from-zh02-05-01-04-zh-17-lasiderurgie.pdf",
+              "cover": null,
+              "optimized_url": {
+                "thumbnail": {
+                  "width": 310,
+                  "height": 400,
+                  "originalWidth": 1340,
+                  "originalHeight": 1731,
+                  "url": "https:\/\/gilberttrausch.uni.lu\/pdf\/zhchapitre\/zh-lma-40-pages-22-28from-zh02-05-01-04-zh-17-lasiderurgie-thumbnail.png"
+                },
+                "large": {
+                  "width": 1340,
+                  "height": 1731,
+                  "originalWidth": 1340,
+                  "originalHeight": 1731,
+                  "url": "https:\/\/gilberttrausch.uni.lu\/pdf\/zhchapitre\/zh-lma-40-pages-22-28from-zh02-05-01-04-zh-17-lasiderurgie-large.png"
+                }
+              },
+              "source": "<p>Archives priv\u00e9es Gilbert Trausch<\/p>",
+              "created_at": "2025-03-30T15:18:45.000000Z",
+              "updated_at": "2025-04-07T14:14:55.000000Z",
+              "pivot": {
+                "documentable_type": "App\\Models\\SlideSlider",
+                "documentable_id": 12,
+                "document_id": 222,
+                "order": 3
+              }
+            }
+          ]
+        }
+      },
+      {
+        "id": 23,
+        "magic_notebook_id": 2,
+        "order": 9,
+        "slidable_type": "App\\Models\\SlideMasonry",
+        "slidable_id": 14,
+        "created_by": 4,
+        "created_at": "2025-04-02T11:53:30.000000Z",
+        "updated_at": "2025-04-02T11:53:30.000000Z",
+        "slidable": {
+          "id": 14,
+          "content": {
+            "fr": "<p>Des indications tr\u00e8s rudimentaires sur la localisation dans sa biblioth\u00e8que ou dans un autre lieu \u2013 souvent plac\u00e9es dans la marge gauche de la feuille \u2013 \u00e9tablissent un lien entre les notes bibliographiques et la source originale ou copi\u00e9e. Les <em>Zauberhefte<\/em> contiennent plusieurs cat\u00e9gories de r\u00e9f\u00e9rences personnelles qui apparaissent syst\u00e9matiquement. Par exemple, \u00ab Sub \u00bb, renvoyant \u00e0 un autre \u00ab cahier magique \u00bb ; \u00ab Phot \u00bb d\u00e9signant des photocopies et \u00ab GT \u00bb (ou \u00ab G.T. \u00bb) pour un livre issu de sa biblioth\u00e8que priv\u00e9e.&nbsp;<\/p><p>Une quatri\u00e8me r\u00e9f\u00e9rence portant la mention \u00ab Fait \u00bb appara\u00eet \u00e9galement. Elle sert \u00e0 indiquer que l\u2019auteur a utilis\u00e9 une citation ou une id\u00e9e dans un manuscrit, un article ou un livre sur lequel il a travaill\u00e9. En dehors des <em>Zauberhefte<\/em>, on trouve la mention \u00ab Fait \u00bb surtout sur de nombreuses pages photocopi\u00e9es de documents d'archives ou de journaux historiques, signifiant qu'il a travaill\u00e9 sur ces documents.<\/p>",
+            "de": "<p>Sehr rudiment\u00e4re Angaben zum Standort in der eigenen Bibliothek oder an einem anderen Ort - oft am linken Rand des Blattes - stellen eine Verbindung zwischen den bibliografischen Notizen und der originalen oder kopierten Quelle her. Die <em>Zauberhefte<\/em> enthalten mehrere Kategorien von pers\u00f6nlichen Bez\u00fcgen, die systematisch auftauchen. Zum Beispiel \u201eSub\u201c, was auf ein anderes \u201eZauberheft\u201c verweist; \u201ePhot\u201c zur Bezeichnung von Fotokopien und \u201eGT\u201c (oder \u201eG.T.\u201c). \u201c) f\u00fcr ein Buch aus seiner Privatbibliothek. &nbsp;<\/p><p>Ein vierter Verweis mit dem Vermerk \u201eFait\u201c (erledigt) kommt ebenfalls vor. Er dient zur Angabe, dass der Autor ein Zitat oder eine Idee in einem Manuskript, einem Artikel oder einem Buch, an dem er gearbeitet hat, verwendet hat. Au\u00dferhalb der <em>Zauberhefte<\/em> findet man den Vermerk \u201eFait\u201c vor allem auf vielen fotokopierten Seiten von Archivdokumenten oder historischen Zeitungen, was bedeutet, dass er mit diesen Dokumenten gearbeitet hat. &nbsp;<\/p>"
+          },
+          "color_menu": "#000000",
+          "color_text": "#000000",
+          "background_id": 4,
+          "created_at": "2025-04-02T11:53:30.000000Z",
+          "updated_at": "2025-04-15T17:33:04.000000Z",
+          "type": "SlideMasonry",
+          "background": {
+            "id": 4,
+            "title": "Texture 1",
+            "background": "backgrounds\/F7pUqm3MQL99WZiszWEd3Gjm5Cia1RRzzsj2Nm0N.png",
+            "created_at": "2025-03-13T12:19:47.000000Z",
+            "updated_at": "2025-03-13T12:19:47.000000Z"
+          },
+          "documents": [
+            {
+              "id": 224,
+              "name": {
+                "fr": "Extrait d\u2019un cahier magique de Gilbert Trausch, annotation (1)",
+                "de": "Auszug aus einem Zauberheft von Gilbert Trausch, Anmerkung (1)"
+              },
+              "type": "notebook",
+              "date": null,
+              "display_year": 0,
+              "title": {
+                "fr": "<p>Extrait d\u2019un cahier magique de Gilbert Trausch, annotation<\/p>",
+                "de": "<p>Auszug aus einem Zauberheft von Gilbert Trausch, Anmerkung<\/p>"
+              },
+              "description": {
+                "fr": "<p> Cet extrait provient d'un cahier magique (n\u00b0 86) de Gilbert Trausch, utilis\u00e9 pour consigner les r\u00e9sultats de ses recherches. Ce document montre comment l\u2019historien rassemblait et organisait des informations, notamment en ajoutant des r\u00e9f\u00e9rences personnelles \u00e0 ses notes manuscrites, comme ici avec la mention \u201csub\u201d, qui indique le renvoi vers un autre cahier magique.<\/p>",
+                "de": "<p>&nbsp;Dieser Auszug stammt aus einem Zauberheft (Nr. 86) von Gilbert Trausch, das er benutzte, um seine Forschungsergebnisse festzuhalten. Das Dokument zeigt, wie der Historiker Informationen sammelte und organisierte, insbesondere indem er seinen handschriftlichen Notizen pers\u00f6nliche Verweise hinzuf\u00fcgte, wie hier mit dem Vermerk \u201esub\u201c, der auf den Verweis auf ein anderes magisches Notizbuch hinweist.<\/p>"
+              },
+              "copyright": "<p>Archives priv\u00e9es Gilbert Trausch<\/p>",
+              "nomenclature": "zh-lma-42-zh02-05-02-04-zh-18-p133subannotation",
+              "url": "https:\/\/gilberttrausch.uni.lu\/pdf\/zhchapitre\/zh-lma-42-zh02-05-02-04-zh-18-p133subannotation.pdf",
+              "cover": null,
+              "optimized_url": {
+                "thumbnail": {
+                  "width": 311,
+                  "height": 400,
+                  "originalWidth": 1342,
+                  "originalHeight": 1726,
+                  "url": "https:\/\/gilberttrausch.uni.lu\/pdf\/zhchapitre\/zh-lma-42-zh02-05-02-04-zh-18-p133subannotation-thumbnail.png"
+                },
+                "large": {
+                  "width": 1342,
+                  "height": 1726,
+                  "originalWidth": 1342,
+                  "originalHeight": 1726,
+                  "url": "https:\/\/gilberttrausch.uni.lu\/pdf\/zhchapitre\/zh-lma-42-zh02-05-02-04-zh-18-p133subannotation-large.png"
+                }
+              },
+              "source": "<p>Archives priv\u00e9es Gilbert Trausch<\/p>",
+              "created_at": "2025-03-30T15:26:47.000000Z",
+              "updated_at": "2025-04-07T14:14:55.000000Z",
+              "pivot": {
+                "documentable_type": "App\\Models\\SlideMasonry",
+                "documentable_id": 14,
+                "document_id": 224,
+                "order": 1
+              }
+            },
+            {
+              "id": 225,
+              "name": {
+                "fr": "Extrait d\u2019un cahier magique de Gilbert Trausch, annotation (2)",
+                "de": "Auszug aus einem Zauberheft von Gilbert Trausch, Anmerkung (2)"
+              },
+              "type": "notebook",
+              "date": null,
+              "display_year": 0,
+              "title": {
+                "fr": "<p>Extrait d\u2019un cahier magique de Gilbert Trausch, annotation<\/p>",
+                "de": "<p>Auszug aus einem Zauberheft von Gilbert Trausch, Anmerkung<\/p>"
+              },
+              "description": {
+                "fr": "<p> Cet extrait provient d'un cahier magique (n\u00b0 82) de Gilbert Trausch, utilis\u00e9 pour consigner les r\u00e9sultats de ses recherches. Ce document montre comment l\u2019historien rassemblait et organisait des informations, notamment en ajoutant des r\u00e9f\u00e9rences personnelles \u00e0 ses notes manuscrites, comme ici avec la mention \u201csub\u201d, qui indique le renvoi vers un autre cahier magique.<\/p>",
+                "de": "<p>&nbsp;Dieser Auszug stammt aus einem Zauberheft (Nr. 82) von Gilbert Trausch, das er benutzte, um seine Forschungsergebnisse festzuhalten. Das Dokument zeigt, wie der Historiker Informationen sammelte und organisierte, insbesondere indem er seinen handschriftlichen Notizen pers\u00f6nliche Verweise hinzuf\u00fcgte, wie hier mit dem Vermerk \u201esub\u201c, der auf den Verweis auf ein anderes magisches Notizbuch hinweist.<\/p>"
+              },
+              "copyright": "<p>Archives priv\u00e9es Gilbert Trausch<\/p>",
+              "nomenclature": "zh-lma-43-zh02-05-02-04-zh-17-p168subannotation",
+              "url": "https:\/\/gilberttrausch.uni.lu\/pdf\/zhchapitre\/zh-lma-43-zh02-05-02-04-zh-17-p168subannotation.pdf",
+              "cover": null,
+              "optimized_url": {
+                "thumbnail": {
+                  "width": 311,
+                  "height": 400,
+                  "originalWidth": 1343,
+                  "originalHeight": 1730,
+                  "url": "https:\/\/gilberttrausch.uni.lu\/pdf\/zhchapitre\/zh-lma-43-zh02-05-02-04-zh-17-p168subannotation-thumbnail.png"
+                },
+                "large": {
+                  "width": 1343,
+                  "height": 1730,
+                  "originalWidth": 1343,
+                  "originalHeight": 1730,
+                  "url": "https:\/\/gilberttrausch.uni.lu\/pdf\/zhchapitre\/zh-lma-43-zh02-05-02-04-zh-17-p168subannotation-large.png"
+                }
+              },
+              "source": "<p>Archives priv\u00e9es Gilbert Trausch<\/p>",
+              "created_at": "2025-03-30T15:33:59.000000Z",
+              "updated_at": "2025-04-07T14:14:55.000000Z",
+              "pivot": {
+                "documentable_type": "App\\Models\\SlideMasonry",
+                "documentable_id": 14,
+                "document_id": 225,
+                "order": 2
+              }
+            },
+            {
+              "id": 226,
+              "name": {
+                "fr": "Extrait d\u2019un cahier magique de Gilbert Trausch, annotation (3)",
+                "de": "Auszug aus einem Zauberheft von Gilbert Trausch, Anmerkung (3)"
+              },
+              "type": "notebook",
+              "date": null,
+              "display_year": 0,
+              "title": {
+                "fr": "<p>Extrait d\u2019un cahier magique de Gilbert Trausch, annotation<\/p>",
+                "de": "<p>Auszug aus einem Zauberheft von Gilbert Trausch, Anmerkung<\/p>"
+              },
+              "description": {
+                "fr": "<p> Cet extrait provient d'un cahier magique (n\u00b0 100) de Gilbert Trausch, utilis\u00e9 pour consigner les r\u00e9sultats de ses recherches. Ce document montre comment l\u2019historien rassemblait et organisait des informations, notamment en ajoutant des r\u00e9f\u00e9rences personnelles \u00e0 ses notes manuscrites, comme ici avec la mention \u201cphot\u201d, qui indique qu\u2019il a photocopi\u00e9 les documents mentionn\u00e9s.<\/p>",
+                "de": "<p>&nbsp;Dieser Auszug stammt aus einem Zauberheft (Nr. 100) von Gilbert Trausch, das er benutzte, um seine Forschungsergebnisse festzuhalten. Es zeigt, wie der Historiker Informationen sammelte und organisierte, unter anderem indem er seinen handschriftlichen Notizen pers\u00f6nliche Verweise hinzuf\u00fcgte, wie hier mit dem Vermerk \u201ephot\u201c, der besagt, dass er die erw\u00e4hnten Dokumente fotokopiert hat.<\/p>"
+              },
+              "copyright": "<p>Archives priv\u00e9es Gilbert Trausch<\/p>",
+              "nomenclature": "zh-lma-44-zh03-12-01-05-zh-03-p102annotationph",
+              "url": "https:\/\/gilberttrausch.uni.lu\/pdf\/zhchapitre\/zh-lma-44-zh03-12-01-05-zh-03-p102annotationph.pdf",
+              "cover": null,
+              "optimized_url": {
+                "thumbnail": {
+                  "width": 308,
+                  "height": 400,
+                  "originalWidth": 1340,
+                  "originalHeight": 1741,
+                  "url": "https:\/\/gilberttrausch.uni.lu\/pdf\/zhchapitre\/zh-lma-44-zh03-12-01-05-zh-03-p102annotationph-thumbnail.png"
+                },
+                "large": {
+                  "width": 1340,
+                  "height": 1741,
+                  "originalWidth": 1340,
+                  "originalHeight": 1741,
+                  "url": "https:\/\/gilberttrausch.uni.lu\/pdf\/zhchapitre\/zh-lma-44-zh03-12-01-05-zh-03-p102annotationph-large.png"
+                }
+              },
+              "source": "<p>Archives priv\u00e9es Gilbert Trausch<\/p>",
+              "created_at": "2025-03-30T15:43:17.000000Z",
+              "updated_at": "2025-04-07T14:14:56.000000Z",
+              "pivot": {
+                "documentable_type": "App\\Models\\SlideMasonry",
+                "documentable_id": 14,
+                "document_id": 226,
+                "order": 3
+              }
+            },
+            {
+              "id": 230,
+              "name": {
+                "fr": "Extrait d\u2019un cahier magique de Gilbert Trausch, annotation (4)",
+                "de": "Auszug aus einem Zauberheft von Gilbert Trausch, Anmerkung (4)"
+              },
+              "type": "notebook",
+              "date": null,
+              "display_year": 0,
+              "title": {
+                "fr": "<p>Extrait d\u2019un cahier magique de Gilbert Trausch, annotation<\/p>",
+                "de": "<p>Auszug aus einem Zauberheft von Gilbert Trausch, Anmerkung<\/p>"
+              },
+              "description": {
+                "fr": "<p>&nbsp;Cet extrait provient d'un cahier magique (n\u00b0 34) de Gilbert Trausch, utilis\u00e9 pour consigner les r\u00e9sultats de ses recherches. Ce document montre comment l\u2019historien rassemblait et organisait des informations, notamment en ajoutant des r\u00e9f\u00e9rences personnelles \u00e0 ses notes manuscrites, comme ici avec la mention \u201cphot\u201d, qui indique qu\u2019il a photocopi\u00e9 les documents mentionn\u00e9s.<\/p>",
+                "de": "<p>&nbsp;Dieser Auszug stammt aus einem Zauberheft (Nr. 34) von Gilbert Trausch, das er benutzte, um seine Forschungsergebnisse festzuhalten. Es zeigt, wie der Historiker Informationen sammelte und organisierte, unter anderem indem er seinen handschriftlichen Notizen pers\u00f6nliche Verweise hinzuf\u00fcgte, wie hier mit dem Vermerk \u201ephot\u201c, der besagt, dass er die erw\u00e4hnten Dokumente fotokopiert hat.<\/p>"
+              },
+              "copyright": "<p>Archives priv\u00e9es Gilbert Trausch<\/p>",
+              "nomenclature": "zh-lma-48-178-179pages-from-zh02-05-03-06-zh-04-annotationphot",
+              "url": "https:\/\/gilberttrausch.uni.lu\/pdf\/zhchapitre\/zh-lma-48-178-179pages-from-zh02-05-03-06-zh-04-annotationphot.pdf",
+              "cover": null,
+              "optimized_url": {
+                "thumbnail": {
+                  "width": 310,
+                  "height": 400,
+                  "originalWidth": 1347,
+                  "originalHeight": 1738,
+                  "url": "https:\/\/gilberttrausch.uni.lu\/pdf\/zhchapitre\/zh-lma-48-178-179pages-from-zh02-05-03-06-zh-04-annotationphot-thumbnail.png"
+                },
+                "large": {
+                  "width": 1347,
+                  "height": 1738,
+                  "originalWidth": 1347,
+                  "originalHeight": 1738,
+                  "url": "https:\/\/gilberttrausch.uni.lu\/pdf\/zhchapitre\/zh-lma-48-178-179pages-from-zh02-05-03-06-zh-04-annotationphot-large.png"
+                }
+              },
+              "source": "<p>Archives priv\u00e9es Gilbert Trausch<\/p>",
+              "created_at": "2025-03-30T15:56:54.000000Z",
+              "updated_at": "2025-04-07T14:14:56.000000Z",
+              "pivot": {
+                "documentable_type": "App\\Models\\SlideMasonry",
+                "documentable_id": 14,
+                "document_id": 230,
+                "order": 4
+              }
+            },
+            {
+              "id": 227,
+              "name": {
+                "fr": "Extrait d\u2019un cahier magique de Gilbert Trausch, annotation (5)",
+                "de": "Auszug aus einem Zauberheft von Gilbert Trausch, Anmerkung (5)"
+              },
+              "type": "notebook",
+              "date": null,
+              "display_year": 0,
+              "title": {
+                "fr": "<p> Extrait d\u2019un cahier magique de Gilbert Trausch, annotation<\/p>",
+                "de": "<p>Auszug aus einem Zauberheft von Gilbert Trausch, Anmerkung<\/p>"
+              },
+              "description": {
+                "fr": "<p> Cet extrait provient d'un cahier magique (n\u00b0 18) de Gilbert Trausch, utilis\u00e9 pour consigner les r\u00e9sultats de ses recherches. Ce document montre comment l\u2019historien rassemblait et organisait des informations, notamment en ajoutant des r\u00e9f\u00e9rences personnelles \u00e0 ses notes manuscrites, comme ici avec la mention \u201cG.T.\u201d, qui indique que la r\u00e9f\u00e9rence cit\u00e9e existe dans sa biblioth\u00e8que priv\u00e9e.<\/p>",
+                "de": "<p>&nbsp;Dieser Auszug stammt aus einem Zauberheft (Nr. 18) von Gilbert Trausch, das er benutzte, um seine Forschungsergebnisse festzuhalten. Das Dokument zeigt, wie der Historiker Informationen sammelte und organisierte. Dazu geh\u00f6rte auch, dass er seinen handschriftlichen Notizen pers\u00f6nliche Verweise hinzuf\u00fcgte, wie hier mit dem Vermerk \u201eG.T.\u201c, der besagt, dass die zitierte Literaturstelle in seiner Privatbibliothek existiert.<\/p>"
+              },
+              "copyright": "<p>Archives priv\u00e9es Gilbert Trausch<\/p>",
+              "nomenclature": "zh-lma-45-zh02-05-01-04-zh-01-p3annotationgt",
+              "url": "https:\/\/gilberttrausch.uni.lu\/pdf\/zhchapitre\/zh-lma-45-zh02-05-01-04-zh-01-p3annotationgt.pdf",
+              "cover": null,
+              "optimized_url": {
+                "thumbnail": {
+                  "width": 300,
+                  "height": 400,
+                  "originalWidth": 1229,
+                  "originalHeight": 1637,
+                  "url": "https:\/\/gilberttrausch.uni.lu\/pdf\/zhchapitre\/zh-lma-45-zh02-05-01-04-zh-01-p3annotationgt-thumbnail.png"
+                },
+                "large": {
+                  "width": 1229,
+                  "height": 1637,
+                  "originalWidth": 1229,
+                  "originalHeight": 1637,
+                  "url": "https:\/\/gilberttrausch.uni.lu\/pdf\/zhchapitre\/zh-lma-45-zh02-05-01-04-zh-01-p3annotationgt-large.png"
+                }
+              },
+              "source": "<p>Archives priv\u00e9es Gilbert Trausch<\/p>",
+              "created_at": "2025-03-30T15:47:38.000000Z",
+              "updated_at": "2025-04-07T14:14:56.000000Z",
+              "pivot": {
+                "documentable_type": "App\\Models\\SlideMasonry",
+                "documentable_id": 14,
+                "document_id": 227,
+                "order": 5
+              }
+            },
+            {
+              "id": 228,
+              "name": {
+                "fr": "Extrait d\u2019un cahier magique de Gilbert Trausch, annotation (6)",
+                "de": "Auszug aus einem Zauberheft von Gilbert Trausch, Anmerkung (6)"
+              },
+              "type": "notebook",
+              "date": null,
+              "display_year": 0,
+              "title": {
+                "fr": "<p>Extrait d\u2019un cahier magique de Gilbert Trausch, annotation<\/p>",
+                "de": "<p>Auszug aus einem Zauberheft von Gilbert Trausch, Anmerkung<\/p>"
+              },
+              "description": {
+                "fr": "<p> Cet extrait provient d'un cahier magique (n\u00b0 18) de Gilbert Trausch, utilis\u00e9 pour consigner les r\u00e9sultats de ses recherches. Ce document montre comment l\u2019historien rassemblait et organisait des informations, notamment en ajoutant des r\u00e9f\u00e9rences personnelles \u00e0 ses notes manuscrites, comme ici avec la mention \u201cG.T.\u201d, qui indique que la r\u00e9f\u00e9rence cit\u00e9e existe dans sa biblioth\u00e8que priv\u00e9e.<\/p>",
+                "de": "<p>&nbsp;Dieser Auszug stammt aus einem Zauberheft (Nr. 18) von Gilbert Trausch, das er benutzte, um seine Forschungsergebnisse festzuhalten. Das Dokument zeigt, wie der Historiker Informationen sammelte und organisierte. Dazu geh\u00f6rte auch, dass er seinen handschriftlichen Notizen pers\u00f6nliche Verweise hinzuf\u00fcgte, wie hier mit dem Vermerk \u201eG.T.\u201c, der besagt, dass die zitierte Literaturstelle in seiner Privatbibliothek existiert.<\/p>"
+              },
+              "copyright": "<p>Archives priv\u00e9es Gilbert Trausch<\/p>",
+              "nomenclature": "zh-lma-46-zh02-05-01-04-zh-01-p145annotationgt",
+              "url": "https:\/\/gilberttrausch.uni.lu\/pdf\/zhchapitre\/zh-lma-46-zh02-05-01-04-zh-01-p145annotationgt.pdf",
+              "cover": null,
+              "optimized_url": {
+                "thumbnail": {
+                  "width": 306,
+                  "height": 400,
+                  "originalWidth": 1254,
+                  "originalHeight": 1637,
+                  "url": "https:\/\/gilberttrausch.uni.lu\/pdf\/zhchapitre\/zh-lma-46-zh02-05-01-04-zh-01-p145annotationgt-thumbnail.png"
+                },
+                "large": {
+                  "width": 1254,
+                  "height": 1637,
+                  "originalWidth": 1254,
+                  "originalHeight": 1637,
+                  "url": "https:\/\/gilberttrausch.uni.lu\/pdf\/zhchapitre\/zh-lma-46-zh02-05-01-04-zh-01-p145annotationgt-large.png"
+                }
+              },
+              "source": "<p>Archives priv\u00e9es Gilbert Trausch<\/p>",
+              "created_at": "2025-03-30T15:50:51.000000Z",
+              "updated_at": "2025-04-07T14:14:56.000000Z",
+              "pivot": {
+                "documentable_type": "App\\Models\\SlideMasonry",
+                "documentable_id": 14,
+                "document_id": 228,
+                "order": 6
+              }
+            },
+            {
+              "id": 223,
+              "name": {
+                "fr": "Extrait d\u2019un cahier magique de Gilbert Trausch, annotation (7)",
+                "de": "Auszug aus einem Zauberheft von Gilbert Trausch, Anmerkung (7)"
+              },
+              "type": "notebook",
+              "date": null,
+              "display_year": 0,
+              "title": {
+                "fr": "<p>Extrait d\u2019un cahier magique de Gilbert Trausch, annotation<\/p>",
+                "de": "<p>Auszug aus einem Zauberheft von Gilbert Trausch, Anmerkung<\/p>"
+              },
+              "description": {
+                "fr": "<p> Cet extrait provient d'un cahier magique (n\u00b0 17) de Gilbert Trausch, utilis\u00e9 pour consigner les r\u00e9sultats de ses recherches. Ce document montre comment l\u2019historien rassemblait et organisait des informations, notamment en ajoutant des r\u00e9f\u00e9rences personnelles \u00e0 ses notes manuscrites, comme ici avec la mention \u201cfait\u201d, qui indique qu'il a utilis\u00e9 cette id\u00e9e ou cette citation dans un de ses \u00e9crits.<\/p>",
+                "de": "<p>&nbsp;Dieser Auszug stammt aus einem Zauberheft (Nr. 17) von Gilbert Trausch, das er benutzte, um seine Forschungsergebnisse festzuhalten. Das Dokument zeigt, wie der Historiker Informationen sammelte und organisierte. Dazu geh\u00f6rte auch, dass er seinen handschriftlichen Notizen pers\u00f6nliche Bez\u00fcge hinzuf\u00fcgte, wie hier mit dem Vermerk \u201cfait\u201e, der besagt, dass er diese Idee oder dieses Zitat in einer seiner Schriften verwendet hat.<\/p>"
+              },
+              "copyright": "<p>Archives priv\u00e9es Gilbert Trausch<\/p>",
+              "nomenclature": "zh-lma-41-zh01-15-02-p5-faitutilise",
+              "url": "https:\/\/gilberttrausch.uni.lu\/pdf\/zhchapitre\/zh-lma-41-zh01-15-02-p5-faitutilise.pdf",
+              "cover": null,
+              "optimized_url": {
+                "thumbnail": {
+                  "width": 306,
+                  "height": 400,
+                  "originalWidth": 1354,
+                  "originalHeight": 1771,
+                  "url": "https:\/\/gilberttrausch.uni.lu\/pdf\/zhchapitre\/zh-lma-41-zh01-15-02-p5-faitutilise-thumbnail.png"
+                },
+                "large": {
+                  "width": 1354,
+                  "height": 1771,
+                  "originalWidth": 1354,
+                  "originalHeight": 1771,
+                  "url": "https:\/\/gilberttrausch.uni.lu\/pdf\/zhchapitre\/zh-lma-41-zh01-15-02-p5-faitutilise-large.png"
+                }
+              },
+              "source": "<p>Archives priv\u00e9es Gilbert Trausch<\/p>",
+              "created_at": "2025-03-30T15:23:07.000000Z",
+              "updated_at": "2025-04-07T14:14:55.000000Z",
+              "pivot": {
+                "documentable_type": "App\\Models\\SlideMasonry",
+                "documentable_id": 14,
+                "document_id": 223,
+                "order": 7
+              }
+            },
+            {
+              "id": 229,
+              "name": {
+                "fr": "Extrait d\u2019un cahier magique de Gilbert Trausch, annotation (8)",
+                "de": "Auszug aus einem Zauberheft von Gilbert Trausch, Anmerkung (8)"
+              },
+              "type": "notebook",
+              "date": null,
+              "display_year": 0,
+              "title": {
+                "fr": "<p>Extrait d\u2019un cahier magique de Gilbert Trausch, annotation<\/p>",
+                "de": "<p>Auszug aus einem Zauberheft von Gilbert Trausch, Anmerkung<\/p>"
+              },
+              "description": {
+                "fr": "<p> Cet extrait provient d'un cahier magique (n\u00b0 64) de Gilbert Trausch, utilis\u00e9 pour consigner les r\u00e9sultats de ses recherches. Ce document montre comment l\u2019historien rassemblait et organisait des informations, notamment en ajoutant des r\u00e9f\u00e9rences personnelles \u00e0 ses notes manuscrites, comme ici avec la mention \u201cfait\u201d, qui indique qu'il a utilis\u00e9 cette id\u00e9e ou cette citation dans un de ses \u00e9crits.<\/p>",
+                "de": "<p>&nbsp;Dieser Auszug stammt aus einem Zauberheft (Nr. 64) von Gilbert Trausch, das er benutzte, um seine Forschungsergebnisse festzuhalten. Das Dokument zeigt, wie der Historiker Informationen sammelte und organisierte. Dazu geh\u00f6rte auch, dass er seinen handschriftlichen Notizen pers\u00f6nliche Bez\u00fcge hinzuf\u00fcgte, wie hier mit dem Vermerk \u201cfait\u201e, der besagt, dass er diese Idee oder dieses Zitat in einer seiner Schriften verwendet hat.<\/p>"
+              },
+              "copyright": "<p>Archives priv\u00e9es Gilbert Trausch<\/p>",
+              "nomenclature": "zh-lma-47-zh02-05-03-07-zh-11-p221annotationfait",
+              "url": "https:\/\/gilberttrausch.uni.lu\/pdf\/zhchapitre\/zh-lma-47-zh02-05-03-07-zh-11-p221annotationfait.pdf",
+              "cover": null,
+              "optimized_url": {
+                "thumbnail": {
+                  "width": 310,
+                  "height": 400,
+                  "originalWidth": 1346,
+                  "originalHeight": 1736,
+                  "url": "https:\/\/gilberttrausch.uni.lu\/pdf\/zhchapitre\/zh-lma-47-zh02-05-03-07-zh-11-p221annotationfait-thumbnail.png"
+                },
+                "large": {
+                  "width": 1346,
+                  "height": 1736,
+                  "originalWidth": 1346,
+                  "originalHeight": 1736,
+                  "url": "https:\/\/gilberttrausch.uni.lu\/pdf\/zhchapitre\/zh-lma-47-zh02-05-03-07-zh-11-p221annotationfait-large.png"
+                }
+              },
+              "source": "<p>Archives priv\u00e9es Gilbert Trausch<\/p>",
+              "created_at": "2025-03-30T15:54:23.000000Z",
+              "updated_at": "2025-04-07T14:14:56.000000Z",
+              "pivot": {
+                "documentable_type": "App\\Models\\SlideMasonry",
+                "documentable_id": 14,
+                "document_id": 229,
+                "order": 8
+              }
+            }
+          ]
+        }
+      }
+    ]
+  }
+}
