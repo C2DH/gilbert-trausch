@@ -26,8 +26,6 @@ import i18n from '../../i18n'
 import bgAudio from '../assets/images/backgrounds/bg-audio-default.webp'
 import { AnimatePresence, motion } from 'motion/react'
 
-
-
 export default function Resource() {
   const locale = i18n.language
   const [isImageVisible, setIsImageVisible] = useState(false)
@@ -177,14 +175,26 @@ export default function Resource() {
                 {data?.source && (
                   <div className='text-[14px] leading-[18px]'>
                     <span className='font-semibold'>Source</span>
-                    <div>{formatRichText(data.source[locale])}</div>
+                    <div>
+                      {formatRichText(
+                        typeof data.source === 'string'
+                          ? data.source
+                          : data.source[locale],
+                      )}
+                    </div>
                   </div>
                 )}
 
                 {data?.copyright && (
                   <div className='text-[14px] leading-[18px] mt-[20px]'>
                     <span className='font-semibold'>Copyright</span>
-                    <div>{formatRichText(data.copyright[locale])}</div>
+                    <div>
+                      {formatRichText(
+                        typeof data.copyright === 'string'
+                          ? data.copyright
+                          : data.copyright[locale],
+                      )}
+                    </div>
                   </div>
                 )}
               </div>
